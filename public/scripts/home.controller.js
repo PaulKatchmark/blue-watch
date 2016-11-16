@@ -75,7 +75,7 @@ var cities = [
         });
 
         controller.markers.push(marker);
-        console.log('markers', marker);
+
     }
 
     for (i = 0; i < cities.length; i++){
@@ -86,7 +86,7 @@ var cities = [
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
     }
-var map;
+
 
   controller.searchAddress = function() {
 
@@ -102,7 +102,7 @@ var map;
 
       controller.map.setCenter(myResult);
 
-      controller.map.setZoom(17);
+      controller.map.setZoom(15);
 
     }  else { // if status value is not equal to "google.maps.GeocoderStatus.OK"
 
