@@ -15,6 +15,11 @@
   </div>
 </div>
 
+<div>
+   <input type="text" id="address-input" placeholder="get an address" class="form-control">
+   <button ng-click="home.searchAddress()" class="btn btn-default">Search</button>
+</div>
+
 <div id="class" ng-repeat="marker in home.markers | orderBy : 'title'">
      <a href="#" ng-click="home.openInfoWindow($event, marker)">{{marker.title}}</a>
    </div>

@@ -6,7 +6,7 @@ function HomeController($http, $location) {
   var controller = this;
 
 
-  this.searchResources = function(search){
+  controller.searchResources = function(search){
     console.log(search);
   }
 
@@ -86,6 +86,35 @@ var cities = [
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
     }
+var map;
+
+  controller.searchAddress = function() {
+
+  var addressInput = document.getElementById('address-input').value;
+
+  var geocoder = new google.maps.Geocoder();
+
+  geocoder.geocode({address: addressInput}, function(results, status) {
+
+    if (status == google.maps.GeocoderStatus.OK) {
+
+      var myResult = results[0].geometry.location;
+
+      controller.map.setCenter(myResult);
+
+      controller.map.setZoom(17);
+
+    }  else { // if status value is not equal to "google.maps.GeocoderStatus.OK"
+
+    // warning message
+    alert("The Geocode was not successful for the following reason: " + status);
+
+  }
+
+  });
+}
+
+
 
 
 };
