@@ -37,10 +37,11 @@ app.use('/login', login);
 app.use('/resources', resources);
 app.use('/admin', admin);
 
-
+//This is duplicate
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, './public/views/index.html'));
 });
+
 
 app.get('/authenticated', ensureAuthenticated);
 
