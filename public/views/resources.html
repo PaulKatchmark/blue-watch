@@ -6,41 +6,57 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">New Resource Information</h4>
+                <h4 class="modal-title text-center">New Resource Information</h4>
             </div>
             <div class="modal-body modal-background-color text-center">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="control-label">Category</label>
-                        <select >
+                        <label class="control-label col-xs-2">Category</label>
+                        <div class="col-xs-8">
+                            <select class="form-control">
                         <option>Category 1</option>
                         <option>Category 2</option>
                         <option>Category 3</option>
                         <option>Category 4</option>
                     </select>
-                        <button href="#addNewCategory" data-toggle="modal">Add Category</button>
-                    </div>
-                    <div class="form-group">
-                        <label>Company Name</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-group">
-                        <label>Contacts</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-group">
-                        <label>link</label>
-                        <input type="text" />
-                    </div>
-                    <div class="form-group">
-                        <label>Address</label>
-                        <textarea></textarea>
-                    </div>
 
+                                <button href="#addNewCategory" data-toggle="modal" class="btn btn-default pull-left"><span class="glyphicon glyphicon-plus"></span></button>
 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Company Name</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Company Description</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Contacts</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">link</label>
+                        <div class="col-xs-8">
+                            <input type="url" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Address</label>
+                        <div class="col-xs-8">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
-                <button ng-click="" type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                <button ng-click="" type="button" class="btn btn-primary" data-dismiss="modal">ADD</button>
             </div>
             </form>
         </div>
@@ -52,21 +68,30 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Category Builder</h4>
+                <h4 class="modal-title text-center">Category Builder</h4>
             </div>
-            <div class="modal-body modal-background-color text-center">
+            <div class="modal-body modal-background-color">
+                <form class="form-horizontal">
+
                 <div class="form-group">
-                    <label>Category Name</label>
-                    <input type="text" />
+                    <label class="control-label col-xs-2">Category Name</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" />
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label>Pick a color</label>
-                    <input type="color" value="#ff0000">
+                    <label class="control-label col-xs-2">Pick a color</label>
+                    <div class="col-xs-8">
+                        <input type="color" value="#ff0000" class="form-control">
+                    </div>
                 </div>
             </div>
+                </form>
             <div class="modal-footer">
-                <button ng-click="" type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                <button ng-click="" type="button" class="btn btn-primary" data-dismiss="modal">ADD</button>
             </div>
+
         </div>
     </div>
 </div>
