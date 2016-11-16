@@ -11,6 +11,7 @@ function LoginController($http, $location) {
       email: controller.email,
       password: controller.password
     }).then(function(){
+      console.log('this here');
     $location.path('/resources');
     }, function(error) {
       console.log('error loggin in', error);

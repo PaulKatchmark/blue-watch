@@ -10,15 +10,15 @@ const adminSchema = new mongoose.Schema({
 
 // make sure that everytime we save an admin/modify password, the password gets hashed
 adminSchema.pre('save', function(done){
-  const admin = this;
-  if (admin.isModified('password')) {
-    bcrypt.hash(admin.password, SALT_ROUNDS, function(err, hash){
+  const user = this;
+  if (user.isModified('password')) {
+    bcrypt.hash(user.password, SALT_ROUNDS, function(err, hash){
       if (err) {
         console.log('Error hashing password', err);
         return done(new Error('Error hashing password'));
       }
 
-      admin.password = hash;
+      user.password = hash;
       done();
     });
   } else {
@@ -28,17 +28,17 @@ adminSchema.pre('save', function(done){
 
 
 adminSchema.methods.comparePassword = function(password) {
-  const admin = this;
+  const user = this;
 
   return new Promise(function(resolve){
-    // console.log('admin password', admin.password);
-    // console.log('password', password);
-    bcrypt.compare(password, admin.password, function(err, match){
+    console.log('admin password', user.password);
+    console.log('password', password);
+    bcrypt.compare(password, user.password, function(err, match){
       if (err) {
         console.log('Error comparing password', err);
         return resolve(false);
       }
-    //  console.log('adminSchema comparePassword', match);
+     console.log('adminSchema comparePassword', match);
       resolve(match);
     });
   });
