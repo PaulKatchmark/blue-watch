@@ -24,7 +24,10 @@ exports.setup = function () {
 };
 
 function findAndComparePassword(email, password, done) {
+  console.log('email,password', email, password);
+
   User.findOne({ email: email }).then(function(user){
+
     if (!user) {
       // didn't find a user with the same email
       console.log('failed to find user with email:', email);
@@ -38,12 +41,15 @@ function findAndComparePassword(email, password, done) {
           if (isMatch) {
             console.log('setup isMatch', isMatch);
             // successfully auth the user
-            return done(null, user);
+            done(null, user);
           } else {
             done(null, false);
           }
+        }).catch(function(err) {
+          done(err);
         });
-  }).catch(function(err){
+  })
+  .catch(function(err){
     console.log('Error finding user', err);
     done(null, false);
   });

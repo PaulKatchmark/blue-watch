@@ -21,7 +21,8 @@ const sessionConfig = {
   }
 };
 
-//connection.connect();
+// This line was commented out 
+connection.connect();
 auth.setup();
 
 const app = express();

@@ -6,7 +6,7 @@ require('mongoose-type-email');
 const adminSchema = new mongoose.Schema({
   email: {type: mongoose.SchemaTypes.Email, required:true},
   password: String,
-});
+}, {collection: 'admin'});
 
 // make sure that everytime we save an admin/modify password, the password gets hashed
 adminSchema.pre('save', function(done){

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+mongoose.Promise = Promise;
 exports.connect = function () {
   mongoose.connect('mongodb://localhost/rho');
 
