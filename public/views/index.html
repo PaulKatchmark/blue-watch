@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="blueWatchApp">
   <head>
     <meta charset="utf-8">
-    <title>Blue Watch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1vdoODdk7u2R0QddniTP4nH16tJCt378"></script>
+
+    <script src="vendors/angular.min.js"></script>
+    <script src="vendors/angular-route.min.js"></script>
+    <script src="scripts/module.js"></script>
+
+    <script src="scripts/login.controller.js"></script>
+    <script src="scripts/resources.controller.js"></script>
+
+    <script src="scripts/config.js"></script>
+
+    <title>Blue Watch</title>
+
+    <base href="/" />
   </head>
   <body>
+    <div class="container">
+      <div>
+            <h1>Blue Watch</h1>
+            
+        </div>
+
+        <div ng-view></div>
+
+
+
+    </div>
 
   </body>
 </html>
