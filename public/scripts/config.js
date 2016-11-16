@@ -3,7 +3,7 @@ angular.module('blueWatchApp').config(function($routeProvider, $locationProvider
 
   $routeProvider.when('/home', {
     templateUrl: 'views/home.html',
-    // controller: 'HomeController as home'
+    controller: 'HomeController as home'
   }).when('/login', {
     templateUrl: 'views/login.html',
     controller: 'LoginController as login'
@@ -12,11 +12,11 @@ angular.module('blueWatchApp').config(function($routeProvider, $locationProvider
     controller: 'ResourcesController as resources'
   }).when('/adminSetup', {
     templateUrl: 'views/adminSetup.html',
-    // controller: 'adminSetupController as adminSetup'
+    controller: 'AdminSetupController as adminSetup'
   }).when('/approval', {
     templateUrl: 'views/approval.html',
-    // controller: 'ApprovalController as approval'
+    controller: 'ApprovalController as approval'
   }).otherwise({
-    templateUrl: 'views/home.html',
+    templateUrl: 'views/home.html'
   });
 });
