@@ -11,8 +11,10 @@
 </div>
 
 <div class="col-md-7">
-  map
-  <div id="map" style="height:500px;">
+  <div id="map" style="height:200px;">
   </div>
-
 </div>
+
+<div id="class" ng-repeat="marker in home.markers | orderBy : 'title'">
+     <a href="#" ng-click="home.openInfoWindow($event, marker)">{{marker.title}}</a>
+   </div>
