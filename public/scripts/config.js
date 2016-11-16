@@ -17,6 +17,7 @@ angular.module('blueWatchApp').config(function($routeProvider, $locationProvider
     templateUrl: 'views/approval.html',
     controller: 'ApprovalController as approval'
   }).otherwise({
-    templateUrl: 'views/home.html'
+    templateUrl: 'views/home.html',
+    controller: 'HomeController as home'
   });
 });

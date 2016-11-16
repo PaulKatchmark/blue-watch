@@ -2,12 +2,13 @@ angular.module('blueWatchApp')
 .controller('HomeController', HomeController);
 
 function HomeController($http, $location) {
+  console.log('Home controller');
   var controller = this;
 
 
-this.searchResources = function(search){
-  console.log(search);
-}
+  this.searchResources = function(search){
+    console.log(search);
+  }
 
 //examples of locations
 var cities = [
@@ -50,6 +51,7 @@ var cities = [
     mapTypeId: google.maps.MapTypeId.TERRAIN
   };
 
+
 //creates the map
     controller.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
@@ -84,5 +86,11 @@ var cities = [
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
     }
+
+
+  controller.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+  console.log(controller.map);
+
 
 };
