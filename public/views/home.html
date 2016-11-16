@@ -1,8 +1,18 @@
 <h2>Home/Map Page</h2>
-
-
 <p>
   <a href="/login">Login</a>
 </p>
 
-<div id="map"></div>
+<div id="input">
+  <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
+</div>
+<div id="button">
+  <button type="submit" class="btn btn-default" id="submit" ng-click="home.searchResources(home.search)">Search</button>
+</div>
+
+<div class="col-md-7">
+  map
+  <div id="map" style="height:500px;">
+  </div>
+
+</div>
