@@ -75,7 +75,7 @@ var cities = [
         });
 
         controller.markers.push(marker);
-        console.log(controller.markers);
+        console.log('markers', marker);
     }
 
     for (i = 0; i < cities.length; i++){
@@ -86,11 +86,6 @@ var cities = [
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
     }
-
-
-  controller.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-  console.log(controller.map);
 
 
 };
