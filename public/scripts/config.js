@@ -12,7 +12,7 @@ angular.module('blueWatchApp').config(function($routeProvider, $locationProvider
     controller: 'ResourcesController as resources'
   }).when('/adminSetup', {
     templateUrl: 'views/adminSetup.html',
-    controller: 'AdminSetupController as adminSetup'
+    controller: 'AdminSetupController as admin'
   }).when('/approval', {
     templateUrl: 'views/approval.html',
     controller: 'ApprovalController as approval'

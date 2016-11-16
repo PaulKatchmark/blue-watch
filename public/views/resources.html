@@ -20,15 +20,15 @@
         <th>Category</th>
         <th></th>
     </thead>
-    <tr ng-repeat="">
+    <tr >
         <td>
-
+            {{Company names goes here}}
         </td>
         <td>
-
+            {{Categories goes here}}
         </td>
         <td>
-            <button href="#addNewResource" data-toggle="modal" class="btn btn-primary">Add New Resource</button>
+            <button href="#editResource" data-toggle="modal" class="btn btn-primary">Edit Resource</button>
         </td>
     </tr>
 </table>
@@ -117,10 +117,114 @@
                             <input type="color" value="#ff0000" class="form-control">
                         </div>
                     </div>
-            </div>
+
             </form>
+            </div>
             <div class="modal-footer">
                 <button ng-click="" type="button" class="btn btn-primary" data-dismiss="modal">ADD</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="editResource" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Edit Resource Information</h4>
+            </div>
+            <div class="modal-body modal-background-color text-center">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Category</label>
+                        <div class="col-xs-8">
+                            <select class="form-control">
+                        <option>Category 1</option>
+                        <option>Category 2</option>
+                        <option>Category 3</option>
+                        <option>Category 4</option>
+                    </select>
+                            <button href="#addNewCategory" data-toggle="modal" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-plus"></span></button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Company Name</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Company Description</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Contacts</label>
+                        <div class="col-xs-8">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">link</label>
+                        <div class="col-xs-8">
+                            <input type="url" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Address</label>
+                        <div class="col-xs-8">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-2">Reviews</label>
+                        <div class="col-xs-8">
+                            {{Newest Review Here}}
+                            <button href="#editReviews" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button ng-click="" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="editReviews" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Edit Reviews</h4>
+            </div>
+            <div class="modal-body modal-background-color">
+                <table>
+
+                    <thead>
+                        <th>Review Number</th>
+                        <th>Review</th>
+                        <th></th>
+                    </thead>
+                    <tr >
+                        <td>
+                            {{Review number here}}
+                        </td>
+                        <td>
+                            {{Reviews here}}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary">Edit Review</button>
+                        </td>
+                    </tr>
+                </table>
+            <div class="modal-footer">
+                <button ng-click="" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
             </div>
 
         </div>
