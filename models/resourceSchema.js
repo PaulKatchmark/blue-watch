@@ -14,7 +14,8 @@ const resourceSchema = new Schema({
   zip: Number,
 
 });
-
+//not sure if need this, and would need to wrap address fields in object named location
+//resourceSchema.index({location: '2dsphere'});
 
 const Resource = mongoose.model('Resource', resourceSchema);
 

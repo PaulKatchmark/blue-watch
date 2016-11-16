@@ -6,7 +6,7 @@ angular.module('blueWatchApp')
   adminservice.user = {email: ""};
 
     this.loggedin = function(){
-      return $http.get('/adminservice/moto.users').then(function(response) {
+      return $http.get('/adminservice/adminSchema').then(function(response) {
         adminservice.user.email = response.data.email;
         return response.data;
       },function(error){
