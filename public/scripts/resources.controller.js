@@ -3,6 +3,7 @@ angular.module('blueWatchApp')
 
 function ResourcesController($http, $location) {
   var controller = this;
+  controller.categories = [];
 
   //controller to create new resource
   controller.createresource = function() {
@@ -14,8 +15,11 @@ function ResourcesController($http, $location) {
     street: controller.street,
     city: controller.city,
     state: controller.state,
-    zip: controller.zip
+    zip: controller.zip,
+    categoryId: controller.categoryId
+
   };
+  console.log(body);
       $http.post('/resources', body
     ).then(function(){
       $location.path('/resources');
@@ -24,4 +28,11 @@ function ResourcesController($http, $location) {
     });
   };
 
+  controller.getcategories = function(){
+    $http.get('/categories').then(function(response){
+      // console.log(response);
+      controller.categories = response.data;
+    });
+  };
+  controller.getcategories();
 }

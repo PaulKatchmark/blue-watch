@@ -12,8 +12,9 @@ const Category = require('../models/categorySchema.js');
 
 //post new resources and attach category
 router.post('/', function(req,res){
+  console.log(req.body);
   var resource = new Resource(req.body);
-  resource.categoryId = req.category.id;
+  // resource.categoryId = req.category.id;
 
   resource.save().then(function(resource){
       res.sendStatus(201);
