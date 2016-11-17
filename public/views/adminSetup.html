@@ -20,10 +20,10 @@
             {{users.email}}
         </td>
         <td>
-            <button href="#editAdmin" data-toggle="modal" class="btn btn-primary">Edit</button>
+            <button ng-click="admin.captureInfo(users._id, users.email, users.password, users.accessLevel)" href="#editAdmin" data-toggle="modal" class="btn btn-primary">Edit</button>
         </td>
         <td>
-            <button ng-click="" data-toggle="modal" class="btn btn-primary">Delete</button>
+            <button ng-click="admin.deleteUser(users._id)" data-toggle="modal" class="btn btn-primary">Delete</button>
         </td>
     </tr>
 </table>
@@ -55,14 +55,14 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <input type="checkbox" ng-model="admin.password">
+                        <input type="checkbox" ng-model="admin.accessLevel" ng-true-value="'yes'" ng-false-value="'no'">
                         <div class="col-xs-8">
                             <label class="control-label col-xs-offset-1 col-xs-2">Full Permissions</label>
                         </div>
                     </div>
 
                     <div class="col-xs-10">
-                      <button type="submit" ng-click="admin.addNewUser(admin.email, admin.password)" class="btn btn-primary" data-dismiss="modal">Add</button>
+                      <button type="submit" ng-click="admin.addNewUser(admin.email, admin.password, admin.accessLevel)" class="btn btn-primary" data-dismiss="modal">Add</button>
                     </div>
                 </form>
             </div>
@@ -82,21 +82,27 @@
             </div>
             <div class="modal-body modal-background-color text-center">
 
-                <form class="form-horizontal col-xs-12 col-md-12  well" ng-submit="login.login()">
+                <form class="form-horizontal col-xs-12 col-md-12  well">
                     <div class="form-group row">
                         <label class="control-label col-xs-offset-1 col-xs-2">Email:</label>
                         <div class="col-xs-8">
-                            <input class="form-control" type="text" ng-model="admin.email" autocomplete="on">
+                            <input class="form-control" type="text" ng-model="admin.email" autocomplete="on" placeholder="{{admin.capturedEmail}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="control-label col-xs-offset-1 col-xs-2">Password:</label>
                         <div class="col-xs-8">
-                            <input class="form-control" type="password" ng-model="admin.password">
+                            <input class="form-control" type="password" ng-model="admin.password" placeholder="****">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <input type="checkbox" ng-model="admin.accessLevel" ng-true-value="'yes'" ng-false-value="'no'" value="{{admin.capturedAcessLevel}}">
+                        <div class="col-xs-8">
+                            <label class="control-label col-xs-offset-1 col-xs-2">Full Permissions</label>
                         </div>
                     </div>
                     <div class="col-xs-10">
-                      <button ng-click="" type="submit" class="btn btn-primary" data-dismiss="modal">Update</button>
+                      <button ng-click="admin.updateUser(admin.email, admin.password, admin.accessLevel)" type="submit" class="btn btn-primary" data-dismiss="modal">Update</button>
                     </div>
                 </form>
             </div>

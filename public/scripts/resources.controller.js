@@ -16,9 +16,9 @@ function ResourcesController($http, $location) {
     state: controller.state,
     zip: controller.zip
   };
-      $http.post('/resource', body
+      $http.post('/resources', body
     ).then(function(){
-      $location.path('/resource');
+      $location.path('/resources');
     }, function(error) {
       console.log('error creating resource', error);
     });

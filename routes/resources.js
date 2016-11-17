@@ -5,9 +5,9 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const router = require('express').Router();
 const mongoose = require('mongoose');
-const Resources = require('../models.resourceSchema.js');
-const Admin = require('../adminSchema.js');
-const Category = require('../categorySchema.js');
+const Resource = require('../models/resourceSchema.js');
+const Admin = require('../models/adminSchema.js');
+const Category = require('../models/categorySchema.js');
 
 
 //post new resources and attach category
