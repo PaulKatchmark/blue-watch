@@ -15,9 +15,9 @@
         <th></th>
         <th></th>
     </thead>
-    <tr >
+    <tr ng-repeat="users in admin.usersArray">
         <td>
-        
+            {{users.email}}
         </td>
         <td>
             <button href="#editAdmin" data-toggle="modal" class="btn btn-primary">Edit</button>
