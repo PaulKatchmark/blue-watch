@@ -21,7 +21,7 @@ const sessionConfig = {
   }
 };
 
-// This line was commented out 
+// This line was commented out
 connection.connect();
 auth.setup();
 
@@ -36,7 +36,7 @@ app.use(passport.session());
 
 app.use('/login', login);
 app.use('/resources', resources);
-app.use('/admin', admin);
+app.use('/admin', ensureAuthenticated, ensureAccessLevel, admin);
 
 //This is duplicate
 app.get('/', function(req, res){
@@ -45,6 +45,7 @@ app.get('/', function(req, res){
 
 
 app.get('/authenticated', ensureAuthenticated);
+
 
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname, 'public/views/index.html'));
@@ -65,6 +66,15 @@ function ensureAuthenticated(req, res, next) {
     res.sendStatus(401);
   }
 }
+
+function ensureAccessLevel(req, res, next){
+    //ensure user has accessLevel = yes
+    if (req.user.accessLevel !== 'yes'){
+        return res.sendStatus(403);
+    } else {
+        next();
+    }
+};
 
 var server = app.listen(3000, function() {
   console.log('Listening on port', server.address().port);
