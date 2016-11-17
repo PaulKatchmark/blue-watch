@@ -13,7 +13,11 @@ function HomeController($http, $location) {
 controller.change = {categoryList:true};
 controller.change = {selectedCateogry:false};
   controller.expandCategory = function(category){
+    //will take in what the user wants
     if (category === 'cities') {
+      //alter what is on the DOM
+
+      //then this will get moved outside of the if function
     controller.change.categoryList = !controller.change.categoryList;
     controller.change.selectedCateogry = !controller.change.selectedCateogry;
   }
