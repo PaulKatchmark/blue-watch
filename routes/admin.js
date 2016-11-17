@@ -4,11 +4,6 @@ const Admin = require('../models/adminSchema');
 router.post('/', function(req, res) {
   console.log('registering new admin');
 
-  //Don't delete this needed for super_admin
-  // if (req.user.role !== 'super_admin'){
-  //     return res.sendStatus(403);
-  // }
-
   const admin = new Admin({email: req.body.email, password: req.body.password, accessLevel:req.body.accessLevel});
 
   admin.save().then(function() {
