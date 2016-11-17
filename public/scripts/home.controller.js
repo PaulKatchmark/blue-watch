@@ -10,6 +10,16 @@ function HomeController($http, $location) {
     console.log(search);
   }
 
+controller.change = {categoryList:true};
+controller.change = {selectedCateogry:false};
+  controller.expandCategory = function(category){
+    if (category === 'cities') {
+    controller.change.categoryList = !controller.change.categoryList;
+    controller.change.selectedCateogry = !controller.change.selectedCateogry;
+  }
+    console.log('category', category);
+  }
+
 //examples of locations
 var cities = [
     {
