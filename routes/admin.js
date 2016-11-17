@@ -9,7 +9,7 @@ router.post('/', function(req, res) {
   //     return res.sendStatus(403);
   // }
 
-  const admin = new Admin({email: req.body.email, password: req.body.password});
+  const admin = new Admin({email: req.body.email, password: req.body.password, accessLevel:req.body.accessLevel});
 
   admin.save().then(function() {
 
@@ -53,6 +53,7 @@ router.put('/:id', function(req, res) {
       //set values
     user.email = req.body.email;
     user.password = req.body.password;
+    user.accessLevel = req.body.accessLevel;
 
     user.save(function (err, updatedUser){
       if (err){
@@ -60,7 +61,7 @@ router.put('/:id', function(req, res) {
         return;
       }
       res.send(updatedUser);
-    });  
+    });
   });
 });
 
