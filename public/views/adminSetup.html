@@ -20,10 +20,10 @@
             {{users.email}}
         </td>
         <td>
-            <button href="#editAdmin" data-toggle="modal" class="btn btn-primary">Edit</button>
+            <button ng-click="admin.captureId(users._id)" href="#editAdmin" data-toggle="modal" class="btn btn-primary">Edit</button>
         </td>
         <td>
-            <button ng-click="" data-toggle="modal" class="btn btn-primary">Delete</button>
+            <button ng-click="admin.deleteUser(users._id)" data-toggle="modal" class="btn btn-primary">Delete</button>
         </td>
     </tr>
 </table>
@@ -82,7 +82,7 @@
             </div>
             <div class="modal-body modal-background-color text-center">
 
-                <form class="form-horizontal col-xs-12 col-md-12  well" ng-submit="login.login()">
+                <form class="form-horizontal col-xs-12 col-md-12  well">
                     <div class="form-group row">
                         <label class="control-label col-xs-offset-1 col-xs-2">Email:</label>
                         <div class="col-xs-8">
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <div class="col-xs-10">
-                      <button ng-click="" type="submit" class="btn btn-primary" data-dismiss="modal">Update</button>
+                      <button ng-click="admin.updateUser(admin.email, admin.password)" type="submit" class="btn btn-primary" data-dismiss="modal">Update</button>
                     </div>
                 </form>
             </div>
