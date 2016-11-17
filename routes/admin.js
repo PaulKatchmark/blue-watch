@@ -21,4 +21,17 @@ router.post('/', function(req, res) {
   });
 });
 
+router.get('/', function(req, res) {
+  console.log('getting admin users');
+
+//finds all users inside admin database
+  Admin.find({}).then(function(people){
+        res.send(people);
+        
+  }).catch(function(err){
+    console.log('Error in /register', err);
+    res.sendStatus(500);
+  });
+});
+
 module.exports = router;
