@@ -4,8 +4,7 @@ angular.module('blueWatchApp')
 function HomeController($http, $location) {
   console.log('Home controller');
   var controller = this;
-
-
+  controller.globalMarkers;
   controller.searchResources = function(search){
     console.log(search);
   }
@@ -74,10 +73,41 @@ var cities = [
             infoWindow.open(controller.map, marker);
         });
 
-        controller.markers.push(marker);
+        var myMarker = {
+          marker: marker,
+          visible: false,
+          // ...
+        }
+        controller.globalMarkers = myMarker;
+        controller.markers.push(myMarker);
+
+
+        // console.log('checkInOrOut() ', checkInOrOut(marker));
+        // checkInOrOut(marker);
 
     }
 
+  google.maps.event.addListener(controller.map, 'idle', function() {
+      // console.log(checkInOrOut(controller.globalMarkers));
+      // checkInOrOut(controller.globalMarkers);
+      // for (i = 0; i < cities.length; i++){
+      //     createMarker(cities[i]);
+      // }
+      console.log('checkInOrOut() ', checkInOrOut(controller.markers));
+      checkInOrOut(controller.markers);
+
+    });
+    function checkInOrOut(markers){
+      markers.forEach(function(resourceMarker){
+        // console.log('resourceMarker ', resourceMarker);
+      var marker = resourceMarker.marker;
+
+     controller.map.getBounds().contains(marker.getPosition());
+     console.log('marker ', marker);
+      });
+      }
+
+    //
     for (i = 0; i < cities.length; i++){
         createMarker(cities[i]);
     }
