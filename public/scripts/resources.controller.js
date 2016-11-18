@@ -5,6 +5,16 @@ function ResourcesController($http, $location) {
   var controller = this;
   controller.categories = [];
   controller.resources=[];
+  controller.capturedCompany = '';
+  controller.capturedDescription = '';
+  controller.capturedContact = '';
+  controller.capturedWebsite = '';
+  controller.capturedStreet = '';
+  controller.capturedCity = '';
+  controller.capturedState = '';
+  controller.capturedZip = '';
+  controller.capturedCategory = '';
+  controller.capturedId='';
 
   //controller to create new resource
   controller.createresource = function() {
@@ -38,6 +48,44 @@ function ResourcesController($http, $location) {
 
   };
   controller.getResources();
+
+  controller.captureInfo = function(company, description, contact, website, street, city, state, zip, category,id){
+      controller.capturedCompany = company;
+      controller.capturedDescription = description;
+      controller.capturedContact = contact;
+      controller.capturedWebsite = website;
+      controller.capturedStreet = street;
+      controller.capturedCity = city;
+      controller.capturedState = state;
+      controller.capturedZip = zip;
+      controller.capturedCategory = category;
+      controller.capturedId=id;
+      console.log('capturedId',controller.capturedId)
+  };
+
+
+  controller.updateResource = function(id) {
+    var body = {
+    company: controller.capturedCompany,
+    description: controller.capturedDescription,
+    contact: controller.capturedContact ,
+    website: controller.capturedWebsite,
+    street: controller.capturedStreet,
+    city: controller.capturedCity,
+    state: controller.capturedState,
+    zip: controller.capturedZip,
+    category: controller.capturedCategory
+
+
+  };
+  console.log(id);
+      $http.put('/resource/'+id, body
+  ).then(function(response){
+    controller.getResources();
+    }, function(error) {
+      console.log('error editing resource', error);
+    });
+  };
 
 
 controller.deleteResource=function(id){

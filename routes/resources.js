@@ -36,6 +36,7 @@ router.get('/', function(req, res) {
     res.sendStatus(500);
   });
 });
+
 router.delete('/:id', function(req, res) {
   console.log('deleting a resource');
   var id = req.params.id;
@@ -48,6 +49,37 @@ router.delete('/:id', function(req, res) {
   }).catch(function(err){
     console.log('Error in deleting resource', err);
     res.sendStatus(500);
+  });
+});
+
+router.put('/:id', function(req, res) {
+  console.log('updating resource');
+  var id = req.params.id;
+  console.log(id);
+
+  Resource.findById(id, function(err, resource){
+      if (err){
+        res.sendStatus(500);
+        return;
+      }
+      //set values
+      resource.category = req.body.category;
+      resource.description = req.body.description;
+      resource.company = req.body.company;
+      resource.contact = req.body.contact;
+      resource.website = req.body.website;
+      resource.street = req.body.street;
+      resource.city = req.body.city;
+      resource.state = req.body.state;
+      resource.zip = req.body.zip;
+
+    resource.save(function (err, updatedResource){
+      if (err){
+        res.sendStatus(500);
+        return;
+      }
+      res.send(updatedResource);
+    });
   });
 });
 
