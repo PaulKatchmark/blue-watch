@@ -4,7 +4,11 @@ const Admin = require('../models/adminSchema');
 router.post('/', function(req, res) {
   console.log('registering new admin');
 
-  const admin = new Admin({email: req.body.email, password: req.body.password, accessLevel:req.body.accessLevel});
+  const admin = new Admin({
+      email: req.body.email,
+      password: req.body.password,
+      accessLevel:req.body.accessLevel
+  });
 
   admin.save().then(function() {
 
@@ -17,7 +21,7 @@ router.post('/', function(req, res) {
     });
 
   }).catch(function(err){
-    console.log('Error in /register', err);
+    console.log('Error in /admin', err);
     res.sendStatus(500);
   });
 });
@@ -72,7 +76,7 @@ router.delete('/:id', function(req, res) {
         res.sendStatus(200);
 
   }).catch(function(err){
-    console.log('Error in /register', err);
+    console.log('Error in deleting admin user', err);
     res.sendStatus(500);
   });
 });

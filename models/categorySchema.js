@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 
 const categorySchema = new Schema({
-  category: String
+  categoryName: String,
+  color:String,
 });
 
 

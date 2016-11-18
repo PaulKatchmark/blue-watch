@@ -36,7 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/login', login);
-app.use('/resources', resources);
+app.use('/resource', resources);
 app.use('/admin', ensureAuthenticated, ensureAccessLevel, admin);
 app.use('/categories', categories);
 
@@ -57,9 +57,9 @@ app.get('/*', function(req, res){
 app.use(ensureAuthenticated);
 
 
-app.get('/resources', function(req, res){
-  res.sendFile('logged in');
-});
+// app.get('/resources', function(req, res){
+//   res.sendFile('logged in');
+// });
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {

@@ -24,4 +24,31 @@ router.post('/', function(req,res){
   });
 });
 
+router.get('/', function(req, res) {
+  console.log('getting resources');
+
+//finds all users inside admin database
+  Resource.find({}).then(function(resources){
+        res.send(resources);
+
+  }).catch(function(err){
+    console.log('Error in /resources', err);
+    res.sendStatus(500);
+  });
+});
+router.delete('/:id', function(req, res) {
+  console.log('deleting a resource');
+  var id = req.params.id;
+  console.log(id);
+
+//finds all users inside admin database
+  Resource.remove({ "_id" : id }).then(function(resource){
+        res.sendStatus(200);
+
+  }).catch(function(err){
+    console.log('Error in deleting resource', err);
+    res.sendStatus(500);
+  });
+});
+
 module.exports = router;

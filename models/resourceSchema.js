@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;
 
 
 const resourceSchema = new Schema({
-  categoryId: String,
+  category: {
+      _id: String,
+     categoryName: String,
+     color: String,
+ },
   description: String,
   company: String,
   contact: String,

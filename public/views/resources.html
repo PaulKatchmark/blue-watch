@@ -20,15 +20,18 @@
         <th>Category</th>
         <th></th>
     </thead>
-    <tr >
+    <tr ng-repeat = "resource in resources.resources">
         <td>
-          Company names goes here
+          {{resource.company}}
         </td>
         <td>
-          Categories goes here
+            {{resource.category.categoryName}}
         </td>
         <td>
-            <button href="#editResource" data-toggle="modal" class="btn btn-primary">Edit Resource</button>
+            <button href="#editResource" data-toggle="modal" class="btn btn-primary">Edit</button>
+        </td>
+        <td>
+            <button ng-click="resources.deleteResource(resource._id)" class="btn btn-primary">Delete</button>
         </td>
     </tr>
 </table>
@@ -46,10 +49,10 @@
                     <div class="form-group">
                         <label class="control-label col-xs-2">Category</label>
                         <div class="col-xs-8">
-                            <select class="form-control" ng-model="resources.categoryId" ng-repeat="category in resources.categories">
-                        <option value="{{category._id}}">{{category.category}}</option>
 
-                    </select>
+                            <select class="form-control" ng-model="resources.category"  ng-options ="category.categoryName for category in resources.categories track by category._id"></select>
+
+
                             <button href="#addNewCategory" data-toggle="modal" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
                     </div>
@@ -123,21 +126,21 @@
                     <div class="form-group">
                         <label class="control-label col-xs-2">Category Name</label>
                         <div class="col-xs-8">
-                            <input type="text" class="form-control" />
+                            <input ng-model="resources.categoryName"type="text" class="form-control" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-xs-2">Pick a color</label>
                         <div class="col-xs-8">
-                            <input type="color" value="#ff0000" class="form-control">
+                            <input ng-model="resources.color" type="color" value="#ff0000" class="form-control">
                         </div>
                     </div>
 
             </form>
             </div>
             <div class="modal-footer">
-                <button ng-click="" type="button" class="btn btn-primary" data-dismiss="modal" >ADD</button>
+                <button ng-click="resources.createCategory()" type="button" class="btn btn-primary" data-dismiss="modal" >ADD</button>
             </div>
 
         </div>
@@ -156,12 +159,8 @@
                     <div class="form-group">
                         <label class="control-label col-xs-2">Category</label>
                         <div class="col-xs-8">
-                            <select class="form-control">
-                        <option>Category 1</option>
-                        <option>Category 2</option>
-                        <option>Category 3</option>
-                        <option>Category 4</option>
-                    </select>
+                            <select class="form-control" ng-model="resources.category"  ng-options ="category.categoryName for category in resources.categories track by category._id"></select>
+
                             <button href="#addNewCategory" data-toggle="modal" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
                     </div>
