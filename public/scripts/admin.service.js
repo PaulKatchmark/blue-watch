@@ -8,7 +8,9 @@ angular.module('blueWatchApp')
     adminservice.loggedin = function(){
       return $http.get('/admin/adminSchema').then(function(response) {
         adminservice.user = response.data.email;
+        console.log('adminservice user', adminservice.user);
         return adminservice.user;
+
       },function(error){
         return false;
       }
