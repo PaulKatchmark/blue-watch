@@ -42,6 +42,7 @@ controller.change = {selectedCateogry:false};
   }
 
   controller.backCategories = function(category){
+    controller.search="";
     controller.change = {categoryList:false};
     controller.change = {selectedCateogry:false};
   }

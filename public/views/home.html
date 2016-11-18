@@ -27,8 +27,16 @@
     </div>
 
     <div id="categoryList" ng-hide="home.change.categoryList">
-      <div ng-repeat="resource in home.resources | unique:'category'">
-        <p ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}</p>
+      <button ng-if="home.search" class="btn btn-default" ng-click="home.backCategories()">back</button>
+      <div ng-repeat="resource in home.resources | filter: home.search | unique:'category'">
+        <p ng-if="!home.search" ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}</p>
+        <div ng-if="home.search">
+
+          <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
+          <p>{{resource.company}}</p>
+            <p>{{resource.description}}</p>
+              <p>{{resource.contact}}</p>
+        </div>
       </div>
     </div>
 
