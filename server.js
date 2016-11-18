@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const connection = require('./db/connection');
 const path = require('path');
 const login = require('./routes/login');
+const logout = require('./routes/logout');
 const resources = require('./routes/resources');
 const admin = require('./routes/admin');
 const categories = require('./routes/categories');
@@ -36,6 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/resource', resources);
 app.use('/admin', ensureAuthenticated, ensureAccessLevel, admin);
 app.use('/categories', categories);

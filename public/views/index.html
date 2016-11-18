@@ -43,12 +43,14 @@
     <div class="container">
       <div>
             <h1>Blue Watch</h1>
-            <ol class="breadcrumb">
+            <ol class="breadcrumb" ng-controller="LogoutController as logout">
               <li><a href="/home">Home</a></li>
               <li><a href="/resources">Resources</a></li>
               <li><a href="/approval">Approvals</a></li>
               <li><a href="/adminSetup">Admin Permissions</a></li>
               <li><a href="/login">log in</a></li>
+              <li ng-click="logout.logout()"><a href="">Logout</a></li>
+              <!-- <a ng-controller="???adminservice">{{admin.user.email}}!</a> -->
             </ol>
         </div>
 
