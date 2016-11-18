@@ -39,6 +39,16 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/adminSchema', function(req, res) {
+  if (req.isAuthenticated()){
+    var user = {
+      email: req.user.email
+    }
+    return res.send(user);
+  }
+  res.sendStatus(401);
+});
+
 router.put('/:id', function(req, res) {
   console.log('updating admin user');
   var id = req.params.id;
