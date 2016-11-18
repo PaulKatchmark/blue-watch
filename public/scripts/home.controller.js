@@ -5,23 +5,45 @@ function HomeController($http, $location) {
   console.log('Home controller');
   var controller = this;
 
+controller.resources;
+controller.selectedCategoryArray;
+
+//loads all the resources on page load
+  controller.getResources = function(){
+
+      $http.get('/resource').then(function(response){
+          controller.resources=response.data;
+          console.log(controller.resources);
+      });
+
+  };
+  controller.getResources();
+
+
 
   controller.searchResources = function(search){
     console.log(search);
   }
 
-controller.change = {categoryList:true};
+//changes the category list to list of resources from selected category
+controller.change = {categoryList:false};
 controller.change = {selectedCateogry:false};
   controller.expandCategory = function(category){
-    //will take in what the user wants
-    if (category === 'cities') {
-      //alter what is on the DOM
-
-      //then this will get moved outside of the if function
+    controller.selectedCategoryArray = [];
+    //will take in what the user wants so it can be listed on the DOM
+    controller.resources.forEach(function(resource){
+      if (resource.category.categoryName === category){
+        controller.selectedCategoryArray.push(resource);
+      }
+    });
+      //this hides the categoryList and shows the list of selected categories
     controller.change.categoryList = !controller.change.categoryList;
     controller.change.selectedCateogry = !controller.change.selectedCateogry;
   }
-    console.log('category', category);
+
+  controller.backCategories = function(category){
+    controller.change = {categoryList:false};
+    controller.change = {selectedCateogry:false};
   }
 
 //examples of locations

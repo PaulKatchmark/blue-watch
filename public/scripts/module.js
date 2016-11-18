@@ -1,1 +1,1 @@
-angular.module('blueWatchApp', ['ngRoute','geolocation']);
+angular.module('blueWatchApp', ['ngRoute','geolocation','angular.filter']);

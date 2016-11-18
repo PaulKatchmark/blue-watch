@@ -27,14 +27,18 @@
     </div>
 
     <div id="categoryList" ng-hide="home.change.categoryList">
-        <p ng-model="home.cites" ng-click="home.expandCategory('cities')">Cities</p>
-        <p ng-model="home.wellness" ng-click="home.expandCategory('wellness')">Wellness</p>
-        <p ng-model="home.financial" ng-click="home.expandCategory('financial')">Financial</p>
+      <div ng-repeat="resource in home.resources | unique:'category'">
+        <p ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}</p>
+      </div>
     </div>
 
     <div id="selectedCategory" ng-show="home.change.selectedCateogry">
-      <div id="class" ng-repeat="marker in home.markers | orderBy : 'title'">
-        <a href="#" ng-click="home.openInfoWindow($event, marker)">{{marker.title}}</a>
+        <button class="btn btn-default" ng-click="home.backCategories()">back</button>
+        <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
+      <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
+        <a href="#" ng-click="home.openInfoWindow($event, marker)">{{resource.company}}</a>
+        <p>{{resource.description}}</p>
+        <p>{{resource.contact}}</p>
       </div>
     </div>
 
