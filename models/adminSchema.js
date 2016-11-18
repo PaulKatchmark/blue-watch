@@ -6,6 +6,7 @@ require('mongoose-type-email');
 const adminSchema = new mongoose.Schema({
   email: {type: mongoose.SchemaTypes.Email, required:true},
   password: String,
+
   accessLevel: String,
 }, {collection: 'admin'});
 

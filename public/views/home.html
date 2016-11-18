@@ -2,24 +2,60 @@
 <p>
   <a href="/login">Login</a>
 </p>
-
-<div id="input">
-  <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
-</div>
-<div id="button">
-  <button type="submit" class="btn btn-default" id="submit" ng-click="home.searchResources(home.search)">Search</button>
-</div>
-
-<div class="col-md-7">
-  <div id="map" style="height:200px;">
+<div class="row">
+  <div id="input" class="col-sm-10">
+    <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
+  </div>
+  <div id="button" class="col-sm-2">
+    <button type="submit" class="btn btn-default" id="submit" ng-click="home.searchResources(home.search)">Search</button>
   </div>
 </div>
+<br />
+<div class="row">
+  <div class="col-sm-5">
+    <div class="row">
+      <div>
+        <div class="col-sm-8">
+          <input type="text" id="address-input" placeholder="get an address" class="form-control">
 
-<div>
-   <input type="text" id="address-input" placeholder="get an address" class="form-control">
-   <button ng-click="home.searchAddress()" class="btn btn-default">Search</button>
+        </div>
+        <div class="col-sm-4">
+          <button ng-click="home.searchAddress()" class="btn btn-default">Search</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="categoryList" ng-hide="home.change.categoryList">
+      <button ng-if="home.search" class="btn btn-default" ng-click="home.backCategories()">back</button>
+      <div ng-repeat="resource in home.resources | filter: home.search | unique:'category'">
+        <p ng-if="!home.search" ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}</p>
+        <div ng-if="home.search">
+
+          <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
+          <p>{{resource.company}}</p>
+            <p>{{resource.description}}</p>
+              <p>{{resource.contact}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="selectedCategory" ng-show="home.change.selectedCateogry">
+        <button class="btn btn-default" ng-click="home.backCategories()">back</button>
+        <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
+      <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
+        <a href="#" ng-click="home.openInfoWindow($event, marker)">{{resource.company}}</a>
+        <p>{{resource.description}}</p>
+        <p>{{resource.contact}}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-7">
+    <div id="map" style="height:200px;">
+    </div>
+  </div>
+
+
 </div>
-
-<div id="class" ng-repeat="marker in home.markers | orderBy : 'title'">
-     <a href="#" ng-click="home.openInfoWindow($event, marker)">{{marker.title}}</a>
-   </div>

@@ -4,12 +4,11 @@ const Admin = require('../models/adminSchema');
 router.post('/', function(req, res) {
   console.log('registering new admin');
 
-  //Don't delete this needed for super_admin
-  // if (req.user.role !== 'super_admin'){
-  //     return res.sendStatus(403);
-  // }
-
-  const admin = new Admin({email: req.body.email, password: req.body.password, accessLevel:req.body.accessLevel});
+  const admin = new Admin({
+      email: req.body.email,
+      password: req.body.password,
+      accessLevel:req.body.accessLevel
+  });
 
   admin.save().then(function() {
 
@@ -22,7 +21,7 @@ router.post('/', function(req, res) {
     });
 
   }).catch(function(err){
-    console.log('Error in /register', err);
+    console.log('Error in /admin', err);
     res.sendStatus(500);
   });
 });
@@ -38,6 +37,17 @@ router.get('/', function(req, res) {
     console.log('Error in /register', err);
     res.sendStatus(500);
   });
+});
+
+//get logged in user to display
+router.get('/adminSchema', function(req, res) {
+  if (req.isAuthenticated()){
+    var user = {
+      email: req.user.email
+    }
+    return res.send(user);
+  }
+  res.sendStatus(401);
 });
 
 router.put('/:id', function(req, res) {
@@ -77,7 +87,7 @@ router.delete('/:id', function(req, res) {
         res.sendStatus(200);
 
   }).catch(function(err){
-    console.log('Error in /register', err);
+    console.log('Error in deleting admin user', err);
     res.sendStatus(500);
   });
 });

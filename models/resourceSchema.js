@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;
 
 
 const resourceSchema = new Schema({
-  category_id: {type: Schema.Types.ObjectId},
+  category: {
+      _id: String,
+     categoryName: String,
+     color: String,
+ },
   description: String,
   company: String,
   contact: String,
@@ -13,8 +17,9 @@ const resourceSchema = new Schema({
   state: String,
   zip: Number,
 
-});
-
+}, {collection: 'resource'});
+//not sure if need this, and would need to wrap address fields in object named location
+//resourceSchema.index({location: '2dsphere'});
 
 const Resource = mongoose.model('Resource', resourceSchema);
 

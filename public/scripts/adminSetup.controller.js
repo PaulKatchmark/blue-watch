@@ -1,12 +1,15 @@
 angular.module('blueWatchApp')
 .controller('AdminSetupController', AdminSetupController);
 
-function AdminSetupController($http) {
+function AdminSetupController($http, adminservice) {
 console.log('AdminSetupController loaded!');
 
 var admin = this;
 admin.usersArray = [];
 admin.capturedId = '';
+//sets logged in user info
+admin.adminservice = adminservice;
+
 
 admin.addNewUser = function(email, password, access){
     var data = {

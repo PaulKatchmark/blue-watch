@@ -1,9 +1,17 @@
 angular.module('blueWatchApp')
 .controller('LoginController', LoginController);
 
-function LoginController($http, $location) {
+function LoginController($http, $location, adminservice) {
   console.log('LoginController loaded');
   var controller = this;
+
+//logged in email to display
+  controller.loggedInEmail = function(){
+    adminservice.loggedin().then(function(response){
+    }, function(error){
+      $location.path('/login');
+    });
+  };
 
   controller.login = function() {
     console.log('logging in');
@@ -11,10 +19,15 @@ function LoginController($http, $location) {
       email: controller.email,
       password: controller.password
     }).then(function(){
-      console.log('this here');
+    controller.loggedInEmail();
     $location.path('/resources');
     }, function(error) {
       console.log('error loggin in', error);
     });
   };
+
+  controller.adminservice = adminservice;
+
+
+
 }

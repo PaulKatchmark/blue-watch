@@ -4,9 +4,51 @@ angular.module('blueWatchApp')
 function HomeController($http, $location) {
   console.log('Home controller');
   var controller = this;
+<<<<<<< HEAD
   controller.globalMarkers;
+=======
+
+controller.resources;
+controller.selectedCategoryArray;
+
+//loads all the resources on page load
+  controller.getResources = function(){
+
+      $http.get('/resource').then(function(response){
+          controller.resources=response.data;
+          console.log(controller.resources);
+      });
+
+  };
+  controller.getResources();
+
+
+
+>>>>>>> 3c39c2b618b36443d2246789e63c477d4d0c16ca
   controller.searchResources = function(search){
     console.log(search);
+  }
+
+//changes the category list to list of resources from selected category
+controller.change = {categoryList:false};
+controller.change = {selectedCateogry:false};
+  controller.expandCategory = function(category){
+    controller.selectedCategoryArray = [];
+    //will take in what the user wants so it can be listed on the DOM
+    controller.resources.forEach(function(resource){
+      if (resource.category.categoryName === category){
+        controller.selectedCategoryArray.push(resource);
+      }
+    });
+      //this hides the categoryList and shows the list of selected categories
+    controller.change.categoryList = !controller.change.categoryList;
+    controller.change.selectedCateogry = !controller.change.selectedCateogry;
+  }
+
+  controller.backCategories = function(category){
+    controller.search="";
+    controller.change = {categoryList:false};
+    controller.change = {selectedCateogry:false};
   }
 
 //examples of locations
