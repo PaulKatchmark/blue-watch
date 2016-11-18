@@ -52,7 +52,7 @@
               <li><a href="/adminSetup">Admin Permissions</a></li>
               <li><a href="/login">log in</a></li>
               <li ng-click="logout.logout()"><a href="">Logout</a></li>
-              <!-- <a ng-controller="???adminservice">{{admin.user.email}}!</a> -->
+              <a ng-controller="AdminSetupController as admin">{{admin.adminservice.user}}</a>
             </ol>
         </div>
 

@@ -3,12 +3,13 @@ angular.module('blueWatchApp')
 
   var adminservice = this;
   //this is to create var to store email address if we want to use in view
-  adminservice.user = {email: ""};
+  adminservice.user = "";
 
-    this.loggedin = function(){
-      return $http.get('/adminservice/adminSchema').then(function(response) {
-        adminservice.user.email = response.data.email;
-        return response.data;
+    adminservice.loggedin = function(){
+      return $http.get('/admin/adminSchema').then(function(response) {
+        console.log('response in adminservice', response);
+        adminservice.user = response.data.email;
+        console.log('response.data in service', response.data.email);
       },function(error){
         return false;
       }
