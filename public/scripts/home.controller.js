@@ -4,9 +4,9 @@ angular.module('blueWatchApp')
 function HomeController($http, $location) {
   console.log('Home controller');
   var controller = this;
-<<<<<<< HEAD
+
   controller.globalMarkers;
-=======
+
 
 controller.resources;
 controller.selectedCategoryArray;
@@ -24,7 +24,7 @@ controller.selectedCategoryArray;
 
 
 
->>>>>>> 3c39c2b618b36443d2246789e63c477d4d0c16ca
+
   controller.searchResources = function(search){
     console.log(search);
   }
