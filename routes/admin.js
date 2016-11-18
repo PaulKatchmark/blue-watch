@@ -39,6 +39,7 @@ router.get('/', function(req, res) {
   });
 });
 
+//get logged in user to display
 router.get('/adminSchema', function(req, res) {
   if (req.isAuthenticated()){
     var user = {

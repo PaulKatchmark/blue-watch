@@ -7,20 +7,9 @@ console.log('AdminSetupController loaded!');
 var admin = this;
 admin.usersArray = [];
 admin.capturedId = '';
+//sets logged in user info
 admin.adminservice = adminservice;
-console.log('admin user in controller', admin.adminservice);
 
-
-//logged in email to display
-admin.loggedInEmail = function(){
-  adminservice.loggedin().then(function(response){
-    console.log('response in loggedin', response);
-    // admin.userprofile = response;
-  }, function(error){
-    $location.path('/login');
-  });
-};
-admin.loggedInEmail();
 
 admin.addNewUser = function(email, password, access){
     var data = {

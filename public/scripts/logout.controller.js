@@ -9,7 +9,7 @@ function LogoutController($http, $location, adminservice) {
 
     $http.get('/logout')
     .then(function(){
-      adminservice.user.name = "";
+      adminservice.user = "";
       $location.path('/login');
     }, function(error) {
       console.log('error logging out', error);
