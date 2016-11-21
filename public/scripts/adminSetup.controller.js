@@ -32,7 +32,7 @@ $http.post('/admin', data).then(function(response){
 
 admin.getUsers = function(){
     $http.get('/admin').then(function(response){
-        console.log('successfully get users',response);
+        // console.log('successfully get users',response);
         admin.usersArray = response.data;
 
     });
