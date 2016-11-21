@@ -41,11 +41,13 @@
     <div id="categoryList" ng-hide="home.change.categoryList">
       <div ng-repeat="resource in home.resources | unique:'category'">
         <div>
-          <input type="checkbox" ng-model="checked"/>
-          <p ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}</p>
+          <form>
+            <input type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'"/>
+            <label ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}</label>
+          </form>
         </div>
       </div>
-      <button class="btn btn-default" ng-click="home.expandCategory(checked)"></button>
+      <button class="btn btn-default" ng-click="home.expandCategory(home.checked)">Submit</button>
     </div>
 
     <div id="selectedCategory" ng-show="home.change.selectedCateogry">

@@ -86,7 +86,7 @@ function HomeController($http, $location) {
                     var marker = new google.maps.Marker({
                         map: controller.map,
                         position: new google.maps.LatLng(latinfo, lnginfo),
-                        title: info.city,
+                        title: info.company,
                         visible: true
                     });
 
@@ -95,8 +95,10 @@ function HomeController($http, $location) {
                     var infoWindow = new google.maps.InfoWindow();
 
                     controller.openInfoWindow = function(event, selectedMarker) {
+                      console.log('selected', selectedMarker);
+                      console.log('marker', marker);
                             event.preventDefault();
-                            google.maps.event.trigger(selectedMarker, 'click');
+                            google.maps.event.trigger(marker, 'click');
                         }
                         //opens bubble on marker click
                     google.maps.event.addListener(marker, 'click', function() {
@@ -131,6 +133,7 @@ function HomeController($http, $location) {
         selectedCateogry: false
     };
     controller.expandCategory = function(category) {
+      console.log('category', category);
         controller.selectedCategoryArray = [];
 
         //will take in what the user wants so it can be listed on the DOM
