@@ -11,8 +11,8 @@ function HomeController($http, $location) {
     //sets where the map is located, type and zoom
 
     var mapOptions = {
-        center: new google.maps.LatLng(40.0000, -98.0000),
-        zoom: 4,
+        center: new google.maps.LatLng(44.9778, -93.2650), //this lat/long to center of cities - jsm
+        zoom: 7, //zoom level to show most - jsm
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 
         panControl: true,
@@ -168,7 +168,7 @@ function HomeController($http, $location) {
 
                 controller.map.setCenter(myResult);
 
-                controller.map.setZoom(15);
+                controller.map.setZoom(8); //this zoom level needs to be changed - was at 15. jsm
 
             } else { // if status value is not equal to "google.maps.GeocoderStatus.OK"
 
