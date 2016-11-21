@@ -121,5 +121,19 @@ controller.deleteResource=function(id){
   };
   controller.getcategories();
 
-
+//updateCategory function
+  controller.updateCategory = function(id) {
+    var body = {
+      categoryName: controller.categoryName,
+      color:controller.color
+  };
+  console.log(id);
+      $http.put('/categories/'+id, body
+  ).then(function(response){
+    controller.getcategories();
+    }, function(error) {
+      console.log('error editing categories', error);
+    });
+  };//end of updateCategory
+  
 } //End of ResourcesController
