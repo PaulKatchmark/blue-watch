@@ -173,19 +173,13 @@
                     <th></th>
                 </thead>
                 <tr ng-repeat = "category in resources.categories" adapter="adapter">
+                    <td><input type="text" class="form-control" ng-model="category.categoryName"/></td>
+                    <td><input type="text" class="form-control" ng-model="category.color" /></td>
                     <td>
-                      {{category.categoryName}}
+                        <button ng-click="resources.updateCategory(category)" href="#editCategory" data-toggle="modal" class="btn btn-primary">Edit</button>
                     </td>
                     <td>
-                        {{category.color}}
-                    </td>
-                    <td>
-                        <button ng-click="resources.captureInfo(resource.category.categoryName,
-                        resource.category.color,
-                        resource.category,category._id)" href="#editCategory" data-toggle="modal" class="btn btn-primary">Edit</button>
-                    </td>
-                    <td>
-                        <button ng-click="resources.deleteCategory(resource.category._id)" class="btn btn-primary">Delete</button>
+                        <button  class="btn btn-primary">Delete</button>
                     </td>
                 </tr>
             </table>
@@ -310,6 +304,24 @@
                 <button ng-click="" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
             </div>
 
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="editCategory" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Category now updated!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

@@ -31,4 +31,29 @@ router.post('/', function(req, res) {
   });
 });
 
+//update category route
+router.put('/:id', function(req, res) {
+  console.log('updating category');
+  var id = req.params.id;
+  // console.log(id);
+
+  Categories.findById(id, function(err, category){
+      if (err){
+        res.sendStatus(500);
+        return;
+      }
+      //set values
+      category.categoryName = req.body.categoryName;
+      category.color = req.body.color;
+
+    category.save(function (err, updatedCategory){
+      if (err){
+        res.sendStatus(500);
+        return;
+      }
+      res.send(updatedCategory);
+    });
+  });
+}); //end update category
+
 module.exports = router;
