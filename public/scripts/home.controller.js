@@ -142,11 +142,44 @@ function HomeController($http, $location) {
                 controller.selectedCategoryArray.push(resource);
             }
         });
+        console.log('array', controller.selectedCategoryArray);
         //this hides the categoryList and shows the list of selected categories
         controller.change.categoryList = !controller.change.categoryList;
         controller.change.selectedCateogry = !controller.change.selectedCateogry;
     }
 
+    controller.expandCheckedCategory = function(category) {
+      var vals = [];
+      getValues(category);
+      function getValues(category) {
+        for( var key in category ) {
+          if ( category.hasOwnProperty(key) ) {
+            //we only want selected vales in our array
+            if (category[key] !== false) {
+              vals.push(category[key]);
+            }
+            }
+          }
+          return vals;
+        }
+        controller.checkedCategory = [];
+
+        vals.forEach(function(checkedCategory){
+          var selectedCategoryArray = [];
+
+          controller.resources.forEach(function(resource) {
+              if (resource.category.categoryName === checkedCategory) {
+                  selectedCategoryArray.push(resource);
+              }
+          });
+          console.log('selectedCategoryArray', selectedCategoryArray);
+          controller.checkedCategory.push({checkedCategory: selectedCategoryArray});
+        });
+        console.log('checkedCategory', controller.checkedCategory);
+        //this hides the categoryList and shows the list of selected categories
+        controller.change.categoryList = !controller.change.categoryList;
+        controller.change.selectedCateogry = !controller.change.selectedCateogry;
+    }
     controller.backCategories = function(category) {
         controller.search = "";
         controller.change = {
