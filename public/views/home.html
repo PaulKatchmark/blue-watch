@@ -54,7 +54,7 @@
         <button class="btn btn-default" ng-click="home.backCategories()">back</button>
         <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
       <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
-        <a href="#" ng-click="home.openInfoWindow($event, marker)">{{resource.company}}</a>
+        <a href="#" ng-click="home.openInfoWindow($event, resource.marker)">{{resource.company}}</a>
         <p>{{resource.description}}</p>
         <p>{{resource.contact}}</p>
         <a href="{{resource.website}}">Website</a>

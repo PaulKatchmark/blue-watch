@@ -51,7 +51,7 @@ function HomeController($http, $location) {
 
             controller.resources.forEach(function(info) {
 
-                var myResult = {};
+
                 //get address from resource
                 console.log('address', info.street + info.city + info.state + info.zip);
                 var address = info.street + ' ' + info.city + ' ' + info.state + ' ' + info.zip;
@@ -83,38 +83,33 @@ function HomeController($http, $location) {
                 //create marker
                 function createMarker(latinfo, lnginfo) {
                     console.log('Geocode Result', latinfo, lnginfo);
-                    var marker = new google.maps.Marker({
+                    console.log('info', info);
+                    info.marker = new google.maps.Marker({
                         map: controller.map,
                         position: new google.maps.LatLng(latinfo, lnginfo),
                         title: info.company,
                         visible: true
                     });
-
-                    marker.content = '<div class="infoWindowContent">' + info.description + '</div>';
+                    console.log(info.marker);
+                    info.marker.content = '<div class="infoWindowContent">' + info.description + '</div>';
 
                     var infoWindow = new google.maps.InfoWindow();
-
-                    controller.openInfoWindow = function(event, selectedMarker) {
-                      console.log('selected', selectedMarker);
-                      console.log('marker', marker);
-                            event.preventDefault();
-                            google.maps.event.trigger(marker, 'click');
-                        }
                         //opens bubble on marker click
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infoWindow.setContent('<p>' + marker.title + ': ' + marker.content + '</p>');
-                        infoWindow.open(controller.map, marker);
+                    google.maps.event.addListener(info.marker, 'click', function() {
+                      console.log('marker', info.marker);
+                        infoWindow.setContent('<p>' + info.marker.title + ': ' + info.marker.content + '</p>');
+                        infoWindow.open(controller.map, info.marker);
                     });
 
                     google.maps.event.addListener(controller.map, 'idle', function() {
-                        controller.map.getBounds().contains(marker.getPosition());
-                        console.log('city in bounds', info.city, controller.map.getBounds().contains(marker.getPosition()));
+                        controller.map.getBounds().contains(info.marker.getPosition());
+                        console.log('city in bounds', info.city, controller.map.getBounds().contains(info.marker.getPosition()));
                     });
 
                 }; //End of createMarker
 
 
-
+                console.log(info);
 
             }); //End of for each
 
@@ -125,6 +120,13 @@ function HomeController($http, $location) {
     controller.getResources();
     console.log('controller.resources before mapping', controller.resources);
 
+
+                        controller.openInfoWindow = function($event, selectedMarker) {
+                                event.preventDefault();
+                                console.log(selectedMarker);
+                                google.maps.event.trigger(selectedMarker, 'click');
+                            }
+
     //changes the category list to list of resources from selected category
     controller.change = {
         categoryList: false
@@ -133,15 +135,16 @@ function HomeController($http, $location) {
         selectedCateogry: false
     };
     controller.expandCategory = function(category) {
-      console.log('category', category);
-        controller.selectedCategoryArray = [];
 
+        controller.selectedCategoryArray = [];
+    
         //will take in what the user wants so it can be listed on the DOM
         controller.resources.forEach(function(resource) {
             if (resource.category.categoryName === category) {
                 controller.selectedCategoryArray.push(resource);
             }
         });
+    }
         //this hides the categoryList and shows the list of selected categories
         controller.change.categoryList = !controller.change.categoryList;
         controller.change.selectedCateogry = !controller.change.selectedCateogry;
