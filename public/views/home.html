@@ -50,7 +50,7 @@
       <button class="btn btn-default" ng-click="home.expandCheckedCategory(home.checked)">Submit</button>
     </div>
 
-    <div id="selectedCategory" ng-show="home.change.selectedCateogry">
+    <div id="selectedCategory" ng-show="home.change.selectedCategory">
         <button class="btn btn-default" ng-click="home.backCategories()">back</button>
         <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
       <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
@@ -60,6 +60,20 @@
         <a href="{{resource.website}}">Website</a>
       </div>
     </div>
+
+    <div id="checkedCategory" ng-show="home.change.checkedCategory">
+        <button class="btn btn-default" ng-click="home.backCategories()">back</button>
+      <div ng-repeat="category in home.checkedCategory">
+        <h3>{{category.name}}</h3>
+        <div ng-repeat="resource in category.resources">
+          <a href="#" ng-click="home.openInfoWindow($event, resource.marker)">{{resource.company}}</a>
+          <p>{{resource.description}}</p>
+          <p>{{resource.contact}}</p>
+          <a href="{{resource.website}}">Website</a>
+        </div>
+      </div>
+    </div>
+
 </div>
   </div>
 

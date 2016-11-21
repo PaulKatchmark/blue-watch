@@ -132,7 +132,10 @@ function HomeController($http, $location) {
         categoryList: false
     };
     controller.change = {
-        selectedCateogry: false
+        selectedCategory: false
+    };
+    controller.change = {
+        checkedCategory: false
     };
     controller.expandCategory = function(category) {
 
@@ -151,7 +154,7 @@ function HomeController($http, $location) {
 
         //this hides the categoryList and shows the list of selected categories
         controller.change.categoryList = !controller.change.categoryList;
-        controller.change.selectedCateogry = !controller.change.selectedCateogry;
+        controller.change.selectedCategory = !controller.change.selectedCategory;
     }
 
     controller.expandCheckedCategory = function(category) {
@@ -178,13 +181,15 @@ function HomeController($http, $location) {
                   selectedCategoryArray.push(resource);
               }
           });
+          console.log("controller.resources[0].category.categoryName", controller.resources[0].category.categoryName);
+          var name = controller.resources[0].category.categoryName;
           console.log('selectedCategoryArray', selectedCategoryArray);
-          controller.checkedCategory.push({checkedCategory: selectedCategoryArray});
+          controller.checkedCategory.push({name: checkedCategory, resources: selectedCategoryArray});
         });
         console.log('checkedCategory', controller.checkedCategory);
         //this hides the categoryList and shows the list of selected categories
         controller.change.categoryList = !controller.change.categoryList;
-        controller.change.selectedCateogry = !controller.change.selectedCateogry;
+        controller.change.checkedCategory = !controller.change.checkedCategory;
     }
     controller.backCategories = function(category) {
         controller.search = "";
@@ -192,7 +197,10 @@ function HomeController($http, $location) {
             categoryList: false
         };
         controller.change = {
-            selectedCateogry: false
+            selectedCategory: false
+        };
+        controller.change = {
+            checkedCategory: false
         };
     }
 
