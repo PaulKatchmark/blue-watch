@@ -83,10 +83,11 @@ function HomeController($http, $location) {
                 //create marker
                 function createMarker(latinfo, lnginfo) {
                     console.log('Geocode Result', latinfo, lnginfo);
+                    console.log('info', info);
                     var marker = new google.maps.Marker({
                         map: controller.map,
                         position: new google.maps.LatLng(latinfo, lnginfo),
-                        title: info.city,
+                        title: info.company,
                         visible: true
                     });
 
@@ -100,6 +101,7 @@ function HomeController($http, $location) {
                         }
                         //opens bubble on marker click
                     google.maps.event.addListener(marker, 'click', function() {
+                      console.log('marker', marker);
                         infoWindow.setContent('<p>' + marker.title + ': ' + marker.content + '</p>');
                         infoWindow.open(controller.map, marker);
                     });
