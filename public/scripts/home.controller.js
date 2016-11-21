@@ -83,7 +83,6 @@ function HomeController($http, $location) {
                 //create marker
                 function createMarker(latinfo, lnginfo) {
                     console.log('Geocode Result', latinfo, lnginfo);
-                    console.log('info', info);
                     var marker = new google.maps.Marker({
                         map: controller.map,
                         position: new google.maps.LatLng(latinfo, lnginfo),
@@ -96,12 +95,13 @@ function HomeController($http, $location) {
                     var infoWindow = new google.maps.InfoWindow();
 
                     controller.openInfoWindow = function(event, selectedMarker) {
+                      console.log('selected', selectedMarker);
+                      console.log('marker', marker);
                             event.preventDefault();
-                            google.maps.event.trigger(selectedMarker, 'click');
+                            google.maps.event.trigger(marker, 'click');
                         }
                         //opens bubble on marker click
                     google.maps.event.addListener(marker, 'click', function() {
-                      console.log('marker', marker);
                         infoWindow.setContent('<p>' + marker.title + ': ' + marker.content + '</p>');
                         infoWindow.open(controller.map, marker);
                     });
@@ -133,6 +133,7 @@ function HomeController($http, $location) {
         selectedCateogry: false
     };
     controller.expandCategory = function(category) {
+      console.log('category', category);
         controller.selectedCategoryArray = [];
 
         //will take in what the user wants so it can be listed on the DOM
