@@ -33,6 +33,7 @@ controller.selectedCategoryArray;
 controller.change = {categoryList:false};
 controller.change = {selectedCateogry:false};
   controller.expandCategory = function(category){
+    console.log(category);
     controller.selectedCategoryArray = [];
     //will take in what the user wants so it can be listed on the DOM
     controller.resources.forEach(function(resource){
