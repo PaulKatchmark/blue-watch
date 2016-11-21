@@ -2,6 +2,7 @@ angular.module('blueWatchApp')
     .controller('HomeController', HomeController);
 
 function HomeController($http, $location) {
+
     console.log('Home controller');
     var controller = this;
 
@@ -31,6 +32,7 @@ function HomeController($http, $location) {
             position: google.maps.ControlPosition.RIGHT_CENTER
         }
     };
+
 
     //creates the map
     controller.map = new google.maps.Map(document.getElementById('map'), mapOptions);
