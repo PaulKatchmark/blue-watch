@@ -44,7 +44,8 @@ admin.captureInfo = function(id, email, password, access){
 admin.capturedId=id;
 admin.capturedEmail=email;
 admin.capturedPassword=password;
-admin.capturedAcessLevel=access;
+admin.capturedAccessLevel=access;
+console.log(access);
 
 console.log('capturedId ', admin.capturedId);
 };//End of captureId

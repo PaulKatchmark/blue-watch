@@ -96,13 +96,13 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <input type="checkbox" ng-model="admin.accessLevel" ng-true-value="'yes'" ng-false-value="'no'" value="{{admin.capturedAcessLevel}}">
+                        <input type="checkbox" ng-model="admin.capturedAccessLevel" ng-true-value="'yes'" ng-false-value="'no'" >
                         <div class="col-xs-8">
                             <label class="control-label col-xs-offset-1 col-xs-2">Full Permissions</label>
                         </div>
                     </div>
                     <div class="col-xs-10">
-                      <button ng-click="admin.updateUser(admin.capturedEmail, admin.password, admin.accessLevel)" type="submit" class="btn btn-primary" data-dismiss="modal">Update</button>
+                      <button ng-click="admin.updateUser(admin.capturedEmail, admin.password, admin.capturedAccessLevel)" type="submit" class="btn btn-primary" data-dismiss="modal">Update</button>
                     </div>
                 </form>
             </div>
