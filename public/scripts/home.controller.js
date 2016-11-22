@@ -94,13 +94,43 @@ function HomeController($http, $location) {
     //create marker
     controller.createMarker = function(latinfo, lnginfo, info) {
 
+      var icons = {
+         Financial: {
+           icon: '/assets/img/green_MarkerA.png'
+         },
+         Suicide: {
+           icon: '/assets/img/purple_MarkerA.png'
+         },
+         Support: {
+           icon: '/assets/img/yellow_MarkerA.png'
+         },
+         Therapy: {
+           icon: '/assets/img/orange_MarkerA.png'
+         },
+         Wellness: {
+           icon: '/assets/img/blue_MarkerA.png'
+         },
+         'Critical Event': {
+           icon: '/assets/img/red_MarkerA.png'
+         }
+       };
+      //  Critical Event,red
+      //  Financial,green
+      //  Suicide,purple
+      //  Support,yellow
+      //  Therapy,orange
+      //  Wellness,blue
+
+        console.log('category ', info.category.categoryName);
         info.marker = new google.maps.Marker({
             map: controller.map,
             position: new google.maps.LatLng(latinfo, lnginfo),
             title: info.company,
             category: info.category.categoryName,
-            visible: true
+            visible: true,
+            icon: icons[info.category.categoryName].icon
         });
+
         console.log(info.marker);
         info.marker.content = '<div class="infoWindowContent">' + info.description + '</div>';
 
