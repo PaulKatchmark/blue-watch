@@ -143,4 +143,13 @@ controller.deleteResource=function(id){
     });
   };  //end of updateCategory
 
+  //delete category
+    $http.delete('/categories/'+category._id, body
+  ).then(function(response){
+
+  }, function(error){
+
+  });
+
+
 } //End of ResourcesController
