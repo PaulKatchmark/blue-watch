@@ -15,7 +15,7 @@ function HomeController($http, $location) {
     //sets where the map is located, type and zoom
 
     var mapOptions = {
-         center            : new google.maps.LatLng(38.62452, -90.18514),
+        center: new google.maps.LatLng(38.62452, -90.18514),
         // center: new google.maps.LatLng(44.9778, 93.2650), //this lat/long to center of cities - jsm
         zoom: 5, //zoom level to show most - jsm
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -77,7 +77,7 @@ function HomeController($http, $location) {
 
                 //creates markers
                 controller.createMarker(info.lat, info.long, info);
-}
+            }
         }); //End of geocode
 
     }; // End of runGeoCode
@@ -114,15 +114,16 @@ function HomeController($http, $location) {
 
     }; //End of createMarker
 
-    controller.closeInfoWindow = function(){
-        controller.markers.forEach(function(marker){
-        marker.infoWindow.close();
-    });
+    //close all open window
+    controller.closeInfoWindow = function() {
+        controller.markers.forEach(function(marker) {
+            marker.infoWindow.close();
+        });
 
-};
+    };
 
     controller.hideMarkers = function(markers) {
-        markers.forEach(function(marker){
+        markers.forEach(function(marker) {
             marker.setVisible(false);
             controller.closeInfoWindow();
             console.log(marker);
@@ -136,7 +137,6 @@ function HomeController($http, $location) {
         controllerMarkers.forEach(function(marker) {
             marker.setVisible(true);
             controller.closeInfoWindow();
-            // marker.infoWindow.close();
             // extending bounds to contain this visible marker position
             bounds.extend(marker.getPosition());
         });
@@ -185,7 +185,6 @@ function HomeController($http, $location) {
 
         //show markers of selected category
         controller.showVisible(controller.showMarkers);
-        console.log('array', controller.selectedCategoryArray);
 
         //this hides the categoryList and shows the list of selected categories
         controller.change.categoryList = !controller.change.categoryList;
@@ -222,7 +221,6 @@ function HomeController($http, $location) {
                     //add marker to array of markers to show
                     controller.showMarkers.push(resource.marker);
                 }
-
             });
 
             var name = controller.resources[0].category.categoryName;
@@ -237,7 +235,6 @@ function HomeController($http, $location) {
         //show markers of selected category
         controller.showVisible(controller.showMarkers);
 
-        console.log('checkedCategory', controller.checkedCategory);
         //this hides the categoryList and shows the list of selected categories
         controller.change.categoryList = !controller.change.categoryList;
         controller.change.checkedCategory = !controller.change.checkedCategory;
