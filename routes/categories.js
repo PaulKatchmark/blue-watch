@@ -56,4 +56,14 @@ router.put('/:id', function(req, res) {
   });
 }); //end update category
 
+//delete category
+router.delete('/:id', function(req, res){
+  Categories.findByIdAndRemove(req.params.id, function(err, destination){
+    if (err){
+      res.sendStatus(500);
+      return;
+    }res.sendStatus(204);
+  });
+});
+
 module.exports = router;

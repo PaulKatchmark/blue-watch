@@ -143,13 +143,19 @@ controller.deleteResource=function(id){
     });
   };  //end of updateCategory
 
-  //delete category
-    $http.delete('/categories/'+category._id, body
+  //find id to pass into delete category model confirmation
+  controller.findCategoryId = function(id){
+    idToDelete = id;
+  };
+  // delete category
+  controller.deleteCategory = function(){
+    $http.delete('/categories/'+ idToDelete
   ).then(function(response){
-
+    controller.getcategories();
   }, function(error){
-
+    console.log('error deleting category');
   });
+};
 
 
 } //End of ResourcesController
