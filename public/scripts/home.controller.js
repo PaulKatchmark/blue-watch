@@ -16,7 +16,7 @@ function HomeController($http, $location) {
 
     var mapOptions = {
         center: new google.maps.LatLng(44.9778, -93.2650), //this lat/long to center of cities - jsm
-        zoom: 2, //zoom level to show most - jsm
+        zoom: 5, //zoom level to show most - jsm
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 
         panControl: true,
@@ -99,7 +99,7 @@ function HomeController($http, $location) {
             position: new google.maps.LatLng(latinfo, lnginfo),
             title: info.company,
             category: info.category.categoryName,
-            visible: false
+            visible: true
         });
         console.log(info.marker);
         info.marker.content = '<div class="infoWindowContent">' + info.description + '</div>';
@@ -245,6 +245,8 @@ function HomeController($http, $location) {
         controller.change.checkedCategory = !controller.change.checkedCategory;
     }
     controller.backCategories = function(category) {
+        //refreshes the map and show all
+        controller.showVisible(controller.markers);
         controller.search = "";
         controller.change = {
             categoryList: false
