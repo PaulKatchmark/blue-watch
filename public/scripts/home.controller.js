@@ -282,4 +282,52 @@ function HomeController($http, $location) {
         });
     }
 
+controller.getId = function(id){
+  console.log('here');
+  controller.id = id;
+  console.log(controller.id);
+}
+
+
+    // target element
+    var el = document.querySelector('#el');
+
+    // current rating, or initial rating
+    var currentRating = 0;
+
+    // max rating, i.e. number of stars you want
+    var maxRating= 5;
+
+    // callback to run after setting the rating
+    var callback = function(rating) {
+      controller.starReview = rating
+      console.log(rating);
+     };
+
+    // rating instance
+    var myRating = rating(el, currentRating, maxRating, callback);
+
+// sets rating and doesn't run callback
+    // myRating.setRating(3, false);
+    //
+    // myRating.getRating();
+
+
+    controller.createReview = function(review, id){
+      console.log('id', controller.id);
+      var body = {
+        resource_id: controller.id,
+        rating: controller.starReview,
+        comments: review
+      }
+      controller.reviewNotes = '';
+      console.log(body);
+          $http.post('/reviews', body
+        ).then(function(){
+        console.log('success posting');
+        }, function(error) {
+          console.log('error creating review', error);
+        });
+    }
+
 };

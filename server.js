@@ -4,6 +4,7 @@ const connection = require('./db/connection');
 const path = require('path');
 const login = require('./routes/login');
 const logout = require('./routes/logout');
+const review = require('./routes/reviews');
 const resources = require('./routes/resources');
 const admin = require('./routes/admin');
 const categories = require('./routes/categories');
@@ -38,6 +39,7 @@ app.use(passport.session());
 
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/reviews', review);
 app.use('/resource', resources);
 app.use('/admin', ensureAuthenticated, ensureAccessLevel, admin);
 app.use('/categories', categories);

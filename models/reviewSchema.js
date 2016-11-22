@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema({
   resource_id: {type: Schema.Types.ObjectId},
   rating: Number,
-  comments: {type: String, maxlength: 200}
+  comments: {type: String, maxlength: 200},
+  approved: {type: Boolean, default: false}
 });
 
 

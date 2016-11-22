@@ -59,7 +59,7 @@
         <p>{{resource.contact}}</p>
         <a href="{{resource.website}}">Website</a>
         <div>
-        <a href="#addReview" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</a>
+        <a href="#addReview" ng-click="home.getId(resource._id)" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</a>
       </div>
       </div>
     </div>
@@ -74,7 +74,7 @@
           <p>{{resource.contact}}</p>
           <a href="{{resource.website}}">Website</a>
           <div>
-          <a href="#addReview" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</a>
+          <a href="#addReview" ng-click="home.getId(resource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</a>
         </div>
           </div>
       </div>
@@ -97,17 +97,24 @@
               </div>
               <div class="modal-body modal-background-color">
                   <form class="form-horizontal">
-
                       <div class="form-group">
+                        <div class="row">
+                          <label class="control-label col-xs-2">Rating</label>
+                          <div class="col-xs-8 text-align:left;">
+                            <ul id="el" style="list-style-type: none;"></ul>
+                          </div>
+                        </div>
+                        <div class="row">
                           <label class="control-label col-xs-2">Comments</label>
                           <div class="col-xs-8">
-                              <textarea ng-model="resources.reviewNotes" type="text" class="form-control" ></textarea>
+                              <textarea ng-model="home.reviewNotes" type="text" class="form-control" ></textarea>
                           </div>
                       </div>
+                    </div>
               </form>
               </div>
               <div class="modal-footer">
-                  <button ng-click="resources.createReview()" type="button" class="btn btn-primary" data-dismiss="modal" >Submit Review</button>
+                  <button ng-click="home.createReview(home.reviewNotes)" type="button" class="btn btn-primary" data-dismiss="modal" >Submit Review</button>
               </div>
 
           </div>
