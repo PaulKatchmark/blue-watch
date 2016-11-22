@@ -15,7 +15,8 @@ function HomeController($http, $location) {
     //sets where the map is located, type and zoom
 
     var mapOptions = {
-        center: new google.maps.LatLng(44.9778, -93.2650), //this lat/long to center of cities - jsm
+         center            : new google.maps.LatLng(38.62452, -90.18514),
+        // center: new google.maps.LatLng(44.9778, 93.2650), //this lat/long to center of cities - jsm
         zoom: 5, //zoom level to show most - jsm
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 
@@ -29,7 +30,7 @@ function HomeController($http, $location) {
             style: google.maps.ZoomControlStyle.LARGE,
             position: google.maps.ControlPosition.RIGHT_CENTER
         },
-        scaleControl: true,
+        scaleControl: false,
         streetViewControl: true,
         streetViewControlOptions: {
             position: google.maps.ControlPosition.RIGHT_CENTER
@@ -79,14 +80,7 @@ function HomeController($http, $location) {
 
                 //creates markers
                 controller.createMarker(info.lat, info.long, info);
-
-            } else { // if status value is not equal to "google.maps.GeocoderStatus.OK"
-
-                // warning message
-                alert("The Geocode was not successful for the following reason: " + status);
-
-            }
-
+}
         }); //End of geocode
 
     }; // End of runGeoCode
@@ -123,9 +117,10 @@ function HomeController($http, $location) {
     }; //End of createMarker
 
     controller.hideMarkers = function(markers) {
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setVisible(false);
-        };
+
+        markers.forEach(function(marker){
+            marker.setVisible(false);
+        });
     };
 
 
