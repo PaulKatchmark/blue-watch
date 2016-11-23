@@ -54,7 +54,7 @@ function HomeController($http, $location, $scope) {
                 controller.runGeoCode(info);
                 //get reviews for each resource
                 $http.get('/reviews/' + id).then(function(response) {
-                  console.log('reviews', response.data);
+                //   console.log('reviews', response.data);
                 });
 
             }); //End of for each
@@ -67,11 +67,12 @@ function HomeController($http, $location, $scope) {
 
 
     controller.runGeoCode = function(info) {
-
+        console.log('info passed on to geocode',info);
         //get address from resource
         var address = info.street + ' ' + info.city + ' ' + info.state + ' ' + info.zip;
         //call geocode to convert to lat/long
         var geocoder = new google.maps.Geocoder();
+        console.log('address processed in geocode', address)
         geocoder.geocode({
             address: address
         }, function(results, status) {
@@ -79,10 +80,13 @@ function HomeController($http, $location, $scope) {
             if (status == google.maps.GeocoderStatus.OK) {
 
                 info.lat = results[0].geometry.location.lat();
+                console.log(info.lat);
                 info.long = results[0].geometry.location.lng();
+                console.log(info.long);
                 //creates markers
                 controller.createMarker(info.lat, info.long, info);
             }
+            console.log(status);
 
         }); //End of geocode
 
@@ -90,7 +94,7 @@ function HomeController($http, $location, $scope) {
 
     //create marker
     controller.createMarker = function(latinfo, lnginfo, info) {
-
+console.log('info passed on to createMarker',info);
       var icons = {
          Financial: {
            icon: '/assets/img/Green_Marker.png'
@@ -125,10 +129,10 @@ function HomeController($http, $location, $scope) {
             title: info.company,
             category: info.category.categoryName,
             visible: true,
-            icon: icons[info.category.categoryName].icon
+            // icon: icons[info.category.categoryName].icon
         });
 
-
+console.log('markers created', info.marker);
 
         info.marker.content = '<div class="infoWindowContent">' + info.description + '</div>';
 
@@ -203,6 +207,7 @@ function HomeController($http, $location, $scope) {
         checkedCategory: false
     };
     controller.expandCategory = function(category) {
+        console.log(category);
 
         //array of markers to show
         controller.showMarkers = [];
@@ -215,6 +220,7 @@ function HomeController($http, $location, $scope) {
             if (resource.category.categoryName == category) {
                 controller.selectedCategoryArray.push(resource);
                 controller.showMarkers.push(resource.marker);
+                console.log('resource marker', resource.marker);
             }
         });
 
