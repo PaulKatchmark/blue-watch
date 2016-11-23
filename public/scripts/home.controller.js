@@ -1,7 +1,7 @@
 angular.module('blueWatchApp')
     .controller('HomeController', HomeController);
 
-function HomeController($http, $location) {
+function HomeController($http, $location, $scope) {
 
     console.log('Home controller');
     var controller = this;
@@ -139,7 +139,9 @@ function HomeController($http, $location) {
         google.maps.event.addListener(controller.map, 'idle', function() {
             info.marker.boundsStatus = controller.map.getBounds().contains(info.marker.getPosition());
             console.log(info.marker.boundsStatus);
-            // controller.boundsStatus(info.boundsStatus);
+            //apply changes on the DOM
+            $scope.$apply();
+
         });
         controller.markers.push(info.marker);
 

@@ -69,12 +69,12 @@
       <div ng-repeat="category in home.checkedCategory">
         <h3>{{category.name}}</h3>
         <div ng-repeat="resource in category.resources">
-          <a href="#" ng-click="home.openInfoWindow($event, resource.marker)">{{resource.company}}</a>
-          <p>{{resource.description}}</p>
-          <p>{{resource.contact}}</p>
-          <a href="{{resource.website}}">Website</a>
+          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker)">{{resource.company}}</a>
+          <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
+          <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
+          <a ng-if="resource.marker.boundsStatus" href="{{resource.website}}">Website</a>
           <div>
-          <a href="#addReview" ng-click="home.getId(resource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</a>
+          <a ng-if="resource.marker.boundsStatus" href="#addReview" ng-click="home.getId(resource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</a>
         </div>
           </div>
       </div>
