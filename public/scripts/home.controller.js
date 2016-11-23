@@ -130,7 +130,7 @@ console.log('info passed on to createMarker',info);
             title: info.company,
             category: info.category.categoryName,
             visible: true,
-            // icon: icons[info.category.categoryName].icon
+            icon: icons[info.category.categoryName].icon
         });
 
 console.log('markers created', info.marker);
