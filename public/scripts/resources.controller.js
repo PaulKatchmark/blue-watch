@@ -1,7 +1,7 @@
 angular.module('blueWatchApp')
 .controller('ResourcesController', ResourcesController);
 
-function ResourcesController($http, $location) {
+function ResourcesController($http, $location, $q) {
   var controller = this;
   controller.categories = [];
   controller.resources=[];
@@ -19,8 +19,9 @@ function ResourcesController($http, $location) {
 
 
   //controller to create new resource
+
   controller.createresource = function() {
-    
+
 
     var body = {
     company:  controller.company,
@@ -34,7 +35,30 @@ function ResourcesController($http, $location) {
     zip: controller.zip,
     category: controller.category
 
-  };
+  controller.createresource = function(lat, long) {
+
+  var address = controller.street + ' ' + controller.city + ' ' + controller.state + ' ' + controller.zip;
+
+  controller.verifyAddress(address).then(function(response){
+      var lat =response.lat;
+      var long =response.long;
+      var body = {
+      company:  controller.company,
+      description: controller.description,
+      contact: controller.contact,
+      website: controller.website,
+      street: controller.street,
+      street2: controller.street2,
+      city: controller.city,
+      state: controller.state,
+      zip: controller.zip,
+      category: controller.category,
+      lat:lat.toString(),
+      long:long.toString()
+
+    };
+
+
   console.log('body in createresource', body);
       $http.post('/resource', body
     ).then(function(){
@@ -42,6 +66,7 @@ function ResourcesController($http, $location) {
     }, function(error) {
       console.log('error creating resource', error);
     });
+});
   };
 
 
@@ -73,6 +98,11 @@ function ResourcesController($http, $location) {
 
 
   controller.updateResource = function(id) {
+      var address = controller.capturedStreet + ' ' + controller.capturedCity + ' ' + controller.capturedState + ' ' + controller.capturedZip;
+console.log(address);
+ controller.verifyAddress(address).then(function(response){
+     var lat =response.lat;
+     var long =response.long;
     var body = {
     company: controller.capturedCompany,
     description: controller.capturedDescription,
@@ -83,7 +113,9 @@ function ResourcesController($http, $location) {
     city: controller.capturedCity,
     state: controller.capturedState,
     zip: controller.capturedZip,
-    category: controller.capturedCategory
+    category: controller.capturedCategory,
+    lat:lat.toString(),
+    long:long.toString()
   };
   // console.log(id);
       $http.put('/resource/'+id, body
@@ -92,6 +124,7 @@ function ResourcesController($http, $location) {
     }, function(error) {
       console.log('error editing resource', error);
     });
+});
   };
 
 
@@ -162,6 +195,35 @@ controller.deleteResource=function(id){
     console.log('error deleting category');
   });
 };
+
+
+controller.verifyAddress = function(address) {
+
+    return $q(function(resolve, reject){
+        var geocoder = new google.maps.Geocoder();
+        console.log(address);
+
+        geocoder.geocode({
+            address: address
+        }, function(results, status) {
+
+            if (status == google.maps.GeocoderStatus.OK) {
+
+                var lat = results[0].geometry.location.lat();
+                var long = results[0].geometry.location.lng();
+
+                resolve({lat, long});
+
+            } else { // if status value is not equal to "google.maps.GeocoderStatus.OK"
+
+            // warning message
+            alert("There is no address found! Please check and verify address is correct " + status);
+            reject();
+        }
+
+    });
+});
+}
 
 // controller.updateResourceCategory = function(id, category) {
     // db.resources.find("category._id": id}).forEach(function(){
