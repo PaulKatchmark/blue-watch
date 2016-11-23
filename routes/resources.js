@@ -10,11 +10,10 @@ const Admin = require('../models/adminSchema.js');
 const Category = require('../models/categorySchema.js');
 
 
-//post new resources and attach category
+//post new resources
 router.post('/', function(req,res){
   console.log(req.body);
   var resource = new Resource(req.body);
-  // resource.categoryId = req.category.id;
 
   resource.save().then(function(resource){
       res.sendStatus(201);
@@ -69,6 +68,7 @@ router.put('/:id', function(req, res) {
       resource.contact = req.body.contact;
       resource.website = req.body.website;
       resource.street = req.body.street;
+      resource.street2 = req.body.street2;
       resource.city = req.body.city;
       resource.state = req.body.state;
       resource.zip = req.body.zip;

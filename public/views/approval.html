@@ -1,11 +1,16 @@
-<h2>Approve Reviews</h2>
-<div id="approvalReview" class="modal fade">
+<h2>Pending Reviews</h2>
 
-
-
-
-
-
-
-
-</div>
+<table>
+    <thead>
+        <th>Company</th>
+        <th>Comments</th>
+        <th>Rating</th>
+        <th></th>
+    </thead>
+    <tr ng-repeat="review in approval.reviewsArray">
+        <td></td>
+        <td>{{review.comments}}</td>
+        <td>{{review.rating}}</td>
+        <td><button >Read Details</button></td>
+    </tr>
+</table>
