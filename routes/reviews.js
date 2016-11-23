@@ -18,4 +18,24 @@ router.post('/', function(req,res){
   });
 });
 
+router.get('/', function(req, res) {
+  Review.find({}).then(function(review){
+        res.send(review);
+  }).catch(function(err){
+    console.log('Error in /reviews', err);
+    res.sendStatus(500);
+  });
+});
+
+router.get('/:id', function(req, res) {
+  var id = req.params.id;
+console.log('id', id);
+Review.find({ "resource_id" : id }).then(function(review){
+  console.log(review);
+  res.send(review);
+}).catch(function(err){
+  console.log('Error getting review', err);
+});
+});
+
 module.exports = router;

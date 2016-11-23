@@ -51,15 +51,22 @@ function HomeController($http, $location, $scope) {
             controller.resources = response.data;
 
             controller.resources.forEach(function(info) {
-
+              var id = info._id;
                 controller.runGeoCode(info);
+                //get reviews for each resource
+                $http.get('/reviews/' + id).then(function(response) {
+                  console.log('reviews', response.data);
+                    info.reviews = response.data;
+                });
 
             }); //End of for each
-
+            console.log('controller.resources', controller.resources);
 
         });
 
     }; //End of getResources
+
+
 
     controller.runGeoCode = function(info) {
 
@@ -198,7 +205,7 @@ function HomeController($http, $location, $scope) {
         checkedCategory: false
     };
     controller.expandCategory = function(category) {
-console.log(category);
+
         //array of markers to show
         controller.showMarkers = [];
 
@@ -226,6 +233,13 @@ console.log(category);
     }
 
     controller.expandCheckedCategory = function(category) {
+
+      console.log('category', category);
+      if (category[0] == false) {
+        alert ('Please check a category');
+        return;
+      }
+
         //markers to show based on selected category
         controller.showMarkers = [];
         var vals = [];
@@ -317,8 +331,8 @@ console.log(category);
     }
 
 controller.getId = function(id){
-  console.log('here');
   controller.id = id;
+  console.log('id', id);
   console.log(controller.id);
 }
 
