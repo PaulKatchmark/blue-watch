@@ -18,4 +18,17 @@ router.post('/', function(req,res){
   });
 });
 
+router.get('/', function(req, res) {
+  console.log('getting reviews');
+
+//finds all users inside admin database
+  Review.find({}).then(function(reviews){
+        res.send(reviews);
+
+  }).catch(function(err){
+    console.log('Error in /reviews', err);
+    res.sendStatus(500);
+  });
+});
+
 module.exports = router;

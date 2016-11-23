@@ -43,11 +43,11 @@
         <div>
           <form>
             <input type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'"/>
-            <label ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}</label>
+            <label ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}} <span class="glyphicon glyphicon-menu-right"></span></label>
           </form>
         </div>
       </div>
-      <button class="btn btn-default" ng-click="home.expandCheckedCategory(home.checked)">Submit</button>
+      <button class="btn btn-default" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">Submit</button>
     </div>
 
     <div id="selectedCategory" ng-show="home.change.selectedCategory">

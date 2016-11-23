@@ -60,6 +60,12 @@ function HomeController($http, $location) {
 
     }; //End of getResources
 
+    controller.getReviews = function(){
+      $http.get('/reviews').then(function(response) {
+        console.log('reviews', response.data);
+      });
+    };
+
     controller.runGeoCode = function(info) {
 
         //get address from resource
@@ -196,7 +202,7 @@ function HomeController($http, $location) {
         checkedCategory: false
     };
     controller.expandCategory = function(category) {
-
+      controller.getReviews();
         //array of markers to show
         controller.showMarkers = [];
 
@@ -223,6 +229,13 @@ function HomeController($http, $location) {
     }
 
     controller.expandCheckedCategory = function(category) {
+
+      console.log('category', category);
+      if (category[0] == false) {
+        alert ('Please check a category');
+        return;
+      }
+
         //markers to show based on selected category
         controller.showMarkers = [];
         var vals = [];
