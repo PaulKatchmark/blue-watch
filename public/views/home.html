@@ -59,14 +59,6 @@
         <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
         <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
         <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
-        <a ng-if="resource.marker.boundsStatus" href="{{resource.website}}">Website</a>
-        <div>
-        <button ng-if="resource.marker.boundsStatus" href="#addReview" ng-click="home.getId(resource._id)" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</button>
-      </div>
-      <div ng-repeat="review in resource.reviews">
-          <p ng-if="resource.marker.boundsStatus">{{review.comments}}</p>
-          <p ng-if="resource.marker.boundsStatus">{{review.rating}} stars</p>
-      </div>
       </div>
     </div>
 
@@ -78,15 +70,6 @@
           <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
           <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
           <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
-          <a ng-if="resource.marker.boundsStatus" href="{{resource.website}}">Website</a>
-          <div>
-
-          <button ng-if="resource.marker.boundsStatus" href="#addReview" ng-click="home.getId(resource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</button>
-        </div>
-          <div ng-repeat="review in resource.reviews">
-              <p ng-if="resource.marker.boundsStatus">{{review.comments}}</p>
-              <p ng-if="resource.marker.boundsStatus">{{review.rating}} stars</p>
-          </div>
           </div>
       </div>
     </div>
@@ -95,7 +78,11 @@
       <h3>{{home.selectedResource.company}}</h3>
         <p>{{home.selectedResource.description}}</p>
         <p>{{home.selectedResource.contact}}</p>
-        <a href="{{home.selectedResource.website}}">Website</a>
+        <p>{{home.selectedResource.street}}</p>
+        <p>{{home.selectedResource.city}}</p>
+        <p>{{home.selectedResource.state}}</p>
+        <p>{{home.selectedResource.zip}}</p>
+        <a href="{{home.selectedResource.website}}">Website<span class="glyphicon glyphicon-star-empty"></span></a>
         <div>
         <button href="#addReview" ng-click="home.getId(resource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</button>
         </div>
