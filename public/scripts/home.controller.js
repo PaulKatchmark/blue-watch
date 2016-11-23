@@ -329,8 +329,8 @@ function HomeController($http, $location, $scope) {
     }
 
 controller.getId = function(id){
-  console.log('here');
   controller.id = id;
+  console.log('id', id);
   console.log(controller.id);
 }
 

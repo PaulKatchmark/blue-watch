@@ -30,7 +30,8 @@ router.get('/', function(req, res) {
 router.get('/:id', function(req, res) {
   var id = req.params.id;
 console.log('id', id);
-Review.remove({ "resource_id" : id }).then(function(review){
+Review.find({ "resource_id" : id }).then(function(review){
+  console.log(review);
   res.send(review);
 }).catch(function(err){
   console.log('Error getting review', err);
