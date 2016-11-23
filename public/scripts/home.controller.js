@@ -50,8 +50,12 @@ function HomeController($http, $location, $scope) {
             controller.resources = response.data;
 
             controller.resources.forEach(function(info) {
-
+              var id = info._id;
                 controller.runGeoCode(info);
+                //get reviews for each resource
+                $http.get('/reviews/' + id).then(function(response) {
+                  console.log('reviews', response.data);
+                });
 
             }); //End of for each
 
@@ -60,11 +64,7 @@ function HomeController($http, $location, $scope) {
 
     }; //End of getResources
 
-    controller.getReviews = function(){
-      $http.get('/reviews').then(function(response) {
-        console.log('reviews', response.data);
-      });
-    };
+
 
     controller.runGeoCode = function(info) {
 
@@ -204,9 +204,6 @@ function HomeController($http, $location, $scope) {
     };
     controller.expandCategory = function(category) {
 
-      controller.getReviews();
-
-console.log(category);
         //array of markers to show
         controller.showMarkers = [];
 

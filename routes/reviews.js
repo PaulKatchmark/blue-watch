@@ -19,16 +19,22 @@ router.post('/', function(req,res){
 });
 
 router.get('/', function(req, res) {
-  console.log('getting reviews');
-
-//finds all users inside admin database
-  Review.find({}).then(function(reviews){
-        res.send(reviews);
-
+  Review.find({}).then(function(review){
+        res.send(review);
   }).catch(function(err){
     console.log('Error in /reviews', err);
     res.sendStatus(500);
   });
+});
+
+router.get('/:id', function(req, res) {
+  var id = req.params.id;
+console.log('id', id);
+Review.remove({ "resource_id" : id }).then(function(review){
+  res.send(review);
+}).catch(function(err){
+  console.log('Error getting review', err);
+});
 });
 
 module.exports = router;
