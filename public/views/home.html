@@ -43,7 +43,7 @@
         <div>
           <form>
             <input type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'"/>
-            <label value="resource.category.categoryName" ng-click="home.expandCategory(resource.category.categoryName)">{{resource.categoryName}}<span class="glyphicon glyphicon-menu-right"></span></label>
+            <label value="resource.category.categoryName" ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}<span class="glyphicon glyphicon-menu-right"></span></label>
 
           </form>
         </div>
@@ -62,6 +62,10 @@
         <div>
         <a ng-if="resource.marker.boundsStatus" href="#addReview" ng-click="home.getId(resource._id)" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</a>
       </div>
+      <div ng-repeat="review in resource.reviews">
+          <p ng-if="resource.marker.boundsStatus">{{review.comments}}</p>
+          <p ng-if="resource.marker.boundsStatus">{{review.rating}} stars</p>
+      </div>
       </div>
     </div>
 
@@ -76,7 +80,11 @@
           <a ng-if="resource.marker.boundsStatus" href="{{resource.website}}">Website</a>
           <div>
           <a ng-if="resource.marker.boundsStatus" href="#addReview" ng-click="home.getId(resource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</a>
-        </div>
+          </div>
+          <div ng-repeat="review in resource.reviews">
+              <p ng-if="resource.marker.boundsStatus">{{review.comments}}</p>
+              <p ng-if="resource.marker.boundsStatus">{{review.rating}} stars</p>
+          </div>
           </div>
       </div>
     </div>

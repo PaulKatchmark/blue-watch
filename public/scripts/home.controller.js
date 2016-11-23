@@ -55,10 +55,11 @@ function HomeController($http, $location, $scope) {
                 //get reviews for each resource
                 $http.get('/reviews/' + id).then(function(response) {
                   console.log('reviews', response.data);
+                    info.reviews = response.data;
                 });
 
             }); //End of for each
-
+            console.log('controller.resources', controller.resources);
 
         });
 
