@@ -69,7 +69,7 @@
       <div ng-repeat="category in home.checkedCategory">
         <h3>{{category.name}}</h3>
         <div ng-repeat="resource in category.resources">
-          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker)">{{resource.company}}</a>
+          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker)"><h5>{{resource.company}}</h5></a>
           <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
           <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
           <a ng-if="resource.marker.boundsStatus" href="{{resource.website}}">Website</a>
