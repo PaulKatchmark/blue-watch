@@ -47,6 +47,7 @@ function HomeController($http, $location, $scope) {
     controller.getResources = function() {
 
         $http.get('/resource').then(function(response) {
+          console.log('response.data in home controller', response.data);
             controller.resources = response.data;
 
             controller.resources.forEach(function(info) {
