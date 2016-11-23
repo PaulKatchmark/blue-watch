@@ -87,22 +87,22 @@ function HomeController($http, $location) {
 
       var icons = {
          Financial: {
-           icon: '/assets/img/green_MarkerA.png'
+           icon: '/assets/img/Green_Marker.png'
          },
          Suicide: {
-           icon: '/assets/img/purple_MarkerA.png'
+           icon: '/assets/img/Purple_Marker.png'
          },
          Support: {
-           icon: '/assets/img/yellow_MarkerA.png'
+           icon: '/assets/img/Yellow_Marker.png'
          },
          Therapy: {
-           icon: '/assets/img/orange_MarkerA.png'
+           icon: '/assets/img/Orange_Marker.png'
          },
          Wellness: {
-           icon: '/assets/img/blue_MarkerA.png'
+           icon: '/assets/img/Blue_Marker.png'
          },
          'Critical Event': {
-           icon: '/assets/img/red_MarkerA.png'
+           icon: '/assets/img/Red_Marker.png'
          }
        };
       //  Critical Event,red
