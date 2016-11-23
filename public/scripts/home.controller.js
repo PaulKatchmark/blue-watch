@@ -1,7 +1,7 @@
 angular.module('blueWatchApp')
     .controller('HomeController', HomeController);
 
-function HomeController($http, $location) {
+function HomeController($http, $location, $scope) {
 
     console.log('Home controller');
     var controller = this;
@@ -80,10 +80,10 @@ function HomeController($http, $location) {
 
                 info.lat = results[0].geometry.location.lat();
                 info.long = results[0].geometry.location.lng();
-
                 //creates markers
                 controller.createMarker(info.lat, info.long, info);
             }
+
         }); //End of geocode
 
     }; // End of runGeoCode
@@ -93,22 +93,22 @@ function HomeController($http, $location) {
 
       var icons = {
          Financial: {
-           icon: '/assets/img/green_MarkerA.png'
+           icon: '/assets/img/Green_Marker.png'
          },
          Suicide: {
-           icon: '/assets/img/purple_MarkerA.png'
+           icon: '/assets/img/Purple_Marker.png'
          },
          Support: {
-           icon: '/assets/img/yellow_MarkerA.png'
+           icon: '/assets/img/Yellow_Marker.png'
          },
          Therapy: {
-           icon: '/assets/img/orange_MarkerA.png'
+           icon: '/assets/img/Orange_Marker.png'
          },
          Wellness: {
-           icon: '/assets/img/blue_MarkerA.png'
+           icon: '/assets/img/Blue_Marker.png'
          },
          'Critical Event': {
-           icon: '/assets/img/red_MarkerA.png'
+           icon: '/assets/img/Red_Marker.png'
          }
        };
       //  Critical Event,red
@@ -118,7 +118,7 @@ function HomeController($http, $location) {
       //  Therapy,orange
       //  Wellness,blue
 
-        console.log('category ', info.category.categoryName);
+
         info.marker = new google.maps.Marker({
             map: controller.map,
             position: new google.maps.LatLng(latinfo, lnginfo),
@@ -128,7 +128,7 @@ function HomeController($http, $location) {
             icon: icons[info.category.categoryName].icon
         });
 
-        console.log(info.marker);
+
 
         info.marker.content = '<div class="infoWindowContent">' + info.description + '</div>';
 
@@ -139,11 +139,15 @@ function HomeController($http, $location) {
             info.marker.infoWindow.setContent('<p>' + info.marker.title + ': ' + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
         });
-
+        //close infoWindow when clicked anywhere on map
         google.maps.event.addListener(controller.map, 'click', controller.closeInfoWindow);
-
+        //listen for bounds status
         google.maps.event.addListener(controller.map, 'idle', function() {
-            controller.map.getBounds().contains(info.marker.getPosition());
+            info.marker.boundsStatus = controller.map.getBounds().contains(info.marker.getPosition());
+            console.log(info.marker.boundsStatus);
+            //apply changes on the DOM
+            $scope.$apply();
+
         });
         controller.markers.push(info.marker);
 
@@ -163,14 +167,11 @@ function HomeController($http, $location) {
         markers.forEach(function(marker) {
             marker.setVisible(false);
             controller.closeInfoWindow();
-            console.log(marker);
         });
     };
 
-
     controller.showVisible = function(controllerMarkers) {
         var bounds = new google.maps.LatLngBounds();
-
         controllerMarkers.forEach(function(marker) {
             marker.setVisible(true);
             controller.closeInfoWindow();
@@ -202,7 +203,10 @@ function HomeController($http, $location) {
         checkedCategory: false
     };
     controller.expandCategory = function(category) {
+
       controller.getReviews();
+
+console.log(category);
         //array of markers to show
         controller.showMarkers = [];
 
@@ -210,7 +214,8 @@ function HomeController($http, $location) {
 
         //will take in what the user wants so it can be listed on the DOM
         controller.resources.forEach(function(resource) {
-            if (resource.category.categoryName === category) {
+
+            if (resource.category.categoryName == category) {
                 controller.selectedCategoryArray.push(resource);
                 controller.showMarkers.push(resource.marker);
             }

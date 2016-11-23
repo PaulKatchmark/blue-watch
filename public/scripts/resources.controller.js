@@ -60,7 +60,7 @@ function ResourcesController($http, $location) {
       controller.capturedZip = zip;
       controller.capturedCategory = category;
       controller.capturedId=id;
-      console.log('capturedId',controller.capturedId)
+      // console.log('capturedId',controller.capturedId)
   };
 
 
@@ -76,7 +76,7 @@ function ResourcesController($http, $location) {
     zip: controller.capturedZip,
     category: controller.capturedCategory
   };
-  console.log(id);
+  // console.log(id);
       $http.put('/resource/'+id, body
   ).then(function(response){
     controller.getResources();
@@ -129,14 +129,11 @@ controller.deleteResource=function(id){
 
     $http.put('/categories/'+category._id, body
   ).then(function(response){
-    console.log('response in put', response);
-    console.log('response.body', response.data);
     controller.getcategories();
     // this will pass on to a new update resources function...
     // var category = response.data.categoryName;
     // var id = response.data._id;
-    // var color = response.data.color;
-    // controller.updateResources2(category, id, color);
+    // controller.updateResourceCategory(category, id);
 
     }, function(error) {
       console.log('error editing categories', error);
@@ -157,5 +154,18 @@ controller.deleteResource=function(id){
   });
 };
 
+// controller.updateResourceCategory = function(id, category) {
+//   db.resources.find().forEach(function(categories){
+//     //for each resource with this ID
+//     //refresh with the new category information
+//   })
+// // console.log(id);
+//     $http.put('/resource/'+id
+// ).then(function(response){
+//   controller.getResources();
+//   }, function(error) {
+//     console.log('error editing resource', error);
+//   });
+// };
 
 } //End of ResourcesController

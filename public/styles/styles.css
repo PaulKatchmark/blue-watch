@@ -7,3 +7,10 @@ html, body {
   height: 350%;
   width: auto;
 }
+.hide{
+    display: none;
+}
+
+#map{
+    height:100%;
+}
