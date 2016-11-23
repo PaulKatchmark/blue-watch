@@ -13,6 +13,7 @@ const resourceSchema = new Schema({
   contact: String,
   website: String,
   street: String,
+  street2: String,
   city: String,
   state: String,
   zip: Number,

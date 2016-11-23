@@ -47,6 +47,7 @@ function HomeController($http, $location, $scope) {
     controller.getResources = function() {
 
         $http.get('/resource').then(function(response) {
+          console.log('response.data in home controller', response.data);
             controller.resources = response.data;
 
             controller.resources.forEach(function(info) {
@@ -54,11 +55,11 @@ function HomeController($http, $location, $scope) {
                 controller.runGeoCode(info);
                 //get reviews for each resource
                 $http.get('/reviews/' + id).then(function(response) {
-                //   console.log('reviews', response.data);
+                    info.reviews = response.data;
                 });
 
             }); //End of for each
-
+            console.log('controller.resources', controller.resources);
 
         });
 

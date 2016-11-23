@@ -10,6 +10,7 @@ function ResourcesController($http, $location) {
   controller.capturedContact = '';
   controller.capturedWebsite = '';
   controller.capturedStreet = '';
+  controller.capturedStreet2 = '';
   controller.capturedCity = '';
   controller.capturedState = '';
   controller.capturedZip = '';
@@ -24,13 +25,14 @@ function ResourcesController($http, $location) {
     contact: controller.contact,
     website: controller.website,
     street: controller.street,
+    street2: controller.street2,
     city: controller.city,
     state: controller.state,
     zip: controller.zip,
     category: controller.category
 
   };
-  console.log(body);
+  console.log('body in createresource', body);
       $http.post('/resource', body
     ).then(function(){
     controller.getResources();
@@ -49,12 +51,13 @@ function ResourcesController($http, $location) {
   };
   controller.getResources();
 
-  controller.captureInfo = function(company, description, contact, website, street, city, state, zip, category,id){
+  controller.captureInfo = function(company, description, contact, website, street, street2, city, state, zip, category,id){
       controller.capturedCompany = company;
       controller.capturedDescription = description;
       controller.capturedContact = contact;
       controller.capturedWebsite = website;
       controller.capturedStreet = street;
+      controller.capturedStreet2 = street2;
       controller.capturedCity = city;
       controller.capturedState = state;
       controller.capturedZip = zip;
@@ -71,6 +74,7 @@ function ResourcesController($http, $location) {
     contact: controller.capturedContact ,
     website: controller.capturedWebsite,
     street: controller.capturedStreet,
+    street2: controller.capturedStreet2,
     city: controller.capturedCity,
     state: controller.capturedState,
     zip: controller.capturedZip,
@@ -155,7 +159,7 @@ controller.deleteResource=function(id){
 };
 
 // controller.updateResourceCategory = function(id, category) {
-//   db.resources.find().forEach(function(categories){
+//   db.resources.find().forEach(function(nnn){
 //     //for each resource with this ID
 //     //refresh with the new category information
 //   })
