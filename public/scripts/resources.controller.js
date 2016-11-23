@@ -17,8 +17,11 @@ function ResourcesController($http, $location) {
   controller.capturedCategory = '';
   controller.capturedId='';
 
+
   //controller to create new resource
   controller.createresource = function() {
+    
+
     var body = {
     company:  controller.company,
     description: controller.description,
@@ -40,6 +43,8 @@ function ResourcesController($http, $location) {
       console.log('error creating resource', error);
     });
   };
+
+
 
   controller.getResources = function(){
 
@@ -159,9 +164,8 @@ controller.deleteResource=function(id){
 };
 
 // controller.updateResourceCategory = function(id, category) {
-//   db.resources.find().forEach(function(nnn){
-//     //for each resource with this ID
-//     //refresh with the new category information
+    // db.resources.find("category._id": id}).forEach(function(){
+    //refresh with the new category information
 //   })
 // // console.log(id);
 //     $http.put('/resource/'+id
