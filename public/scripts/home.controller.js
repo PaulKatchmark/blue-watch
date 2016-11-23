@@ -47,12 +47,12 @@ function HomeController($http, $location, $scope) {
     controller.getResources = function() {
 
         $http.get('/resource').then(function(response) {
-          console.log('response.data in home controller', response.data);
+
             controller.resources = response.data;
 
             controller.resources.forEach(function(info) {
               var id = info._id;
-                controller.runGeoCode(info);
+                controller.createMarker(parseFloat(info.lat), parseFloat(info.long), info);
                 //get reviews for each resource
                 $http.get('/reviews/' + id).then(function(response) {
                     info.reviews = response.data;
@@ -66,36 +66,9 @@ function HomeController($http, $location, $scope) {
     }; //End of getResources
 
 
-
-    controller.runGeoCode = function(info) {
-        console.log('info passed on to geocode',info);
-        //get address from resource
-        var address = info.street + ' ' + info.city + ' ' + info.state + ' ' + info.zip;
-        //call geocode to convert to lat/long
-        var geocoder = new google.maps.Geocoder();
-        console.log('address processed in geocode', address)
-        geocoder.geocode({
-            address: address
-        }, function(results, status) {
-
-            if (status == google.maps.GeocoderStatus.OK) {
-
-                info.lat = results[0].geometry.location.lat();
-                console.log(info.lat);
-                info.long = results[0].geometry.location.lng();
-                console.log(info.long);
-                //creates markers
-                controller.createMarker(info.lat, info.long, info);
-            }
-            console.log(status);
-
-        }); //End of geocode
-
-    }; // End of runGeoCode
-
     //create marker
     controller.createMarker = function(latinfo, lnginfo, info) {
-console.log('info passed on to createMarker',info);
+
       var icons = {
          Financial: {
            icon: '/assets/img/Green_Marker.png'
@@ -116,12 +89,6 @@ console.log('info passed on to createMarker',info);
            icon: '/assets/img/Red_Marker.png'
          }
        };
-      //  Critical Event,red
-      //  Financial,green
-      //  Suicide,purple
-      //  Support,yellow
-      //  Therapy,orange
-      //  Wellness,blue
 
 
         info.marker = new google.maps.Marker({
@@ -130,10 +97,8 @@ console.log('info passed on to createMarker',info);
             title: info.company,
             category: info.category.categoryName,
             visible: true,
-            // icon: icons[info.category.categoryName].icon
+            icon: icons[info.category.categoryName].icon
         });
-
-console.log('markers created', info.marker);
 
         info.marker.content = '<div class="infoWindowContent">' + info.description + '</div>';
 
@@ -149,7 +114,6 @@ console.log('markers created', info.marker);
         //listen for bounds status
         google.maps.event.addListener(controller.map, 'idle', function() {
             info.marker.boundsStatus = controller.map.getBounds().contains(info.marker.getPosition());
-            console.log(info.marker.boundsStatus);
             //apply changes on the DOM
             $scope.$apply();
 
@@ -208,7 +172,6 @@ console.log('markers created', info.marker);
         checkedCategory: false
     };
     controller.expandCategory = function(category) {
-        console.log(category);
 
         //array of markers to show
         controller.showMarkers = [];
@@ -221,7 +184,6 @@ console.log('markers created', info.marker);
             if (resource.category.categoryName == category) {
                 controller.selectedCategoryArray.push(resource);
                 controller.showMarkers.push(resource.marker);
-                console.log('resource marker', resource.marker);
             }
         });
 
@@ -239,7 +201,6 @@ console.log('markers created', info.marker);
 
     controller.expandCheckedCategory = function(category) {
 
-      console.log('category', category);
       if (category[0] == false) {
         alert ('Please check a category');
         return;
