@@ -56,7 +56,7 @@
         <button class="btn btn-default" ng-click="home.backCategories()">back</button>
         <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
       <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
-        <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker)"><h5>{{resource.company}}</h5></a>
+        <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
         <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
         <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
         <a ng-if="resource.marker.boundsStatus" href="{{resource.website}}">Website</a>
@@ -75,7 +75,7 @@
       <div ng-repeat="category in home.checkedCategory">
         <h3>{{category.name}}</h3>
         <div ng-repeat="resource in category.resources">
-          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker)"><h5>{{resource.company}}</h5></a>
+          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
           <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
           <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
           <a ng-if="resource.marker.boundsStatus" href="{{resource.website}}">Website</a>
@@ -89,6 +89,20 @@
           </div>
           </div>
       </div>
+    </div>
+
+    <div id="singleResource" ng-show="home.change.singleResource">
+      <h3>{{home.selectedResource.company}}</h3>
+        <p>{{home.selectedResource.description}}</p>
+        <p>{{home.selectedResource.contact}}</p>
+        <a href="{{home.selectedResource.website}}">Website</a>
+        <div>
+        <button href="#addReview" ng-click="home.getId(resource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</button>
+        </div>
+        <div ng-repeat="review in home.selectedResource.reviews">
+            <p>{{review.comments}}</p>
+            <p>{{review.rating}} stars</p>
+        </div>
     </div>
 
 </div>

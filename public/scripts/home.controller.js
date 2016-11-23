@@ -192,20 +192,37 @@ console.log('markers created', info.marker);
 
 
     //show marker when company name is clicked
-    controller.openInfoWindow = function($event, selectedMarker) {
+    controller.openInfoWindow = function($event, selectedMarker, resource) {
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
+        console.log('clicked resource', resource);
+        controller.selectedResource = resource;
+        // controller.change = {
+        //     categoryList: true
+        // };
+        // controller.change = {
+        //     selectedCategory: false
+        // };
+        // controller.change = {
+        //     checkedCategory: false
+        // };
+        controller.change.selectedCategory = !controller.change.selectedCategory;
+        controller.change.checkedCategory = !controller.change.checkedCategory;
+        controller.change.singleResource = !controller.change.singleResource;
     }
 
     //changes the category list to list of resources from selected category
     controller.change = {
-        categoryList: false
+        categoryList: true
     };
     controller.change = {
         selectedCategory: false
     };
     controller.change = {
         checkedCategory: false
+    };
+    controller.change = {
+        singleResource: false
     };
     controller.expandCategory = function(category) {
         console.log(category);
