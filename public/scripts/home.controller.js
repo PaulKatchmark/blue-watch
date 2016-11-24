@@ -356,9 +356,17 @@ controller.getId = function(id){
           $http.post('/reviews', body
         ).then(function(){
         console.log('success posting');
+        controller.sendMail(body);
         }, function(error) {
           console.log('error creating review', error);
         });
     }
 
-};
+    controller.sendMail = function(data) {
+            $http.post('/reviews/mail', data).then(function(results) {
+                console.log(results);
+            });
+        }; // end sendMail
+
+
+} //End of HomeController
