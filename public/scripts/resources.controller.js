@@ -18,7 +18,7 @@ function ResourcesController($http, $location, $q) {
   controller.capturedId='';
 
   //controller to create new resource
-  controller.createresource = function(lat, long) {
+  controller.createresource = function() {
 
   var address = controller.street + ' ' + controller.city + ' ' + controller.state + ' ' + controller.zip;
 
@@ -178,6 +178,7 @@ controller.deleteResource=function(id){
 
 
 controller.verifyAddress = function(address) {
+    console.log(address);
 
     return $q(function(resolve, reject){
         var geocoder = new google.maps.Geocoder();
