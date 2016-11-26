@@ -56,7 +56,8 @@
         <button class="btn btn-default" ng-click="home.backCategories()">back</button>
         <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
       <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
-        <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
+        <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5><span star-rating rating-value="resource.review[0].rating" max="5" on-rating-selected="getSelectedRating(rating)">
+        </span> ({{resource.numberOfReviews}} Reviews)</a>
         <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
         <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
       </div>
@@ -67,7 +68,7 @@
       <div ng-repeat="category in home.checkedCategory">
         <h3>{{category.name}}</h3>
         <div ng-repeat="resource in category.resources">
-          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
+          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5><span star-rating rating-value="resource.review[0].rating" max="5" on-rating-selected="getSelectedRating(rating)"></span> ({{resource.numberOfReviews}} Reviews)</a>
           <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
           <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
           </div>
@@ -132,8 +133,6 @@
           </div>
       </div>
   </div>
-
-
 
 
 </div>
