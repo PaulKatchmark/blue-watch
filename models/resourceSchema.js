@@ -17,6 +17,8 @@ const resourceSchema = new Schema({
   city: String,
   state: String,
   zip: Number,
+  lat: String,
+  long: String
 
 }, {collection: 'resource'});
 //not sure if need this, and would need to wrap address fields in object named location

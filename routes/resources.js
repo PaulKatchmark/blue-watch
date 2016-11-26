@@ -72,6 +72,8 @@ router.put('/:id', function(req, res) {
       resource.city = req.body.city;
       resource.state = req.body.state;
       resource.zip = req.body.zip;
+      resource.lat = req.body.lat;
+      resource.long = req.body.long;
 
     resource.save(function (err, updatedResource){
       if (err){

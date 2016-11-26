@@ -8,9 +8,45 @@
         <th></th>
     </thead>
     <tr ng-repeat="review in approval.reviewsArray">
-        <td></td>
+        <td>{{review.companyName}}</td>
         <td>{{review.comments}}</td>
         <td>{{review.rating}}</td>
-        <td><button >Read Details</button></td>
+        <td><button href="#reviewDetail"  data-toggle="modal" ng-click="approval.captureInfo(review)">Read Details</button></td>
     </tr>
 </table>
+
+
+<div id="reviewDetail" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title text-center">Review Details</h4>
+            </div>
+            <div class="modal-body modal-background-color">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                      <div class="row">
+                        <label class="control-label col-xs-2" >{{approval.capturedRating}}</label>
+                        <div class="col-xs-8 text-align:left;">
+                          <ul id="el" style="list-style-type: none;"></ul>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label class="control-label col-xs-2">Comments</label>
+                        <div class="col-xs-8">
+                            <textarea ng-model="approval.capturedComments" type="text" class="form-control" ></textarea>
+                        </div>
+                    </div>
+                  </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="approval.deleteReview(approval.capturedId)" type="button" class="btn btn-primary" data-dismiss="modal" >Delete Review</button>
+                <button ng-click="approval.approvedReview(approval.capturedId, approval.capturedComments) " type="button" class="btn btn-primary" data-dismiss="modal" >Approve Review</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
