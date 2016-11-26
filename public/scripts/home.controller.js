@@ -56,6 +56,18 @@ function HomeController($http, $location, $scope) {
                 //get reviews for each resource
                 $http.get('/reviews/' + id).then(function(response) {
                     info.reviews = response.data;
+                    info.reviews.number = response.data.length
+                    // info.reviews.forEach(function(review){
+                    //
+                    //   for (var i = 0; i < review.rating; i++) {
+                    //     console.log('I AM IN HERE');
+                    //     var star = document.createElement('li');
+                    //     star.classList.add('c-rating__item');
+                    //     star.classList.add('is-active');
+                    //     review.stars.push(star);
+                    //   }
+                    //   console.log('review.stars', review.stars);
+                    // })
                 });
 
             }); //End of for each

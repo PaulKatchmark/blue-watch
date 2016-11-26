@@ -1,0 +1,37 @@
+$font:'PT Sans', sans-serif;
+$mainborder: 2px solid lightgray;
+
+.container {
+    width: 900px;
+}
+body {
+  font-family: $font;
+}
+header{
+  height: 10%;
+  display: inline-block;
+  padding-bottom: 20px;
+  border-bottom: $mainborder;
+  margin-bottom: 20px;
+  h2{
+    width: 65%;
+    float: right;
+  }
+}
+span.glyphicon {
+  padding-top: 5px;
+}
+#homeBody {
+  div {
+    margin: 0;
+    padding: 0;
+  }
+  border: $mainborder;
+  height: 72vh;
+  margin-bottom: 20px;
+  #homeList{
+    height: 71vh;
+    overflow: scroll;
+    padding: 10px 0 0 10px;
+  }
+}

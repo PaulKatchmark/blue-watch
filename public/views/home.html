@@ -1,27 +1,39 @@
-<h2>Home/Map Page</h2>
-<p>
+<!-- <p>
   <a href="/login">Login</a>
-</p>
-<div class="row">
+</p> -->
+<!-- <div class="row">
   <div id="input" class="col-sm-10">
     <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
   </div>
   <div id="button" class="col-sm-2">
-    <button type="submit" class="btn btn-default" id="submit" ng-click="home.searchResources(home.search)">Search</button>
   </div>
 </div>
-<br />
+<br /> -->
+<div id="homeBody">
 <div class="row">
-  <div class="col-sm-5">
+
+  <div id="homeList" class="col-sm-5">
+
     <div class="row">
       <div>
-        <div class="col-sm-6">
+        <div class="col-sm-9">
           <input type="text" id="address-input" placeholder="get an address" class="form-control">
 
         </div>
         <div class="col-sm-3">
           <button ng-click="home.searchAddress()" class="btn btn-default">Search</button>
 
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
+        </div>
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-default" id="submit" ng-click="home.searchResources(home.search)">Search</button>
         </div>
       </div>
     </div>
@@ -53,21 +65,21 @@
     </div>
 
     <div id="selectedCategory" ng-show="home.change.selectedCategory">
-        <button class="btn btn-default" ng-click="home.backCategories()">back</button>
+        <button class="btn btn-default" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
         <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
       <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
-        <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
+        <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}<span class="glyphicon glyphicon-menu-right"></span></h5></a>
         <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
         <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
       </div>
     </div>
 
     <div id="checkedCategory" ng-show="home.change.checkedCategory">
-        <button class="btn btn-default" ng-click="home.backCategories()">back</button>
+        <button class="btn btn-default" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
       <div ng-repeat="category in home.checkedCategory">
         <h3>{{category.name}}</h3>
         <div ng-repeat="resource in category.resources">
-          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
+          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}<span class="glyphicon glyphicon-menu-right"></span></h5></a>
           <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
           <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
           </div>
@@ -77,18 +89,19 @@
     <div id="singleResource" ng-show="home.change.singleResource">
       <h3>{{home.selectedResource.company}}</h3>
         <p>{{home.selectedResource.description}}</p>
-        <p>{{home.selectedResource.contact}}</p>
+        <p>Contact number: {{home.selectedResource.contact}}</p>
         <p>{{home.selectedResource.street}}</p>
-        <p>{{home.selectedResource.city}}</p>
-        <p>{{home.selectedResource.state}}</p>
-        <p>{{home.selectedResource.zip}}</p>
-        <a href="{{home.selectedResource.website}}">Website<span class="glyphicon glyphicon-star-empty"></span></a>
+        <p>{{home.selectedResource.city}}, {{home.selectedResource.state}} {{home.selectedResource.zip}}</p>
+
+        <a href="{{home.selectedResource.website}}">Website<span class="glyphicon glyphicon-menu-right"></span></a>
         <div>
         <button href="#addReview" ng-click="home.getId(resource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</button>
         </div>
+        <p>Reviews ({{home.selectedResource.reviews.number}})</p>
         <div ng-repeat="review in home.selectedResource.reviews">
             <p>{{review.comments}}</p>
-            <p>{{review.rating}} stars</p>
+            <ul id="starReview">{{review.rating}} stars</ul>
+          <p>{{review.stars}}</p>
         </div>
     </div>
 
@@ -96,7 +109,7 @@
   </div>
 
   <div class="col-sm-7">
-    <div id="map" style="height:300px;">
+    <div id="map" style="height:71.5vh;">
     </div>
   </div>
 
@@ -135,5 +148,5 @@
 
 
 
-
+</div>
 </div>

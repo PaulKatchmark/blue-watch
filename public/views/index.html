@@ -8,6 +8,7 @@
     <link href="vendors/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendors/rating/rating.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTnFwlJTS9i343GuBYJ0jmDGvEEx3XCWg"></script>
 
@@ -37,22 +38,13 @@
     <base href="/" />
   </head>
   <body>
-    <nav class="navbar navbar-white">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="http://bluewatchus.org/">
-        <img alt="Bluewatch Logo" class="bluewatchLogo" src="http://bluewatchus.org/wp-content/uploads/2015/12/BW_REV_224x120.png">
-      </a>
-    </div>
-    <!-- <p>Blue Watch - Wellness Resources and Family Support for Law Enforcement</p> -->
-  </div>
-</nav>
-    <div class="container">
-      <br />
-      <hr />
+      <div class="container">
+        <header>
+        <img href="http://bluewatchus.org/" alt="Bluewatch Logo" class="bluewatchLogo" src="http://bluewatchus.org/wp-content/uploads/2015/12/BW_REV_224x120.png">
+        <h2>Wellness Resources and Family Support for Law Enforcement</h2>
+      </header>
+<!-- 
       <div>
-
-            <h1>Blue Watch</h1>
             <ol class="breadcrumb" ng-controller="LogoutController as logout">
 
               <li><a href="/home">Home</a></li>
@@ -63,7 +55,7 @@
               <li ng-click="logout.logout()"><a href="">Logout</a></li>
               <a ng-controller="AdminSetupController as admin">{{admin.adminservice.user}}</a>
             </ol>
-        </div>
+        </div> -->
 
         <div ng-view></div>
 
