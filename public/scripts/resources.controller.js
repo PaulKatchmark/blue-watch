@@ -3,6 +3,7 @@ angular.module('blueWatchApp')
 
 function ResourcesController($http, $location, $q) {
 
+
   var controller = this;
   controller.categories = [];
   controller.resources=[];
@@ -39,7 +40,6 @@ function ResourcesController($http, $location, $q) {
                 category: controller.category,
                 lat: lat.toString(),
                 long: long.toString()
-
             };
 
             console.log('body in createresource', body);
@@ -49,8 +49,8 @@ function ResourcesController($http, $location, $q) {
                 console.log('error creating resource', error);
             });
         });
-    };
 
+  };
     controller.getResources = function() {
 
         $http.get('/resource').then(function(response) {
@@ -168,6 +168,7 @@ function ResourcesController($http, $location, $q) {
         });
     };
 
+
     controller.verifyAddress = function(address) {
         return $q(function(resolve, reject) {
             var geocoder = new google.maps.Geocoder();
@@ -191,5 +192,29 @@ function ResourcesController($http, $location, $q) {
                 }
             });
         });
-    }
+  };
 } //End of ResourcesController
+
+//directive to convert url to correct format
+angular.module('blueWatchApp')
+.directive('httpPrefix', function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, controller) {
+            function ensureHttpPrefix(value) {
+                // Add prefix if we don't have http:// prefix already AND we don't have part of it
+                if(value && !/^(https?):\/\//i.test(value)
+                   && 'http://'.indexOf(value) !== 0 && 'https://'.indexOf(value) !== 0 ) {
+                    controller.$setViewValue('http://' + value);
+                    controller.$render();
+                    return 'http://' + value;
+                }
+                else
+                    return value;
+            }
+            controller.$formatters.push(ensureHttpPrefix);
+            controller.$parsers.splice(0, 0, ensureHttpPrefix);
+        }
+    };
+});

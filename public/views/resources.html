@@ -55,21 +55,22 @@
                 <h4 class="modal-title text-center">New Resource Information</h4>
             </div>
             <div class="modal-body modal-background-color text-center" >
-                <form class="form-horizontal" >
+                <form class="form-horizontal" name="addResourceForm" novalidate>
                     <div class="form-group">
                         <label class="control-label col-xs-2">Category</label>
                         <div class="col-xs-8">
 
-                            <select class="form-control" ng-model="resources.category"  ng-options ="category.categoryName for category in resources.categories track by category._id"></select>
-
-
+                            <select name="category" class="form-control" ng-model="resources.category"  ng-options ="category.categoryName for category in resources.categories track by category._id" required></select>
+                            <p class="help-block" ng-show="addResourceForm.category.$pristine">Category Required</p>
                             <button href="#addNewCategory" data-toggle="modal" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-plus"></span></button>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-2">Company Name</label>
                         <div class="col-xs-8">
-                            <input type="text" class="form-control" ng-model="resources.company"/>
+                            <input name="company" type="text" class="form-control" ng-model="resources.company" required/>
+                            <p class="help-block" ng-show="addResourceForm.company.$pristine">Company Required</p>
+
                         </div>
                     </div>
                     <div class="form-group">
@@ -87,7 +88,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-2">Website</label>
                         <div class="col-xs-8">
-                            <input type="text" class="form-control" ng-model="resources.website"/>
+                            <input type="url" class="form-control" ng-model="resources.website" http-prefix/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -117,12 +118,13 @@
                     <div class="form-group">
                         <label class="control-label col-xs-2">Zip Code</label>
                         <div class="col-xs-8">
-                            <input class="form-control" ng-model="resources.zip"/>
+                            <input name="zip" class="form-control" ng-model="resources.zip" required/>
+                             <p class="help-block" ng-show="addResourceForm.zip.$pristine">Zipcode Required</p>
                         </div>
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="resources.createresource()">ADD</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="resources.createresource()" ng-disabled="addResourceForm.$invalid">ADD</button>
             </div>
             </form>
         </div>
@@ -206,7 +208,7 @@
                 <h4 class="modal-title text-center">Edit Resource Information</h4>
             </div>
             <div class="modal-body modal-background-color text-center">
-                <form class="form-horizontal">
+                <form class="form-horizontal" name="updateResourceForm" novalidate>
                     <div class="form-group">
                         <label class="control-label col-xs-2">Category</label>
                         <div class="col-xs-8">
@@ -218,7 +220,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-2">Company Name</label>
                         <div class="col-xs-8">
-                            <input type="text" ng-model="resources.capturedCompany" class="form-control" />
+                            <input name="company" type="text" ng-model="resources.capturedCompany" class="form-control" required />
                         </div>
                     </div>
                     <div class="form-group">
@@ -236,7 +238,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-2">Website</label>
                         <div class="col-xs-8">
-                            <input type="url" ng-model="resources.capturedWebsite" class="form-control" />
+                            <input type="url" ng-model="resources.capturedWebsite" class="form-control" http-prefix/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -266,7 +268,7 @@
                     <div class="form-group">
                         <label class="control-label col-xs-2">Zip Code</label>
                         <div class="col-xs-8">
-                            <input class="form-control" ng-model="resources.capturedZip"/>
+                            <input class="form-control" ng-model="resources.capturedZip" required/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -279,7 +281,7 @@
 
             </div>
             <div class="modal-footer">
-                <button ng-click="resources.updateResource(resources.capturedId)" type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
+                <button ng-click="resources.updateResource(resources.capturedId)" type="button" class="btn btn-primary" data-dismiss="modal" ng-disabled="updateResourceForm.$invalid">Update</button>
             </div>
             </form>
         </div>
