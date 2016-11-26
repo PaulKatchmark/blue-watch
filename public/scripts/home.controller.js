@@ -52,16 +52,19 @@ function HomeController($http, $location, $scope) {
 
             controller.resources.forEach(function(info) {
               var id = info._id;
+              $http.get('/reviews/'+id).then(function(response) {
+                  info.review = response.data;
+                  info.numberOfReviews = info.review.length;
+                  //make function to create average Rating
+
+                 });
                 controller.createMarker(parseFloat(info.lat), parseFloat(info.long), info);
-                //get reviews for each resource
-                $http.get('/reviews/' + id).then(function(response) {
-                    info.reviews = response.data;
-                });
+                //  reviews.forEach(function(review){
 
             }); //End of for each
             console.log('controller.resources', controller.resources);
 
-        });
+        }); //end of http get resource
 
     }; //End of getResources
 
@@ -106,7 +109,7 @@ function HomeController($http, $location, $scope) {
         //opens bubble on marker click
         google.maps.event.addListener(info.marker, 'click', function() {
             controller.closeInfoWindow();
-            info.marker.infoWindow.setContent('<p>' + info.marker.title + ': ' + info.marker.content + '</p>');
+            info.marker.infoWindow.setContent('<p>' + info.marker.title + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
         });
         //close infoWindow when clicked anywhere on map
@@ -202,6 +205,7 @@ function HomeController($http, $location, $scope) {
                 controller.selectedCategoryArray.push(resource);
                 controller.showMarkers.push(resource.marker);
             }
+
         });
 
         //hide all markers
@@ -317,8 +321,35 @@ controller.getId = function(id){
   controller.id = id;
   console.log('id', id);
   console.log(controller.id);
-}
+};
 
+controller.displayRatings = function(resource){
+
+    var el = document.querySelector('#rating1');
+     var currentRating = resource.review.rating;
+     var maxRating= 5;
+     var myRating = rating(el, currentRating, maxRating);
+     // callback to run after setting the rating
+    //  var callback = function(rating) {
+    //    controller.starReview = rating
+    //    console.log(rating);
+    //   };
+    // var callback = function(rating) { alert(rating); };
+    //
+    //   myRating.setRating(3, false);
+
+    // resource.review.forEach(function(review){
+    //   //
+    //       for (var i = 0; i < resource.review.rating; i++) {
+    //         console.log('I AM IN HERE');
+    //         var star = document.createElement('li');
+    //         star.classList.add('c-rating__item');
+    //         star.classList.add('is-active');
+    //         // review.stars.push(star);
+    //       }
+    // //   });
+
+};
 
     // target element
     var el = document.querySelector('#el');
@@ -369,4 +400,52 @@ controller.getId = function(id){
         }; // end sendMail
 
 
+//ratings
+
+// controller.rating = 0;
+
+    controller.getSelectedRating = function (rating) {
+        console.log(rating);
+    }
+
 } //End of HomeController
+
+angular.module('blueWatchApp')
+.directive('starRating', function () {
+    return {
+        restrict: 'A',
+        template: '<ul class="rating">' +
+            '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
+            '\u2605' +
+            '</li>' +
+            '</ul>',
+        scope: {
+            ratingValue: '=',
+            max: '=',
+            onRatingSelected: '&'
+        },
+        link: function (scope, elem, attrs) {
+
+            var updateStars = function () {
+                scope.stars = [];
+                for (var i = 0; i < scope.max; i++) {
+                    scope.stars.push({
+                        filled: i < scope.ratingValue
+                    });
+                }
+            };
+            scope.toggle = function (index) {
+               scope.ratingValue = index + 1;
+               scope.onRatingSelected({
+                   rating: index + 1
+               });
+           };
+
+           scope.$watch('ratingValue', function (oldVal, newVal) {
+               if (newVal) {
+                   updateStars();
+               }
+           });
+       }
+   }
+});
