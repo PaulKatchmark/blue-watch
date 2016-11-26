@@ -57,8 +57,8 @@
         <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
       <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
         <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
-        <span star-rating rating-value="resource.review[0].rating" max="5" ></span>
-        <a ng-click="home.getSelectedRating(resource)"> ({{resource.numberOfReviews}} Reviews)</a>
+        <span star-rating rating-value="resource.averageRating" max="5" ></span>
+        <a ng-click="home.openInfoWindow($event, resource.marker, resource)"> ({{resource.numberOfReviews}} Reviews)</a>
         <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
         <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
       </div>
@@ -70,8 +70,8 @@
         <h3>{{category.name}}</h3>
         <div ng-repeat="resource in category.resources">
           <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
-          <span star-rating rating-value="resource.review[0].rating" max="5"></span>
-          <a ng-click="home.getSelectedRating(resource)">({{resource.numberOfReviews}} Reviews)</a>
+          <span star-rating rating-value="resource.averageRating" max="5"></span>
+          <a ng-click="home.openInfoWindow($event, resource.marker, resource)">({{resource.numberOfReviews}} Reviews)</a>
           <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
           <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
           </div>
@@ -90,9 +90,14 @@
         <div>
         <button href="#addReview" ng-click="home.getId(home.selectedResource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span>Give a review</button>
         </div>
-        <div ng-repeat="review in home.selectedResource.reviews">
+
+
+  <div class="average">
+    <p>Average Rating: <span star-rating rating-value="home.selectedResource.averageRating" max="5" ></span> {{ home.selectedResource.averageRating }} stars</p>
+  </div>
+        <div ng-repeat="review in home.selectedReviewArrays">
+            <span star-rating rating-value="review.rating" max="5" ></span>
             <p>{{review.comments}}</p>
-            <p>{{review.rating}} stars</p>
         </div>
     </div>
 
