@@ -21,8 +21,7 @@ const resourceSchema = new Schema({
   long: String
 
 }, {collection: 'resource'});
-//not sure if need this, and would need to wrap address fields in object named location
-//resourceSchema.index({location: '2dsphere'});
+
 
 const Resource = mongoose.model('Resource', resourceSchema);
 

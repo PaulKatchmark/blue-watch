@@ -17,10 +17,10 @@ function ResourcesController($http, $location, $q) {
     controller.capturedCategory = '';
     controller.capturedId = '';
 
+
     //create new resource
     controller.createresource = function(lat, long) {
         var address = controller.street + ' ' + controller.city + ' ' + controller.state + ' ' + controller.zip;
-
         controller.verifyAddress(address).then(function(response) {
             var lat = response.lat;
             var long = response.long;
@@ -37,7 +37,6 @@ function ResourcesController($http, $location, $q) {
                 category: controller.category,
                 lat: lat.toString(),
                 long: long.toString()
-
             };
 
             console.log('body in createresource', body);
@@ -47,8 +46,8 @@ function ResourcesController($http, $location, $q) {
                 console.log('error creating resource', error);
             });
         });
-    };
 
+  };
     controller.getResources = function() {
 
         $http.get('/resource').then(function(response) {
@@ -167,7 +166,9 @@ function ResourcesController($http, $location, $q) {
         });
     };
 
+
     controller.verifyAddress = function(address) {
+        // if(addResourceForm.$valid){
         return $q(function(resolve, reject) {
             var geocoder = new google.maps.Geocoder();
             console.log(address);
@@ -190,5 +191,6 @@ function ResourcesController($http, $location, $q) {
                 }
             });
         });
-    }
+    // };
+  };
 } //End of ResourcesController
