@@ -323,33 +323,6 @@ controller.getId = function(id){
   console.log(controller.id);
 };
 
-controller.displayRatings = function(resource){
-
-    var el = document.querySelector('#rating1');
-     var currentRating = resource.review.rating;
-     var maxRating= 5;
-     var myRating = rating(el, currentRating, maxRating);
-     // callback to run after setting the rating
-    //  var callback = function(rating) {
-    //    controller.starReview = rating
-    //    console.log(rating);
-    //   };
-    // var callback = function(rating) { alert(rating); };
-    //
-    //   myRating.setRating(3, false);
-
-    // resource.review.forEach(function(review){
-    //   //
-    //       for (var i = 0; i < resource.review.rating; i++) {
-    //         console.log('I AM IN HERE');
-    //         var star = document.createElement('li');
-    //         star.classList.add('c-rating__item');
-    //         star.classList.add('is-active');
-    //         // review.stars.push(star);
-    //       }
-    // //   });
-
-};
 
     // target element
     var el = document.querySelector('#el');
@@ -400,13 +373,14 @@ controller.displayRatings = function(resource){
         }; // end sendMail
 
 
-//ratings
+//show all ratings for the resource selected
+    controller.getSelectedRating = function (resource) {
+        console.log(resource);
+    //get review array of that id in the .review property
+    controller.selectedReviewArrays = resource.review;
+        console.log(controller.selectedReviewArrays);
 
-// controller.rating = 0;
-
-    controller.getSelectedRating = function (rating) {
-        console.log(rating);
-    }
+    };
 
 } //End of HomeController
 
@@ -415,14 +389,14 @@ angular.module('blueWatchApp')
     return {
         restrict: 'A',
         template: '<ul class="rating">' +
-            '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
+            '<li ng-repeat="star in stars" ng-class="star" >' +
             '\u2605' +
             '</li>' +
             '</ul>',
         scope: {
             ratingValue: '=',
             max: '=',
-            onRatingSelected: '&'
+            // onRatingSelected: '&'
         },
         link: function (scope, elem, attrs) {
 
@@ -436,9 +410,9 @@ angular.module('blueWatchApp')
             };
             scope.toggle = function (index) {
                scope.ratingValue = index + 1;
-               scope.onRatingSelected({
-                   rating: index + 1
-               });
+            //    scope.onRatingSelected({
+            //        rating: index + 1
+            //    });
            };
 
            scope.$watch('ratingValue', function (oldVal, newVal) {

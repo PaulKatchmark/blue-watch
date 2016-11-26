@@ -2,25 +2,28 @@ angular.module('blueWatchApp')
     .controller('ResourcesController', ResourcesController);
 
 function ResourcesController($http, $location, $q) {
-    var controller = this;
-    controller.categories = [];
-    controller.resources = [];
-    controller.capturedCompany = '';
-    controller.capturedDescription = '';
-    controller.capturedContact = '';
-    controller.capturedWebsite = '';
-    controller.capturedStreet = '';
-    controller.capturedStreet2 = '';
-    controller.capturedCity = '';
-    controller.capturedState = '';
-    controller.capturedZip = '';
-    controller.capturedCategory = '';
-    controller.capturedId = '';
 
 
-    //create new resource
-    controller.createresource = function(lat, long) {
-        var address = controller.street + ' ' + controller.city + ' ' + controller.state + ' ' + controller.zip;
+  var controller = this;
+  controller.categories = [];
+  controller.resources=[];
+  controller.capturedCompany = '';
+  controller.capturedDescription = '';
+  controller.capturedContact = '';
+  controller.capturedWebsite = '';
+  controller.capturedStreet = '';
+  controller.capturedStreet2 = '';
+  controller.capturedCity = '';
+  controller.capturedState = '';
+  controller.capturedZip = '';
+  controller.capturedCategory = '';
+  controller.capturedId='';
+
+  //controller to create new resource
+  controller.createresource = function() {
+
+  var address = controller.street + ' ' + controller.city + ' ' + controller.state + ' ' + controller.zip;
+
         controller.verifyAddress(address).then(function(response) {
             var lat = response.lat;
             var long = response.long;
@@ -71,7 +74,6 @@ function ResourcesController($http, $location, $q) {
         controller.capturedId = id;
         // console.log('capturedId',controller.capturedId)
     };
-
 
     controller.updateResource = function(id) {
         var address = controller.capturedStreet + ' ' + controller.capturedCity + ' ' + controller.capturedState + ' ' + controller.capturedZip;
