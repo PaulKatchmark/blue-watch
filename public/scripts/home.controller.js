@@ -55,7 +55,17 @@ function HomeController($http, $location, $scope) {
               $http.get('/reviews/'+id).then(function(response) {
                   info.review = response.data;
                   info.numberOfReviews = info.review.length;
+                 var totalRating=0;
                   //make function to create average Rating
+                  if(info.numberOfReviews>0){
+                      info.review.forEach(function(review){
+                          totalRating +=review.rating;
+                          console.log(totalRating);
+                          info.averageRating = parseInt( totalRating/info.numberOfReviews);
+                          console.log(info.averageRating);
+                      });
+                  }
+
 
                  });
                 controller.createMarker(parseFloat(info.lat), parseFloat(info.long), info);
@@ -164,6 +174,10 @@ function HomeController($http, $location, $scope) {
         google.maps.event.trigger(selectedMarker, 'click');
         console.log('clicked resource', resource);
         controller.selectedResource = resource;
+
+        //get review ratings and comments
+        controller.getSelectedRating(resource);
+
         // controller.change = {
         //     categoryList: true
         // };
@@ -405,6 +419,7 @@ angular.module('blueWatchApp')
                 for (var i = 0; i < scope.max; i++) {
                     scope.stars.push({
                         filled: i < scope.ratingValue
+                        // half-filled: scope.ratingValue % 1 > 0 && i === Math.floor(scope.ratingValue)
                     });
                 }
             };
