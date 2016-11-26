@@ -170,7 +170,6 @@ function ResourcesController($http, $location, $q) {
 
 
     controller.verifyAddress = function(address) {
-        // if(addResourceForm.$valid){
         return $q(function(resolve, reject) {
             var geocoder = new google.maps.Geocoder();
             console.log(address);
@@ -193,6 +192,5 @@ function ResourcesController($http, $location, $q) {
                 }
             });
         });
-    // };
   };
 } //End of ResourcesController
