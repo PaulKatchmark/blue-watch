@@ -5,6 +5,8 @@ const Schema = mongoose.Schema;
 const categorySchema = new Schema({
   categoryName: String,
   color:String,
+  inUse:Boolean
+
 });
 
 

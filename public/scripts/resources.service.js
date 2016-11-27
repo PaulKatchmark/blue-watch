@@ -5,53 +5,67 @@ angular.module('blueWatchApp')
       var service = this;
       service.openIcons = [];
 
-      service.icons = {
-         green: {
-           icon: '/assets/img/Green_Marker.png'
+      service.icons = [
+         {color: 'green',
+         icon: '/assets/img/Green_Marker.png'
          },
-         purple: {
+         {
+             color: 'purple',
            icon: '/assets/img/Purple_Marker.png'
          },
-         yellow: {
+        {
+             color: 'yellow',
            icon: '/assets/img/Yellow_Marker.png'
          },
-         orange: {
+          {
+             color:'orange',
            icon: '/assets/img/Orange_Marker.png'
          },
-         blue: {
+          {
+             color:'blue',
            icon: '/assets/img/Blue_Marker.png'
          },
-         red: {
+         {
+             color:'red',
            icon: '/assets/img/Red_Marker.png'
          },
-         pink: {
+          {
+             color:'pink',
            icon: 'assets/img/Pink_Marker.png'
          },
-         'light purple': {
+         {
+             color:'light purple',
            icon: '/assets/img/LightPurple_Marker.png'
          },
-         'light green': {
+         {
+             color: 'light green',
            icon: '/assets/img/LightGreen_Marker.png'
          },
-         'lighter green': {
+          {
+             color:'lighter green',
            icon: '/assets/img/LighterGreen_Marker.png'
          },
-         'light blue': {
+         {
+             color:'light blue',
            icon: '/assets/img/LightBlue_Marker.png'
          },
-         'lighter blue': {
+         {
+             color:'lighter blue',
            icon: '/assets/img/LighterBlue_Marker.png'
          },
-         gray: {
+         {
+             color: 'gray',
            icon: '/assets/img/Gray_Marker.png'
          },
-         gold: {
+         {
+             color: 'gold',
            icon: 'assets/img/Gold_Marker.png'
          },
-         burgundy: {
+         {
+             color: 'burgundy',
            icon: 'assets/img/Burgundy_Marker.png'
          }
-       };
+     ];
 
 
        return {

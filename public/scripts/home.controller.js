@@ -96,7 +96,8 @@ function HomeController($http, $location, $scope, ResourcesService) {
             title: info.company,
             category: info.category.categoryName,
             visible: true,
-            icon: icons[info.category.color].icon
+            icon: '/assets/img/'+ info.category.color+'_Marker.png'
+            // icons[info.category.color].icon
         });
 
         info.marker.content =

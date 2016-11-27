@@ -2,7 +2,7 @@ angular.module('blueWatchApp')
     .controller('ResourcesController', ResourcesController);
 
 
-function ResourcesController($http, $location, $q, ResourcesService) {
+function ResourcesController($http, $location, $q, ResourcesService,$scope) {
 
   var controller = this;
   controller.categories = [];
@@ -20,7 +20,6 @@ function ResourcesController($http, $location, $q, ResourcesService) {
   controller.capturedCategory = '';
   controller.capturedId='';
   controller.iconColor ='';
-
 
   //loads all the false icons on resources page
   controller.getIcons = function() {
@@ -244,6 +243,38 @@ function ResourcesController($http, $location, $q, ResourcesService) {
             });
         });
   };
+
+
+
+// other way to show dropdown functionality
+
+//   $('.selected-items-box').bind('click', function(e){
+//     e.stopPropagation();
+//     $('.multiple-select-wrapper .list').toggle('slideDown');
+//   });
+//
+//   $('.multiple-select-wrapper .list').bind('click', function(e){
+//   	e.stopPropagation();
+//     	$('.multiple-select-wrapper .list').slideUp();
+//   });
+//
+//   $(document).bind('click', function(){
+//   	$('.multiple-select-wrapper .list').slideUp();
+//   });
+//
+// controller.selectedColor=function(marker){
+//     controller.capturedMarker=marker;
+//     console.log(marker);
+// }
+
+
+
+
+
+
+
+
+
 } //End of ResourcesController
 
 //directive to convert url to correct format
