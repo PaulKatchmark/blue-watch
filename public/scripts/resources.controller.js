@@ -146,14 +146,15 @@ function ResourcesController($http, $location, $q) {
         $http.put('/categories/' + category._id, body).then(function(response) {
             controller.getcategories();
             // this will pass on to a new update resources function...
-            // var category = response.data.categoryName;
-            // var id = response.data._id;
-            // controller.updateResourceCategory(category, id);
+            var category = response.data.categoryName;
+            var id = response.data._id;
+            controller.updateResourceCategory(category, id);
 
         }, function(error) {
             console.log('error editing categories', error);
         });
     }; //end of updateCategory
+
 
     //find id to pass into delete category model confirmation
     controller.findCategoryId = function(id) {
