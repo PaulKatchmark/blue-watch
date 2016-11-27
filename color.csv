@@ -1,10 +1,16 @@
 pin,color,inUse
-blue_MarkerA.png,blue,false
-brown_MarkerA.png,brown,false
-darkgreen_MarkerA.png,dark green,false
-green_MarkerA.png,green,false
-orange_MarkerA.png,orange,false
-paleblue_MarkerA.png,light blue,false
-pink_MarkerA.png,pink,false
-red_MarkerA.png,red,false
-yellow_MarkerA.png,yellow,false
+assets/img/Blue_Marker.png,blue,true
+assets/img/Burgundy_Marker.png,burgundy,false
+assets/img/Gold_Marker.png,gold,false
+assets/img/Gray_Marker.png,gray,false
+assets/img/Green_Marker.png,green,true
+assets/img/LightBlue_Marker.png,light blue,false
+assets/img/LighterBlue_Marker.png,lighter blue,false
+assets/img/LighterGreen_Marker.png,lighter green,false
+assets/img/LightGreen_Marker.png,light green,false
+assets/img/LightPurple_Marker.png,light purple,false
+assets/img/Orange_Marker.png,orange,true
+assets/img/Pink_Marker.png,pink,false
+assets/img/Purple_Marker.png,purple,true
+assets/img/Red_Marker.png,red,true
+assets/img/Yellow_Marker.png,yellow,true

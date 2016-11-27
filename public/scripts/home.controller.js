@@ -1,7 +1,7 @@
 angular.module('blueWatchApp')
     .controller('HomeController', HomeController);
 
-function HomeController($http, $location, $scope) {
+function HomeController($http, $location, $scope, ResourcesService) {
 
     console.log('Home controller');
     var controller = this;
@@ -69,27 +69,10 @@ function HomeController($http, $location, $scope) {
     //create marker
     controller.createMarker = function(latinfo, lnginfo, info) {
 
-      var icons = {
-         Financial: {
-           icon: '/assets/img/Green_Marker.png'
-         },
-         Suicide: {
-           icon: '/assets/img/Purple_Marker.png'
-         },
-         Support: {
-           icon: '/assets/img/Yellow_Marker.png'
-         },
-         Therapy: {
-           icon: '/assets/img/Orange_Marker.png'
-         },
-         Wellness: {
-           icon: '/assets/img/Blue_Marker.png'
-         },
-         'Critical Event': {
-           icon: '/assets/img/Red_Marker.png'
-         }
-       };
+      // console.log('category color ', info.category.color);
+      // console.log('ResourcesService.icons ', ResourcesService.service.icons);
 
+      var icons = ResourcesService.service.icons;
 
         info.marker = new google.maps.Marker({
             map: controller.map,
@@ -97,7 +80,7 @@ function HomeController($http, $location, $scope) {
             title: info.company,
             category: info.category.categoryName,
             visible: true,
-            icon: icons[info.category.categoryName].icon
+            icon: icons[info.category.color].icon
         });
 
         info.marker.content = '<div class="infoWindowContent">' + info.description + '</div>';

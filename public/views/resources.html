@@ -147,10 +147,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-xs-2">Pick a color</label>
+                        <label class="control-label col-xs-2">Pick a map marker</label>
                         <div class="col-xs-8">
-                            <input ng-model="resources.color" type="color" value="#ff0000" class="form-control">
-                        </div>
+                          <select ng-model="resources.color"> <option ng-repeat="markers in resources.openIcons" data-image="{{markers.pin}}" value="{{markers.color}}">{{markers.color}}</option> </select>
+                         </div>
                     </div>
 
             </form>
@@ -182,6 +182,8 @@
                 <tr ng-repeat = "category in resources.categories" adapter="adapter">
                     <td><input type="text" class="form-control" ng-model="category.categoryName"/></td>
                     <td><input type="text" class="form-control" ng-model="category.color" /></td>
+                    <!--  Instead of input, this will show all available other options-->
+                    <!-- <select ng-model="resources.color" class="form-control">  <option ng-repeat="markers in resources.openIcons" data-image="{{markers.pin}}" value="{{markers.color}}">{{markers.color}}</option> </select> -->
                     <td>
                         <button ng-click="resources.updateCategory(category)" href="#editCategory" data-toggle="modal" class="btn btn-primary">Edit</button>
                     </td>
