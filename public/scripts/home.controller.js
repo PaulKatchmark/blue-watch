@@ -52,16 +52,29 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
             controller.resources.forEach(function(info) {
               var id = info._id;
+              $http.get('/reviews/'+id).then(function(response) {
+                  info.review = response.data;
+                  info.numberOfReviews = info.review.length;
+                 var totalRating=0;
+                  //make function to create average Rating
+                  if(info.numberOfReviews>0){
+                      info.review.forEach(function(review){
+                          totalRating +=review.rating;
+                          console.log(totalRating);
+                          info.averageRating = totalRating/info.numberOfReviews;
+                          console.log(info.averageRating);
+                      });
+                  }
+
+
+                 });
                 controller.createMarker(parseFloat(info.lat), parseFloat(info.long), info);
-                //get reviews for each resource
-                $http.get('/reviews/' + id).then(function(response) {
-                    info.reviews = response.data;
-                });
+                //  reviews.forEach(function(review){
 
             }); //End of for each
             console.log('controller.resources', controller.resources);
 
-        });
+        }); //end of http get resource
 
     }; //End of getResources
 
@@ -89,7 +102,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
         //opens bubble on marker click
         google.maps.event.addListener(info.marker, 'click', function() {
             controller.closeInfoWindow();
-            info.marker.infoWindow.setContent('<p>' + info.marker.title + ': ' + info.marker.content + '</p>');
+            info.marker.infoWindow.setContent('<p>' + info.marker.title + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
         });
         //close infoWindow when clicked anywhere on map
@@ -144,6 +157,10 @@ function HomeController($http, $location, $scope, ResourcesService) {
         google.maps.event.trigger(selectedMarker, 'click');
         console.log('clicked resource', resource);
         controller.selectedResource = resource;
+
+        //get review ratings and comments
+        controller.getSelectedRating(resource);
+
         // controller.change = {
         //     categoryList: true
         // };
@@ -185,6 +202,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
                 controller.selectedCategoryArray.push(resource);
                 controller.showMarkers.push(resource.marker);
             }
+
         });
 
         //hide all markers
@@ -300,7 +318,7 @@ controller.getId = function(id){
   controller.id = id;
   console.log('id', id);
   console.log(controller.id);
-}
+};
 
 
     // target element
@@ -352,4 +370,73 @@ controller.getId = function(id){
         }; // end sendMail
 
 
+//show all ratings for the resource selected
+    controller.getSelectedRating = function (resource) {
+        console.log(resource);
+    //get review array of that id in the .review property
+    controller.selectedReviewArrays = resource.review;
+        console.log(controller.selectedReviewArrays);
+
+    };
+
 } //End of HomeController
+
+angular.module('blueWatchApp')
+.directive('starRating', function () {
+    return {
+        restrict: 'A',
+        template: '<ul class="rating">' +
+            '<li ng-repeat="star in stars" ng-class="star" >' +
+            '\u2605' +
+            '</li>' +
+            '</ul>',
+        scope: {
+            ratingValue: '=',
+            max: '=',
+            // onRatingSelected: '&'
+        },
+        link: function (scope, elem, attrs) {
+
+            var updateStars = function () {
+                scope.stars = [];
+                if(scope.ratingValue%1 ==0){
+                for (var i = 0; i < scope.max; i++) {
+                    scope.stars.push({
+                        filled: i < scope.ratingValue
+                        // half-filled: scope.ratingValue % 1 > 0 && i === Math.floor(scope.ratingValue)
+                    });
+                }
+            } else {
+                var newRatingValue = parseInt(scope.ratingValue);
+                for (var i = 0; i < newRatingValue; i++) {
+                    scope.stars.push({
+                        filled: i < newRatingValue
+                    });
+                }
+                scope.stars.push({
+                    half: newRatingValue+1
+                });
+                for(var j=0; j< scope.max- (newRatingValue+1);j++){
+                    scope.stars.push({
+                        filled: 0
+                    });
+                }
+
+            }
+
+            };
+            scope.toggle = function (index) {
+               scope.ratingValue = index + 1;
+            //    scope.onRatingSelected({
+            //        rating: index + 1
+            //    });
+           };
+
+           scope.$watch('ratingValue', function (newVal, oldVal) {
+               if (newVal) {
+                   updateStars();
+               }
+           });
+       }
+   }
+});
