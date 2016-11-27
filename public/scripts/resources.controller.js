@@ -1,12 +1,13 @@
 angular.module('blueWatchApp')
     .controller('ResourcesController', ResourcesController);
 
-function ResourcesController($http, $location, $q) {
 
+function ResourcesController($http, $location, $q, ResourcesService) {
 
   var controller = this;
   controller.categories = [];
   controller.resources=[];
+  controller.openIcons =[];
   controller.capturedCompany = '';
   controller.capturedDescription = '';
   controller.capturedContact = '';
@@ -18,6 +19,30 @@ function ResourcesController($http, $location, $q) {
   controller.capturedZip = '';
   controller.capturedCategory = '';
   controller.capturedId='';
+  controller.iconColor ='';
+
+
+  //loads all the false icons on resources page
+  controller.getIcons = function() {
+
+      $http.get('/icons').then(function(response) {
+          controller.customIconInfo = response.data;
+          console.log('controller.customIconInfo ', controller.customIconInfo);
+            controller.openIcons = [];
+         controller.customIconInfo.forEach(function(info) {
+           if (info.inUse === false) {
+               controller.openIcons.push(info);
+              //  controller.openIcons = JSON.parse(controller.openIcons);
+           }
+          }); //End of for each
+
+          console.log('response in ResourcesController ', controller.openIcons);
+      });
+
+  }; //End of getResources
+
+  controller.getIcons();
+
 
   //controller to create new resource
   controller.createresource = function() {
@@ -59,6 +84,31 @@ function ResourcesController($http, $location, $q) {
         });
     };
     controller.getResources();
+
+
+  //function to set value of icon to true if chosen for category
+  controller.setIconInUse = function(){
+    for (i=0; i<controller.openIcons.length; i++) {
+      if (controller.openIcons[i].color == controller.iconColor) {
+        console.log('inside if statement ');
+        var data = {
+          id: controller.openIcons[i]._id,
+          pin: controller.openIcons[i].pin,
+          color: controller.openIcons[i].color,
+          inUse: true
+        };
+      console.log('data ', data);
+      $http.put('/icons/'+data.id, data
+    ).then(function(response){
+      controller.getIcons();
+      }, function(error) {
+        console.log('error updating icons', error);
+      });
+    };
+  };
+  };
+
+
 
     controller.captureInfo = function(company, description, contact, website, street, street2, city, state, zip, category, id) {
         controller.capturedCompany = company;
@@ -133,6 +183,7 @@ function ResourcesController($http, $location, $q) {
             controller.categories = response.data;
         });
     };
+
     controller.getcategories();
 
     //updateCategory function
