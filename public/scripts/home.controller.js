@@ -1,7 +1,7 @@
 angular.module('blueWatchApp')
     .controller('HomeController', HomeController);
 
-function HomeController($http, $location, $scope) {
+function HomeController($http, $location, $scope, ResourcesService) {
 
     console.log('Home controller');
     var controller = this;
@@ -51,21 +51,24 @@ function HomeController($http, $location, $scope) {
             controller.resources = response.data;
 
             controller.resources.forEach(function(info) {
+
               var id = info._id;
               $http.get('/reviews/'+id).then(function(response) {
+                  var totalRating=0;
                   info.review = response.data;
                   info.numberOfReviews = info.review.length;
-                 var totalRating=0;
+
                   //make function to create average Rating
                   if(info.numberOfReviews>0){
                       info.review.forEach(function(review){
                           totalRating +=review.rating;
                           console.log(totalRating);
-                          info.averageRating = parseInt( totalRating/info.numberOfReviews);
+                          info.averageRating = totalRating/info.numberOfReviews;
                           console.log(info.averageRating);
                       });
+                  } else{
+                      info.averageRating = 0;
                   }
-
 
                  });
                 controller.createMarker(parseFloat(info.lat), parseFloat(info.long), info);
@@ -82,27 +85,10 @@ function HomeController($http, $location, $scope) {
     //create marker
     controller.createMarker = function(latinfo, lnginfo, info) {
 
-      var icons = {
-         Financial: {
-           icon: '/assets/img/Green_Marker.png'
-         },
-         Suicide: {
-           icon: '/assets/img/Purple_Marker.png'
-         },
-         Support: {
-           icon: '/assets/img/Yellow_Marker.png'
-         },
-         Therapy: {
-           icon: '/assets/img/Orange_Marker.png'
-         },
-         Wellness: {
-           icon: '/assets/img/Blue_Marker.png'
-         },
-         'Critical Event': {
-           icon: '/assets/img/Red_Marker.png'
-         }
-       };
+      // console.log('category color ', info.category.color);
+      // console.log('ResourcesService.icons ', ResourcesService.service.icons);
 
+      var icons = ResourcesService.service.icons;
 
         info.marker = new google.maps.Marker({
             map: controller.map,
@@ -110,16 +96,21 @@ function HomeController($http, $location, $scope) {
             title: info.company,
             category: info.category.categoryName,
             visible: true,
-            icon: icons[info.category.categoryName].icon
+            icon: '/assets/img/'+ info.category.color+'_Marker.png'
+            // icons[info.category.color].icon
         });
 
-        info.marker.content = '<div class="infoWindowContent">' + info.description + '</div>';
+        info.marker.content =
+
+        '<span star-rating rating-value="'+info.averageRating+'" max="5"></span>'
+        +'<div class="infoWindowContent">' + info.description + '</div>';
 
         info.marker.infoWindow = new google.maps.InfoWindow();
         //opens bubble on marker click
         google.maps.event.addListener(info.marker, 'click', function() {
             controller.closeInfoWindow();
-            info.marker.infoWindow.setContent('<p>' + info.marker.title + info.marker.content + '</p>');
+            info.marker.infoWindow.setContent('<p>' + info.marker.title
+            + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
         });
         //close infoWindow when clicked anywhere on map
@@ -401,7 +392,7 @@ controller.getId = function(id){
 angular.module('blueWatchApp')
 .directive('starRating', function () {
     return {
-        restrict: 'A',
+        restrict: 'AE',
         template: '<ul class="rating">' +
             '<li ng-repeat="star in stars" ng-class="star" >' +
             '\u2605' +
@@ -416,12 +407,35 @@ angular.module('blueWatchApp')
 
             var updateStars = function () {
                 scope.stars = [];
+                if(scope.ratingValue%1 ==0){
                 for (var i = 0; i < scope.max; i++) {
                     scope.stars.push({
                         filled: i < scope.ratingValue
                         // half-filled: scope.ratingValue % 1 > 0 && i === Math.floor(scope.ratingValue)
                     });
                 }
+            } else {
+                var newRatingValue = parseInt(scope.ratingValue);
+                // creates the full stars
+                for (var i = 0; i < newRatingValue; i++) {
+                    scope.stars.push({
+                        filled: i < newRatingValue
+                    });
+                }
+                //creates the half star
+                scope.stars.push({
+                    half: newRatingValue+1
+                });
+
+                //creates the remaining stars empty stars
+                for(var j=0; j< scope.max- (newRatingValue+1);j++){
+                    scope.stars.push({
+                        filled: 0
+                    });
+                }
+
+            }
+
             };
             scope.toggle = function (index) {
                scope.ratingValue = index + 1;
@@ -430,7 +444,7 @@ angular.module('blueWatchApp')
             //    });
            };
 
-           scope.$watch('ratingValue', function (oldVal, newVal) {
+           scope.$watch('ratingValue', function (newVal, oldVal) {
                if (newVal) {
                    updateStars();
                }
