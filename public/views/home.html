@@ -24,7 +24,16 @@
 
           </div>
           <div class="col-xs-3">
-            <button ng-click="home.searchAddress(home.addressInput)" id="search" class="btn btn-default pull-right">Search</button>
+         <select name="miles" ng-model="home.distance">
+           <option value="11">10</option>
+           <option value="10">20</option>
+           <option value="9">50</option>
+           <option value="8">100</option>
+          </select>
+
+       </div>
+          <div class="col-xs-3">
+            <button ng-click="home.searchAddress(home.addressInput, home.distance)" id="search" class="btn btn-default pull-right">Search</button>
 
           </div>
         </div>
