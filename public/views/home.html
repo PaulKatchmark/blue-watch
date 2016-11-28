@@ -8,34 +8,28 @@
   <div id="homeList" class="col-sm-6 col-sm-pull-6">
     <div id=searchBars>
       <div class="row" id="addressSearch">
-          <div class="col-xs-9">
-            <input type="text" id="address-input" placeholder="get an address" class="form-control">
-
-
-    <div class="row" id="addressSearch">
-        <div class="col-xs-6">
-          <input type="text" id="address-input" placeholder="get an address" class="form-control">
-
+          <div class="col-xs-6">
+            <input type="text" id="address-input" placeholder="Set your location" class="form-control">
           </div>
-          <div class="col-xs-3">
-            <button ng-click="home.searchAddress()" id="search" class="btn btn-default pull-right">Search</button>
-
-
+          <div class="col-xs-2">
+            <label style="text-align: center;">Radius:</label>
           </div>
-        </div>
+      <div class="col-xs-1">
+        <select class="form-control" name="miles" ng-model="home.distance">
+          <option value="11">10</option>
+          <option value="10">20</option>
+          <option value="9">50</option>
+          <option value="8">100</option>
+        </select>
+
+      </div>
+      <div class="col-xs-3">
+        <button ng-click="home.searchAddress()" id="search" class="btn btn-default pull-right">Search</button>
+      </div>
+
+</div>
 
 
-        <div class="col-xs-3">
-          <select name="miles" ng-model="home.distance">
-            <option value="11">10</option>
-            <option value="10">20</option>
-            <option value="9">50</option>
-            <option value="8">100</option>
-          </select>
-
-        </div>
-        <div class="col-xs-3">
-          <button ng-click="home.searchAddress()" id="search" class="btn btn-default">Search</button>
 
 
 
