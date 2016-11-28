@@ -1,14 +1,14 @@
-company,categoryName,description,website,street,street2,city,state,zip,contact
-Beth Jordan,Therapy,Family Therapy,http://www.jordanandc.com/,10650 County Rd 81,Suite 205,Maple Grove,MN,55369,763-424-2100
-Backing the Blue Line,Support,Family Support,http://www.backingtheblueline.org/,6066 Shingle Creek Pkwy,#344,Brooklyn Center,MN,55430,
-Wives Behind the Badge,Support,Family Support,,,,,MN,55101,
-Family Means Caregiver Support,Support,Family Support -  Individual Therapy,http://www.familymeans.org/,1875 Northwestern Ave S,,Stillwater,MN,55082,651-439-4840
-Metro CISM,Critical Event,Critical Event,http://www.metrocism.org/,7809 Southtown Center, #174,Bloomington,MN,55431,612-207-1130
-Concerns of Police Survivors (COPS),Critical Event,Officer Death,http://www.mncops.org/,PO Box 270652,,St. Paul,MN,55127,
-Crocus Hill Counseling - Tom Ellis,Therapy,Marriage Therapy - Individual Therapy - Trauma ,http://www.crocushillcounselingcenter.com/,333 Grand Ave,Suite 103,St. Paul,MN,55102,651-235-4978
-Crocus Hill Counseling - Gayla Crandell,Therapy,Marriage Therapy - Individual Therapy - Trauma ,http://www.crocushillcounselingcenter.com/,333 Grand Ave,Suite 103,St. Paul,MN,55102,612-819-0556
-L'Amour Massage - Grace Hecker,Wellness,Massage - Physical,http://www.lamour-massage.com/,680 Commerce Drive,#100,Woodbury,MN,55125,651-605-5635
-Safe Call Now,Suicide,911 Helpline,http://www.safecallnow.org/,,,,MN,55101,206-459-3020
-MN Association for Injured Peace Officers,Support,Injured Officer Support,http://www.officerneedshelp.com/,614 Aqua Circle,,Lino Lakes,MN,55014,651-295-6232
-Edward Jones - Jack Reed,Financial,Financial Services,http://www.edwardjones.com/,1055 Grand Ave,Suite A,St. Paul,MN,55015,651-221-9898
-Training for Warriors,Wellness,Physical Health,http://www.optimalhealthperformance.com/TFW.php,7155 - 80th Street,Suite 120,Cottage Grove,MN,55016,651-330-5253
+company,description,website,street,street2,city,state,zip,contact
+Beth Jordan,Family Therapy,http://www.jordanandc.com/,10650 County Rd 81,Suite 205,Maple Grove,MN,55369,763-424-2100
+Backing the Blue Line,Family Support,http://www.backingtheblueline.org/,6066 Shingle Creek Pkwy,#344,Brooklyn Center,MN,55430,
+Wives Behind the Badge,Family Support,,,,,MN,55101,
+Family Means Caregiver Support,Family Support -  Individual Therapy,http://www.familymeans.org/,1875 Northwestern Ave S,,Stillwater,MN,55082,651-439-4840
+Metro CISM,Critical Event,http://www.metrocism.org/,7809 Southtown Center, #174,Bloomington,MN,55431,612-207-1130
+Concerns of Police Survivors (COPS),Officer Death,http://www.mncops.org/,PO Box 270652,,St. Paul,MN,55127,
+Crocus Hill Counseling - Tom Ellis,Marriage Therapy - Individual Therapy - Trauma ,http://www.crocushillcounselingcenter.com/,333 Grand Ave,Suite 103,St. Paul,MN,55102,651-235-4978
+Crocus Hill Counseling - Gayla Crandell,Marriage Therapy - Individual Therapy - Trauma ,http://www.crocushillcounselingcenter.com/,333 Grand Ave,Suite 103,St. Paul,MN,55102,612-819-0556
+L'Amour Massage - Grace Hecker,Massage - Physical,http://www.lamour-massage.com/,680 Commerce Drive,#100,Woodbury,MN,55125,651-605-5635
+Safe Call Now,911 Helpline,http://www.safecallnow.org/,,,,MN,55101,206-459-3020
+MN Association for Injured Peace Officers,Injured Officer Support,http://www.officerneedshelp.com/,614 Aqua Circle,,Lino Lakes,MN,55014,651-295-6232
+Edward Jones - Jack Reed,Financial Services,http://www.edwardjones.com/,1055 Grand Ave,Suite A,St. Paul,MN,55015,651-221-9898
+Training for Warriors,Physical Health,http://www.optimalhealthperformance.com/TFW.php,7155 - 80th Street,Suite 120,Cottage Grove,MN,55016,651-330-5253
