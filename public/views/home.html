@@ -15,11 +15,11 @@
   <div id="homeList" class="col-sm-5">
 
     <div class="row" id="addressSearch">
-        <div class="col-sm-9">
+        <div class="col-xs-9">
           <input type="text" id="address-input" placeholder="get an address" class="form-control">
 
         </div>
-        <div class="col-sm-3">
+        <div class="col-xs-3">
           <button ng-click="home.searchAddress()" id="search" class="btn btn-default">Search</button>
 
         </div>
@@ -28,10 +28,10 @@
 
     <div class="row">
 
-        <div class="col-sm-9">
+        <div class="col-xs-9">
           <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
         </div>
-        <div class="col-sm-3">
+        <div class="col-xs-3">
           <button type="submit" class="btn btn-default" id="search" ng-click="home.searchResources(home.search)">Search</button>
         </div>
 
@@ -70,20 +70,22 @@
       <div id="resourceList" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
       <div id="goNext"><p class="glyphicon glyphicon-menu-right"></p></div><div class="resourceInfo">
           <h5 ng-if="resource.marker.boundsStatus">{{resource.company}}</h5>
+          <span star-rating rating-value="resource.averageRating" max="5" ></span>
+          <a ng-click="home.openInfoWindow($event, resource.marker, resource)"> ({{resource.numberOfReviews}} Reviews)</a>
           <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
           <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
       </div>
 
-      <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
+      <!-- <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
         <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
         <span star-rating rating-value="resource.averageRating" max="5" ></span>
         <a ng-click="home.openInfoWindow($event, resource.marker, resource)"> ({{resource.numberOfReviews}} Reviews)</a>
         <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
         <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
 
+      </div> -->
       </div>
     </div>
-      </div>
 
     <div id="checkedCategory" ng-show="home.change.checkedCategory">
         <button class="btn btn-default"  id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
@@ -93,18 +95,21 @@
         <div id="resourceList" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in category.resources">
           <div id="goNext"><p class="glyphicon glyphicon-menu-right"></p></div><div class="resourceInfo">
             <h5 ng-if="resource.marker.boundsStatus">{{resource.company}}</h5>
+            <span star-rating rating-value="resource.averageRating" max="5"></span>
+            <a ng-click="home.openInfoWindow($event, resource.marker, resource)">({{resource.numberOfReviews}} Reviews)</a>
             <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
             <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
           </div>
 
-        <div ng-repeat="resource in category.resources">
+        <!-- <div ng-repeat="resource in category.resources">
           <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
           <span star-rating rating-value="resource.averageRating" max="5"></span>
           <a ng-click="home.openInfoWindow($event, resource.marker, resource)">({{resource.numberOfReviews}} Reviews)</a>
           <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
           <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
 
-          </div>
+          </div> -->
+
       </div>
     </div>
 </div>
