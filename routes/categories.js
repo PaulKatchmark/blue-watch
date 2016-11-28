@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Categories = require('../models/categorySchema');
 const Color = require('../models/colorSchema');
+const Resources = require('../models/resourceSchema');
 
 router.get('/', function(req, res) {
   console.log('getting categories');
@@ -83,7 +84,7 @@ router.put('/:id', function(req, res) {
       Color.find({ 'color': req.body.color}).then(function(color){
 
         res.sendStatus(200);
-    var usedColor = color[0];
+        var usedColor = color[0];
         usedColor.inUse=true;
 
 
@@ -92,8 +93,15 @@ router.put('/:id', function(req, res) {
             res.sendStatus(500);
             return;
           }
-
-
+//update resources with new category name and color
+        Resources.update({'category._id': id},
+          {$set: {'category.categoryName': category.categoryName, 'category.color': category.color }}, {multi: true})
+          .then(function(response, err){
+            if (err){
+              res.sendStatus(500);
+              return;
+            }
+      });
 
       }).catch(function(err){
         console.log('Error getting review', err);
