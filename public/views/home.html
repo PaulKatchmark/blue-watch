@@ -1,14 +1,3 @@
-<!-- <p>
-  <a href="/login">Login</a>
-</p> -->
-<!-- <div class="row">
-  <div id="input" class="col-sm-10">
-    <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
-  </div>
-  <div id="button" class="col-sm-2">
-  </div>
-</div>
-<br /> -->
 <div id="homeBody">
 <div class="row">
   <div class="col-sm-6 col-sm-push-6">
@@ -150,7 +139,8 @@
 </div>
   </div>
   </div>
-
+</div>
+</div>
   <div id="addReview" class="modal fade">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -163,13 +153,13 @@
                       <div class="form-group">
                         <div class="row">
                           <label class="control-label col-xs-2">Rating</label>
-                          <div class="col-xs-8 text-align:left;">
-                            <ul id="el" style="list-style-type: none;"></ul>
+                          <div class="col-xs-9 pull-left">
+                            <ul id="el" class="pull-left"style="list-style-type: none; padding-left: 0;"></ul>
                           </div>
                         </div>
                         <div class="row">
                           <label class="control-label col-xs-2">Comments</label>
-                          <div class="col-xs-8">
+                          <div class="col-xs-9">
                               <textarea ng-model="home.reviewNotes" type="text" class="form-control" ></textarea>
                           </div>
                       </div>
@@ -177,13 +167,9 @@
               </form>
               </div>
               <div class="modal-footer">
-                  <button ng-click="home.createReview(home.reviewNotes)" type="button" class="btn btn-primary" data-dismiss="modal" >Submit Review</button>
+                  <button ng-click="home.createReview(home.reviewNotes)" type="button" class="btn btn-default" data-dismiss="modal" >Submit Review</button>
               </div>
 
           </div>
       </div>
   </div>
-
-
-</div>
-</div>
