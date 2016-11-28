@@ -105,10 +105,31 @@ function HomeController($http, $location, $scope, ResourcesService) {
         info.marker.infoWindow = new google.maps.InfoWindow();
         //opens bubble on marker click
         google.maps.event.addListener(info.marker, 'click', function() {
+
             controller.closeInfoWindow();
+            controller.change.categoryList = true;
+            controller.change.singleResource = true;
+
+            controller.selectedResource = info;
+
+            //get review ratings and comments
+            controller.getSelectedRating(info);
+            //hide all markers
+            controller.hideMarkers(controller.markers);
+
+            console.log(controller.selectedResource.marker);
+            //show markers of selected category
+            controller.showVisible([controller.selectedResource.marker]);
+            // controller.openInfoWindow(event, info.marker, info);
+
+                $scope.$apply();
+
             info.marker.infoWindow.setContent('<p><strong>' + info.marker.title +'</strong>'
             + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
+
+
+
         });
         //close infoWindow when clicked anywhere on map
         google.maps.event.addListener(controller.map, 'click', controller.closeInfoWindow);
@@ -134,30 +155,46 @@ function HomeController($http, $location, $scope, ResourcesService) {
     };
 
     controller.hideMarkers = function(markers) {
-        markers.forEach(function(marker) {
-            marker.setVisible(false);
+        if(markers.length>1){
+            markers.forEach(function(marker) {
+                marker.setVisible(false);
+                controller.closeInfoWindow();
+            });
+        } else {
+            markers.setVisible(false);
             controller.closeInfoWindow();
-        });
+        }
+
     };
 
     controller.showVisible = function(controllerMarkers) {
         var bounds = new google.maps.LatLngBounds();
+
+        if(controllerMarkers.length>1){
         controllerMarkers.forEach(function(marker) {
             marker.setVisible(true);
             controller.closeInfoWindow();
             // extending bounds to contain this visible marker position
             bounds.extend(marker.getPosition());
         });
-
         // setting new bounds to visible markers of
         controller.map.fitBounds(bounds);
+    } else {
+        controllerMarkers[0].setVisible(true);
+        controller.closeInfoWindow();
+        controller.map.setCenter(controllerMarkers[0].position);
+    }
+
+
+
     }
 
     controller.getResources(); //run getResources function
 
 
     //show marker when company name is clicked
-    controller.openInfoWindow = function($event, selectedMarker, resource) {
+    controller.openInfoWindow = function(event, selectedMarker, resource) {
+        console.log(event);
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
         console.log('clicked resource', resource);
@@ -165,6 +202,13 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
         //get review ratings and comments
         controller.getSelectedRating(resource);
+        //hide all markers
+        controller.hideMarkers(controller.markers);
+
+        console.log(controller.selectedResource.marker);
+        //show markers of selected category
+        controller.showVisible([controller.selectedResource.marker]);
+
 
         // controller.change = {
         //     categoryList: true
@@ -182,7 +226,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
     //changes the category list to list of resources from selected category
     controller.change = {
-        categoryList: true
+        categoryList: false
     };
     controller.change = {
         selectedCategory: false
@@ -296,11 +340,13 @@ controller.searchResources = function(search){
 };
 
 
+
+
     controller.searchAddress = function() {
         console.log(addressInput);
         var addressInput = document.getElementById('address-input').value;
 
-        var distance = parseFloat(controller.distance);
+        var distance = parseFloat(distance);
         var geocoder = new google.maps.Geocoder();
 
         geocoder.geocode({
