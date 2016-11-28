@@ -9,10 +9,10 @@
         <th></th>
     </thead>
     <tr ng-repeat="review in approval.reviewsArray">
-        <td>{{review.companyName}}</td>
-        <td>{{review.comments}}</td>
-        <td>{{review.rating}}</td>
-        <td><button href="#reviewDetail"  class="btn btn-default pull-right" data-toggle="modal" ng-click="approval.captureInfo(review)">Read Details</button></td>
+        <td ng-if="!review.approved">{{review.companyName}}</td>
+        <td ng-if="!review.approved">{{review.comments}}</td>
+        <td ng-if="!review.approved"><span star-rating rating-value="review.rating" max="5" ></span> ({{review.rating}}) stars</td>
+        <td ng-if="!review.approved"><button href="#reviewDetail"  class="btn btn-default pull-right" data-toggle="modal" ng-click="approval.captureInfo(review)">Read Details</button></td>
     </tr>
 </table>
 
@@ -28,9 +28,9 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                       <div class="row">
-                        <label class="control-label col-xs-2" >{{approval.capturedRating}}</label>
+                        <label class="control-label col-xs-2" >Rating:</label>
                         <div class="col-xs-8 text-align:left;">
-                          <ul id="el" style="list-style-type: none;"></ul>
+                          <p><span star-rating rating-value="approval.capturedRating" max="5" ></span>({{approval.capturedRating}}) stars</p>
                         </div>
                       </div>
                       <div class="row">

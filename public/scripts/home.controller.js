@@ -406,35 +406,13 @@ angular.module('blueWatchApp')
 
             var updateStars = function () {
                 scope.stars = [];
-                if(scope.ratingValue%1 ==0){
+                // if(scope.ratingValue%1 ==0){
                 for (var i = 0; i < scope.max; i++) {
                     scope.stars.push({
-                        filled: i < scope.ratingValue
-                        // half-filled: scope.ratingValue % 1 > 0 && i === Math.floor(scope.ratingValue)
+                        filled: i < scope.ratingValue,
+                         half: scope.ratingValue % 1 > 0 && i === Math.floor(scope.ratingValue)
                     });
                 }
-            } else {
-                var newRatingValue = parseInt(scope.ratingValue);
-                // creates the full stars
-                for (var i = 0; i < newRatingValue; i++) {
-                    scope.stars.push({
-                        filled: i < newRatingValue
-                    });
-                }
-                //creates the half star
-                scope.stars.push({
-                    half: newRatingValue+1
-                });
-
-                //creates the remaining stars empty stars
-                for(var j=0; j< scope.max- (newRatingValue+1);j++){
-                    scope.stars.push({
-                        filled: 0
-                    });
-                }
-
-            }
-
             };
             scope.toggle = function (index) {
                scope.ratingValue = index + 1;

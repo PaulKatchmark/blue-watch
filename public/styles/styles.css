@@ -205,6 +205,7 @@ ul.rating {
   position: relative;
   color: red !important; }
 
+
 .half:after {
   content: '';
   position: absolute;
