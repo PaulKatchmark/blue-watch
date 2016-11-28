@@ -321,9 +321,11 @@ controller.searchResources = function(search){
 };
 
 
-    controller.searchAddress = function(addressInput, distance) {
+
+
+    controller.searchAddress = function() {
         console.log(addressInput);
-        // var addressInput = document.getElementById('address-input').value;
+        var addressInput = document.getElementById('address-input').value;
 
         var distance = parseFloat(distance);
         var geocoder = new google.maps.Geocoder();

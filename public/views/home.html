@@ -19,24 +19,30 @@
   <div id="homeList" class="col-sm-6 col-sm-pull-6">
     <div id=searchBars>
       <div class="row" id="addressSearch">
-          <div class="col-xs-9">
-            <input type="text" ng-model="home.addressInput" id="address-input" placeholder="get an address" class="form-control">
-
+          <div class="col-xs-6">
+            <input type="text" id="address-input" placeholder="Set your location" class="form-control">
           </div>
-          <div class="col-xs-3">
-         <select name="miles" ng-model="home.distance">
-           <option value="11">10</option>
-           <option value="10">20</option>
-           <option value="9">50</option>
-           <option value="8">100</option>
-          </select>
 
-       </div>
-          <div class="col-xs-3">
-            <button ng-click="home.searchAddress(home.addressInput, home.distance)" id="search" class="btn btn-default pull-right">Search</button>
-
+          <div class="col-xs-2">
+            <label class="pull-right" style="margin: 6px">Radius:</label>
           </div>
-        </div>
+      <div class="col-xs-1">
+        <select class="form-control" name="miles" ng-model="home.distance">
+          <option value="11">10</option>
+          <option value="10">20</option>
+          <option value="9">50</option>
+          <option value="8">100</option>
+        </select>
+
+      </div>
+
+
+      <div class="col-xs-3">
+        <button ng-click="home.searchAddress()" id="search" class="btn btn-default pull-right">Search</button>
+      </div>
+
+
+</div>
 
       <div class="row">
           <div class="col-xs-9">
@@ -137,7 +143,7 @@
         </div>
 
         <p>Average Rating: <span star-rating rating-value="home.selectedResource.averageRating" max="5" ></span> {{ home.selectedResource.averageRating }} stars ({{home.selectedResource.numberOfReviews}} Reviews) </p>
-        <div ng-repeat="review in home.selectedReviewArrays">
+        <div ng-repeat="review in home.selectedReviewArrays" style="padding-left: 10px;">
             <span star-rating rating-value="review.rating" max="5" ></span>
             <p>{{review.comments}}</p>
 
@@ -148,6 +154,7 @@
   </div>
   </div>
 
+</div>
   <div id="addReview" class="modal fade">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -161,7 +168,7 @@
                         <div class="row">
                           <label class="control-label col-xs-2">Rating</label>
                           <div class="col-xs-8 text-align:left;">
-                            <ul id="el" style="list-style-type: none;"></ul>
+                            <ul id="el" style="list-style-type: none; padding-left: 0;"></ul>
                           </div>
                         </div>
                         <div class="row">
@@ -174,13 +181,9 @@
               </form>
               </div>
               <div class="modal-footer">
-                  <button ng-click="home.createReview(home.reviewNotes)" type="button" class="btn btn-primary" data-dismiss="modal" >Submit Review</button>
+                  <button ng-click="home.createReview(home.reviewNotes)" type="button" class="btn btn-default" data-dismiss="modal" >Submit Review</button>
               </div>
 
           </div>
       </div>
   </div>
-
-
-</div>
-</div>
