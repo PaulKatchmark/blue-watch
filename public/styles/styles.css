@@ -1,7 +1,10 @@
+html, body {
+  height: 100%; }
+
 .container {
   width: 90%;
   margin: auto;
-  height: 100vh; }
+  min-height: 100vh; }
   @media (max-width: 1000px) {
     .container {
       width: 100%;
@@ -330,7 +333,6 @@ ul.rating {
 .half {
   position: relative;
   color: red !important; }
-
 
 .half:after {
   content: '';

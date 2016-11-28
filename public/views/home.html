@@ -142,7 +142,7 @@
         </div>
 
         <p>Average Rating: <span star-rating rating-value="home.selectedResource.averageRating" max="5" ></span> {{ home.selectedResource.averageRating }} stars ({{home.selectedResource.numberOfReviews}} Reviews) </p>
-        <div ng-repeat="review in home.selectedReviewArrays">
+        <div ng-repeat="review in home.selectedReviewArrays" style="padding-left: 10px;">
             <span star-rating rating-value="review.rating" max="5" ></span>
             <p>{{review.comments}}</p>
 
@@ -153,6 +153,7 @@
   </div>
   </div>
 
+</div>
   <div id="addReview" class="modal fade">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -166,7 +167,7 @@
                         <div class="row">
                           <label class="control-label col-xs-2">Rating</label>
                           <div class="col-xs-8 text-align:left;">
-                            <ul id="el" style="list-style-type: none;"></ul>
+                            <ul id="el" style="list-style-type: none; padding-left: 0;"></ul>
                           </div>
                         </div>
                         <div class="row">
@@ -179,13 +180,9 @@
               </form>
               </div>
               <div class="modal-footer">
-                  <button ng-click="home.createReview(home.reviewNotes)" type="button" class="btn btn-primary" data-dismiss="modal" >Submit Review</button>
+                  <button ng-click="home.createReview(home.reviewNotes)" type="button" class="btn btn-default" data-dismiss="modal" >Submit Review</button>
               </div>
 
           </div>
       </div>
   </div>
-
-
-</div>
-</div>

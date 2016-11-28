@@ -1,9 +1,13 @@
 $font:'PT Sans', sans-serif;
 $mainborder: 2px solid lightgray;
+
+html, body {
+    height:100%;
+}
 .container {
     width: 90%;
     margin: auto;
-    height: 100vh;
+    min-height:100vh;
     @media (max-width: 1000px) {
       width: 100%;
       margin: 0;
