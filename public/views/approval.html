@@ -1,3 +1,4 @@
+<div id="approvalsPage">
 <h2>Pending Reviews</h2>
 
 <table>
@@ -11,7 +12,7 @@
         <td>{{review.companyName}}</td>
         <td>{{review.comments}}</td>
         <td>{{review.rating}}</td>
-        <td><button href="#reviewDetail"  data-toggle="modal" ng-click="approval.captureInfo(review)">Read Details</button></td>
+        <td><button href="#reviewDetail"  class="btn btn-default pull-right" data-toggle="modal" ng-click="approval.captureInfo(review)">Read Details</button></td>
     </tr>
 </table>
 
@@ -49,4 +50,5 @@
 
         </div>
     </div>
+</div>
 </div>

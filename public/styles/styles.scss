@@ -12,7 +12,7 @@ header{
   display: inline-block;
   padding-bottom: 20px;
   border-bottom: $mainborder;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   h2{
     width: 65%;
     float: right;
@@ -21,17 +21,234 @@ header{
 span.glyphicon {
   padding-top: 5px;
 }
+.btn, input.form-control {
+  border-radius: 0;
+  border: 1px solid black;
+}
+.btn{
+    text-transform: uppercase;
+}
+
+nav.navbar.navbar-default {
+  background-color: white;
+  border: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  border-bottom: $mainborder;
+  border-radius: 0;
+  a{
+    color: black;
+  }
+  a:hover, a:focus {
+    color: #3f7ccd;
+  }
+
+}
+
 #homeBody {
   div {
     margin: 0;
     padding: 0;
   }
-  border: $mainborder;
+  #search{
+    margin-left: 10px;
+  }
+  #addressSearch {
+    margin-bottom: 10px;
+  }
+  #checkedSubmit {
+    margin-top: 10px;
+    width: 95%;
+  }
   height: 72vh;
   margin-bottom: 20px;
   #homeList{
     height: 71vh;
     overflow: scroll;
-    padding: 10px 0 0 10px;
+  }
+  #categoryList{
+    form{
+
+      label {
+        font-size: 25px;
+        width: 90%;
+        margin:0 0 0 10px;
+        .glyphicon {
+          float: right;
+        }
+      }
+        width: 95%;
+        padding: 10px;
+        border-bottom: $mainborder;
+  }
+  }
+  #selectedCategory, #checkedCategory{
+    width: 95%;
+    #resourceList{
+      border-bottom: $mainborder;
+      h5{
+        font-size: 20px;
+      }
+      .resourceInfo{
+        width: 90%;
+        display: inline-block;
+        height: 125px;
+        p{
+          padding-left: 10px;
+        }
+      }
+      div#goNext{
+      font-size: 25px;
+      width: 10%;
+      height: 125px;
+      padding-top: 15%;
+      vertical-align: middle;
+      float: right;
+      }
+    }
+    #navBack{
+      margin-top: 10px;
+      width: 100%;
+      border: none;
+      font-size: 20px;
+      border-radius: 0;
+      border-bottom: $mainborder;
+      .glyphicon {
+        float: left;
+      }
+    }
+    #navBack:hover{
+      background-color: white;
+      font-weight: 600;
+    }
+    h3{
+      margin: 10px 0 0 0;
+      padding-bottom: 10px;
+      text-align: center;
+      border-bottom: $mainborder;
+      color: #3f7ccd;
+    }
+  }
+  #singleResource{
+    #mainResourceInfo{
+      width: 95%;
+      margin-bottom: 10px;
+      border-bottom: $mainborder;
+      padding-left: 10px;
+    }
+    #website{
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      width: 95%;
+      border-bottom: $mainborder;
+    a {
+      color: black;
+      .glyphicon {
+        float: right;
+        margin-right:10px;
+      }
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  #review {
+    border: 1px solid black;
+    width: 95%;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: white;
+  }
+  #review:focus{
+    outline:0;
+  }
+  }
+
+
+}//end of homeBody
+
+#resourcePage{
+  div, span {
+    margin: 0;
+    padding: 0;
+  }
+  #searchBar{
+    margin-bottom: 10px;
+  }
+  #search{
+    width:90%;
+  }
+  #catButtons{
+    .btn{
+          width: 95%;
+    }
+    #newCat {
+    width:100%;
+    }
+    #updateCat{
+      margin-left: 10px;
+    }
+  }
+  table{
+    width: 100%;
+    h4{
+      text-align: center;
+      color: #3f7ccd;
+      text-transform: uppercase;
+      font-size: 25px;
+      border-bottom: $mainborder;
+      padding-bottom: 10px;
+    }
+    th {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    td{
+      padding: 0;
+      margin-bottom: 10px;
+    }
+    button{
+      margin: 5px 0;
+    }
+  }
+}
+
+#approvalsPage, #adminPage {
+  h2{
+    text-align: center;
+    color: #3f7ccd;
+    text-transform: uppercase;
+    font-size: 25px;
+    border-bottom: $mainborder;
+    padding-bottom: 10px;
+  }
+  table{
+    width: 100%;
+    th {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+    td{
+      padding: 0;
+      margin-bottom: 10px;
+    }
+    button{
+      margin: 5px 0;
+    }
+  }
+  #addNew{
+    width: 100%;
+    margin: 5px 0 10px 0;
+  }
+}
+
+#login{
+  form{
+    background-color: white;
+    border: none;
+    box-shadow: none;
+    div{
+      padding: 0;
+    }
   }
 }
