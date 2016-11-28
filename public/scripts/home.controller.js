@@ -72,7 +72,6 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
                  });
                 controller.createMarker(parseFloat(info.lat), parseFloat(info.long), info);
-                //  reviews.forEach(function(review){
 
             }); //End of for each
             console.log('controller.resources', controller.resources);

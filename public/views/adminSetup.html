@@ -1,17 +1,18 @@
+<div id="adminPage">
 <h2>Admin Setup</h2>
 
-
-<button href="#addNewAdmin" data-toggle="modal" class="btn btn-primary">Add New Admin User</button>
-
+<!-- <div class="row col-xs-12"> -->
+  <button href="#addNewAdmin" data-toggle="modal" class="btn btn-default" id="addNew">Add New Admin User</button>
+<!-- </div> -->
 
 
 <div>
 <table>
-    <caption>
+    <!-- <caption>
         <h4>Admin Users</h4>
-    </caption>
+    </caption> -->
     <thead>
-        <th>Name</th>
+        <th>Admin Users</th>
         <th></th>
         <th></th>
     </thead>
@@ -20,10 +21,10 @@
             {{users.email}}
         </td>
         <td>
-            <button ng-click="admin.captureInfo(users._id, users.email, users.password, users.accessLevel)" href="#editAdmin" data-toggle="modal" class="btn btn-primary">Edit</button>
+            <button ng-click="admin.captureInfo(users._id, users.email, users.password, users.accessLevel)" href="#editAdmin" data-toggle="modal" class="btn btn-default pull-right">Edit</button>
         </td>
         <td>
-            <button ng-click="admin.deleteUser(users._id)" data-toggle="modal" class="btn btn-primary">Delete</button>
+            <button ng-click="admin.deleteUser(users._id)" data-toggle="modal" class="btn btn-default pull-right">Delete</button>
         </td>
     </tr>
 </table>
@@ -102,7 +103,7 @@
                         </div>
                     </div>
                     <div class="col-xs-10">
-                      <button ng-click="admin.updateUser(admin.capturedEmail, admin.password, admin.capturedAccessLevel)" type="submit" class="btn btn-primary" data-dismiss="modal">Update</button>
+                      <button ng-click="admin.updateUser(admin.capturedEmail, admin.password, admin.capturedAccessLevel)" type="submit" class="btn btn-default" data-dismiss="modal">Update</button>
                     </div>
                 </form>
             </div>
@@ -110,4 +111,5 @@
 
         </div>
     </div>
+</div>
 </div>

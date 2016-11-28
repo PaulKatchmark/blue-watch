@@ -1,3 +1,192 @@
+<<<<<<< HEAD
+.container {
+  width: 900px; }
+
+body {
+  font-family: "PT Sans", sans-serif; }
+
+header {
+  height: 10%;
+  display: inline-block;
+  padding-bottom: 20px;
+  border-bottom: 2px solid lightgray;
+  margin-bottom: 10px; }
+  header h2 {
+    width: 65%;
+    float: right; }
+
+span.glyphicon {
+  padding-top: 5px; }
+
+.btn, input.form-control {
+  border-radius: 0;
+  border: 1px solid black; }
+
+.btn {
+  text-transform: uppercase; }
+
+nav.navbar.navbar-default {
+  background-color: white;
+  border: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  border-bottom: 2px solid lightgray;
+  border-radius: 0; }
+  nav.navbar.navbar-default a {
+    color: black; }
+  nav.navbar.navbar-default a:hover, nav.navbar.navbar-default a:focus {
+    color: #3f7ccd; }
+
+#homeBody {
+  height: 72vh;
+  margin-bottom: 20px; }
+  #homeBody div {
+    margin: 0;
+    padding: 0; }
+  #homeBody #search {
+    margin-left: 10px; }
+  #homeBody #addressSearch {
+    margin-bottom: 10px; }
+  #homeBody #checkedSubmit {
+    margin-top: 10px;
+    width: 95%; }
+  #homeBody #homeList {
+    height: 71vh;
+    overflow: scroll; }
+  #homeBody #categoryList form {
+    width: 95%;
+    padding: 10px;
+    border-bottom: 2px solid lightgray; }
+    #homeBody #categoryList form label {
+      font-size: 25px;
+      width: 90%;
+      margin: 0 0 0 10px; }
+      #homeBody #categoryList form label .glyphicon {
+        float: right; }
+  #homeBody #selectedCategory, #homeBody #checkedCategory {
+    width: 95%; }
+    #homeBody #selectedCategory #resourceList, #homeBody #checkedCategory #resourceList {
+      border-bottom: 2px solid lightgray; }
+      #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
+        font-size: 20px; }
+      #homeBody #selectedCategory #resourceList .resourceInfo, #homeBody #checkedCategory #resourceList .resourceInfo {
+        width: 90%;
+        display: inline-block;
+        height: 125px; }
+        #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
+          padding-left: 10px; }
+      #homeBody #selectedCategory #resourceList div#goNext, #homeBody #checkedCategory #resourceList div#goNext {
+        font-size: 25px;
+        width: 10%;
+        height: 125px;
+        padding-top: 15%;
+        vertical-align: middle;
+        float: right; }
+    #homeBody #selectedCategory #navBack, #homeBody #checkedCategory #navBack {
+      margin-top: 10px;
+      width: 100%;
+      border: none;
+      font-size: 20px;
+      border-radius: 0;
+      border-bottom: 2px solid lightgray; }
+      #homeBody #selectedCategory #navBack .glyphicon, #homeBody #checkedCategory #navBack .glyphicon {
+        float: left; }
+    #homeBody #selectedCategory #navBack:hover, #homeBody #checkedCategory #navBack:hover {
+      background-color: white;
+      font-weight: 600; }
+    #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
+      margin: 10px 0 0 0;
+      padding-bottom: 10px;
+      text-align: center;
+      border-bottom: 2px solid lightgray;
+      color: #3f7ccd; }
+  #homeBody #singleResource #mainResourceInfo {
+    width: 95%;
+    margin-bottom: 10px;
+    border-bottom: 2px solid lightgray;
+    padding-left: 10px; }
+  #homeBody #singleResource #website {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 95%;
+    border-bottom: 2px solid lightgray; }
+    #homeBody #singleResource #website a {
+      color: black; }
+      #homeBody #singleResource #website a .glyphicon {
+        float: right;
+        margin-right: 10px; }
+    #homeBody #singleResource #website a:hover {
+      text-decoration: none; }
+  #homeBody #singleResource #review {
+    border: 1px solid black;
+    width: 95%;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: white; }
+  #homeBody #singleResource #review:focus {
+    outline: 0; }
+
+#resourcePage div, #resourcePage span {
+  margin: 0;
+  padding: 0; }
+#resourcePage #searchBar {
+  margin-bottom: 10px; }
+#resourcePage #search {
+  width: 90%; }
+#resourcePage #catButtons .btn {
+  width: 95%; }
+#resourcePage #catButtons #newCat {
+  width: 100%; }
+#resourcePage #catButtons #updateCat {
+  margin-left: 10px; }
+#resourcePage table {
+  width: 100%; }
+  #resourcePage table h4 {
+    text-align: center;
+    color: #3f7ccd;
+    text-transform: uppercase;
+    font-size: 25px;
+    border-bottom: 2px solid lightgray;
+    padding-bottom: 10px; }
+  #resourcePage table th {
+    font-size: 20px;
+    text-transform: uppercase; }
+  #resourcePage table td {
+    padding: 0;
+    margin-bottom: 10px; }
+  #resourcePage table button {
+    margin: 5px 0; }
+
+#approvalsPage h2, #adminPage h2 {
+  text-align: center;
+  color: #3f7ccd;
+  text-transform: uppercase;
+  font-size: 25px;
+  border-bottom: 2px solid lightgray;
+  padding-bottom: 10px; }
+#approvalsPage table, #adminPage table {
+  width: 100%; }
+  #approvalsPage table th, #adminPage table th {
+    font-size: 20px;
+    text-transform: uppercase; }
+  #approvalsPage table td, #adminPage table td {
+    padding: 0;
+    margin-bottom: 10px; }
+  #approvalsPage table button, #adminPage table button {
+    margin: 5px 0; }
+#approvalsPage #addNew, #adminPage #addNew {
+  width: 100%;
+  margin: 5px 0 10px 0; }
+
+#login form {
+  background-color: white;
+  border: none;
+  box-shadow: none; }
+  #login form div {
+    padding: 0; }
+
+/*# sourceMappingURL=styles.css.map */
+=======
 html, body {
   height:100%;
 
@@ -144,3 +333,4 @@ ul.rating {
 .title{
   color: white;
 }
+>>>>>>> 6ddd74ebc8d981dc490e3f7d0de03c6e8b3ebb7e
