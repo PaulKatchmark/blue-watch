@@ -169,6 +169,7 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope) {
         console.log(data);
         $http.post('/categories', data).then(function(response) {
             controller.getcategories();
+
         }, function(error) {
             console.log('error creating resource', error);
         });
@@ -194,17 +195,15 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope) {
         var id = category._id;
 
         $http.put('/categories/' + id, body).then(function(response) {
-          var category = response.config.data.categoryName;
-
-          // controller.updateResourceCategory(category, id);
           controller.getcategories();
+          controller.getResources();
 
         }, function(error) {
             console.log('error editing categories', error);
         });
     }; //end of updateCategory
 
-  
+
     //find id to pass into delete category model confirmation
     controller.findCategoryId = function(id) {
         idToDelete = id;
