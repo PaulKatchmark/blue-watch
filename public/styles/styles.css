@@ -1,30 +1,58 @@
 .container {
-  width: 900px; }
+  width: 90%;
+  margin: auto;
+  height: 100vh; }
+  @media (max-width: 1000px) {
+    .container {
+      width: 100%;
+      margin: 0;
+      padding: 0; } }
 
 body {
-  font-family: "PT Sans", sans-serif; }
+  font-family: "PT Sans", sans-serif;
+  background-image: url("http://bluewatchus.org/wp-content/uploads/2015/11/car_1950x1279_LIGHT.jpg"); }
+  @media (max-width: 1000px) {
+    body {
+      background-image: none; } }
 
 header {
+  font-family: 'Raleway', sans-serif;
+  color: #747474;
+  width: 100%;
   height: 10%;
   display: inline-block;
   padding-bottom: 20px;
-  border-bottom: 2px solid lightgray;
-  margin-bottom: 10px; }
+  padding-top: 5px;
+  border-bottom: 2px solid lightgray; }
+  @media (max-width: 750px) {
+    header {
+      margin-bottom: 5px;
+      padding-bottom: 5px; } }
   header h2 {
-    width: 65%;
+    margin-top: 40px;
+    font-size: 15px;
+    width: 70%;
     float: right; }
+    @media (max-width: 750px) {
+      header h2 {
+        margin-top: 10px;
+        font-size: 10px;
+        margin-right: 20px; } }
+  header img {
+    width: 20%; }
 
 span.glyphicon {
   padding-top: 5px; }
 
-.btn, input.form-control {
-  border-radius: 0;
+.btn, input.form-control, select.form-control {
+  border-radius: 0 !important;
   border: 1px solid black; }
 
 .btn {
   text-transform: uppercase; }
 
 nav.navbar.navbar-default {
+  font-family: 'Raleway', sans-serif;
   background-color: white;
   border: none;
   text-transform: uppercase;
@@ -35,10 +63,25 @@ nav.navbar.navbar-default {
     color: black; }
   nav.navbar.navbar-default a:hover, nav.navbar.navbar-default a:focus {
     color: #3f7ccd; }
+  nav.navbar.navbar-default #hamburger {
+    width: 100%; }
+  nav.navbar.navbar-default button {
+    margin-bottom: 20px; }
+  @media (max-width: 750px) {
+    nav.navbar.navbar-default {
+      font-size: 10px; }
+      nav.navbar.navbar-default button {
+        margin-bottom: 15px; } }
+
+.navbar-collapse {
+  border: none; }
 
 #homeBody {
   height: 72vh;
   margin-bottom: 20px; }
+  @media (max-width: 750px) {
+    #homeBody {
+      font-size: 12px; } }
   #homeBody div {
     margin: 0;
     padding: 0; }
@@ -52,35 +95,72 @@ nav.navbar.navbar-default {
   #homeBody #homeList {
     height: 71vh;
     overflow: scroll; }
+  #homeBody #map {
+    margin: 0 0 0 10px;
+    height: 71.5vh; }
+    @media (max-width: 750px) {
+      #homeBody #map {
+        margin: 0 0 10px 0;
+        height: 25vh; } }
+  @media (max-width: 750px) {
+    #homeBody #searchBars input {
+      font-size: 12px;
+      padding: 5px; } }
   #homeBody #categoryList form {
-    width: 95%;
+    width: 100%;
     padding: 10px;
     border-bottom: 2px solid lightgray; }
     #homeBody #categoryList form label {
       font-size: 25px;
       width: 90%;
-      margin: 0 0 0 10px; }
+      margin: 0; }
+      @media (max-width: 750px) {
+        #homeBody #categoryList form label {
+          font-size: 18px; } }
       #homeBody #categoryList form label .glyphicon {
         float: right; }
   #homeBody #selectedCategory, #homeBody #checkedCategory {
-    width: 95%; }
+    width: 100%; }
+    @media (max-width: 750px) {
+      #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
+        font-size: 18px; } }
     #homeBody #selectedCategory #resourceList, #homeBody #checkedCategory #resourceList {
       border-bottom: 2px solid lightgray; }
       #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
         font-size: 20px; }
+        @media (max-width: 750px) {
+          #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
+            font-size: 12px; } }
       #homeBody #selectedCategory #resourceList .resourceInfo, #homeBody #checkedCategory #resourceList .resourceInfo {
         width: 90%;
         display: inline-block;
         height: 125px; }
+        @media (max-width: 750px) {
+          #homeBody #selectedCategory #resourceList .resourceInfo, #homeBody #checkedCategory #resourceList .resourceInfo {
+            font-size: 15px;
+            height: 75px; } }
         #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
           padding-left: 10px; }
+          @media (max-width: 750px) {
+            #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
+              font-size: 10px; } }
+        #homeBody #selectedCategory #resourceList .resourceInfo span, #homeBody #checkedCategory #resourceList .resourceInfo span {
+          font-size: 10px; }
+          @media (max-width: 750px) {
+            #homeBody #selectedCategory #resourceList .resourceInfo span, #homeBody #checkedCategory #resourceList .resourceInfo span {
+              font-size: 8px; } }
       #homeBody #selectedCategory #resourceList div#goNext, #homeBody #checkedCategory #resourceList div#goNext {
         font-size: 25px;
         width: 10%;
         height: 125px;
-        padding-top: 15%;
+        padding-top: 10%;
         vertical-align: middle;
         float: right; }
+        @media (max-width: 750px) {
+          #homeBody #selectedCategory #resourceList div#goNext, #homeBody #checkedCategory #resourceList div#goNext {
+            font-size: 10px;
+            height: 75px;
+            padding-top: 8%; } }
     #homeBody #selectedCategory #navBack, #homeBody #checkedCategory #navBack {
       margin-top: 10px;
       width: 100%;
@@ -90,6 +170,9 @@ nav.navbar.navbar-default {
       border-bottom: 2px solid lightgray; }
       #homeBody #selectedCategory #navBack .glyphicon, #homeBody #checkedCategory #navBack .glyphicon {
         float: left; }
+      @media (max-width: 750px) {
+        #homeBody #selectedCategory #navBack, #homeBody #checkedCategory #navBack {
+          font-size: 18px; } }
     #homeBody #selectedCategory #navBack:hover, #homeBody #checkedCategory #navBack:hover {
       background-color: white;
       font-weight: 600; }
@@ -125,11 +208,20 @@ nav.navbar.navbar-default {
   #homeBody #singleResource #review:focus {
     outline: 0; }
 
+@media (max-width: 750px) {
+  #resourcePage .btn {
+    font-size: 10px;
+    padding: 5px; } }
 #resourcePage div, #resourcePage span {
   margin: 0;
   padding: 0; }
 #resourcePage #searchBar {
   margin-bottom: 10px; }
+  @media (max-width: 750px) {
+    #resourcePage #searchBar input {
+      font-size: 10px;
+      padding: 5px;
+      height: 26px; } }
 #resourcePage #search {
   width: 90%; }
 #resourcePage #catButtons .btn {
@@ -147,15 +239,28 @@ nav.navbar.navbar-default {
     font-size: 25px;
     border-bottom: 2px solid lightgray;
     padding-bottom: 10px; }
+    @media (max-width: 750px) {
+      #resourcePage table h4 {
+        font-size: 20px; } }
   #resourcePage table th {
     font-size: 20px;
     text-transform: uppercase; }
+    @media (max-width: 750px) {
+      #resourcePage table th {
+        font-size: 15px; } }
   #resourcePage table td {
     padding: 0;
     margin-bottom: 10px; }
+    @media (max-width: 750px) {
+      #resourcePage table td {
+        font-size: 10px; } }
   #resourcePage table button {
     margin: 5px 0; }
 
+@media (max-width: 750px) {
+  #approvalsPage .btn, #adminPage .btn {
+    font-size: 10px;
+    padding: 5px; } }
 #approvalsPage h2, #adminPage h2 {
   text-align: center;
   color: #3f7ccd;
@@ -163,14 +268,23 @@ nav.navbar.navbar-default {
   font-size: 25px;
   border-bottom: 2px solid lightgray;
   padding-bottom: 10px; }
+  @media (max-width: 750px) {
+    #approvalsPage h2, #adminPage h2 {
+      font-size: 20px; } }
 #approvalsPage table, #adminPage table {
   width: 100%; }
   #approvalsPage table th, #adminPage table th {
     font-size: 20px;
     text-transform: uppercase; }
+    @media (max-width: 750px) {
+      #approvalsPage table th, #adminPage table th {
+        font-size: 12px; } }
   #approvalsPage table td, #adminPage table td {
     padding: 0;
     margin-bottom: 10px; }
+    @media (max-width: 750px) {
+      #approvalsPage table td, #adminPage table td {
+        font-size: 10px; } }
   #approvalsPage table button, #adminPage table button {
     margin: 5px 0; }
 #approvalsPage #addNew, #adminPage #addNew {
@@ -181,6 +295,18 @@ nav.navbar.navbar-default {
   background-color: white;
   border: none;
   box-shadow: none; }
+  @media (max-width: 750px) {
+    #login form {
+      font-size: 10px; } }
+  @media (max-width: 750px) {
+    #login form .btn {
+      font-size: 10px;
+      padding: 5px; } }
+  @media (max-width: 750px) {
+    #login form input {
+      font-size: 10px;
+      padding: 5px;
+      height: 26px; } }
 
 .rating {
   color: #a9a9a9;

@@ -1,28 +1,55 @@
 $font:'PT Sans', sans-serif;
 $mainborder: 2px solid lightgray;
-
 .container {
-    width: 900px;
+    width: 90%;
+    margin: auto;
+    height: 100vh;
+    @media (max-width: 1000px) {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
 }
 body {
   font-family: $font;
+  background-image: url("http://bluewatchus.org/wp-content/uploads/2015/11/car_1950x1279_LIGHT.jpg");
+  @media (max-width: 1000px) {
+    background-image: none;
+  }
 }
 header{
+  font-family: 'Raleway', sans-serif;
+  color: #747474;
+  width: 100%;
   height: 10%;
   display: inline-block;
   padding-bottom: 20px;
+  padding-top:5px;
   border-bottom: $mainborder;
-  margin-bottom: 10px;
+  @media (max-width: 750px) {
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+}
   h2{
-    width: 65%;
+      @media (max-width: 750px) {
+        margin-top: 10px;
+        font-size: 10px;
+        margin-right: 20px;
+      }
+    margin-top: 40px;
+    font-size: 15px;
+    width: 70%;
     float: right;
+  }
+  img{
+    width:20%;
   }
 }
 span.glyphicon {
   padding-top: 5px;
 }
-.btn, input.form-control {
-  border-radius: 0;
+.btn, input.form-control, select.form-control {
+  border-radius: 0 !important;
   border: 1px solid black;
 }
 .btn{
@@ -30,6 +57,7 @@ span.glyphicon {
 }
 
 nav.navbar.navbar-default {
+  font-family: 'Raleway', sans-serif;
   background-color: white;
   border: none;
   text-transform: uppercase;
@@ -42,10 +70,29 @@ nav.navbar.navbar-default {
   a:hover, a:focus {
     color: #3f7ccd;
   }
+#hamburger {
+  width: 100%;
 
 }
 
+ button{
+   margin-bottom: 20px;
+ }
+ @media (max-width: 750px) {
+   font-size: 10px;
+   button{
+     margin-bottom: 15px;
+   }
+ }
+}
+.navbar-collapse{
+  border: none;
+}
+
 #homeBody {
+  @media (max-width: 750px) {
+    font-size: 12px;
+  }
   div {
     margin: 0;
     padding: 0;
@@ -65,6 +112,23 @@ nav.navbar.navbar-default {
   #homeList{
     height: 71vh;
     overflow: scroll;
+    // margin: 0 5px;
+  }
+  #map{
+    margin: 0 0 0 10px;
+    height:71.5vh;
+    @media (max-width: 750px) {
+      margin: 0 0 10px 0;
+      height:25vh;
+    }
+  }
+  #searchBars{
+    input {
+      @media (max-width: 750px) {
+        font-size: 12px;
+        padding: 5px;
+      }
+    }
   }
   #categoryList{
     form{
@@ -72,39 +136,71 @@ nav.navbar.navbar-default {
       label {
         font-size: 25px;
         width: 90%;
-        margin:0 0 0 10px;
+        margin:0;
+        @media (max-width: 750px) {
+          font-size: 18px;
+        }
         .glyphicon {
           float: right;
         }
       }
-        width: 95%;
+        width: 100%;
         padding: 10px;
         border-bottom: $mainborder;
   }
   }
   #selectedCategory, #checkedCategory{
-    width: 95%;
+    width: 100%;
+    h3 {
+    @media (max-width: 750px) {
+      font-size: 18px;
+    }
+  }
     #resourceList{
       border-bottom: $mainborder;
       h5{
         font-size: 20px;
+          @media (max-width: 750px) {
+            font-size: 12px;
+          }
       }
       .resourceInfo{
         width: 90%;
         display: inline-block;
         height: 125px;
+        @media (max-width: 750px) {
+          font-size: 15px;
+          height: 75px;
+        }
         p{
           padding-left: 10px;
+          @media (max-width: 750px) {
+            font-size: 10px;
+          }
+        }
+        span{
+          font-size: 10px;
+          @media (max-width: 750px) {
+            font-size: 8px;
+
+          }
         }
       }
       div#goNext{
       font-size: 25px;
       width: 10%;
       height: 125px;
-      padding-top: 15%;
+      padding-top: 10%;
       vertical-align: middle;
       float: right;
+      @media (max-width: 750px) {
+        font-size: 10px;
+        height: 75px;
+        padding-top: 8%;
       }
+      }
+
+
     }
     #navBack{
       margin-top: 10px;
@@ -115,6 +211,9 @@ nav.navbar.navbar-default {
       border-bottom: $mainborder;
       .glyphicon {
         float: left;
+      }
+      @media (max-width: 750px) {
+        font-size: 18px;
       }
     }
     #navBack:hover{
@@ -168,12 +267,25 @@ nav.navbar.navbar-default {
 }//end of homeBody
 
 #resourcePage{
+  .btn{
+    @media (max-width: 750px) {
+      font-size: 10px;
+      padding: 5px;
+    }
+  }
   div, span {
     margin: 0;
     padding: 0;
   }
   #searchBar{
     margin-bottom: 10px;
+    input {
+      @media (max-width: 750px) {
+        font-size: 10px;
+        padding: 5px;
+        height: 26px;
+      }
+    }
   }
   #search{
     width:90%;
@@ -198,14 +310,23 @@ nav.navbar.navbar-default {
       font-size: 25px;
       border-bottom: $mainborder;
       padding-bottom: 10px;
+      @media (max-width: 750px) {
+        font-size: 20px;
+      }
     }
     th {
       font-size: 20px;
       text-transform: uppercase;
+      @media (max-width: 750px) {
+        font-size: 15px;
+      }
     }
     td{
       padding: 0;
       margin-bottom: 10px;
+      @media (max-width: 750px) {
+        font-size: 10px;
+      }
     }
     button{
       margin: 5px 0;
@@ -214,6 +335,12 @@ nav.navbar.navbar-default {
 }
 
 #approvalsPage, #adminPage {
+  .btn{
+    @media (max-width: 750px) {
+      font-size: 10px;
+      padding: 5px;
+    }
+  }
   h2{
     text-align: center;
     color: #3f7ccd;
@@ -221,16 +348,25 @@ nav.navbar.navbar-default {
     font-size: 25px;
     border-bottom: $mainborder;
     padding-bottom: 10px;
+    @media (max-width: 750px) {
+      font-size: 20px;
+    }
   }
   table{
     width: 100%;
     th {
       font-size: 20px;
       text-transform: uppercase;
+      @media (max-width: 750px) {
+        font-size: 12px;
+      }
     }
     td{
       padding: 0;
       margin-bottom: 10px;
+      @media (max-width: 750px) {
+        font-size: 10px;
+      }
     }
     button{
       margin: 5px 0;
@@ -247,6 +383,22 @@ nav.navbar.navbar-default {
     background-color: white;
     border: none;
     box-shadow: none;
+    @media (max-width: 750px) {
+      font-size: 10px;
+    }
+    .btn{
+      @media (max-width: 750px) {
+        font-size: 10px;
+        padding: 5px;
+      }
+    }
+    input {
+      @media (max-width: 750px) {
+        font-size: 10px;
+        padding: 5px;
+        height: 26px;
+      }
+    }
   }
 }
 

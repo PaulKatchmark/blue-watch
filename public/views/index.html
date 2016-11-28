@@ -9,6 +9,7 @@
     <link href="vendors/rating/rating.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTnFwlJTS9i343GuBYJ0jmDGvEEx3XCWg"></script>
 
@@ -39,12 +40,21 @@
   </head>
   <body>
       <div class="container">
+        <div class="row col-xs-12" style="width: 100%; margin-left: 0; background-color: white; padding: 0;">
         <header>
         <img href="http://bluewatchus.org/" alt="Bluewatch Logo" class="bluewatchLogo" src="http://bluewatchus.org/wp-content/uploads/2015/12/BW_REV_224x120.png">
-        <h2>Wellness Resources and Family Support for Law Enforcement</h2>
+        <h2>Blue Watch - Wellness Resources and Family Support for Law Enforcement</h2>
       </header>
 
       <nav class="navbar navbar-default" ng-controller="LogoutController as logout">
+        <div id="hamburger">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          </div>
+         <div class="collapse navbar-collapse" id="myNavbar">
             <ol class="nav navbar-nav navbar-left">
               <li><a href="/home">Home</a></li>
               <li><a href="/resources">Resources</a></li>
@@ -56,13 +66,14 @@
               <li><a ng-controller="AdminSetupController as admin">{{admin.adminservice.user}}</a></li>
               <li ng-click="logout.logout()"><a href="">Logout</a></li>
             </ol>
+          </div>
         </nav>
 
-        <div ng-view></div>
+        <div ng-view style="padding: 0 20px;"></div>
 
 
 
     </div>
-
+    </div>
   </body>
 </html>

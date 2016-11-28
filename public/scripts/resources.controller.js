@@ -145,8 +145,10 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope) {
                 long: long.toString()
             };
             // console.log(id);
+
             $http.put('/resource/' + id, body).then(function(response) {
                 controller.getResources();
+                controller.setIconInUse();
             }, function(error) {
                 console.log('error editing resource', error);
             });
@@ -169,7 +171,7 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope) {
         console.log(data);
         $http.post('/categories', data).then(function(response) {
             controller.getcategories();
-
+            controller.setIconInUse();
         }, function(error) {
             console.log('error creating resource', error);
         });
