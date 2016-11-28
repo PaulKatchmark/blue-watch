@@ -81,7 +81,7 @@ router.put('/:id', function(req, res) {
 router.post('/mail', function(req,res){
 
   //   console.log('in mail get');
-  // // console.log('email', req.user.email);
+
   //
   // var authConfig = {
   //   user: 'levy.kohout@gmail.com',

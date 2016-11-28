@@ -1,40 +1,58 @@
 .container {
-  width: 100%; }
+  width: 90%;
+  margin: auto;
+  height: 100vh; }
+  @media (max-width: 1000px) {
+    .container {
+      width: 100%;
+      margin: 0;
+      padding: 0; } }
 
 body {
-  font-family: "PT Sans", sans-serif; }
+  font-family: "PT Sans", sans-serif;
+  background-image: url("http://bluewatchus.org/wp-content/uploads/2015/11/car_1950x1279_LIGHT.jpg"); }
+  @media (max-width: 1000px) {
+    body {
+      background-image: none; } }
 
 header {
+  font-family: 'Raleway', sans-serif;
+  color: #747474;
   width: 100%;
   height: 10%;
   display: inline-block;
   padding-bottom: 20px;
-  border-bottom: 2px solid lightgray;
-  margin-bottom: 10px; }
+  padding-top: 5px;
+  border-bottom: 2px solid lightgray; }
   @media (max-width: 750px) {
     header {
       margin-bottom: 5px;
-      padding-bottom: 5px; }
-      header h2 {
-        margin-top: 10px;
-        font-size: 15px; } }
+      padding-bottom: 5px; } }
   header h2 {
+    margin-top: 40px;
+    font-size: 15px;
     width: 70%;
     float: right; }
+    @media (max-width: 750px) {
+      header h2 {
+        margin-top: 10px;
+        font-size: 10px;
+        margin-right: 20px; } }
   header img {
-    width: 30%; }
+    width: 20%; }
 
 span.glyphicon {
   padding-top: 5px; }
 
-.btn, input.form-control {
-  border-radius: 0;
+.btn, input.form-control, select.form-control {
+  border-radius: 0 !important;
   border: 1px solid black; }
 
 .btn {
   text-transform: uppercase; }
 
 nav.navbar.navbar-default {
+  font-family: 'Raleway', sans-serif;
   background-color: white;
   border: none;
   text-transform: uppercase;
@@ -45,6 +63,8 @@ nav.navbar.navbar-default {
     color: black; }
   nav.navbar.navbar-default a:hover, nav.navbar.navbar-default a:focus {
     color: #3f7ccd; }
+  nav.navbar.navbar-default #hamburger {
+    width: 100%; }
   nav.navbar.navbar-default button {
     margin-bottom: 20px; }
   @media (max-width: 750px) {
@@ -133,7 +153,7 @@ nav.navbar.navbar-default {
         font-size: 25px;
         width: 10%;
         height: 125px;
-        padding-top: 15%;
+        padding-top: 10%;
         vertical-align: middle;
         float: right; }
         @media (max-width: 750px) {
@@ -188,11 +208,20 @@ nav.navbar.navbar-default {
   #homeBody #singleResource #review:focus {
     outline: 0; }
 
+@media (max-width: 750px) {
+  #resourcePage .btn {
+    font-size: 10px;
+    padding: 5px; } }
 #resourcePage div, #resourcePage span {
   margin: 0;
   padding: 0; }
 #resourcePage #searchBar {
   margin-bottom: 10px; }
+  @media (max-width: 750px) {
+    #resourcePage #searchBar input {
+      font-size: 10px;
+      padding: 5px;
+      height: 26px; } }
 #resourcePage #search {
   width: 90%; }
 #resourcePage #catButtons .btn {
@@ -210,15 +239,28 @@ nav.navbar.navbar-default {
     font-size: 25px;
     border-bottom: 2px solid lightgray;
     padding-bottom: 10px; }
+    @media (max-width: 750px) {
+      #resourcePage table h4 {
+        font-size: 20px; } }
   #resourcePage table th {
     font-size: 20px;
     text-transform: uppercase; }
+    @media (max-width: 750px) {
+      #resourcePage table th {
+        font-size: 15px; } }
   #resourcePage table td {
     padding: 0;
     margin-bottom: 10px; }
+    @media (max-width: 750px) {
+      #resourcePage table td {
+        font-size: 10px; } }
   #resourcePage table button {
     margin: 5px 0; }
 
+@media (max-width: 750px) {
+  #approvalsPage .btn, #adminPage .btn {
+    font-size: 10px;
+    padding: 5px; } }
 #approvalsPage h2, #adminPage h2 {
   text-align: center;
   color: #3f7ccd;
@@ -226,14 +268,23 @@ nav.navbar.navbar-default {
   font-size: 25px;
   border-bottom: 2px solid lightgray;
   padding-bottom: 10px; }
+  @media (max-width: 750px) {
+    #approvalsPage h2, #adminPage h2 {
+      font-size: 20px; } }
 #approvalsPage table, #adminPage table {
   width: 100%; }
   #approvalsPage table th, #adminPage table th {
     font-size: 20px;
     text-transform: uppercase; }
+    @media (max-width: 750px) {
+      #approvalsPage table th, #adminPage table th {
+        font-size: 12px; } }
   #approvalsPage table td, #adminPage table td {
     padding: 0;
     margin-bottom: 10px; }
+    @media (max-width: 750px) {
+      #approvalsPage table td, #adminPage table td {
+        font-size: 10px; } }
   #approvalsPage table button, #adminPage table button {
     margin: 5px 0; }
 #approvalsPage #addNew, #adminPage #addNew {
@@ -244,6 +295,18 @@ nav.navbar.navbar-default {
   background-color: white;
   border: none;
   box-shadow: none; }
+  @media (max-width: 750px) {
+    #login form {
+      font-size: 10px; } }
+  @media (max-width: 750px) {
+    #login form .btn {
+      font-size: 10px;
+      padding: 5px; } }
+  @media (max-width: 750px) {
+    #login form input {
+      font-size: 10px;
+      padding: 5px;
+      height: 26px; } }
 
 .rating {
   color: #a9a9a9;
