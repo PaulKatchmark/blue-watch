@@ -1,3 +1,14 @@
+<!-- <p>
+  <a href="/login">Login</a>
+</p> -->
+<!-- <div class="row">
+  <div id="input" class="col-sm-10">
+    <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
+  </div>
+  <div id="button" class="col-sm-2">
+  </div>
+</div>
+<br /> -->
 <div id="homeBody">
 <div class="row">
   <div class="col-sm-6 col-sm-push-6">
@@ -8,6 +19,7 @@
   <div id="homeList" class="col-sm-6 col-sm-pull-6">
     <div id=searchBars>
       <div class="row" id="addressSearch">
+<<<<<<< HEAD
           <div class="col-xs-9">
             <input type="text" id="address-input" placeholder="get an address" class="form-control">
 
@@ -19,19 +31,37 @@
             <option value="9">50</option>
             <option value="8">100</option>
           </select>
+=======
+          <div class="col-xs-6">
+            <input type="text" id="address-input" placeholder="Set your location" class="form-control">
+          </div>
+          <div class="col-xs-2">
+            <label style="text-align: center;">Radius:</label>
+          </div>
+      <div class="col-xs-1">
+        <select class="form-control" name="miles" ng-model="home.distance">
+          <option value="11">10</option>
+          <option value="10">20</option>
+          <option value="9">50</option>
+          <option value="8">100</option>
+        </select>
 
-        </div>
-        <div class="col-xs-3">
-          <button ng-click="home.searchAddress()" id="search" class="btn btn-default">Search</button>
+      </div>
+>>>>>>> 0e3db50edb50f22a63f95d1758188c6d0363fda6
+
+      <div class="col-xs-3">
+        <button ng-click="home.searchAddress()" id="search" class="btn btn-default pull-right">Search</button>
+      </div>
 
 
+</div>
 
       <div class="row">
           <div class="col-xs-9">
             <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
           </div>
           <div class="col-xs-3">
-            <button type="submit" class="btn btn-default pull-right" id="search" ng-click="home.searchResources(home.search)">Search</button>
+            <button type="button" class="btn btn-default pull-right" id="search" >Search</button>
           </div>
       </div>
   </div>
@@ -50,14 +80,12 @@
 
     <div id="categoryList" ng-hide="home.change.categoryList">
       <div ng-repeat="resource in home.resources | unique:'category'">
-        <div>
           <form>
             <input type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'"/>
 
             <label value="resource.category.categoryName" ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}<span class="glyphicon glyphicon-menu-right"></span></label>
+      </form>
 
-          </form>
-        </div>
       </div>
       <button class="btn btn-default" id="checkedSubmit" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">See Checked Categories</button>
     </div>
@@ -126,17 +154,7 @@
         <button id="review" href="#addReview" ng-click="home.getId(home.selectedResource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span> Give a review</button>
         </div>
 
-        <p>Reviews ({{home.selectedResource.reviews.number}})</p>
-        <div ng-repeat="review in home.selectedResource.reviews">
-            <p>{{review.comments}}</p>
-            <p id="starReview">{{review.rating}} stars</p>
-          <p>{{review.stars}}</p>
-
-
-
-  <div class="average">
-    <p>Average Rating: <span star-rating rating-value="home.selectedResource.averageRating" max="5" ></span> {{ home.selectedResource.averageRating }} stars</p>
-  </div>
+        <p>Average Rating: <span star-rating rating-value="home.selectedResource.averageRating" max="5" ></span> {{ home.selectedResource.averageRating }} stars ({{home.selectedResource.numberOfReviews}} Reviews) </p>
         <div ng-repeat="review in home.selectedReviewArrays">
             <span star-rating rating-value="review.rating" max="5" ></span>
             <p>{{review.comments}}</p>
@@ -147,8 +165,7 @@
 </div>
   </div>
   </div>
-</div>
-</div>
+
   <div id="addReview" class="modal fade">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -161,13 +178,13 @@
                       <div class="form-group">
                         <div class="row">
                           <label class="control-label col-xs-2">Rating</label>
-                          <div class="col-xs-9 pull-left">
-                            <ul id="el" class="pull-left"style="list-style-type: none; padding-left: 0;"></ul>
+                          <div class="col-xs-8 text-align:left;">
+                            <ul id="el" style="list-style-type: none;"></ul>
                           </div>
                         </div>
                         <div class="row">
                           <label class="control-label col-xs-2">Comments</label>
-                          <div class="col-xs-9">
+                          <div class="col-xs-8">
                               <textarea ng-model="home.reviewNotes" type="text" class="form-control" ></textarea>
                           </div>
                       </div>
@@ -175,9 +192,13 @@
               </form>
               </div>
               <div class="modal-footer">
-                  <button ng-click="home.createReview(home.reviewNotes)" type="button" class="btn btn-default" data-dismiss="modal" >Submit Review</button>
+                  <button ng-click="home.createReview(home.reviewNotes)" type="button" class="btn btn-primary" data-dismiss="modal" >Submit Review</button>
               </div>
 
           </div>
       </div>
   </div>
+
+
+</div>
+</div>

@@ -62,9 +62,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
                   if(info.numberOfReviews>0){
                       info.review.forEach(function(review){
                           totalRating +=review.rating;
-                          console.log(totalRating);
                           info.averageRating = totalRating/info.numberOfReviews;
-                          console.log(info.averageRating);
                       });
                   } else{
                       info.averageRating = 0;
@@ -102,13 +100,13 @@ function HomeController($http, $location, $scope, ResourcesService) {
         info.marker.content =
 
         '<span star-rating rating-value="'+info.averageRating+'" max="5"></span>'
-        +'<div class="infoWindowContent">' + info.description + '</div>';
+        +'<div class="infoWindowContent">' + info.description + '</div> Contact: '+info.contact+'</div></div>';
 
         info.marker.infoWindow = new google.maps.InfoWindow();
         //opens bubble on marker click
         google.maps.event.addListener(info.marker, 'click', function() {
             controller.closeInfoWindow();
-            info.marker.infoWindow.setContent('<p>' + info.marker.title
+            info.marker.infoWindow.setContent('<p><strong>' + info.marker.title +'</strong>'
             + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
         });
@@ -293,8 +291,13 @@ function HomeController($http, $location, $scope, ResourcesService) {
         };
     }
 
-    controller.searchAddress = function() {
+controller.searchResources = function(search){
+    console.log(search);
+};
 
+
+    controller.searchAddress = function() {
+        console.log(addressInput);
         var addressInput = document.getElementById('address-input').value;
 
         var distance = parseFloat(controller.distance);
@@ -406,35 +409,13 @@ angular.module('blueWatchApp')
 
             var updateStars = function () {
                 scope.stars = [];
-                if(scope.ratingValue%1 ==0){
+                // if(scope.ratingValue%1 ==0){
                 for (var i = 0; i < scope.max; i++) {
                     scope.stars.push({
-                        filled: i < scope.ratingValue
-                        // half-filled: scope.ratingValue % 1 > 0 && i === Math.floor(scope.ratingValue)
+                        filled: i < scope.ratingValue,
+                         half: scope.ratingValue % 1 > 0 && i === Math.floor(scope.ratingValue)
                     });
                 }
-            } else {
-                var newRatingValue = parseInt(scope.ratingValue);
-                // creates the full stars
-                for (var i = 0; i < newRatingValue; i++) {
-                    scope.stars.push({
-                        filled: i < newRatingValue
-                    });
-                }
-                //creates the half star
-                scope.stars.push({
-                    half: newRatingValue+1
-                });
-
-                //creates the remaining stars empty stars
-                for(var j=0; j< scope.max- (newRatingValue+1);j++){
-                    scope.stars.push({
-                        filled: 0
-                    });
-                }
-
-            }
-
             };
             scope.toggle = function (index) {
                scope.ratingValue = index + 1;
