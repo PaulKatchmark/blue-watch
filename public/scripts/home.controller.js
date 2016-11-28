@@ -109,8 +109,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
             info.marker.infoWindow.setContent('<p><strong>' + info.marker.title +'</strong>'
             + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
-            controller.change.categoryList = false;
-            $scope.$apply();
+
 
         });
         //close infoWindow when clicked anywhere on map
