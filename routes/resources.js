@@ -41,7 +41,6 @@ router.delete('/:id', function(req, res) {
   var id = req.params.id;
   console.log(id);
 
-//finds all users inside admin database
   Resource.remove({ "_id" : id }).then(function(resource){
         res.sendStatus(200);
 
@@ -85,5 +84,27 @@ router.put('/:id', function(req, res) {
   });
 });
 
+//update resource category on category update
+router.put('/:resources', function(req, res) {
 
+  console.log('req in route', req);
+
+
+  //  Resource.updateMany({"category._id": "5835c6d87358a9058e9b5272"},
+    //{$set: {categoryName: "Support2", "category.categoryName": "Support2" }},
+    // function(err, resource){
+  //     if (err){
+  //       res.sendStatus(500);
+  //       return;
+  //     }
+  //
+  //     resource.save(function (err, updatedResource){
+  //       if (err){
+  //         res.sendStatus(500);
+  //         return;
+  //       }
+  //       res.send(updatedResource);
+  //     });
+  //   });
+  });
 module.exports = router;
