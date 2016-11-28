@@ -79,7 +79,7 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope) {
 
         $http.get('/resource').then(function(response) {
             controller.resources = response.data;
-            // console.log(response);
+            console.log(response);
         });
     };
     controller.getResources();
@@ -188,25 +188,23 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope) {
 
     controller.getcategories();
 
-    //updateCategory function
+//updateCategory function
     controller.updateCategory = function(category) {
-        // console.log(category);
         var body = {
             categoryName: category.categoryName,
             color: category.color
         };
+        var id = category._id;
 
-        $http.put('/categories/' + category._id, body).then(function(response) {
-            controller.getcategories();
-            // this will pass on to a new update resources function...
-            // var category = response.data.categoryName;
-            // var id = response.data._id;
-            // controller.updateResourceCategory(category, id);
+        $http.put('/categories/' + id, body).then(function(response) {
+          controller.getcategories();
+          controller.getResources();
 
         }, function(error) {
             console.log('error editing categories', error);
         });
     }; //end of updateCategory
+
 
     //find id to pass into delete category model confirmation
     controller.findCategoryId = function(id) {

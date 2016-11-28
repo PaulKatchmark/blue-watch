@@ -41,7 +41,6 @@ router.delete('/:id', function(req, res) {
   var id = req.params.id;
   console.log(id);
 
-//finds all users inside admin database
   Resource.remove({ "_id" : id }).then(function(resource){
         res.sendStatus(200);
 
@@ -84,7 +83,6 @@ router.put('/:id', function(req, res) {
     });
   });
 });
-
 
 
 module.exports = router;
