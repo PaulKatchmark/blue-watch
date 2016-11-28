@@ -93,6 +93,9 @@ nav.navbar.navbar-default {
   border: none;
 }
 
+#deleteButton{
+  color: red;
+}
 #homeBody {
   @media (max-width: 750px) {
     font-size: 12px;

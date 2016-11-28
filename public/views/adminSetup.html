@@ -24,7 +24,7 @@
             <button ng-click="admin.captureInfo(users._id, users.email, users.password, users.accessLevel)" href="#editAdmin" data-toggle="modal" class="btn btn-default pull-right">Edit</button>
         </td>
         <td>
-            <button ng-click="admin.deleteUser(users._id)" data-toggle="modal" class="btn btn-default pull-right">Delete</button>
+            <button  id="deleteButton" ng-click="admin.deleteUser(users._id)" data-toggle="modal" class="btn btn-default pull-right">Delete</button>
         </td>
     </tr>
 </table>

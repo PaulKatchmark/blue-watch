@@ -79,6 +79,9 @@ nav.navbar.navbar-default {
 .navbar-collapse {
   border: none; }
 
+#deleteButton {
+  color: red; }
+
 #homeBody {
   height: 72vh;
   margin-bottom: 20px; }
