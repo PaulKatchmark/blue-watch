@@ -297,19 +297,19 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
         var addressInput = document.getElementById('address-input').value;
 
+        var distance = parseFloat(controller.distance);
         var geocoder = new google.maps.Geocoder();
 
         geocoder.geocode({
             address: addressInput
         }, function(results, status) {
-
             if (status == google.maps.GeocoderStatus.OK) {
 
                 var myResult = results[0].geometry.location;
 
                 controller.map.setCenter(myResult);
 
-                controller.map.setZoom(8); //this zoom level needs to be changed - was at 15. jsm
+                controller.map.setZoom(distance);
 
             } else { // if status value is not equal to "google.maps.GeocoderStatus.OK"
 
