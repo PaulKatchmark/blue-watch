@@ -15,7 +15,6 @@
   <div id="homeList" class="col-sm-5">
 
     <div class="row" id="addressSearch">
-      <div>
         <div class="col-sm-9">
           <input type="text" id="address-input" placeholder="get an address" class="form-control">
 
@@ -25,17 +24,17 @@
 
         </div>
       </div>
-    </div>
+
 
     <div class="row">
-      <div>
+
         <div class="col-sm-9">
           <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
         </div>
         <div class="col-sm-3">
           <button type="submit" class="btn btn-default" id="search" ng-click="home.searchResources(home.search)">Search</button>
         </div>
-      </div>
+
     </div>
 
 <div ng-if="home.search">
@@ -67,28 +66,48 @@
     <div id="selectedCategory" ng-show="home.change.selectedCategory">
         <button class="btn btn-default"  id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
         <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
+
       <div id="resourceList" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
       <div id="goNext"><p class="glyphicon glyphicon-menu-right"></p></div><div class="resourceInfo">
           <h5 ng-if="resource.marker.boundsStatus">{{resource.company}}</h5>
           <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
           <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
       </div>
+
+      <div id="class" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
+        <a ng-if="resource.marker.boundsStatus" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
+        <span star-rating rating-value="resource.averageRating" max="5" ></span>
+        <a ng-click="home.openInfoWindow($event, resource.marker, resource)"> ({{resource.numberOfReviews}} Reviews)</a>
+        <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
+        <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
+
       </div>
     </div>
+      </div>
 
     <div id="checkedCategory" ng-show="home.change.checkedCategory">
         <button class="btn btn-default"  id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
       <div ng-repeat="category in home.checkedCategory">
         <h3>{{category.name}}</h3>
+
         <div id="resourceList" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in category.resources">
           <div id="goNext"><p class="glyphicon glyphicon-menu-right"></p></div><div class="resourceInfo">
             <h5 ng-if="resource.marker.boundsStatus">{{resource.company}}</h5>
             <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
             <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
           </div>
+
+        <div ng-repeat="resource in category.resources">
+          <a ng-if="resource.marker.boundsStatus" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)"><h5>{{resource.company}}</h5></a>
+          <span star-rating rating-value="resource.averageRating" max="5"></span>
+          <a ng-click="home.openInfoWindow($event, resource.marker, resource)">({{resource.numberOfReviews}} Reviews)</a>
+          <p ng-if="resource.marker.boundsStatus" >{{resource.description}}</p>
+          <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
+
           </div>
       </div>
     </div>
+</div>
 
     <div id="singleResource" ng-show="home.change.singleResource">
       <h3>{{home.selectedResource.company}}</h3>
@@ -104,15 +123,27 @@
         <div>
         <button id="review" href="#addReview" ng-click="home.getId(home.selectedResource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span> Give a review</button>
         </div>
+
         <p>Reviews ({{home.selectedResource.reviews.number}})</p>
         <div ng-repeat="review in home.selectedResource.reviews">
             <p>{{review.comments}}</p>
             <p id="starReview">{{review.rating}} stars</p>
           <p>{{review.stars}}</p>
+
+
+
+  <div class="average">
+    <p>Average Rating: <span star-rating rating-value="home.selectedResource.averageRating" max="5" ></span> {{ home.selectedResource.averageRating }} stars</p>
+  </div>
+        <div ng-repeat="review in home.selectedReviewArrays">
+            <span star-rating rating-value="review.rating" max="5" ></span>
+            <p>{{review.comments}}</p>
+
         </div>
     </div>
 
 </div>
+  </div>
   </div>
 
   <div class="col-sm-7">
@@ -152,7 +183,6 @@
           </div>
       </div>
   </div>
-
 
 
 </div>
