@@ -105,10 +105,29 @@ function HomeController($http, $location, $scope, ResourcesService) {
         info.marker.infoWindow = new google.maps.InfoWindow();
         //opens bubble on marker click
         google.maps.event.addListener(info.marker, 'click', function() {
+
             controller.closeInfoWindow();
+            controller.change.categoryList = true;
+            controller.change.singleResource = true;
+
+            controller.selectedResource = info;
+
+            //get review ratings and comments
+            controller.getSelectedRating(info);
+            //hide all markers
+            controller.hideMarkers(controller.markers);
+
+            console.log(controller.selectedResource.marker);
+            //show markers of selected category
+            controller.showVisible([controller.selectedResource.marker]);
+            // controller.openInfoWindow(event, info.marker, info);
+
+                $scope.$apply();
+
             info.marker.infoWindow.setContent('<p><strong>' + info.marker.title +'</strong>'
             + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
+
 
 
         });
@@ -174,7 +193,8 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
 
     //show marker when company name is clicked
-    controller.openInfoWindow = function($event, selectedMarker, resource) {
+    controller.openInfoWindow = function(event, selectedMarker, resource) {
+        console.log(event);
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
         console.log('clicked resource', resource);
