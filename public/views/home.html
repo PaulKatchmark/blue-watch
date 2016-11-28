@@ -20,11 +20,11 @@
     <div id=searchBars>
       <div class="row" id="addressSearch">
           <div class="col-xs-9">
-            <input type="text" id="address-input" placeholder="get an address" class="form-control">
+            <input type="text" ng-model="home.addressInput" id="address-input" placeholder="get an address" class="form-control">
 
           </div>
           <div class="col-xs-3">
-            <button ng-click="home.searchAddress()" id="search" class="btn btn-default pull-right">Search</button>
+            <button ng-click="home.searchAddress(home.addressInput)" id="search" class="btn btn-default pull-right">Search</button>
 
           </div>
         </div>
@@ -34,7 +34,7 @@
             <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
           </div>
           <div class="col-xs-3">
-            <button type="submit" class="btn btn-default pull-right" id="search" ng-click="home.searchResources(home.search)">Search</button>
+            <button type="button" class="btn btn-default pull-right" id="search" >Search</button>
           </div>
       </div>
   </div>
@@ -53,14 +53,12 @@
 
     <div id="categoryList" ng-hide="home.change.categoryList">
       <div ng-repeat="resource in home.resources | unique:'category'">
-        <div>
           <form>
             <input type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'"/>
 
             <label value="resource.category.categoryName" ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}<span class="glyphicon glyphicon-menu-right"></span></label>
+      </form>
 
-          </form>
-        </div>
       </div>
       <button class="btn btn-default" id="checkedSubmit" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">See Checked Categories</button>
     </div>

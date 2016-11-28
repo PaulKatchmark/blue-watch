@@ -62,9 +62,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
                   if(info.numberOfReviews>0){
                       info.review.forEach(function(review){
                           totalRating +=review.rating;
-                          console.log(totalRating);
                           info.averageRating = totalRating/info.numberOfReviews;
-                          console.log(info.averageRating);
                       });
                   } else{
                       info.averageRating = 0;
@@ -102,13 +100,13 @@ function HomeController($http, $location, $scope, ResourcesService) {
         info.marker.content =
 
         '<span star-rating rating-value="'+info.averageRating+'" max="5"></span>'
-        +'<div class="infoWindowContent">' + info.description + '</div>';
+        +'<div class="infoWindowContent">' + info.description + '</div> Contact: '+info.contact+'</div></div>';
 
         info.marker.infoWindow = new google.maps.InfoWindow();
         //opens bubble on marker click
         google.maps.event.addListener(info.marker, 'click', function() {
             controller.closeInfoWindow();
-            info.marker.infoWindow.setContent('<p>' + info.marker.title
+            info.marker.infoWindow.setContent('<p><strong>' + info.marker.title +'</strong>'
             + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
         });
@@ -293,9 +291,14 @@ function HomeController($http, $location, $scope, ResourcesService) {
         };
     }
 
-    controller.searchAddress = function() {
+controller.searchResources = function(search){
+    console.log(search);
+};
 
-        var addressInput = document.getElementById('address-input').value;
+
+    controller.searchAddress = function(addressInput) {
+        console.log(addressInput);
+        // var addressInput = document.getElementById('address-input').value;
 
         var geocoder = new google.maps.Geocoder();
 
