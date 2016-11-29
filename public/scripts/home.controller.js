@@ -370,9 +370,12 @@ console.log(category);
 }
 
     }
-
+controller.searchData=[];
 controller.searchResources = function(search){
-    console.log(search);
+    search = search.toString();
+    $http.get('/resource/' + search).then(function(response){
+    controller.searchData = response.data;
+    });
 };
 
 
