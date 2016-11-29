@@ -84,5 +84,24 @@ router.put('/:id', function(req, res) {
   });
 });
 
+router.get('/:q', function(req, res) {
+  console.log('getting resources with search');
+var keyword = req.params.q;
+
+console.log(keyword);
+
+//finds all users inside admin database
+
+Resource.find( {'$or':[{'category.categoryName': { $regex: keyword, $options: "si" }}, {'company':{ $regex: keyword, $options: "si" }},{'description':{ $regex: keyword, $options: "si" }},{'state':{ $regex: keyword, $options: "si" }},{'city':{ $regex: keyword, $options: "si" }},{'address':{ $regex: keyword, $options: "si" }}]}).then(function(resources){
+
+        res.send(resources);
+        console.log(resources);
+
+  }).catch(function(err){
+    console.log('Error in /resources', err);
+    res.sendStatus(500);
+  });
+});
+
 
 module.exports = router;
