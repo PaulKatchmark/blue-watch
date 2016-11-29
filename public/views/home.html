@@ -22,6 +22,7 @@
           <div class="col-xs-6">
             <input type="text" id="address-input" placeholder="Set your location" class="form-control">
           </div>
+
           <div class="col-xs-2">
             <label class="pull-right" style="margin: 6px">Radius:</label>
           </div>
@@ -55,7 +56,7 @@
 
 <div ng-if="home.search">
   <button class="btn btn-default" id="navBack" ng-click="home.backCategories()">back</button>
-    <div ng-repeat="resource in home.resources | filter: home.search">
+    <div ng-repeat="resource in home.resources | orderBy: home.resources.sortType:home.resources.sortReverse | filter: home.search" adapter="adapter">
       <h3>{{resource.category.categoryName}}</h3>
       <p>{{resource.company}}</p>
       <p>{{resource.description}}</p>
@@ -65,7 +66,7 @@
 
 <div ng-if="!home.search">
 
-    <div id="categoryList" ng-hide="home.change.categoryList">
+    <div id="categoryList" ng-show="home.change.categoryList" >
       <div ng-repeat="resource in home.resources | unique:'category'">
           <form>
             <input  id="checkbox" type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'"/>
@@ -77,8 +78,8 @@
       <button class="btn btn-default" id="checkedSubmit" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">See Checked Categories</button>
     </div>
 
-    <div id="selectedCategory" ng-show="home.change.selectedCategory">
-        <button class="btn btn-default"  id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
+    <div id="selectedCategory" ng-show="home.change.selectedCategory" >
+<button  class="btn btn-default"  id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
         <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
 
       <div id="resourceList" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
@@ -127,6 +128,8 @@
 </div>
 
     <div id="singleResource" ng-show="home.change.singleResource">
+        <button ng-show="home.change.backButton" class="btn btn-default"  id="navBack" ng-click="home.backToSelectedcategories(home.selectedResource.category.categoryName)"><span class="glyphicon glyphicon-menu-left"></span>Selected category</button>
+        <button ng-show="home.change.backButton2" class="btn btn-default"  id="navBack" ng-click="home.backToSelectedcategories(home.checked)"><span class="glyphicon glyphicon-menu-left"></span>Selected categories</button>
       <h3>{{home.selectedResource.company}}</h3>
         <div id="mainResourceInfo">
           <p>{{home.selectedResource.category.categoryName}} - {{home.selectedResource.description}}</p>
