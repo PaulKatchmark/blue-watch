@@ -325,8 +325,12 @@ span.glyphicon.glyphicon-plus {
   #approvalsPage table button, #adminPage table button {
     margin: 5px 0; }
 #approvalsPage #addNew, #adminPage #addNew {
-  width: 100%;
+  width: 20%;
+  margin: auto;
   margin: 5px 0 10px 0; }
+  @media (max-width: 750px) {
+    #approvalsPage #addNew, #adminPage #addNew {
+      width: 100%; } }
 
 #login form {
   background-color: white;
