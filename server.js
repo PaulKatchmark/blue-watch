@@ -40,7 +40,7 @@ app.use(passport.session());
 
 app.use('/login', login);
 app.use('/logout', logout);
-app.use('/reviews', review);
+app.use('/reviews', ensureAuthenticated, ensureAccessLevel, review);
 app.use('/resource', resources);
 app.use('/admin', ensureAuthenticated, ensureAccessLevel, admin);
 app.use('/categories', categories);
