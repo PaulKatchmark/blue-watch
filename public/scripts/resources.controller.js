@@ -154,9 +154,11 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope) {
             });
         });
     };
-
-    controller.deleteResource = function(id) {
-        $http.delete('/resource/' + id).then(function(response) {
+    controller.findResourceId = function(id) {
+        resourceIdToDelete = id;
+    };
+    controller.deleteResource = function() {
+        $http.delete('/resource/' + resourceIdToDelete).then(function(response) {
             console.log(response);
             controller.getResources();
         });
