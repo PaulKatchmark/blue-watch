@@ -54,6 +54,9 @@ span.glyphicon {
 .btn {
   text-transform: uppercase; }
 
+.btn:focus, input.form-control:focus, select.form-control:focus {
+  outline: 0; }
+
 nav.navbar.navbar-default {
   font-family: 'Raleway', sans-serif;
   background-color: white;
@@ -83,7 +86,6 @@ nav.navbar.navbar-default {
   color: red; }
 
 #homeBody {
-  margin-top: 20px;
   height: 76.5vh; }
   @media (max-width: 750px) {
     #homeBody {
@@ -91,23 +93,55 @@ nav.navbar.navbar-default {
   #homeBody div {
     margin: 0;
     padding: 0; }
+  #homeBody h1 {
+    font-family: 'Raleway', sans-serif;
+    margin-top: 10px;
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    border-bottom: 2px solid lightgray; }
+    @media (max-width: 750px) {
+      #homeBody h1 {
+        font-size: 20px; } }
   #homeBody #search {
     margin-left: 10px; }
   #homeBody #addressSearch {
-    margin-bottom: 10px; }
+    margin-bottom: 0; }
+    #homeBody #addressSearch h5 {
+      margin-top: 0; }
   #homeBody #checkedSubmit {
     margin-top: 10px;
     width: 100%; }
   #homeBody #homeList {
-    height: 75vh;
+    height: 68vh; }
+    @media (max-width: 750px) {
+      #homeBody #homeList {
+        height: 45vh; } }
+    #homeBody #homeList h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 20px;
+      text-transform: uppercase; }
+  #homeBody #scroll {
+    height: 57vh;
     overflow: scroll; }
+  #homeBody #mapDiv {
+    height: 68vh; }
+    @media (max-width: 750px) {
+      #homeBody #mapDiv {
+        height: 35vh; } }
+    #homeBody #mapDiv #searchBars {
+      margin: 0 0 10px 10px; }
+      @media (max-width: 750px) {
+        #homeBody #mapDiv #searchBars {
+          margin: 0 0 10px 0; } }
   #homeBody #map {
     margin: 0 0 0 10px;
-    height: 75vh; }
+    height: 57.5vh; }
     @media (max-width: 750px) {
       #homeBody #map {
         margin: 0 0 10px 0;
-        height: 25vh; } }
+        height: 24vh; } }
   @media (max-width: 750px) {
     #homeBody #searchBars input {
       font-size: 12px;
@@ -118,6 +152,17 @@ nav.navbar.navbar-default {
   @media (max-width: 350px) {
     #homeBody #searchBars select {
       font-size: 8px !important; } }
+  #homeBody #categoryList h2 {
+    margin-top: 0; }
+  #homeBody #categoryList .btn {
+    margin-top: 10px;
+    font-size: 15px; }
+    @media (max-width: 750px) {
+      #homeBody #categoryList .btn {
+        font-size: 12px; } }
+    @media (max-width: 350px) {
+      #homeBody #categoryList .btn {
+        font-size: 8px !important; } }
   #homeBody #categoryList form {
     width: 100%;
     padding: 10px;
@@ -229,6 +274,9 @@ nav.navbar.navbar-default {
         margin-right: 10px; }
     #homeBody #singleResource #website a:hover {
       text-decoration: none; }
+  #homeBody #singleResource #reviewScroll {
+    height: 15vh;
+    overflow: scroll; }
   #homeBody #singleResource #review {
     border: 1px solid black;
     width: 95%;

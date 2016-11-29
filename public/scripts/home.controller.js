@@ -6,7 +6,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     console.log('Home controller');
     var controller = this;
-    // LogoutService.status = false;
+    LogoutService.status = false;
 
 
         console.log('Home controller');
@@ -34,6 +34,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
         controller.change.singleResource = false,
         controller.change.backButton = false,
         controller.change.backButton2 = false
+        controller.filterAddress = false
     };
     controller.selectedCategoryToggle = function(){
         controller.change.categoryList = false;
@@ -42,6 +43,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
         controller.change.singleResource = false,
         controller.change.backButton = true,
         controller.change.backButton2 = false
+        controller.filterAddress = false
 
     };
     controller.checkedCategoryToggle = function(){
@@ -50,10 +52,12 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
         controller.change.checkedCategory = true,
         controller.change.singleResource = false,
         controller.change.backButton = false,
-        controller.change.backButton2 = true
+        controller.change.backButton2 = true,
+        controller.filterAddress = false
     };
     controller.singleResourceToggle = function(){
-        controller.change.categoryList = false;
+        controller.filterAddress = true,
+        controller.change.categoryList = false,
         controller.change.selectedCategory = false,
         controller.change.checkedCategory = false,
         controller.change.singleResource = true,
