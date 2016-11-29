@@ -6,7 +6,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     console.log('Home controller');
     var controller = this;
-    LogoutService.status = false;
+    // LogoutService.status = false;
 
 
         console.log('Home controller');
@@ -263,19 +263,6 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     }
 
-    //changes the category list to list of resources from selected category
-    // controller.change = {
-    //     categoryList: false
-    // };
-    // controller.change = {
-    //     selectedCategory: false
-    // };
-    // controller.change = {
-    //     checkedCategory: false
-    // };
-    // controller.change = {
-    //     singleResource: false
-    // };
     controller.expandCategory = function(category) {
 
         //array of markers to show
@@ -519,6 +506,8 @@ angular.module('blueWatchApp')
            scope.$watch('ratingValue', function (newVal, oldVal) {
 
                if (newVal) {
+                   updateStars();
+               } else if(newVal == '' ){
                    updateStars();
                }
 
