@@ -230,7 +230,7 @@
                     <!-- <td><input type="text" class="form-control" ng-model="category.color" /></td> -->
 
                     <td>
-                    <select class="form-control" ng-model="category.color">
+                    <select class="form-control" ng-model="category.newColor">
                         <option value="{{category.color}}" disabled selected>{{category.color}}</option>
                         <option ng-if="!markers.inUse" ng-repeat="markers in resources.openIcons" value="{{markers.color}}"> {{markers.color}}</option>
                     </select>

@@ -72,8 +72,9 @@ router.put('/:id', function(req, res) {
         return;
       }
       //set values
-      category.categoryName = req.body.categoryName;
-      category.color = req.body.color;
+     var categoryName = req.body.categoryName;
+      var color = req.body.color;
+      var oldColor = req.body.oldColor;
 
     category.save(function (err, updatedCategory){
       if (err){
@@ -81,18 +82,39 @@ router.put('/:id', function(req, res) {
         return;
       }
     //    res.send(updatedCategory);
-      Color.find({ 'color': req.body.color}).then(function(color){
+      Color.find({'$or':[{'color': color},{'color':oldColor}]}).then(function(colors){
 
-        res.sendStatus(200);
-        var usedColor = color[0];
-        usedColor.inUse=true;
+          console.log(colors);
+
+         for (var i=0; i<colors.length; i++){
+             if(colors[i].color == color){
+                 colors[i].inUse=true;
+             } else if(colors[i].color == oldColor){
+                 colors[i].inUse = false;
+             }
+
+             colors[i].save(function (err, updatedInUse){
+               if (err){
+                 res.sendStatus(500);
+                 return;
+               }
+           });// End of color saved
+
+       }//end of for loop
+
+})//End of color find
 
 
-        usedColor.save(function (err, updatedInUse){
-          if (err){
-            res.sendStatus(500);
-            return;
-          }
+        // res.sendStatus(200);
+        // var usedColor = color[0];
+
+
+
+        // usedColor.save(function (err, updatedInUse){
+        //   if (err){
+        //     res.sendStatus(500);
+        //     return;
+        //   }
 //update resources with new category name and color
         Resources.update({'category._id': id},
           {$set: {'category.categoryName': category.categoryName, 'category.color': category.color }}, {multi: true})
@@ -101,15 +123,15 @@ router.put('/:id', function(req, res) {
               res.sendStatus(500);
               return;
             }
-      });
+        }); //End of resources update
 
-      }).catch(function(err){
-        console.log('Error getting review', err);
-      });
-      });
-  });
-  });
-}); //end update category
+    //   }).catch(function(err){
+    //     console.log('Error getting review', err);
+    //   });
+  }); //End of category save
+  }); //End of categories find
+  });//End of router put
+// }); //end update category
 
 //delete category
 router.delete('/:id', function(req, res){
