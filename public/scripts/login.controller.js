@@ -5,6 +5,9 @@ function LoginController($http, $location, adminservice) {
   console.log('LoginController loaded');
   var controller = this;
 
+  //whenever controller is loaded, will check to see if user which/if any user is logged in
+    adminservice.loggedin();
+
 //logged in email to display
   controller.loggedInEmail = function(){
     adminservice.loggedin().then(function(response){

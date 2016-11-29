@@ -2,7 +2,7 @@ angular.module('blueWatchApp')
     .controller('ResourcesController', ResourcesController);
 
 
-function ResourcesController($http, $location, $q, ResourcesService,$scope) {
+function ResourcesController($http, $location, $q, ResourcesService,$scope, adminservice) {
 
   var controller = this;
   controller.categories = [];
@@ -21,6 +21,8 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope) {
   controller.capturedId='';
   controller.iconColor ='';
 
+  //whenever controller is loaded, will check to see if user which/if any user is logged in
+  adminservice.loggedin();
   //loads all the false icons on resources page
   controller.getIcons = function() {
 

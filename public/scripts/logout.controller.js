@@ -11,6 +11,7 @@ function LogoutController($http, $location, adminservice, LogoutService) {
     $http.get('/logout')
     .then(function(){
       adminservice.user = "";
+      adminservice.isLoggedIn = false;
       $location.path('/login');
     }, function(error) {
       console.log('error logging out', error);

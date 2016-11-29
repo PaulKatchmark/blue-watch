@@ -10,6 +10,8 @@ admin.capturedId = '';
 //sets logged in user info
 admin.adminservice = adminservice;
 
+//whenever controller is loaded, will check to see if user which/if any user is logged in
+adminservice.loggedin();
 
 admin.addNewUser = function(email, password, access){
     var data = {
