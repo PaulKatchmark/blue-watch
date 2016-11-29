@@ -32,7 +32,7 @@
 
 <div ng-if="home.search">
   <button class="btn btn-default" id="navBack" ng-click="home.backCategories()">back</button>
-    <div ng-repeat="resource in home.resourcesToSearch" >
+    <div ng-repeat="resource in home.searchData" >
       <h3>{{resource.category.categoryName}}</h3>
       <p>{{resource.company}}</p>
       <p>{{resource.description}}</p>
