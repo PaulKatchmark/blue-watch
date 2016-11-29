@@ -83,8 +83,8 @@ nav.navbar.navbar-default {
   color: red; }
 
 #homeBody {
-  height: 72vh;
-  margin-bottom: 20px; }
+  margin-top: 20px;
+  height: 76.5vh; }
   @media (max-width: 750px) {
     #homeBody {
       font-size: 12px; } }
@@ -99,11 +99,11 @@ nav.navbar.navbar-default {
     margin-top: 10px;
     width: 100%; }
   #homeBody #homeList {
-    height: 71vh;
+    height: 75vh;
     overflow: scroll; }
   #homeBody #map {
     margin: 0 0 0 10px;
-    height: 71.5vh; }
+    height: 75vh; }
     @media (max-width: 750px) {
       #homeBody #map {
         margin: 0 0 10px 0;
@@ -112,6 +112,12 @@ nav.navbar.navbar-default {
     #homeBody #searchBars input {
       font-size: 12px;
       padding: 5px; } }
+  @media (max-width: 400px) {
+    #homeBody #searchBars select {
+      font-size: 11px !important; } }
+  @media (max-width: 350px) {
+    #homeBody #searchBars select {
+      font-size: 8px !important; } }
   #homeBody #categoryList form {
     width: 100%;
     padding: 10px;
@@ -128,7 +134,7 @@ nav.navbar.navbar-default {
     #homeBody #categoryList form label {
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
-      width: 95%;
+      width: 93%;
       margin: 0; }
       @media (max-width: 750px) {
         #homeBody #categoryList form label {
@@ -231,6 +237,9 @@ nav.navbar.navbar-default {
     background-color: white; }
   #homeBody #singleResource #review:focus {
     outline: 0; }
+
+span.glyphicon.glyphicon-plus {
+  font-size: 10px !important; }
 
 @media (max-width: 750px) {
   #resourcePage .btn {
@@ -367,5 +376,10 @@ ul.rating {
   width: 50%;
   height: 100%;
   left: 47%; }
+
+@media (max-width: 750px) {
+  .modal-content label {
+    font-size: 10px;
+    padding-right: 0; } }
 
 /*# sourceMappingURL=styles.css.map */
