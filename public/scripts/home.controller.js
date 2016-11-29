@@ -6,7 +6,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     console.log('Home controller');
     var controller = this;
-    // LogoutService.status = false;
+    LogoutService.status = false;
 
 
         console.log('Home controller');
@@ -109,6 +109,9 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
         $http.get('/resource').then(function(response) {
 
+            controller.resourcesToSearch = response.data;
+            console.log(controller.resourcesToSearch);
+
             controller.resources = response.data;
 
             controller.resources.forEach(function(info) {
@@ -134,6 +137,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
             }); //End of for each
             console.log('controller.resources', controller.resources);
+            controller.showVisible(controller.markers); //show all markers
 
         }); //end of http get resource
 
@@ -189,7 +193,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
         });
         controller.markers.push(info.marker);
 
-        controller.showVisible(controller.markers); //show all markers
+
 
     }; //End of createMarker
 
