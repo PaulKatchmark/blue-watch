@@ -194,15 +194,21 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
 
 //updateCategory function
     controller.updateCategory = function(category) {
+
+
         var body = {
             categoryName: category.categoryName,
-            color: category.color
+            color: category.newColor,
+            oldColor:category.color
         };
         var id = category._id;
+
+        console.log(body);
 
         $http.put('/categories/' + id, body).then(function(response) {
           controller.getcategories();
           controller.getResources();
+          controller.color = color;
 
         }, function(error) {
             console.log('error editing categories', error);
