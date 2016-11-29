@@ -1,7 +1,12 @@
 angular.module('blueWatchApp')
     .controller('HomeController', HomeController);
 
-function HomeController($http, $location, $scope, ResourcesService) {
+function HomeController($http, $location, $scope, ResourcesService, LogoutService) {
+
+
+    console.log('Home controller');
+    var controller = this;
+    // LogoutService.status = false;
 
 
         console.log('Home controller');
@@ -58,6 +63,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
 
     controller.categoryListToggle();
+
 
 
     //array of all the markers
@@ -249,6 +255,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
         google.maps.event.trigger(selectedMarker, 'click');
         controller.showSingleResource(resource);
             controller.singleResourceToggle();
+
 
     }
 

@@ -28,6 +28,4 @@ function LoginController($http, $location, adminservice) {
 
   controller.adminservice = adminservice;
 
-
-
 }
