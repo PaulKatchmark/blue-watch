@@ -103,6 +103,9 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
         $http.get('/resource').then(function(response) {
 
+            controller.resourcesToSearch = response.data;
+            console.log(controller.resourcesToSearch);
+
             controller.resources = response.data;
 
             controller.resources.forEach(function(info) {
@@ -128,6 +131,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
             }); //End of for each
             console.log('controller.resources', controller.resources);
+            controller.showVisible(controller.markers); //show all markers
 
         }); //end of http get resource
 
@@ -183,7 +187,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
         });
         controller.markers.push(info.marker);
 
-        controller.showVisible(controller.markers); //show all markers
+
 
     }; //End of createMarker
 
