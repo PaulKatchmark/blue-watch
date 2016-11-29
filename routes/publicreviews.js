@@ -19,15 +19,6 @@ router.post('/', function(req,res){
   });
 });
 
-// router.get('/', function(req, res) {
-//   Review.find({}).then(function(review){
-//         res.send(review);
-//   }).catch(function(err){
-//     console.log('Error in /reviews', err);
-//     res.sendStatus(500);
-//   });
-// });
-
 router.get('/:id', function(req, res) {
   var id = req.params.id;
 console.log('id', id);
@@ -39,44 +30,6 @@ Review.find({ "resource_id" : id, "approved": true}).then(function(review){
 });
 });
 
-// router.delete('/:id', function(req, res) {
-//   console.log('deleting a review');
-//   var id = req.params.id;
-//   console.log(id);
-//
-// //finds all users inside admin database
-//   Review.remove({ "_id" : id }).then(function(review){
-//         res.sendStatus(200);
-//
-//   }).catch(function(err){
-//     console.log('Error in deleting resource', err);
-//     res.sendStatus(500);
-//   });
-// });
-
-// router.put('/:id', function(req, res) {
-//   console.log('approved review');
-//   var id = req.params.id;
-//   console.log(req.body);
-//
-//   Review.findById(id, function(err, review){
-//       if (err){
-//         res.sendStatus(500);
-//         return;
-//       }
-//       //set values
-//       review.comments = req.body.comments;
-//       review.approved = true
-//
-//     review.save(function (err, approvedReview){
-//       if (err){
-//         res.sendStatus(500);
-//         return;
-//       }
-//       res.send(approvedReview);
-//     });
-//   });
-// });
 
 router.post('/mail', function(req,res){
 
