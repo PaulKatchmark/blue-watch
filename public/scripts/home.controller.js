@@ -1,7 +1,12 @@
 angular.module('blueWatchApp')
     .controller('HomeController', HomeController);
 
-function HomeController($http, $location, $scope, ResourcesService) {
+function HomeController($http, $location, $scope, ResourcesService, LogoutService) {
+
+
+    console.log('Home controller');
+    var controller = this;
+    LogoutService.status = false;
 
 
         console.log('Home controller');
@@ -60,6 +65,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
     controller.categoryListToggle();
 
 
+
     //array of all the markers
     controller.markers = [];
 
@@ -111,7 +117,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
             controller.resources.forEach(function(info) {
 
               var id = info._id;
-              $http.get('/reviews/'+id).then(function(response) {
+              $http.get('/publicreviews/'+id).then(function(response) {
                   var totalRating=0;
                   info.review = response.data;
                   info.numberOfReviews = info.review.length;
@@ -165,8 +171,8 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
         //event listener for marker click
         google.maps.event.addListener(info.marker, 'click', function() {
-
             controller.closeInfoWindow();
+
 
             controller.showSingleResource(info);
             controller.singleResourceToggle();
@@ -216,15 +222,16 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
     controller.hideMarkers = function(markers) {
 
-            markers.forEach(function(marker) {
-                marker.setVisible(false);
-                controller.closeInfoWindow();
-            });
+        markers.forEach(function(marker) {
+            marker.setVisible(false);
+            controller.closeInfoWindow();
+        });
 
     };
 
     controller.showVisible = function(controllerMarkers) {
         var bounds = new google.maps.LatLngBounds();
+
         console.log(controllerMarkers);
 
         if(controllerMarkers.length>1){
@@ -234,29 +241,25 @@ function HomeController($http, $location, $scope, ResourcesService) {
             // extending bounds to contain this visible marker position
             bounds.extend(marker.getPosition());
         });
+
         // setting new bounds to visible markers of
         controller.map.fitBounds(bounds);
-    } else {
-        controllerMarkers[0].setVisible(true);
-        controller.closeInfoWindow();
-        controller.map.setCenter(controllerMarkers[0].position);
+    }else{
+      controllerMarkers[0].setVisible(true);
+      controller.closeInfoWindow();
+      controller.map.setCenter(controllerMarkers[0].position);
     }
-
-
-
-    }
-
+}
     controller.getResources(); //run getResources function
 
 
     //show marker when company name is clicked
-    controller.openInfoWindow = function(event, selectedMarker, resource) {
-        console.log(event);
+    controller.openInfoWindow = function($event, selectedMarker, resource) {
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
-
         controller.showSingleResource(resource);
             controller.singleResourceToggle();
+
 
     }
 
@@ -383,13 +386,11 @@ controller.searchResources = function(search){
 };
 
 
-
-
     controller.searchAddress = function() {
         console.log(addressInput);
         var addressInput = document.getElementById('address-input').value;
 
-        var distance = parseFloat(distance);
+        var distance = parseFloat(controller.distance);
         var geocoder = new google.maps.Geocoder();
 
         geocoder.geocode({
@@ -453,7 +454,7 @@ controller.getId = function(id){
       }
       controller.reviewNotes = '';
       console.log(body);
-          $http.post('/reviews', body
+          $http.post('/publicreviews', body
         ).then(function(){
         console.log('success posting');
         controller.sendMail(body);
@@ -463,7 +464,7 @@ controller.getId = function(id){
     }
 
     controller.sendMail = function(data) {
-            $http.post('/reviews/mail', data).then(function(results) {
+            $http.post('/publicreviews/mail', data).then(function(results) {
                 console.log(results);
             });
         }; // end sendMail

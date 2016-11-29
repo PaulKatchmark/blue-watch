@@ -83,8 +83,8 @@ nav.navbar.navbar-default {
   color: red; }
 
 #homeBody {
-  height: 72vh;
-  margin-bottom: 20px; }
+  margin-top: 20px;
+  height: 76.5vh; }
   @media (max-width: 750px) {
     #homeBody {
       font-size: 12px; } }
@@ -97,13 +97,13 @@ nav.navbar.navbar-default {
     margin-bottom: 10px; }
   #homeBody #checkedSubmit {
     margin-top: 10px;
-    width: 95%; }
+    width: 100%; }
   #homeBody #homeList {
-    height: 71vh;
+    height: 75vh;
     overflow: scroll; }
   #homeBody #map {
     margin: 0 0 0 10px;
-    height: 71.5vh; }
+    height: 75vh; }
     @media (max-width: 750px) {
       #homeBody #map {
         margin: 0 0 10px 0;
@@ -112,13 +112,29 @@ nav.navbar.navbar-default {
     #homeBody #searchBars input {
       font-size: 12px;
       padding: 5px; } }
+  @media (max-width: 400px) {
+    #homeBody #searchBars select {
+      font-size: 11px !important; } }
+  @media (max-width: 350px) {
+    #homeBody #searchBars select {
+      font-size: 8px !important; } }
   #homeBody #categoryList form {
     width: 100%;
     padding: 10px;
+    padding-right: 0;
     border-bottom: 2px solid lightgray; }
+    #homeBody #categoryList form #checkbox {
+      width: 15px;
+      height: 15px;
+      margin-top: 0; }
+      @media (max-width: 750px) {
+        #homeBody #categoryList form #checkbox {
+          width: 12px;
+          height: 12px; } }
     #homeBody #categoryList form label {
-      font-size: 25px;
-      width: 90%;
+      font-family: 'Raleway', sans-serif;
+      font-size: 20px;
+      width: 93%;
       margin: 0; }
       @media (max-width: 750px) {
         #homeBody #categoryList form label {
@@ -127,12 +143,15 @@ nav.navbar.navbar-default {
         float: right; }
   #homeBody #selectedCategory, #homeBody #checkedCategory {
     width: 100%; }
-    @media (max-width: 750px) {
-      #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
-        font-size: 18px; } }
+    #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
+      font-family: 'Raleway', sans-serif; }
+      @media (max-width: 750px) {
+        #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
+          font-size: 18px; } }
     #homeBody #selectedCategory #resourceList, #homeBody #checkedCategory #resourceList {
       border-bottom: 2px solid lightgray; }
       #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
+        font-family: 'Raleway', sans-serif;
         font-size: 20px; }
         @media (max-width: 750px) {
           #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
@@ -168,12 +187,14 @@ nav.navbar.navbar-default {
             height: 75px;
             padding-top: 8%; } }
     #homeBody #selectedCategory #navBack, #homeBody #checkedCategory #navBack {
+      font-family: 'Raleway', sans-serif;
       margin-top: 10px;
       width: 100%;
       border: none;
       font-size: 20px;
       border-radius: 0;
-      border-bottom: 2px solid lightgray; }
+      border-bottom: 2px solid lightgray;
+      padding-left: 0; }
       #homeBody #selectedCategory #navBack .glyphicon, #homeBody #checkedCategory #navBack .glyphicon {
         float: left; }
       @media (max-width: 750px) {
@@ -188,6 +209,9 @@ nav.navbar.navbar-default {
       text-align: center;
       border-bottom: 2px solid lightgray;
       color: #3f7ccd; }
+  #homeBody #singleResource h3 {
+    font-family: 'Raleway', sans-serif;
+    color: #3f7ccd; }
   #homeBody #singleResource #mainResourceInfo {
     width: 95%;
     margin-bottom: 10px;
@@ -214,6 +238,9 @@ nav.navbar.navbar-default {
   #homeBody #singleResource #review:focus {
     outline: 0; }
 
+span.glyphicon.glyphicon-plus {
+  font-size: 10px !important; }
+
 @media (max-width: 750px) {
   #resourcePage .btn {
     font-size: 10px;
@@ -239,6 +266,7 @@ nav.navbar.navbar-default {
 #resourcePage table {
   width: 100%; }
   #resourcePage table h4 {
+    font-family: 'Raleway', sans-serif;
     text-align: center;
     color: #3f7ccd;
     text-transform: uppercase;
@@ -249,6 +277,7 @@ nav.navbar.navbar-default {
       #resourcePage table h4 {
         font-size: 20px; } }
   #resourcePage table th {
+    font-family: 'Raleway', sans-serif;
     font-size: 20px;
     text-transform: uppercase; }
     @media (max-width: 750px) {
@@ -268,6 +297,7 @@ nav.navbar.navbar-default {
     font-size: 10px;
     padding: 5px; } }
 #approvalsPage h2, #adminPage h2 {
+  font-family: 'Raleway', sans-serif;
   text-align: center;
   color: #3f7ccd;
   text-transform: uppercase;
@@ -280,6 +310,7 @@ nav.navbar.navbar-default {
 #approvalsPage table, #adminPage table {
   width: 100%; }
   #approvalsPage table th, #adminPage table th {
+    font-family: 'Raleway', sans-serif;
     font-size: 20px;
     text-transform: uppercase; }
     @media (max-width: 750px) {
@@ -345,5 +376,10 @@ ul.rating {
   width: 50%;
   height: 100%;
   left: 47%; }
+
+@media (max-width: 750px) {
+  .modal-content label {
+    font-size: 10px;
+    padding-right: 0; } }
 
 /*# sourceMappingURL=styles.css.map */

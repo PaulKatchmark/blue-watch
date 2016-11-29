@@ -10,6 +10,17 @@
 </div>
 <br /> -->
 <div id="homeBody">
+  <div class="row" id=searchBars>
+    <div class="col-sm-6 col-xs-0">
+    </div>
+      <div class="col-sm-5 col-xs-10">
+        <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
+      </div>
+      <div class="col-sm-1 col-xs-2">
+        <button type="button" class="btn btn-default pull-right" id="search" >Search</button>
+      </div>
+  </div>
+
 <div class="row">
   <div class="col-sm-6 col-sm-push-6">
     <div id="map">
@@ -17,42 +28,7 @@
   </div>
 
   <div id="homeList" class="col-sm-6 col-sm-pull-6">
-    <div id=searchBars>
-      <div class="row" id="addressSearch">
-          <div class="col-xs-6">
-            <input type="text" id="address-input" placeholder="Set your location" class="form-control">
-          </div>
 
-          <div class="col-xs-2">
-            <label class="pull-right" style="margin: 6px">Radius:</label>
-          </div>
-      <div class="col-xs-1">
-        <select class="form-control" name="miles" ng-model="home.distance">
-          <option value="11">10</option>
-          <option value="10">20</option>
-          <option value="9">50</option>
-          <option value="8">100</option>
-        </select>
-
-      </div>
-
-
-      <div class="col-xs-3">
-        <button ng-click="home.searchAddress()" id="search" class="btn btn-default pull-right">Search</button>
-      </div>
-
-
-</div>
-
-      <div class="row">
-          <div class="col-xs-9">
-            <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
-          </div>
-          <div class="col-xs-3">
-            <button type="button" class="btn btn-default pull-right" id="search" >Search</button>
-          </div>
-      </div>
-  </div>
 
 <div ng-if="home.search">
   <button class="btn btn-default" id="navBack" ng-click="home.backCategories()">back</button>
@@ -69,7 +45,7 @@
     <div id="categoryList" ng-show="home.change.categoryList" >
       <div ng-repeat="resource in home.resources | unique:'category'">
           <form>
-            <input type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'"/>
+            <input  id="checkbox" type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'"/>
 
             <label value="resource.category.categoryName" ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}<span class="glyphicon glyphicon-menu-right"></span></label>
       </form>
@@ -138,13 +114,13 @@
           <p ng-if="home.selectedResource.city">{{home.selectedResource.city}}, {{home.selectedResource.state}} {{home.selectedResource.zip}}</p>
         </div>
         <div id="website">
-          <a href="{{home.selectedResource.website}}">Website<span class="glyphicon glyphicon-menu-right"></span></a>
+          <a href="{{home.selectedResource.website}}">Go to website: {{home.selectedResource.website}}<span class="glyphicon glyphicon-menu-right"></span></a>
         </div>
         <div>
         <button id="review" href="#addReview" ng-click="home.getId(home.selectedResource._id)" type="button" data-toggle="modal"><span class="glyphicon glyphicon-star-empty"></span> Give a review</button>
         </div>
 
-        <p>Average Rating: <span star-rating rating-value="home.selectedResource.averageRating" max="5" ></span> {{ home.selectedResource.averageRating }} stars ({{home.selectedResource.numberOfReviews}} Reviews) </p>
+        <p>Average Rating: <span star-rating rating-value="home.selectedResource.averageRating" max="5" ></span> ({{home.selectedResource.numberOfReviews}} Reviews) </p>
         <div ng-repeat="review in home.selectedReviewArrays" style="padding-left: 10px;">
             <span star-rating rating-value="review.rating" max="5" ></span>
             <p>{{review.comments}}</p>
@@ -153,7 +129,43 @@
     </div>
 
 </div>
+<div id=searchBars>
+  <div class="row" id="addressSearch">
+      <div class="col-xs-6">
+        <input type="text" id="address-input" placeholder="Set your location" class="form-control">
+      </div>
+  <div class="col-xs-3" id="radiusSelect">
+
+
+    <select class="form-control" name="miles" ng-model="home.distance">
+      <option value="" disabled selected>Radius</option>
+      <option value="11">10</option>
+      <option value="10">20</option>
+      <option value="9">50</option>
+      <option value="8">100</option>
+    </select>
+
   </div>
+
+
+  <div class="col-xs-3">
+    <button ng-click="home.searchAddress()" id="search" class="btn btn-default pull-right">Search</button>
+  </div>
+
+
+</div>
+<!--
+  <div class="row">
+      <div class="col-xs-9">
+        <input type="text" class="form-control" placeholder="What are you looking for?" ng-model="home.search">
+      </div>
+      <div class="col-xs-3">
+        <button type="button" class="btn btn-default pull-right" id="search" >Search</button>
+      </div>
+  </div> -->
+</div>
+  </div>
+
   </div>
 
 </div>
@@ -164,7 +176,7 @@
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                   <h4 class="modal-title text-center">Review Resource</h4>
               </div>
-              <div class="modal-body modal-background-color">
+              <div class="modal-body modal-background-color text-center">
                   <form class="form-horizontal">
                       <div class="form-group">
                         <div class="row">
