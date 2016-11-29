@@ -66,6 +66,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
     controller.globalMarkers;
     controller.resources;
     controller.selectedCategoryArray;
+
     //sets where the map is located, type and zoom
 
     var mapOptions = {
@@ -162,8 +163,9 @@ function HomeController($http, $location, $scope, ResourcesService) {
         google.maps.event.addListener(info.marker, 'click', function() {
 
             controller.closeInfoWindow();
+
+            controller.showSingleResource(info);
             controller.singleResourceToggle();
-            controller.showSingleResource (info);
 
             info.marker.infoWindow.setContent('<p><strong>' + info.marker.title +'</strong>'
             + info.marker.content + '</p>');
@@ -209,15 +211,11 @@ function HomeController($http, $location, $scope, ResourcesService) {
     };
 
     controller.hideMarkers = function(markers) {
-        if(markers.length>1){
+
             markers.forEach(function(marker) {
                 marker.setVisible(false);
                 controller.closeInfoWindow();
             });
-        } else {
-            markers.setVisible(false);
-            controller.closeInfoWindow();
-        }
 
     };
 
@@ -252,8 +250,8 @@ function HomeController($http, $location, $scope, ResourcesService) {
         console.log(event);
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
-        controller.showSingleResource(resource);
 
+        controller.showSingleResource(resource);
             controller.singleResourceToggle();
 
     }
@@ -369,9 +367,10 @@ function HomeController($http, $location, $scope, ResourcesService) {
 console.log(category);
     if (angular.isObject(category)==true){
         controller.expandCheckedCategory(category);
-    }
+    }else{
         controller.expandCategory(category);
 
+}
 
     }
 
@@ -469,6 +468,7 @@ controller.getId = function(id){
 //show all ratings for the resource selected
     controller.getSelectedRating = function (resource) {
         console.log(resource);
+
     //get review array of that id in the .review property
     controller.selectedReviewArrays = resource.review;
         console.log(controller.selectedReviewArrays);
@@ -494,8 +494,9 @@ angular.module('blueWatchApp')
         link: function (scope, elem, attrs) {
 
             var updateStars = function () {
+                console.log(scope.ratingValue);
                 scope.stars = [];
-                // if(scope.ratingValue%1 ==0){
+
                 for (var i = 0; i < scope.max; i++) {
                     scope.stars.push({
                         filled: i < scope.ratingValue,
@@ -511,9 +512,11 @@ angular.module('blueWatchApp')
            };
 
            scope.$watch('ratingValue', function (newVal, oldVal) {
+
                if (newVal) {
                    updateStars();
                }
+
            });
        }
    }
