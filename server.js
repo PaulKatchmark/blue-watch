@@ -9,6 +9,7 @@ const resources = require('./routes/resources');
 const admin = require('./routes/admin');
 const categories = require('./routes/categories');
 const icons = require('./routes/icons')
+const publicreviews = require('./routes/publicreviews');
 const auth = require('./auth/setup');
 const passport = require('passport');
 const session = require('express-session');
@@ -40,11 +41,13 @@ app.use(passport.session());
 
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/publicreviews', publicreviews);
 app.use('/reviews', ensureAuthenticated, ensureAccessLevel, review);
 app.use('/resource', resources);
 app.use('/admin', ensureAuthenticated, ensureAccessLevel, admin);
 app.use('/categories', categories);
 app.use('/icons', icons);
+
 
 //This is duplicate
 app.get('/', function(req, res){
