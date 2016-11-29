@@ -1,10 +1,11 @@
 angular.module('blueWatchApp')
     .controller('HomeController', HomeController);
 
-function HomeController($http, $location, $scope, ResourcesService) {
+function HomeController($http, $location, $scope, ResourcesService, LogoutService) {
 
     console.log('Home controller');
     var controller = this;
+    // LogoutService.status = false;
 
     //array of all the markers
     controller.markers = [];
@@ -166,18 +167,18 @@ function HomeController($http, $location, $scope, ResourcesService) {
         //get review ratings and comments
         controller.getSelectedRating(resource);
 
-        // controller.change = {
-        //     categoryList: true
-        // };
-        // controller.change = {
-        //     selectedCategory: false
-        // };
-        // controller.change = {
-        //     checkedCategory: false
-        // };
-        controller.change.selectedCategory = !controller.change.selectedCategory;
-        controller.change.checkedCategory = !controller.change.checkedCategory;
-        controller.change.singleResource = !controller.change.singleResource;
+        controller.change = {
+            categoryList: true
+        };
+        controller.change = {
+            selectedCategory: false
+        };
+        controller.change = {
+            checkedCategory: false
+        };
+        // controller.change.selectedCategory = !controller.change.selectedCategory;
+        // controller.change.checkedCategory = !controller.change.checkedCategory;
+        // controller.change.singleResource = !controller.change.singleResource;
     }
 
     //changes the category list to list of resources from selected category

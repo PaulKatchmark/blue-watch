@@ -33,6 +33,7 @@
     <script src="scripts/adminSetup.controller.js"></script>
     <script src="scripts/resources.service.js"></script>
     <script src="scripts/reviews.service.js"></script>
+      <script src="scripts/logout.service.js"></script>
 
     <title>Blue Watch</title>
 
@@ -46,7 +47,7 @@
         <h2>Blue Watch - Wellness Resources and Family Support for Law Enforcement</h2>
       </header>
 
-      <nav class="navbar navbar-default" ng-controller="LogoutController as logout">
+      <nav ng-show="logout.homePage.status" class="navbar navbar-default" ng-controller="LogoutController as logout">
         <div id="hamburger">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
