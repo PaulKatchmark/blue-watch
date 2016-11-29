@@ -150,7 +150,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
       // console.log('category color ', info.category.color);
       // console.log('ResourcesService.icons ', ResourcesService.service.icons);
 
-      var icons = ResourcesService.service.icons;
+      // var icons = ResourcesService.service.icons;
 
         info.marker = new google.maps.Marker({
             map: controller.map,
@@ -317,6 +317,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
         //markers to show based on selected category
         controller.showMarkers = [];
         controller.vals = [];
+        controller.categoryColors = [];
         getValues(category);
 
         function getValues(category) {
@@ -336,21 +337,19 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
         controller.vals.forEach(function(checkedCategory) {
             var selectedCategoryArray = [];
-
             controller.resources.forEach(function(resource) {
                 if (resource.category.categoryName === checkedCategory) {
                     selectedCategoryArray.push(resource);
-                    //add marker to array of markers to show
                     controller.showMarkers.push(resource.marker);
                 }
             });
-
+            console.log('Color for checked ', selectedCategoryArray);
             var name = controller.resources[0].category.categoryName;
             controller.checkedCategory.push({
                 name: checkedCategory,
                 resources: selectedCategoryArray
             });
-
+            // console.log('checked category ', controller.checkedCategory);
         });
         //hide all markers
         controller.hideMarkers(controller.markers);

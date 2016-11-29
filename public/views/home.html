@@ -47,7 +47,7 @@
           <form>
             <input  id="checkbox" type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'"/>
 
-            <label value="resource.category.categoryName" ng-click="home.expandCategory(resource.category.categoryName)">{{resource.category.categoryName}}<span class="glyphicon glyphicon-menu-right"></span></label>
+            <label value="resource.category.categoryName" ng-click="home.expandCategory(resource.category.categoryName)"><img ng-src="assets/img/{{resource.category.color}}_Marker.png" />{{resource.category.categoryName}}<span class="glyphicon glyphicon-menu-right"></span></label>
       </form>
 
       </div>
@@ -56,7 +56,7 @@
 
     <div id="selectedCategory" ng-show="home.change.selectedCategory" >
 <button  class="btn btn-default"  id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
-        <h3>{{home.selectedCategoryArray[0].category.categoryName}}</h3>
+        <h3><img ng-src="assets/img/{{home.selectedCategoryArray[0].category.color}}_Marker.png" />{{home.selectedCategoryArray[0].category.categoryName}}</h3>
 
       <div id="resourceList" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
       <div ng-if="resource.marker.boundsStatus" id="goNext"><p class="glyphicon glyphicon-menu-right"></p></div><div ng-if="resource.marker.boundsStatus" class="resourceInfo">
@@ -80,7 +80,7 @@
     <div id="checkedCategory" ng-show="home.change.checkedCategory">
         <button class="btn btn-default"  id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
       <div ng-repeat="category in home.checkedCategory">
-        <h3>{{category.name}}</h3>
+        <h3><img ng-src="assets/img/{{category.resources[0].category.color}}_Marker.png" />{{category.name}}</h3>
 
         <div id="resourceList" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in category.resources">
           <div ng-if="resource.marker.boundsStatus" id="goNext"><p class="glyphicon glyphicon-menu-right"></p></div><div ng-if="resource.marker.boundsStatus" class="resourceInfo">
