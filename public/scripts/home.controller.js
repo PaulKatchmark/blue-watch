@@ -3,8 +3,62 @@ angular.module('blueWatchApp')
 
 function HomeController($http, $location, $scope, ResourcesService) {
 
-    console.log('Home controller');
-    var controller = this;
+
+        console.log('Home controller');
+        var controller = this;
+        controller.change = {
+            categoryList: false
+        };
+        controller.change = {
+            selectedCategory: false
+        };
+        controller.change = {
+            checkedCategory: false
+        };
+        controller.change = {
+            singleResource: false
+        };
+        controller.change = {
+            backButton :false
+        };
+
+    controller.categoryListToggle = function(){
+        controller.change.categoryList = true,
+        controller.change.selectedCategory = false,
+        controller.change.checkedCategory = false,
+        controller.change.singleResource = false,
+        controller.change.backButton = false,
+        controller.change.backButton2 = false
+    };
+    controller.selectedCategoryToggle = function(){
+        controller.change.categoryList = false;
+        controller.change.selectedCategory = true,
+        controller.change.checkedCategory = false,
+        controller.change.singleResource = false,
+        controller.change.backButton = true,
+        controller.change.backButton2 = false
+
+    };
+    controller.checkedCategoryToggle = function(){
+        controller.change.categoryList = false;
+        controller.change.selectedCategory = false,
+        controller.change.checkedCategory = true,
+        controller.change.singleResource = false,
+        controller.change.backButton = false,
+        controller.change.backButton2 = true
+    };
+    controller.singleResourceToggle = function(){
+        controller.change.categoryList = false;
+        controller.change.selectedCategory = false,
+        controller.change.checkedCategory = false,
+        controller.change.singleResource = true,
+        controller.change.backButton = !controller.change.backButton2,
+        controller.change.backButton2 = !controller.change.backButton
+    };
+
+
+    controller.categoryListToggle();
+
 
     //array of all the markers
     controller.markers = [];
@@ -103,32 +157,17 @@ function HomeController($http, $location, $scope, ResourcesService) {
         +'<div class="infoWindowContent">' + info.description + '</div> Contact: '+info.contact+'</div></div>';
 
         info.marker.infoWindow = new google.maps.InfoWindow();
-        //opens bubble on marker click
+
+        //event listener for marker click
         google.maps.event.addListener(info.marker, 'click', function() {
 
             controller.closeInfoWindow();
-            controller.change.categoryList = true;
-            controller.change.singleResource = true;
-
-            controller.selectedResource = info;
-
-            //get review ratings and comments
-            controller.getSelectedRating(info);
-            //hide all markers
-            controller.hideMarkers(controller.markers);
-
-            console.log(controller.selectedResource.marker);
-            //show markers of selected category
-            controller.showVisible([controller.selectedResource.marker]);
-            // controller.openInfoWindow(event, info.marker, info);
-
-                $scope.$apply();
+            controller.singleResourceToggle();
+            controller.showSingleResource (info);
 
             info.marker.infoWindow.setContent('<p><strong>' + info.marker.title +'</strong>'
             + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
-
-
 
         });
         //close infoWindow when clicked anywhere on map
@@ -145,6 +184,21 @@ function HomeController($http, $location, $scope, ResourcesService) {
         controller.showVisible(controller.markers); //show all markers
 
     }; //End of createMarker
+
+    controller.showSingleResource = function(resource){
+
+        controller.selectedResource = resource;
+
+        //get review ratings and comments
+        controller.getSelectedRating(resource);
+        //hide all markers
+        controller.hideMarkers(controller.markers);
+
+        //show markers of selected category
+        controller.showVisible([controller.selectedResource.marker]);
+        controller.singleResourceToggle();
+
+    };
 
     //close all open window
     controller.closeInfoWindow = function() {
@@ -169,6 +223,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
     controller.showVisible = function(controllerMarkers) {
         var bounds = new google.maps.LatLngBounds();
+        console.log(controllerMarkers);
 
         if(controllerMarkers.length>1){
         controllerMarkers.forEach(function(marker) {
@@ -197,46 +252,25 @@ function HomeController($http, $location, $scope, ResourcesService) {
         console.log(event);
         event.preventDefault();
         google.maps.event.trigger(selectedMarker, 'click');
-        console.log('clicked resource', resource);
-        controller.selectedResource = resource;
+        controller.showSingleResource(resource);
 
-        //get review ratings and comments
-        controller.getSelectedRating(resource);
-        //hide all markers
-        controller.hideMarkers(controller.markers);
+            controller.singleResourceToggle();
 
-        console.log(controller.selectedResource.marker);
-        //show markers of selected category
-        controller.showVisible([controller.selectedResource.marker]);
-
-
-        // controller.change = {
-        //     categoryList: true
-        // };
-        // controller.change = {
-        //     selectedCategory: false
-        // };
-        // controller.change = {
-        //     checkedCategory: false
-        // };
-        controller.change.selectedCategory = !controller.change.selectedCategory;
-        controller.change.checkedCategory = !controller.change.checkedCategory;
-        controller.change.singleResource = !controller.change.singleResource;
     }
 
     //changes the category list to list of resources from selected category
-    controller.change = {
-        categoryList: false
-    };
-    controller.change = {
-        selectedCategory: false
-    };
-    controller.change = {
-        checkedCategory: false
-    };
-    controller.change = {
-        singleResource: false
-    };
+    // controller.change = {
+    //     categoryList: false
+    // };
+    // controller.change = {
+    //     selectedCategory: false
+    // };
+    // controller.change = {
+    //     checkedCategory: false
+    // };
+    // controller.change = {
+    //     singleResource: false
+    // };
     controller.expandCategory = function(category) {
 
         //array of markers to show
@@ -261,12 +295,14 @@ function HomeController($http, $location, $scope, ResourcesService) {
         //show markers of selected category
         controller.showVisible(controller.showMarkers);
 
+
         //this hides the categoryList and shows the list of selected categories
-        controller.change.categoryList = !controller.change.categoryList;
-        controller.change.selectedCategory = !controller.change.selectedCategory;
+
+        controller.selectedCategoryToggle();
     }
 
     controller.expandCheckedCategory = function(category) {
+        console.log(category);
 
       if (category[0] == false) {
         alert ('Please check a category');
@@ -275,7 +311,7 @@ function HomeController($http, $location, $scope, ResourcesService) {
 
         //markers to show based on selected category
         controller.showMarkers = [];
-        var vals = [];
+        controller.vals = [];
         getValues(category);
 
         function getValues(category) {
@@ -283,17 +319,17 @@ function HomeController($http, $location, $scope, ResourcesService) {
                 if (category.hasOwnProperty(key)) {
                     //we only want selected vales in our array
                     if (category[key] !== false) {
-                        vals.push(category[key]);
+                        controller.vals.push(category[key]);
                     }
                 }
             }
-            return vals;
+            return controller.vals;
         }
-
+        console.log(controller.vals);
 
         controller.checkedCategory = [];
 
-        vals.forEach(function(checkedCategory) {
+        controller.vals.forEach(function(checkedCategory) {
             var selectedCategoryArray = [];
 
             controller.resources.forEach(function(resource) {
@@ -315,24 +351,28 @@ function HomeController($http, $location, $scope, ResourcesService) {
         controller.hideMarkers(controller.markers);
         //show markers of selected category
         controller.showVisible(controller.showMarkers);
+        console.log(controller.showMarkers);
 
         //this hides the categoryList and shows the list of selected categories
-        controller.change.categoryList = !controller.change.categoryList;
-        controller.change.checkedCategory = !controller.change.checkedCategory;
+        controller.checkedCategoryToggle();
     }
     controller.backCategories = function(category) {
         //refreshes the map and show all
         controller.showVisible(controller.markers);
         controller.search = "";
-        controller.change = {
-            categoryList: false
-        };
-        controller.change = {
-            selectedCategory: false
-        };
-        controller.change = {
-            checkedCategory: false
-        };
+
+            controller.categoryListToggle();
+
+    }
+
+    controller.backToSelectedcategories = function(category){
+console.log(category);
+    if (angular.isObject(category)==true){
+        controller.expandCheckedCategory(category);
+    }
+        controller.expandCategory(category);
+
+
     }
 
 controller.searchResources = function(search){
