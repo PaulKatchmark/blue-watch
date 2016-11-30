@@ -52,8 +52,7 @@ span.glyphicon {
   border: 1px solid black; }
 
 .btn {
-  text-transform: uppercase;
-  padding: 3.5px 6px; }
+  text-transform: uppercase; }
 
 .btn:focus, input.form-control:focus, select.form-control:focus
 .btn:active, input.form-control:active, select.form-control:active {
