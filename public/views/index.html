@@ -62,10 +62,10 @@
               <li><a href="/approval">Approvals</a></li>
               <li><a href="/adminSetup">Admin Permissions</a></li>
               </ol>
-            <ol class="nav navbar-nav navbar-right">
-              <li><a href="/login">log in</a></li>
-              <li><a ng-controller="AdminSetupController as admin">{{admin.adminservice.user}}</a></li>
-              <li ng-click="logout.logout()"><a href="">Logout</a></li>
+            <ol class="nav navbar-nav navbar-right" ng-controller="AdminSetupController as admin">
+              <li><a>{{admin.adminservice.user}}</a></li>
+              <li ng-hide="admin.adminservice.isLoggedIn"><a href="/login">log in</a></li>
+              <li ng-show="admin.adminservice.isLoggedIn" ng-click="logout.logout()"><a href="">Logout</a></li>
             </ol>
           </div>
         </nav>

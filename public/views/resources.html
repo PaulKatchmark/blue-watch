@@ -18,7 +18,7 @@
     <button href="#addNewCategory" data-toggle="modal" class="btn btn-default" id="newCat">Add New Category</button>
   </div>
   <div class="col-xs-4">
-    <button href="#updateCategory" data-toggle="modal" class="btn btn-default pull-right" id="updateCat">Update Category</button>
+    <button href="#updateCategory"  data-toggle="modal" class="btn btn-default pull-right" id="updateCat">Update Category</button>
   </div>
 </div>
 <table>
@@ -168,7 +168,7 @@
                                     <option  data-image="{{color.icon}}" value="{{color.color}}">{{color.color}}</option>
                                 </select> -->
                           <select ng-model="resources.color" class="form-control">
-                              <option ng-if="!markers.inUse"  ng-repeat="markers in resources.openIcons" value="{{markers.color}}"> {{markers.color}}</option>
+                              <option ng-if="!markers.inUse"  ng-repeat="markers in resources.customIconInfo" value="{{markers.color}}"> {{markers.color}}</option>
                           </select>
 
 
@@ -230,9 +230,9 @@
                     <!-- <td><input type="text" class="form-control" ng-model="category.color" /></td> -->
 
                     <td>
-                    <select class="form-control" ng-model="category.color">
-                        <option value="{{category.color}}" disabled selected>{{category.color}}</option>
-                        <option ng-if="!markers.inUse" ng-repeat="markers in resources.openIcons" value="{{markers.color}}"> {{markers.color}}</option>
+                    <select class="form-control" ng-change="resources.captureOldColor(category.color)" ng-model="category.newColor" ng-init="category.newColor=category.color">
+                        <option  value="{{category.color}}" disabled selected>{{category.color}}</option>
+                        <option ng-if="!markers.inUse" ng-repeat="markers in resources.customIconInfo" value="{{markers.color}}"> {{markers.color}}</option>
                     </select>
                         </td>
                     <!-- <select ng-model="resources.color" class="form-control">  <option ng-repeat="markers in resources.openIcons" data-image="{{markers.pin}}" value="{{markers.color}}">{{markers.color}}</option> </select> -->

@@ -1,12 +1,15 @@
 angular.module('blueWatchApp')
 .controller('ApprovalController', ApprovalController);
 
-function ApprovalController($http, $location) {
+function ApprovalController($http, $location, adminservice) {
     console.log('ApprovalController loaded!');
 
 var review = this;
 review.reviewsArray =[];
 review.resources=[];
+
+//whenever controller is loaded, will check to see if user which/if any user is logged in
+adminservice.loggedin();
 
 review.getPendingReviews = function(){
         $http.get('/reviews').then(function(response){
