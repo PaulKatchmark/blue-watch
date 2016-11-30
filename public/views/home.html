@@ -60,7 +60,7 @@
 
                 <div ng-if="!home.search">
 
-                    <div id="categoryList" ng-show="home.change.categoryList">
+                    <div id="categoryList" ng-show="home.changeCategoryList">
                         <h2>Select a category to view a list of resources</h2>
                         <!-- <button id="checkMultiple" type="button" class="btn btn-default" ng-click="checkShow = !checkShow">Select multiple categories</button>
       <button class="btn btn-default" id="checkedSubmitTop" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">See Checked Categories</button> -->
@@ -79,7 +79,7 @@
                         <!-- <button class="btn btn-default" id="checkedSubmit" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">See Checked Categories</button> -->
                     </div>
 
-                    <div id="selectedCategory" ng-show="home.change.selectedCategory">
+                    <div id="selectedCategory" ng-show="home.changeSelectedCategory">
                         <button class="btn btn-default" id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
                         <h3><img ng-src="assets/img/{{home.selectedCategoryArray[0].category.color}}_Marker.png" />{{home.selectedCategoryArray[0].category.categoryName}}</h3>
 
@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div id="checkedCategory" ng-show="home.change.checkedCategory">
+                    <div id="checkedCategory" ng-show="home.changeCheckedCategory">
                         <button class="btn btn-default" id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
                         <div ng-repeat="category in home.checkedCategory">
                             <h3><img ng-src="assets/img/{{category.resources[0].category.color}}_Marker.png" />{{category.name}}</h3>
@@ -125,9 +125,9 @@
                     </div>
                 </div>
             </div>
-            <div id="singleResource" ng-show="home.change.singleResource">
-                <button ng-show="home.change.backButton" class="btn btn-default" id="navBack" ng-click="home.backToSelectedcategories(home.selectedResource.category.categoryName)"><span class="glyphicon glyphicon-menu-left"></span>Selected category</button>
-                <button ng-show="home.change.backButton2" class="btn btn-default" id="navBack" ng-click="home.backToSelectedcategories(home.checked)"><span class="glyphicon glyphicon-menu-left"></span>Selected categories</button>
+            <div id="singleResource" ng-show="home.changeSingleResource">
+                <button ng-show="home.changeBackButton" class="btn btn-default" id="navBack" ng-click="home.backToSelectedcategories(home.selectedResource.category.categoryName)"><span class="glyphicon glyphicon-menu-left"></span>Selected category</button>
+                <button ng-show="home.changeBackButton2" class="btn btn-default" id="navBack" ng-click="home.backToSelectedcategories(home.checked)"><span class="glyphicon glyphicon-menu-left"></span>Selected categories</button>
                 <h3>{{home.selectedResource.company}}</h3>
                 <div id="mainResourceInfo">
                     <p>{{home.selectedResource.category.categoryName}} - {{home.selectedResource.description}}</p>
