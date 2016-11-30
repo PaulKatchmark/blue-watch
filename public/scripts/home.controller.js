@@ -139,7 +139,6 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
         });
 
         info.marker.content =
-
         '<span star-rating rating-value="'+info.averageRating+'" max="5"></span>'
         +'<div class="infoWindowContent">' + info.description + '</div> Contact: '+info.contact+'</div></div>';
 

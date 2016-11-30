@@ -16,8 +16,11 @@
         <th></th>
     </thead>
     <tr ng-repeat="users in admin.usersArray">
-        <td>
+        <td >
             {{users.email}}
+        </td>
+        <td>
+            {{users.accessLevel}}
         </td>
         <td>
             <button ng-click="admin.captureInfo(users._id, users.email, users.password, users.accessLevel)" href="#editAdmin" data-toggle="modal" class="btn btn-default pull-right">Edit</button>
@@ -62,7 +65,7 @@
                     </div>
 
                     <div class="col-xs-11" style="padding-right:0;">
-                      <button type="submit" ng-click="admin.addNewUser(admin.email, admin.password, admin.accessLevel)" class="btn btn-default pull-right" data-dismiss="modal">Add</button>
+                      <button type="button" ng-click="admin.addNewUser(admin.email, admin.password, admin.accessLevel)" class="btn btn-default pull-right" data-dismiss="modal">Add</button>
                     </div>
                 </form>
             </div>
@@ -98,7 +101,7 @@
                     <div class="form-group row">
                       <label class="control-label col-xs-3">Full Permission: </label>
                       <div class="col-xs-1">
-                        <input type="checkbox" ng-model="admin.accessLevel" ng-true-value="'yes'" ng-false-value="'no'" style="margin-top:10px;">
+                        <input type="checkbox" ng-model="admin.capturedAccessLevel" ng-true-value="'yes'" ng-false-value="'no'" style="margin-top:10px;">
                       </div>
                     </div>
                     <div class="col-xs-11" style="padding-right:0;">
