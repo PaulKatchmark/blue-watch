@@ -2,7 +2,7 @@ angular.module('blueWatchApp')
     .controller('ResourcesController', ResourcesController);
 
 
-function ResourcesController($http, $location, $q, ResourcesService,$scope) {
+function ResourcesController($http, $location, $q, ResourcesService,$scope, adminservice) {
 
   var controller = this;
   controller.categories = [];
@@ -21,6 +21,11 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope) {
   controller.capturedId='';
   controller.iconColor ='';
 controller.customIconInfo=[];
+
+
+  //whenever controller is loaded, will check to see if user which/if any user is logged in
+  adminservice.loggedin();
+
   //loads all the false icons on resources page
 
   //controller to create new resource
@@ -87,32 +92,6 @@ controller.customIconInfo=[];
 
 
     controller.getcategories();
-
-
-
-  // //function to set value of icon to true if chosen for category
-  // controller.setIconInUse = function(){
-  //   for (i=0; i<controller.openIcons.length; i++) {
-  //     if (controller.openIcons[i].color == controller.iconColor) {
-  //       console.log('inside if statement ');
-  //       var data = {
-  //         id: controller.openIcons[i]._id,
-  //         pin: controller.openIcons[i].pin,
-  //         color: controller.openIcons[i].color,
-  //         inUse: true
-  //       };
-  //     console.log('data ', data);
-  //     $http.put('/icons/'+data.id, data
-  //   ).then(function(response){
-  //     controller.getIcons();
-  //     }, function(error) {
-  //       console.log('error updating icons', error);
-  //     });
-  //   };
-  // };
-  // };
-
-
 
     controller.captureInfo = function(company, description, contact, website, street, street2, city, state, zip, category, id) {
         controller.capturedCompany = company;
