@@ -8,29 +8,11 @@ var admin = this;
 admin.usersArray = [];
 admin.capturedId = '';
 //sets logged in user info
+admin.accessLevel= 'no';
 admin.adminservice = adminservice;
 
 //whenever controller is loaded, will check to see if user which/if any user is logged in
 adminservice.loggedin();
-
-admin.addNewUser = function(email, password, access){
-    var data = {
-        email:email,
-        password:password,
-        accessLevel: access
-    };
-console.log('data');
-$http.post('/admin', data).then(function(response){
-    console.log('successfully added a new user', response);
-    admin.getUsers();
-    // empty form
-    admin.email='';
-    admin.password='';
-    admin.accessLevel='';
-});
-
-
-}; //End of addNewUser
 
 admin.getUsers = function(){
     $http.get('/admin').then(function(response){
@@ -39,6 +21,28 @@ admin.getUsers = function(){
 
     });
 }//End of getUser
+
+admin.addNewUser = function(email, password, access){
+
+    var data = {
+        email:email,
+        password:password,
+        accessLevel: admin.accessLevel
+    };
+console.log(data);
+$http.post('/admin', data).then(function(response){
+    console.log('successfully added a new user', response);
+    admin.getUsers();
+    // empty form
+    admin.email='';
+    admin.password='';
+    admin.accessLevel='no';
+});
+
+
+}; //End of addNewUser
+
+
 
 admin.getUsers();
 
@@ -67,7 +71,7 @@ admin.updateUser = function(email, password,access){
         // empty form
         admin.email='';
         admin.password='';
-        admin.accessLevel='';
+        admin.accessLevel='no';
 
     });
 }; //End of updateUser
