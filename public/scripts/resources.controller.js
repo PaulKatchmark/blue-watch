@@ -87,6 +87,7 @@ controller.customIconInfo=[];
         $http.get('/categories').then(function(response) {
             // console.log(response);
             controller.categories = response.data;
+            console.log(controller.categories);
         });
     };
 
@@ -133,7 +134,7 @@ controller.customIconInfo=[];
             $http.put('/resource/' + id, body).then(function(response) {
                 controller.getResources();
                 controller.getIcons();
-                controller.getcategories
+                controller.getcategories();
             }, function(error) {
                 console.log('error editing resource', error);
             });
@@ -168,18 +169,19 @@ controller.customIconInfo=[];
 
 
     controller.captureOldColor = function(color){
+
     controller.oldColor = color;
 
     }
 
 //updateCategory function
     controller.updateCategory = function(category) {
-
+console.log(category);
 
         var body = {
             categoryName: category.categoryName,
             color: category.newColor,
-            oldColor:controller.oldColor
+            oldColor:category.color
         };
         var id = category._id;
 
