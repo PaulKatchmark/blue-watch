@@ -53,11 +53,13 @@ console.log('capturedId ', admin.capturedId);
 };//End of captureId
 
 admin.updateUser = function(email, password,access){
+
     var data = {
         email:email,
         password:password,
         accessLevel: access
     };
+    console.log(data);
     $http.put('/admin/'+ admin.capturedId, data).then(function(response){
         console.log('successfully updated the user', response);
         admin.getUsers();
