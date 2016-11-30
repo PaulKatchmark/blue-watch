@@ -52,9 +52,11 @@ span.glyphicon {
   border: 1px solid black; }
 
 .btn {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  padding: 3.5px 6px; }
 
-.btn:focus, input.form-control:focus, select.form-control:focus {
+.btn:focus, input.form-control:focus, select.form-control:focus
+.btn:active, input.form-control:active, select.form-control:active {
   outline: 0; }
 
 nav.navbar.navbar-default {
@@ -86,7 +88,7 @@ nav.navbar.navbar-default {
   color: red; }
 
 #homeBody {
-  height: 76.5vh; }
+  height: 78vh; }
   @media (max-width: 750px) {
     #homeBody {
       font-size: 12px; } }
@@ -104,10 +106,16 @@ nav.navbar.navbar-default {
     @media (max-width: 750px) {
       #homeBody h1 {
         font-size: 20px; } }
-  #homeBody #search {
-    margin-left: 10px; }
   #homeBody #addressSearch {
     margin-bottom: 0; }
+    #homeBody #addressSearch .col-xs-8 {
+      width: 59%;
+      margin-right: 5px; }
+    #homeBody #addressSearch .col-xs-3 {
+      width: 28%; }
+    #homeBody #addressSearch .col-xs-1 {
+      width: 8%;
+      margin-left: 5px; }
     #homeBody #addressSearch h5 {
       margin-top: 0; }
   #homeBody #checkedSubmit {
@@ -121,9 +129,10 @@ nav.navbar.navbar-default {
     #homeBody #homeList h2 {
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
+      text-align: center;
       text-transform: uppercase; }
   #homeBody #scroll {
-    height: 57vh;
+    height: 64.5vh;
     overflow: scroll; }
   #homeBody #mapDiv {
     height: 68vh; }
@@ -132,6 +141,8 @@ nav.navbar.navbar-default {
         height: 35vh; } }
     #homeBody #mapDiv #searchBars {
       margin: 0 0 10px 10px; }
+      #homeBody #mapDiv #searchBars .btn {
+        padding: 3.5px 6px; }
       @media (max-width: 750px) {
         #homeBody #mapDiv #searchBars {
           margin: 0 0 10px 0; } }
@@ -231,29 +242,29 @@ nav.navbar.navbar-default {
             font-size: 10px;
             height: 75px;
             padding-top: 8%; } }
-    #homeBody #selectedCategory #navBack, #homeBody #checkedCategory #navBack {
-      font-family: 'Raleway', sans-serif;
-      margin-top: 10px;
-      width: 100%;
-      border: none;
-      font-size: 20px;
-      border-radius: 0;
-      border-bottom: 2px solid lightgray;
-      padding-left: 0; }
-      #homeBody #selectedCategory #navBack .glyphicon, #homeBody #checkedCategory #navBack .glyphicon {
-        float: left; }
-      @media (max-width: 750px) {
-        #homeBody #selectedCategory #navBack, #homeBody #checkedCategory #navBack {
-          font-size: 18px; } }
-    #homeBody #selectedCategory #navBack:hover, #homeBody #checkedCategory #navBack:hover {
-      background-color: white;
-      font-weight: 600; }
     #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
       margin: 10px 0 0 0;
       padding-bottom: 10px;
       text-align: center;
       border-bottom: 2px solid lightgray;
       color: #3f7ccd; }
+  #homeBody #navBack {
+    font-family: 'Raleway', sans-serif;
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    border-radius: 0;
+    border-bottom: 2px solid lightgray;
+    padding-left: 0; }
+    #homeBody #navBack .glyphicon {
+      float: left; }
+    @media (max-width: 750px) {
+      #homeBody #navBack {
+        font-size: 18px; } }
+  #homeBody #navBack:hover {
+    background-color: white;
+    font-weight: 600; }
   #homeBody #singleResource h3 {
     font-family: 'Raleway', sans-serif;
     color: #3f7ccd; }
@@ -275,7 +286,7 @@ nav.navbar.navbar-default {
     #homeBody #singleResource #website a:hover {
       text-decoration: none; }
   #homeBody #singleResource #reviewScroll {
-    height: 15vh;
+    height: 26vh;
     overflow: scroll; }
   #homeBody #singleResource #review {
     border: 1px solid black;
@@ -286,8 +297,9 @@ nav.navbar.navbar-default {
   #homeBody #singleResource #review:focus {
     outline: 0; }
 
-span.glyphicon.glyphicon-plus {
-  font-size: 10px !important; }
+span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
+  font-size: 15px !important;
+  padding: 5px; }
 
 @media (max-width: 750px) {
   #resourcePage .btn {
@@ -433,5 +445,39 @@ ul.rating {
   .modal-content label {
     font-size: 10px;
     padding-right: 0; } }
+
+/*search / dropdown css*/
+.dropdown.dropdown-lg .dropdown-menu {
+  margin-top: -1px;
+  padding: 6px 20px; }
+
+.input-group-btn .btn-group {
+  display: flex !important; }
+
+.input-group {
+  display: inline-block; }
+
+.btn-group .btn {
+  border-radius: 0;
+  margin-left: -1px; }
+
+.btn-group .btn:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px; }
+
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
+
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0; }
+
+.form-group .form-control:last-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
+
+.caret {
+  height: 25.5px; }
 
 /*# sourceMappingURL=styles.css.map */

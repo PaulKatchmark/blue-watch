@@ -7,7 +7,7 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
   var controller = this;
   controller.categories = [];
   controller.resources=[];
-  controller.openIcons =[];
+
   controller.capturedCompany = '';
   controller.capturedDescription = '';
   controller.capturedContact = '';
@@ -20,30 +20,13 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
   controller.capturedCategory = '';
   controller.capturedId='';
   controller.iconColor ='';
+controller.customIconInfo=[];
+
 
   //whenever controller is loaded, will check to see if user which/if any user is logged in
   adminservice.loggedin();
+
   //loads all the false icons on resources page
-  controller.getIcons = function() {
-
-      $http.get('/icons').then(function(response) {
-          controller.customIconInfo = response.data;
-          console.log('controller.customIconInfo ', controller.customIconInfo);
-            controller.openIcons = [];
-         controller.customIconInfo.forEach(function(info) {
-           if (info.inUse === false) {
-               controller.openIcons.push(info);
-              //  controller.openIcons = JSON.parse(controller.openIcons);
-           }
-          }); //End of for each
-
-          console.log('response in ResourcesController ', controller.openIcons);
-      });
-
-  }; //End of getResources
-
-  controller.getIcons();
-
 
   //controller to create new resource
   controller.createresource = function() {
@@ -86,30 +69,29 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
     };
     controller.getResources();
 
+    controller.getIcons = function() {
+        controller.customIconInfo.length=0;
 
-  //function to set value of icon to true if chosen for category
-  controller.setIconInUse = function(){
-    for (i=0; i<controller.openIcons.length; i++) {
-      if (controller.openIcons[i].color == controller.iconColor) {
-        console.log('inside if statement ');
-        var data = {
-          id: controller.openIcons[i]._id,
-          pin: controller.openIcons[i].pin,
-          color: controller.openIcons[i].color,
-          inUse: true
-        };
-      console.log('data ', data);
-      $http.put('/icons/'+data.id, data
-    ).then(function(response){
-      controller.getIcons();
-      }, function(error) {
-        console.log('error updating icons', error);
-      });
+        $http.get('/icons').then(function(response) {
+            controller.customIconInfo = response.data;
+            console.log('controller.customIconInfo ', controller.customIconInfo);
+
+        });
+
+    }; //End of getResources
+
+    controller.getIcons();
+
+
+    controller.getcategories = function() {
+        $http.get('/categories').then(function(response) {
+            // console.log(response);
+            controller.categories = response.data;
+        });
     };
-  };
-  };
 
 
+    controller.getcategories();
 
     controller.captureInfo = function(company, description, contact, website, street, street2, city, state, zip, category, id) {
         controller.capturedCompany = company;
@@ -150,7 +132,8 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
 
             $http.put('/resource/' + id, body).then(function(response) {
                 controller.getResources();
-                controller.setIconInUse();
+                controller.getIcons();
+                controller.getcategories
             }, function(error) {
                 console.log('error editing resource', error);
             });
@@ -175,7 +158,7 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
         console.log(data);
         $http.post('/categories', data).then(function(response) {
             controller.getcategories();
-            controller.setIconInUse();
+           controller.getIcons();
         }, function(error) {
             console.log('error creating resource', error);
         });
@@ -183,14 +166,11 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
     }; //End of createCategory
 
 
-    controller.getcategories = function() {
-        $http.get('/categories').then(function(response) {
-            // console.log(response);
-            controller.categories = response.data;
-        });
-    };
 
-    controller.getcategories();
+    controller.captureOldColor = function(color){
+    controller.oldColor = color;
+
+    }
 
 //updateCategory function
     controller.updateCategory = function(category) {
@@ -199,7 +179,7 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
         var body = {
             categoryName: category.categoryName,
             color: category.newColor,
-            oldColor:category.color
+            oldColor:controller.oldColor
         };
         var id = category._id;
 
@@ -208,12 +188,14 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
         $http.put('/categories/' + id, body).then(function(response) {
           controller.getcategories();
           controller.getResources();
-          controller.color = color;
+          controller.getIcons();
+
 
         }, function(error) {
             console.log('error editing categories', error);
         });
     }; //end of updateCategory
+
 
 
     //find id to pass into delete category model confirmation
@@ -224,6 +206,7 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
     controller.deleteCategory = function() {
         $http.delete('/categories/' + idToDelete).then(function(response) {
             controller.getcategories();
+            controller.getIcons();
         }, function(error) {
             console.log('error deleting category');
         });
