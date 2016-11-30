@@ -6,7 +6,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     console.log('Home controller');
     var controller = this;
-    // LogoutService.status = false;
+    LogoutService.status = false;
     //array of all the markers
     controller.markers = [];
     controller.resources;

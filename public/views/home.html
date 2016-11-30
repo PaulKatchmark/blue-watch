@@ -69,7 +69,7 @@
                         <h2>Select a category to view a list of resources</h2>
                         <!-- <button id="checkMultiple" type="button" class="btn btn-default" ng-click="checkShow = !checkShow">Select multiple categories</button>
       <button class="btn btn-default" id="checkedSubmitTop" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">See Checked Categories</button> -->
-      <div id='scroll'>
+      <div id='scrollCatList'>
                         <div ng-repeat="resource in home.resources | unique:'category'">
                             <form>
                                 <input ng-show="checkShow" id="checkbox" type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'" />
