@@ -141,8 +141,12 @@ nav.navbar.navbar-default {
       text-transform:uppercase;
     }
   }
+  #scrollSelected {
+    height: 54vh;
+    overflow: scroll;
+  }
   #scroll {
-    height: 62.5vh;
+    height: 61vh;
     overflow: scroll;
   }
   #mapDiv{
@@ -162,7 +166,7 @@ nav.navbar.navbar-default {
   }
   #map{
     margin: 0 0 0 10px;
-    height:54.5vh;
+    height:52vh;
     // height:57.5vh;
     @media (max-width: 750px) {
       margin: 0 0 10px 0;
@@ -343,7 +347,7 @@ nav.navbar.navbar-default {
     }
   }
   #reviewScroll{
-    height: 26vh;
+    height: 15vh;
     overflow: scroll;
   }
   #review {
