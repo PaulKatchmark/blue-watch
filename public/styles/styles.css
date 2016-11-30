@@ -52,8 +52,7 @@ span.glyphicon {
   border: 1px solid black; }
 
 .btn {
-  text-transform: uppercase;
-  padding: 3.5px 6px; }
+  text-transform: uppercase; }
 
 .btn:focus, input.form-control:focus, select.form-control:focus
 .btn:active, input.form-control:active, select.form-control:active {
@@ -106,18 +105,6 @@ nav.navbar.navbar-default {
     @media (max-width: 750px) {
       #homeBody h1 {
         font-size: 20px; } }
-  #homeBody #addressSearch {
-    margin-bottom: 0; }
-    #homeBody #addressSearch .col-xs-8 {
-      width: 59%;
-      margin-right: 5px; }
-    #homeBody #addressSearch .col-xs-3 {
-      width: 28%; }
-    #homeBody #addressSearch .col-xs-1 {
-      width: 8%;
-      margin-left: 5px; }
-    #homeBody #addressSearch h5 {
-      margin-top: 0; }
   #homeBody #checkedSubmit {
     margin-top: 10px;
     width: 100%; }
@@ -132,13 +119,13 @@ nav.navbar.navbar-default {
       text-align: center;
       text-transform: uppercase; }
   #homeBody #scroll {
-    height: 64.5vh;
+    height: 62.5vh;
     overflow: scroll; }
   #homeBody #mapDiv {
     height: 68vh; }
     @media (max-width: 750px) {
       #homeBody #mapDiv {
-        height: 35vh; } }
+        height: 45vh; } }
     #homeBody #mapDiv #searchBars {
       margin: 0 0 10px 10px; }
       #homeBody #mapDiv #searchBars .btn {
@@ -148,7 +135,7 @@ nav.navbar.navbar-default {
           margin: 0 0 10px 0; } }
   #homeBody #map {
     margin: 0 0 0 10px;
-    height: 57.5vh; }
+    height: 54.5vh; }
     @media (max-width: 750px) {
       #homeBody #map {
         margin: 0 0 10px 0;
@@ -483,7 +470,8 @@ ul.rating {
   width: 100%; }
 
 .dropdown-menu {
-  width: 100%; }
+  width: 100%;
+  padding: 10px !important; }
 
 #adv-search {
   margin: 0 auto; }

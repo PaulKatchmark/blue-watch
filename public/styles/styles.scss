@@ -58,7 +58,7 @@ span.glyphicon {
 }
 .btn{
     text-transform: uppercase;
-    padding: 3.5px 6px;
+    // padding: 3.5px 6px;
 }
 
 .btn:focus, input.form-control:focus, select.form-control:focus
@@ -123,26 +123,7 @@ nav.navbar.navbar-default {
       font-size: 20px;
     }
   }
-  // #search{
-  //   margin-left: 10px;
-  // }
-  #addressSearch {
-  .col-xs-8{
-    width: 59%;
-    margin-right: 5px;
-  }
-  .col-xs-3{
-    width: 28%;
-  }
-  .col-xs-1{
-    width: 8%;
-    margin-left: 5px;
-  }
-    h5{
-      margin-top: 0;
-    }
-    margin-bottom: 0;
-  }
+
   #checkedSubmit {
     margin-top: 10px;
     width: 100%;
@@ -161,13 +142,13 @@ nav.navbar.navbar-default {
     }
   }
   #scroll {
-    height: 64.5vh;
+    height: 62.5vh;
     overflow: scroll;
   }
   #mapDiv{
       height: 68vh;
       @media (max-width: 750px) {
-        height: 35vh;
+        height: 45vh;
       }
     #searchBars{
       .btn{
@@ -181,7 +162,8 @@ nav.navbar.navbar-default {
   }
   #map{
     margin: 0 0 0 10px;
-    height:57.5vh;
+    height:54.5vh;
+    // height:57.5vh;
     @media (max-width: 750px) {
       margin: 0 0 10px 0;
       height:24vh;
@@ -605,6 +587,7 @@ ul.rating {
 }
 .dropdown-menu {
   width: 100%;
+  padding: 10px !important;
 }
 // #searchInput {
 //   width: 80%;
