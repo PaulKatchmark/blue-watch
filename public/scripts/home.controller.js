@@ -6,7 +6,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     console.log('Home controller');
     var controller = this;
-    LogoutService.status = false;
+    // LogoutService.status = false;
 
 
         console.log('Home controller');
