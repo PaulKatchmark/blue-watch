@@ -105,18 +105,6 @@ nav.navbar.navbar-default {
     @media (max-width: 750px) {
       #homeBody h1 {
         font-size: 20px; } }
-  #homeBody #addressSearch {
-    margin-bottom: 0; }
-    #homeBody #addressSearch .col-xs-8 {
-      width: 59%;
-      margin-right: 5px; }
-    #homeBody #addressSearch .col-xs-3 {
-      width: 28%; }
-    #homeBody #addressSearch .col-xs-1 {
-      width: 8%;
-      margin-left: 5px; }
-    #homeBody #addressSearch h5 {
-      margin-top: 0; }
   #homeBody #checkedSubmit {
     margin-top: 10px;
     width: 100%; }
@@ -482,7 +470,8 @@ ul.rating {
   width: 100%; }
 
 .dropdown-menu {
-  width: 100%; }
+  width: 100%;
+  padding: 10px !important; }
 
 #adv-search {
   margin: 0 auto; }

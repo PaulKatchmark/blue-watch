@@ -123,26 +123,7 @@ nav.navbar.navbar-default {
       font-size: 20px;
     }
   }
-  // #search{
-  //   margin-left: 10px;
-  // }
-  #addressSearch {
-  .col-xs-8{
-    width: 59%;
-    margin-right: 5px;
-  }
-  .col-xs-3{
-    width: 28%;
-  }
-  .col-xs-1{
-    width: 8%;
-    margin-left: 5px;
-  }
-    h5{
-      margin-top: 0;
-    }
-    margin-bottom: 0;
-  }
+
   #checkedSubmit {
     margin-top: 10px;
     width: 100%;
@@ -605,6 +586,7 @@ ul.rating {
 }
 .dropdown-menu {
   width: 100%;
+  padding: 10px !important;
 }
 // #searchInput {
 //   width: 80%;
