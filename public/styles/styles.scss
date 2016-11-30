@@ -25,17 +25,18 @@ header{
   font-family: 'Raleway', sans-serif;
   color: #747474;
   width: 100%;
-  height: 10%;
+  height: 18%;
   display: inline-block;
   padding-bottom: 20px;
   padding-top:5px;
   border-bottom: $mainborder;
-  @media (max-width: 750px) {
+  @media (max-width: 800px) {
+      height: 8%;
       margin-bottom: 5px;
       padding-bottom: 5px;
 }
   h2{
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         margin-top: 10px;
         font-size: 10px;
         margin-right: 20px;
@@ -88,7 +89,7 @@ nav.navbar.navbar-default {
  button{
    margin-bottom: 20px;
  }
- @media (max-width: 750px) {
+ @media (max-width: 800px) {
    font-size: 10px;
    button{
      margin-bottom: 15px;
@@ -103,7 +104,7 @@ nav.navbar.navbar-default {
   color: red;
 }
 #homeBody {
-  @media (max-width: 750px) {
+  @media (max-width: 800px) {
     font-size: 12px;
   }
   div {
@@ -119,7 +120,7 @@ nav.navbar.navbar-default {
     text-transform:uppercase;
     padding-bottom: 5px;
     border-bottom: $mainborder;
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
       font-size: 20px;
     }
   }
@@ -131,7 +132,7 @@ nav.navbar.navbar-default {
   height: 78vh;
   #homeList{
     height: 68vh;
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
       height: 45vh;
     }
     h2{
@@ -149,17 +150,24 @@ nav.navbar.navbar-default {
     height: 61vh;
     overflow: scroll;
   }
+  #scroll {
+    height: 59vh;
+    overflow: scroll;
+  }
   #mapDiv{
       height: 68vh;
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         height: 45vh;
+      }
+      @media (max-width: 350px) {
+        height: 50vh;
       }
     #searchBars{
       .btn{
           padding: 3.5px 6px;
       }
       margin: 0 0 10px 10px;
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         margin: 0 0 10px 0;
       }
     }
@@ -168,14 +176,14 @@ nav.navbar.navbar-default {
     margin: 0 0 0 10px;
     height:52vh;
     // height:57.5vh;
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
       margin: 0 0 10px 0;
       height:24vh;
     }
   }
   #searchBars{
     input {
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 12px;
         padding: 5px;
       }
@@ -197,7 +205,7 @@ nav.navbar.navbar-default {
     .btn{
       margin-top: 10px;
       font-size: 15px;
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 12px;
       }
       @media (max-width: 350px) {
@@ -209,7 +217,7 @@ nav.navbar.navbar-default {
         width:15px;
         height:15px;
         margin-top: 0;
-        @media (max-width: 750px) {
+        @media (max-width: 800px) {
           width:12px;
           height:12px;
         }
@@ -220,7 +228,7 @@ nav.navbar.navbar-default {
         font-size: 20px;
         width: 93%;
         margin:0;
-        @media (max-width: 750px) {
+        @media (max-width: 800px) {
           font-size: 18px;
         }
         .glyphicon {
@@ -237,7 +245,7 @@ nav.navbar.navbar-default {
     width: 100%;
     h3 {
       font-family: 'Raleway', sans-serif;
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
       font-size: 18px;
     }
   }
@@ -246,7 +254,7 @@ nav.navbar.navbar-default {
       h5{
         font-family: 'Raleway', sans-serif;
         font-size: 20px;
-          @media (max-width: 750px) {
+          @media (max-width: 800px) {
             font-size: 12px;
           }
       }
@@ -254,19 +262,19 @@ nav.navbar.navbar-default {
         width: 90%;
         display: inline-block;
         height: 125px;
-        @media (max-width: 750px) {
+        @media (max-width: 800px) {
           font-size: 15px;
           height: 75px;
         }
         p{
           padding-left: 10px;
-          @media (max-width: 750px) {
+          @media (max-width: 800px) {
             font-size: 10px;
           }
         }
         span{
           font-size: 10px;
-          @media (max-width: 750px) {
+          @media (max-width: 800px) {
             font-size: 8px;
 
           }
@@ -279,7 +287,7 @@ nav.navbar.navbar-default {
       padding-top: 10%;
       vertical-align: middle;
       float: right;
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 10px;
         height: 75px;
         padding-top: 8%;
@@ -310,7 +318,7 @@ nav.navbar.navbar-default {
     .glyphicon {
       float: left;
     }
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
       font-size: 18px;
     }
   }
@@ -371,7 +379,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
 
 #resourcePage{
   .btn{
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
       font-size: 10px;
       padding: 5px;
     }
@@ -383,7 +391,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
   #searchBar{
     margin-bottom: 10px;
     input {
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 10px;
         padding: 5px;
         height: 26px;
@@ -414,7 +422,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
       font-size: 25px;
       border-bottom: $mainborder;
       padding-bottom: 10px;
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 20px;
       }
     }
@@ -422,14 +430,14 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
       text-transform: uppercase;
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 15px;
       }
     }
     td{
       padding: 0;
       margin-bottom: 10px;
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 10px;
       }
     }
@@ -441,7 +449,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
 
 #approvalsPage, #adminPage {
   .btn{
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
       font-size: 10px;
       padding: 5px;
     }
@@ -454,7 +462,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
     font-size: 25px;
     border-bottom: $mainborder;
     padding-bottom: 10px;
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
       font-size: 20px;
     }
   }
@@ -464,14 +472,14 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
       text-transform: uppercase;
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 12px;
       }
     }
     td{
       padding: 0;
       margin-bottom: 10px;
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 10px;
       }
     }
@@ -482,7 +490,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
   #addNew{
     width: 20%;
     margin: auto;
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
     width: 100%;
   }
     margin: 5px 0 10px 0;
@@ -494,17 +502,17 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
     background-color: white;
     border: none;
     box-shadow: none;
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
       font-size: 10px;
     }
     .btn{
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 10px;
         padding: 5px;
       }
     }
     input {
-      @media (max-width: 750px) {
+      @media (max-width: 800px) {
         font-size: 10px;
         padding: 5px;
         height: 26px;
@@ -547,7 +555,7 @@ ul.rating {
 }
 
 .modal-content label {
-  @media (max-width: 750px) {
+  @media (max-width: 800px) {
   font-size: 10px;
   padding-right:0;
 }
