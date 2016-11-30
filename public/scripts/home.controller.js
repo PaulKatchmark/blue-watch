@@ -7,75 +7,52 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     console.log('Home controller');
     var controller = this;
     LogoutService.status = false;
+    //array of all the markers
+    controller.markers = [];
+    controller.resources;
+    controller.selectedCategoryArray;
 
-
-        console.log('Home controller');
-        var controller = this;
-        controller.change = {
-            categoryList: false
-        };
-        controller.change = {
-            selectedCategory: false
-        };
-        controller.change = {
-            checkedCategory: false
-        };
-        controller.change = {
-            singleResource: false
-        };
-        controller.change = {
-            backButton :false
-        };
 
     controller.categoryListToggle = function(){
-        controller.change.categoryList = true,
-        controller.change.selectedCategory = false,
-        controller.change.checkedCategory = false,
-        controller.change.singleResource = false,
-        controller.change.backButton = false,
-        controller.change.backButton2 = false
-        controller.filterAddress = false
+        controller.changeCategoryList = true;
+        controller.changeSelectedCategory = false;
+        controller.changeCheckedCategory = false;
+        controller.changeSingleResource = false;
+        controller.changeBackButton = false;
+        controller.changeBackButton2 = false;
+        controller.filterAddress = false;
     };
     controller.selectedCategoryToggle = function(){
-        controller.change.categoryList = false;
-        controller.change.selectedCategory = true,
-        controller.change.checkedCategory = false,
-        controller.change.singleResource = false,
-        controller.change.backButton = true,
-        controller.change.backButton2 = false
-        controller.filterAddress = false
+        controller.changeCategoryList = false;
+        controller.changeSelectedCategory = true;
+        controller.changeCheckedCategory = false;
+        controller.changeSingleResource = false;
+        controller.changeBackButton = true;
+        controller.changeBackButton2 = false;
+        controller.filterAddress = false;
 
     };
     controller.checkedCategoryToggle = function(){
-        controller.change.categoryList = false;
-        controller.change.selectedCategory = false,
-        controller.change.checkedCategory = true,
-        controller.change.singleResource = false,
-        controller.change.backButton = false,
-        controller.change.backButton2 = true,
-        controller.filterAddress = false
+        controller.changeCategoryList = false;
+        controller.changeSelectedCategory = false;
+        controller.changeCheckedCategory = true;
+        controller.changeSingleResource = false;
+        controller.changeBackButton = false;
+        controller.changeBackButton2 = true;
+        controller.filterAddress = false;
     };
     controller.singleResourceToggle = function(){
-        controller.filterAddress = true,
-        controller.change.categoryList = false,
-        controller.change.selectedCategory = false,
-        controller.change.checkedCategory = false,
-        controller.change.singleResource = true,
-        controller.change.backButton = !controller.change.backButton2,
-        controller.change.backButton2 = !controller.change.backButton
+        controller.changeCategoryList = false;
+        controller.changeSelectedCategory = false;
+        controller.changeCheckedCategory = false;
+        controller.changeSingleResource = true;
+        controller.changeBackButton = !controller.changeBackButton2;
+        controller.changeBackButton2 = !controller.changeBackButton;
+        controller.filterAddress = true;
     };
 
 
     controller.categoryListToggle();
-
-
-
-    //array of all the markers
-    controller.markers = [];
-
-    controller.globalMarkers;
-    controller.resources;
-    controller.selectedCategoryArray;
 
     //sets where the map is located, type and zoom
 
@@ -151,11 +128,6 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     //create marker
     controller.createMarker = function(latinfo, lnginfo, info) {
 
-      // console.log('category color ', info.category.color);
-      // console.log('ResourcesService.icons ', ResourcesService.service.icons);
-
-      // var icons = ResourcesService.service.icons;
-
         info.marker = new google.maps.Marker({
             map: controller.map,
             position: new google.maps.LatLng(latinfo, lnginfo),
@@ -163,7 +135,6 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
             category: info.category.categoryName,
             visible: true,
             icon: '/assets/img/'+ info.category.color+'_Marker.png'
-            // icons[info.category.color].icon
         });
 
         info.marker.content =
@@ -212,7 +183,6 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
         //show markers of selected category
         controller.showVisible([controller.selectedResource.marker]);
-        controller.singleResourceToggle();
 
     };
 
