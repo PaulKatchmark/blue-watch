@@ -113,8 +113,8 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
         $http.get('/resource').then(function(response) {
 
-            controller.resourcesToSearch = response.data;
-            console.log(controller.resourcesToSearch);
+            controller.resourcesToSearch =angular.copy(response.data);
+            console.log('resources to search',controller.resourcesToSearch);
 
             controller.resources = response.data;
 
