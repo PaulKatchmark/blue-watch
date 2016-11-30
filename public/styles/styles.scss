@@ -142,13 +142,13 @@ nav.navbar.navbar-default {
     }
   }
   #scroll {
-    height: 64.5vh;
+    height: 62.5vh;
     overflow: scroll;
   }
   #mapDiv{
       height: 68vh;
       @media (max-width: 750px) {
-        height: 35vh;
+        height: 45vh;
       }
     #searchBars{
       .btn{
@@ -162,7 +162,8 @@ nav.navbar.navbar-default {
   }
   #map{
     margin: 0 0 0 10px;
-    height:57.5vh;
+    height:54.5vh;
+    // height:57.5vh;
     @media (max-width: 750px) {
       margin: 0 0 10px 0;
       height:24vh;

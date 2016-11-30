@@ -119,13 +119,13 @@ nav.navbar.navbar-default {
       text-align: center;
       text-transform: uppercase; }
   #homeBody #scroll {
-    height: 64.5vh;
+    height: 62.5vh;
     overflow: scroll; }
   #homeBody #mapDiv {
     height: 68vh; }
     @media (max-width: 750px) {
       #homeBody #mapDiv {
-        height: 35vh; } }
+        height: 45vh; } }
     #homeBody #mapDiv #searchBars {
       margin: 0 0 10px 10px; }
       #homeBody #mapDiv #searchBars .btn {
@@ -135,7 +135,7 @@ nav.navbar.navbar-default {
           margin: 0 0 10px 0; } }
   #homeBody #map {
     margin: 0 0 0 10px;
-    height: 57.5vh; }
+    height: 54.5vh; }
     @media (max-width: 750px) {
       #homeBody #map {
         margin: 0 0 10px 0;
