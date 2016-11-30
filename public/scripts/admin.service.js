@@ -15,7 +15,7 @@ angular.module('blueWatchApp')
         return adminservice.user;
 
       },function(error){
-        adminservice.isLoggedIn = false;
+        adminservice.isLoggedIn = true; //look here
         console.log('isLoggedIn ', adminservice.isLoggedIn);
         return false;
       }
