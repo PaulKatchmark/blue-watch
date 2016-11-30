@@ -454,9 +454,6 @@ ul.rating {
 .input-group-btn .btn-group {
   display: flex !important; }
 
-.input-group {
-  display: inline-block; }
-
 .btn-group .btn {
   border-radius: 0;
   margin-left: -1px; }
@@ -478,6 +475,20 @@ ul.rating {
   border-bottom-left-radius: 4px; }
 
 .caret {
-  height: 25.5px; }
+  margin-top: 10px;
+  height: 15.5px; }
+
+.input-group {
+  display: inline-block;
+  width: 100%; }
+
+.dropdown-menu {
+  width: 100%; }
+
+#adv-search {
+  margin: 0 auto; }
+
+.dropdown.dropdown-lg {
+  position: static !important; }
 
 /*# sourceMappingURL=styles.css.map */
