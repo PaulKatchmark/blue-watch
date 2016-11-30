@@ -69,7 +69,7 @@
                         <h2>Select a category to view a list of resources</h2>
                         <!-- <button id="checkMultiple" type="button" class="btn btn-default" ng-click="checkShow = !checkShow">Select multiple categories</button>
       <button class="btn btn-default" id="checkedSubmitTop" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">See Checked Categories</button> -->
-<div id='scroll'>
+      <div id='scroll'>
                         <div ng-repeat="resource in home.resources | unique:'category'">
                             <form>
                                 <input ng-show="checkShow" id="checkbox" type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'" />
@@ -88,7 +88,7 @@
                     <div id="selectedCategory" ng-show="home.changeSelectedCategory">
                         <button class="btn btn-default" id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
                         <h3><img ng-src="assets/img/{{home.selectedCategoryArray[0].category.color}}_Marker.png" /> {{home.selectedCategoryArray[0].category.categoryName}}</h3>
-<div id='scroll'>
+<div id='scrollSelected'>
                         <div id="resourceList" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
                             <div ng-if="resource.marker.boundsStatus" id="goNext">
                                 <p class="glyphicon glyphicon-menu-right"></p>
