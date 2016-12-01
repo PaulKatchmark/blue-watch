@@ -183,7 +183,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
         //show markers of selected category
         controller.showVisible([controller.selectedResource.marker]);
-        controller.checked= false;
+
 
     };
 
@@ -335,6 +335,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 console.log(category);
     if (angular.isObject(category)==true){
         controller.expandCheckedCategory(category);
+        controller.checked = false;
     }else{
         controller.expandCategory(category);
 
