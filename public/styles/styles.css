@@ -87,13 +87,18 @@ span.glyphicon {
 .btn {
   text-transform: uppercase; }
 
+button#loginButton:focus, button#loginButton:active,
+button#checkMultiple:focus, button#checkMultiple:active,
+button#checkedSubmitTop:focus, button#checkedSubmitTop:active,
 button#navBack:focus, button#navBack:active,
-.btn:focus, input.form-control:focus, select.form-control:focus
-.btn:active, input.form-control:active, select.form-control:active {
+button:focus, input.form-control:focus, select.form-control:focus
+button:active, input.form-control:active, select.form-control:active {
   outline: 0;
   background-color: white;
-  border-color: white;
   box-shadow: none; }
+
+input.form-control:focus, input.form-control:active {
+  border: 2px solid #3f7ccd; }
 
 nav.navbar.navbar-default {
   font-family: 'Raleway', sans-serif;
@@ -166,7 +171,7 @@ nav.navbar.navbar-default {
     height: 54vh;
     overflow: scroll; }
   #homeBody #scrollCatList {
-    height: 61vh;
+    height: 63vh;
     overflow: scroll; }
   #homeBody #scroll {
     height: 59vh;

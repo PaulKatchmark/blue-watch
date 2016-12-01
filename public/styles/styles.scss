@@ -1,5 +1,8 @@
 $font:'PT Sans', sans-serif;
+$blueWatch: #3f7ccd;
 $mainborder: 2px solid lightgray;
+$selectborder: 2px solid $blueWatch;
+
 
 @keyframes fadeInUp {
   0% {
@@ -113,13 +116,19 @@ span.glyphicon {
     // padding: 3.5px 6px;
 }
 
+button#loginButton:focus, button#loginButton:active,
+button#checkMultiple:focus, button#checkMultiple:active,
+button#checkedSubmitTop:focus, button#checkedSubmitTop:active,
 button#navBack:focus, button#navBack:active,
-.btn:focus, input.form-control:focus, select.form-control:focus
-.btn:active , input.form-control:active , select.form-control:active {
+button:focus, input.form-control:focus, select.form-control:focus
+button:active , input.form-control:active , select.form-control:active {
   outline:0;
   background-color: white;
-  border-color: white;
+
   box-shadow: none;
+}
+input.form-control:focus, input.form-control:active {
+  border: $selectborder;
 }
 
 nav.navbar.navbar-default {
@@ -134,7 +143,7 @@ nav.navbar.navbar-default {
     color: black;
   }
   a:hover, a:focus {
-    color: #3f7ccd;
+    color: $blueWatch;
   }
 #hamburger {
   width: 100%;
@@ -214,7 +223,7 @@ nav.navbar.navbar-default {
     overflow: scroll;
   }
   #scrollCatList {
-    height: 61vh;
+    height: 63vh;
     overflow: scroll;
   }
   #scroll{
@@ -373,7 +382,7 @@ nav.navbar.navbar-default {
       padding-bottom: 10px;
       text-align: center;
       border-bottom: $mainborder;
-      color: #3f7ccd;
+      color: $blueWatch;
     }
   }
 
@@ -402,7 +411,7 @@ nav.navbar.navbar-default {
       //  animation: fadeInRight 0.25s ease-in both;
     h3{
       font-family: 'Raleway', sans-serif;
-      color: #3f7ccd;
+      color: $blueWatch;
     }
     #mainResourceInfo{
       width: 95%;
@@ -490,7 +499,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
     h4{
       font-family: 'Raleway', sans-serif;
       text-align: center;
-      color: #3f7ccd;
+      color: $blueWatch;
       text-transform: uppercase;
       font-size: 25px;
       border-bottom: $mainborder;
@@ -530,7 +539,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
   h2{
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    color: #3f7ccd;
+    color: $blueWatch;
     text-transform: uppercase;
     font-size: 25px;
     border-bottom: $mainborder;
