@@ -1,6 +1,54 @@
 $font:'PT Sans', sans-serif;
 $mainborder: 2px solid lightgray;
 
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeLeft {
+  animation: fadeInLeft 0.25s ease-in both;
+}
+.fadeRight{
+  animation: fadeInRight 0.25s ease-in both;
+}
+
 html, body {
     height:100%;
 }
@@ -120,14 +168,21 @@ nav.navbar.navbar-default {
     padding: 0;
   }
 
+  #title{
+    border-bottom: $mainborder;
+    margin-bottom: 10px;
+  }
+
   h1{
+    animation: fadeInUp .7s 0.25s ease-in both;
     font-family: 'Raleway', sans-serif;
+    padding: 0;
     margin-top: 10px;
     font-size: 30px;
     text-align: center;
     text-transform:uppercase;
     padding-bottom: 5px;
-    border-bottom: $mainborder;
+
     @media (max-width: 769px) {
       font-size: 20px;
     }
@@ -165,10 +220,10 @@ nav.navbar.navbar-default {
   #mapDiv{
       height: 68vh;
       @media (max-width: 769px) {
-        height: 45vh;
+        height: 40vh;
       }
       @media (max-width: 350px) {
-        height: 50vh;
+        height: 42vh;
       }
     #searchBars{
       .btn{
@@ -250,6 +305,7 @@ nav.navbar.navbar-default {
   }
   }
   #selectedCategory, #checkedCategory{
+      //  animation: fadeInRight 0.25s ease-in both;
     width: 100%;
     h3 {
       font-family: 'Raleway', sans-serif;
@@ -336,6 +392,7 @@ nav.navbar.navbar-default {
   }
 
   #singleResource{
+      //  animation: fadeInRight 0.25s ease-in both;
     h3{
       font-family: 'Raleway', sans-serif;
       color: #3f7ccd;

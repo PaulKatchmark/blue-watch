@@ -238,7 +238,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     }
 
     controller.expandCategory = function(category) {
-
+      controller.slide = 'fadeRight';
         //array of markers to show
         controller.showMarkers = [];
 
@@ -268,6 +268,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     }
 
     controller.expandCheckedCategory = function(category) {
+      controller.slide = 'fadeRight';
         console.log(category);
 
       // if (category[0] == false) {
@@ -322,6 +323,8 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
         controller.checkedCategoryToggle();
     }
     controller.backCategories = function(category) {
+
+      controller.slide = 'fadeLeft';
         //refreshes the map and show all
         controller.showVisible(controller.markers);
         controller.search = "";
@@ -331,6 +334,8 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     }
 
     controller.backToSelectedcategories = function(category){
+
+      controller.slide = 'fadeLeft';
 console.log(category);
     if (angular.isObject(category)==true){
         controller.expandCheckedCategory(category);
