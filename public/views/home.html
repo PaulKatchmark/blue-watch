@@ -23,7 +23,7 @@
                                     <label for="filter">Search by Address</label>
                                     <div class="form-group">
                                       <div class="col-xs-8">
-                                      <input id="address-input" class="form-control" type="text" placeholder="Address or Zip Code" />
+                                      <input id="address-input" ng-model="home.searchForAddress" class="form-control" type="text" placeholder="Address or Zip Code" />
                                     </div>
                                     <div class="col-xs-3" id="radiusSelect">
                                     <select class="form-control" name="miles" ng-model="home.distance">
@@ -35,7 +35,7 @@
                                     </select>
                                     </div>
                                     <div class="col-xs-1">
-                                      <button type="submit" class="btn btn-primary" ng-click="home.searchAddress()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                      <button type="submit" class="btn btn-primary" ng-click="home.searchAddress()"><span class="glyphicon glyphicon-search" data-toggle="dropdown" aria-hidden="true"></span></button>
                                     </div>
 </div>
                                   </form>

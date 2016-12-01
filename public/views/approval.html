@@ -17,6 +17,23 @@
 </table>
 
 
+<h2>Approved Reviews</h2>
+
+<table>
+    <thead>
+        <th>Company</th>
+        <th>Comments</th>
+        <th>Rating</th>
+        <th></th>
+    </thead>
+    <tr ng-repeat="review in approval.reviewsArray">
+        <td ng-if="review.approved">{{review.companyName}}</td>
+        <td ng-if="review.approved">{{review.comments}}</td>
+        <td ng-if="review.approved"><span star-rating rating-value="review.rating" max="5" ></span> ({{review.rating}}) stars</td>
+        <td ng-if="review.approved"><button id="deleteButton" ng-click="approval.deleteReview(review._id)" type="button" class="btn btn-default" data-dismiss="modal" >Delete</button></td>
+    </tr>
+</table>
+
 <div id="reviewDetail" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">

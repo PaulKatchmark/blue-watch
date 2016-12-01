@@ -11,8 +11,6 @@ admin.capturedId = '';
 admin.accessLevel= 'no';
 admin.adminservice = adminservice;
 
-//whenever controller is loaded, will check to see if user which/if any user is logged in
-adminservice.loggedin();
 
 admin.getUsers = function(){
     $http.get('/admin').then(function(response){
@@ -57,13 +55,11 @@ console.log('capturedId ', admin.capturedId);
 };//End of captureId
 
 admin.updateUser = function(email, password,access){
-
     var data = {
         email:email,
         password:password,
         accessLevel: access
     };
-    console.log(data);
     $http.put('/admin/'+ admin.capturedId, data).then(function(response){
         console.log('successfully updated the user', response);
         admin.getUsers();
