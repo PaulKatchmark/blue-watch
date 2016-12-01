@@ -56,7 +56,8 @@ html, body {
     height:100%;
 }
 .container {
-    width: 90%;
+  overflow: scroll;
+    width: 70%;
     margin: auto;
     min-height:100vh;
     height: 100%;
@@ -70,6 +71,8 @@ html, body {
 body {
   font-family: $font;
   background-image: url("http://bluewatchus.org/wp-content/uploads/2015/11/car_1950x1279_LIGHT.jpg");
+ background-size: cover;
+ height: 100%;
   @media (max-width: 1000px) {
     background-image: none;
   }
@@ -116,15 +119,11 @@ span.glyphicon {
     // padding: 3.5px 6px;
 }
 
-button#loginButton:focus, button#loginButton:active,
-button#checkMultiple:focus, button#checkMultiple:active,
-button#checkedSubmitTop:focus, button#checkedSubmitTop:active,
-button#navBack:focus, button#navBack:active,
-button:focus, input.form-control:focus, select.form-control:focus
-button:active , input.form-control:active , select.form-control:active {
+.btn.btn-default:focus, input.form-control:focus, select.form-control:focus
+.btn.btn-default:active , input.form-control:active , select.form-control:active {
   outline:0;
   background-color: white;
-
+  border-color: black;
   box-shadow: none;
 }
 .btn:hover{
@@ -531,6 +530,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
       margin: 5px 0;
     }
   }
+
 }
 
 #approvalsPage, #adminPage {
@@ -706,3 +706,16 @@ ul.rating {
     .dropdown.dropdown-lg {
         position: static !important;
     }
+
+    #addCat{
+      padding: 6px;
+      .glyphicon{
+        font-size: 12px !important;
+      }
+    }
+    #addNewCategory{
+  z-index: 2000;
+    }
+#approve{
+  color: green;
+}
