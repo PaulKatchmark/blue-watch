@@ -183,6 +183,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
         //show markers of selected category
         controller.showVisible([controller.selectedResource.marker]);
+        controller.checked= false;
 
     };
 
