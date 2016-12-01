@@ -270,10 +270,10 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     controller.expandCheckedCategory = function(category) {
         console.log(category);
 
-      if (category[0] == false) {
-        alert ('Please check a category');
-        return;
-      }
+      // if (category[0] == false) {
+      //   alert ('Please check a category');
+      //   return;
+      // }
 
         //markers to show based on selected category
         controller.showMarkers = [];
