@@ -24,7 +24,7 @@ controller.customIconInfo=[];
 
 
   //whenever controller is loaded, will check to see if user which/if any user is logged in
-  adminservice.loggedin();
+  adminservice.normalLoggedin();
 
   //loads all the false icons on resources page
 

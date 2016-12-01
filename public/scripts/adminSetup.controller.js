@@ -11,7 +11,7 @@ admin.capturedId = '';
 admin.accessLevel= 'no';
 admin.adminservice = adminservice;
 
-
+admin.adminservice.loggedin();
 admin.getUsers = function(){
     $http.get('/admin').then(function(response){
         // console.log('successfully get users',response);

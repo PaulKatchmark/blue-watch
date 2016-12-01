@@ -43,8 +43,10 @@ router.get('/', function(req, res) {
 router.get('/adminSchema', function(req, res) {
   if (req.isAuthenticated()){
     var user = {
-      email: req.user.email
+      email: req.user.email,
+       accessLevel:req.user.accessLevel
     }
+    console.log(req.user.accessLevel)
     return res.send(user);
   }
   res.sendStatus(401);
