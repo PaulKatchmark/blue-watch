@@ -566,4 +566,23 @@ ul.rating {
 #approve {
   color: green; }
 
+.modal .modal-title {
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; }
+.modal .modal-content {
+  border-radius: 0; }
+.modal .modal-header {
+  margin: 0 20px;
+  border-bottom: 2px solid lightgray;
+  padding-left: 0;
+  padding-right: 0; }
+.modal .modal-footer {
+  margin: 0 20px;
+  border-top: 2px solid lightgray;
+  padding-right: 0; }
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 68%; } }
+
 /*# sourceMappingURL=styles.css.map */
