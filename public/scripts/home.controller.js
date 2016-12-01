@@ -373,7 +373,9 @@ controller.searchResources = function(search){
                 alert("The Geocode was not successful for the following reason: " + status);
 
             }
-
+            controller.searchForAddress = "";
+            controller.distance = "";
+            // controller.data-toggle.dropdown = false;
         });
     }
 
