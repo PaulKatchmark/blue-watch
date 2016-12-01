@@ -430,6 +430,7 @@ controller.getId = function(id){
         ).then(function(){
         console.log('success posting');
         controller.sendMail(body);
+          myRating.setRating(el, 0, 5, false);
         }, function(error) {
           console.log('error creating review', error);
         });
