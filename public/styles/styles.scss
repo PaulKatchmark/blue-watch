@@ -127,6 +127,10 @@ button:active , input.form-control:active , select.form-control:active {
 
   box-shadow: none;
 }
+.btn:hover{
+  color: $blueWatch;
+  background-color: lightgray;
+}
 input.form-control:focus, input.form-control:active {
   border: $selectborder;
 }

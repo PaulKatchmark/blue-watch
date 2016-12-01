@@ -97,6 +97,10 @@ button:active, input.form-control:active, select.form-control:active {
   background-color: white;
   box-shadow: none; }
 
+.btn:hover {
+  color: #3f7ccd;
+  background-color: lightgray; }
+
 input.form-control:focus, input.form-control:active {
   border: 2px solid #3f7ccd; }
 
