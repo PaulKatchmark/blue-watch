@@ -87,9 +87,13 @@ span.glyphicon {
 .btn {
   text-transform: uppercase; }
 
+button#navBack:focus, button#navBack:active,
 .btn:focus, input.form-control:focus, select.form-control:focus
 .btn:active, input.form-control:active, select.form-control:active {
-  outline: 0; }
+  outline: 0;
+  background-color: white;
+  border-color: white;
+  box-shadow: none; }
 
 nav.navbar.navbar-default {
   font-family: 'Raleway', sans-serif;
@@ -177,6 +181,8 @@ nav.navbar.navbar-default {
         height: 42vh; } }
     #homeBody #mapDiv #searchBars {
       margin: 0 0 10px 10px; }
+      #homeBody #mapDiv #searchBars #searchInput {
+        margin: 1px; }
       #homeBody #mapDiv #searchBars .btn {
         padding: 3.5px 6px; }
       @media (max-width: 769px) {
@@ -519,14 +525,17 @@ ul.rating {
   width: 100%; }
 
 .dropdown-menu {
-  min-width: 60vh;
+  min-width: 75vh;
   padding: 10px !important; }
+  @media (max-width: 1500px) {
+    .dropdown-menu {
+      min-width: 70vh; } }
   @media (max-width: 1100px) {
     .dropdown-menu {
-      min-width: 55vh; } }
+      min-width: 54vh; } }
   @media (max-width: 769px) {
     .dropdown-menu {
-      min-width: 60vh; } }
+      min-width: 65vh; } }
   @media (max-width: 640px) {
     .dropdown-menu {
       min-width: 50vh; } }
