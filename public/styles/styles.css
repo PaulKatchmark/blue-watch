@@ -4,7 +4,8 @@ html, body {
 .container {
   width: 90%;
   margin: auto;
-  min-height: 100vh; }
+  min-height: 100vh;
+  height: 100%; }
   @media (max-width: 1000px) {
     .container {
       width: 100%;
@@ -27,7 +28,7 @@ header {
   padding-bottom: 20px;
   padding-top: 5px;
   border-bottom: 2px solid lightgray; }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     header {
       height: 8%;
       margin-bottom: 5px;
@@ -37,7 +38,7 @@ header {
     font-size: 15px;
     width: 70%;
     float: right; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       header h2 {
         margin-top: 10px;
         font-size: 10px;
@@ -73,9 +74,12 @@ nav.navbar.navbar-default {
     color: #3f7ccd; }
   nav.navbar.navbar-default #hamburger {
     width: 100%; }
+  @media (max-height: 99vh) {
+    nav.navbar.navbar-default #bigDiv {
+      height: 100vh; } }
   nav.navbar.navbar-default button {
     margin-bottom: 20px; }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     nav.navbar.navbar-default {
       font-size: 10px; }
       nav.navbar.navbar-default button {
@@ -89,7 +93,7 @@ nav.navbar.navbar-default {
 
 #homeBody {
   height: 78vh; }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     #homeBody {
       font-size: 12px; } }
   #homeBody div {
@@ -103,7 +107,7 @@ nav.navbar.navbar-default {
     text-transform: uppercase;
     padding-bottom: 5px;
     border-bottom: 2px solid lightgray; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #homeBody h1 {
         font-size: 20px; } }
   #homeBody #checkedSubmit {
@@ -111,7 +115,7 @@ nav.navbar.navbar-default {
     width: 100%; }
   #homeBody #homeList {
     height: 68vh; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #homeBody #homeList {
         height: 45vh; } }
     #homeBody #homeList h2 {
@@ -122,7 +126,7 @@ nav.navbar.navbar-default {
   #homeBody #scrollSelected {
     height: 54vh;
     overflow: scroll; }
-  #homeBody #scroll {
+  #homeBody #scrollCatList {
     height: 61vh;
     overflow: scroll; }
   #homeBody #scroll {
@@ -130,7 +134,7 @@ nav.navbar.navbar-default {
     overflow: scroll; }
   #homeBody #mapDiv {
     height: 68vh; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #homeBody #mapDiv {
         height: 45vh; } }
     @media (max-width: 350px) {
@@ -140,17 +144,17 @@ nav.navbar.navbar-default {
       margin: 0 0 10px 10px; }
       #homeBody #mapDiv #searchBars .btn {
         padding: 3.5px 6px; }
-      @media (max-width: 800px) {
+      @media (max-width: 769px) {
         #homeBody #mapDiv #searchBars {
           margin: 0 0 10px 0; } }
   #homeBody #map {
     margin: 0 0 0 10px;
-    height: 52vh; }
-    @media (max-width: 800px) {
+    height: 58vh; }
+    @media (max-width: 769px) {
       #homeBody #map {
         margin: 0 0 10px 0;
         height: 24vh; } }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     #homeBody #searchBars input {
       font-size: 12px;
       padding: 5px; } }
@@ -165,7 +169,7 @@ nav.navbar.navbar-default {
   #homeBody #categoryList .btn {
     margin-top: 10px;
     font-size: 15px; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #homeBody #categoryList .btn {
         font-size: 12px; } }
     @media (max-width: 350px) {
@@ -180,7 +184,7 @@ nav.navbar.navbar-default {
       width: 15px;
       height: 15px;
       margin-top: 0; }
-      @media (max-width: 800px) {
+      @media (max-width: 769px) {
         #homeBody #categoryList form #checkbox {
           width: 12px;
           height: 12px; } }
@@ -189,7 +193,7 @@ nav.navbar.navbar-default {
       font-size: 20px;
       width: 93%;
       margin: 0; }
-      @media (max-width: 800px) {
+      @media (max-width: 769px) {
         #homeBody #categoryList form label {
           font-size: 18px; } }
       #homeBody #categoryList form label .glyphicon {
@@ -198,7 +202,7 @@ nav.navbar.navbar-default {
     width: 100%; }
     #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
       font-family: 'Raleway', sans-serif; }
-      @media (max-width: 800px) {
+      @media (max-width: 769px) {
         #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
           font-size: 18px; } }
     #homeBody #selectedCategory #resourceList, #homeBody #checkedCategory #resourceList {
@@ -206,25 +210,25 @@ nav.navbar.navbar-default {
       #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
         font-family: 'Raleway', sans-serif;
         font-size: 20px; }
-        @media (max-width: 800px) {
+        @media (max-width: 769px) {
           #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
             font-size: 12px; } }
       #homeBody #selectedCategory #resourceList .resourceInfo, #homeBody #checkedCategory #resourceList .resourceInfo {
         width: 90%;
         display: inline-block;
         height: 125px; }
-        @media (max-width: 800px) {
+        @media (max-width: 769px) {
           #homeBody #selectedCategory #resourceList .resourceInfo, #homeBody #checkedCategory #resourceList .resourceInfo {
             font-size: 15px;
             height: 75px; } }
         #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
           padding-left: 10px; }
-          @media (max-width: 800px) {
+          @media (max-width: 769px) {
             #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
               font-size: 10px; } }
         #homeBody #selectedCategory #resourceList .resourceInfo span, #homeBody #checkedCategory #resourceList .resourceInfo span {
           font-size: 10px; }
-          @media (max-width: 800px) {
+          @media (max-width: 769px) {
             #homeBody #selectedCategory #resourceList .resourceInfo span, #homeBody #checkedCategory #resourceList .resourceInfo span {
               font-size: 8px; } }
       #homeBody #selectedCategory #resourceList div#goNext, #homeBody #checkedCategory #resourceList div#goNext {
@@ -234,7 +238,7 @@ nav.navbar.navbar-default {
         padding-top: 10%;
         vertical-align: middle;
         float: right; }
-        @media (max-width: 800px) {
+        @media (max-width: 769px) {
           #homeBody #selectedCategory #resourceList div#goNext, #homeBody #checkedCategory #resourceList div#goNext {
             font-size: 10px;
             height: 75px;
@@ -256,7 +260,7 @@ nav.navbar.navbar-default {
     padding-left: 0; }
     #homeBody #navBack .glyphicon {
       float: left; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #homeBody #navBack {
         font-size: 18px; } }
   #homeBody #navBack:hover {
@@ -298,7 +302,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   font-size: 15px !important;
   padding: 5px; }
 
-@media (max-width: 800px) {
+@media (max-width: 769px) {
   #resourcePage .btn {
     font-size: 10px;
     padding: 5px; } }
@@ -307,7 +311,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   padding: 0; }
 #resourcePage #searchBar {
   margin-bottom: 10px; }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     #resourcePage #searchBar input {
       font-size: 10px;
       padding: 5px;
@@ -330,26 +334,26 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
     font-size: 25px;
     border-bottom: 2px solid lightgray;
     padding-bottom: 10px; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #resourcePage table h4 {
         font-size: 20px; } }
   #resourcePage table th {
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
     text-transform: uppercase; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #resourcePage table th {
         font-size: 15px; } }
   #resourcePage table td {
     padding: 0;
     margin-bottom: 10px; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #resourcePage table td {
         font-size: 10px; } }
   #resourcePage table button {
     margin: 5px 0; }
 
-@media (max-width: 800px) {
+@media (max-width: 769px) {
   #approvalsPage .btn, #adminPage .btn {
     font-size: 10px;
     padding: 5px; } }
@@ -361,7 +365,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   font-size: 25px;
   border-bottom: 2px solid lightgray;
   padding-bottom: 10px; }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     #approvalsPage h2, #adminPage h2 {
       font-size: 20px; } }
 #approvalsPage table, #adminPage table {
@@ -370,13 +374,13 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
     text-transform: uppercase; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #approvalsPage table th, #adminPage table th {
         font-size: 12px; } }
   #approvalsPage table td, #adminPage table td {
     padding: 0;
     margin-bottom: 10px; }
-    @media (max-width: 800px) {
+    @media (max-width: 769px) {
       #approvalsPage table td, #adminPage table td {
         font-size: 10px; } }
   #approvalsPage table button, #adminPage table button {
@@ -385,7 +389,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   width: 20%;
   margin: auto;
   margin: 5px 0 10px 0; }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     #approvalsPage #addNew, #adminPage #addNew {
       width: 100%; } }
 
@@ -393,14 +397,14 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   background-color: white;
   border: none;
   box-shadow: none; }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     #login form {
       font-size: 10px; } }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     #login form .btn {
       font-size: 10px;
       padding: 5px; } }
-  @media (max-width: 800px) {
+  @media (max-width: 769px) {
     #login form input {
       font-size: 10px;
       padding: 5px;
@@ -438,7 +442,7 @@ ul.rating {
   height: 100%;
   left: 47%; }
 
-@media (max-width: 800px) {
+@media (max-width: 769px) {
   .modal-content label {
     font-size: 10px;
     padding-right: 0; } }
@@ -476,12 +480,21 @@ ul.rating {
   height: 15.5px; }
 
 .input-group {
-  display: inline-block;
+  display: table;
   width: 100%; }
 
 .dropdown-menu {
-  width: 100%;
+  min-width: 60vh;
   padding: 10px !important; }
+  @media (max-width: 1100px) {
+    .dropdown-menu {
+      min-width: 55vh; } }
+  @media (max-width: 769px) {
+    .dropdown-menu {
+      min-width: 60vh; } }
+  @media (max-width: 640px) {
+    .dropdown-menu {
+      min-width: 50vh; } }
 
 #adv-search {
   margin: 0 auto; }
