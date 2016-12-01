@@ -8,19 +8,23 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
   controller.categories = [];
   controller.resources=[];
 
-  controller.capturedCompany = '';
-  controller.capturedDescription = '';
-  controller.capturedContact = '';
-  controller.capturedWebsite = '';
-  controller.capturedStreet = '';
-  controller.capturedStreet2 = '';
-  controller.capturedCity = '';
-  controller.capturedState = '';
-  controller.capturedZip = '';
-  controller.capturedCategory = '';
-  controller.capturedId='';
-  controller.iconColor ='';
+
 controller.customIconInfo=[];
+
+    //empty modal
+        controller.capturedCompany = '';
+        controller.capturedDescription = '';
+        controller.capturedContact = '';
+        controller.capturedWebsite = '';
+        controller.capturedStreet = '';
+        controller.capturedStreet2 = '';
+        controller.capturedCity = '';
+        controller.capturedState = '';
+        controller.capturedZip = '';
+        controller.capturedCategory = '';
+        controller.capturedId='';
+        controller.iconColor ='';
+
 
 
   //whenever controller is loaded, will check to see if user which/if any user is logged in
@@ -54,6 +58,18 @@ controller.customIconInfo=[];
             console.log('body in createresource', body);
             $http.post('/resource', body).then(function() {
                 controller.getResources();
+
+            controller.company = '';
+            controller.description = '';
+            controller.contact = '';
+            controller.website = '';
+            controller.street = '';
+            controller.street2 = '';
+            controller.city = '';
+            controller.state = '';
+            controller.zip = '';
+            controller.category = '';
+
             }, function(error) {
                 console.log('error creating resource', error);
             });

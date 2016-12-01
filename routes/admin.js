@@ -10,15 +10,8 @@ router.post('/', function(req, res) {
       accessLevel:req.body.accessLevel
   });
 
-  admin.save().then(function() {
-
-      //where is req.login from?
-    req.login(admin, function(err){
-      if (err) {
-        return res.sendStatus(500);
-      }
-      res.sendStatus(201);
-    });
+  admin.save().then(function(user) {
+      res.send(user);
 
   }).catch(function(err){
     console.log('Error in /admin', err);
