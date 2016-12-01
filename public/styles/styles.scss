@@ -342,6 +342,9 @@ nav.navbar.navbar-default {
           }
       }
       .resourceInfo{
+        h5{
+          margin-bottom: 0;
+        }
         width: 90%;
         display: inline-block;
         height: 125px;
@@ -356,7 +359,7 @@ nav.navbar.navbar-default {
           }
         }
         span{
-          font-size: 10px;
+          font-size: 12px;
           @media (max-width: 769px) {
             font-size: 8px;
 
@@ -448,6 +451,8 @@ nav.navbar.navbar-default {
     padding: 5px;
     margin-bottom: 10px;
     background-color: white;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
   }
   #review:focus{
     outline:0;
@@ -624,11 +629,11 @@ ul.rating {
     cursor: pointer;
 }
 .rating .filled {
-    color: red;
+    color: #FAB400;
 }
 .half {
     position:relative;
-    color: red !important;
+    color: #FAB400 !important;
 }
 .half:after {
     content:'';

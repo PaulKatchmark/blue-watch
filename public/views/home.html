@@ -101,8 +101,9 @@
                                 <p class="glyphicon glyphicon-menu-right"></p>
                             </div>
                             <div ng-if="resource.marker.boundsStatus" class="resourceInfo">
-                                <h5 ng-if="resource.marker.boundsStatus">{{resource.company}}<span star-rating rating-value="resource.averageRating" max="5" ></span><span>
-                    <a ng-click="home.openInfoWindow($event, resource.marker, resource)"> ({{resource.numberOfReviews}} Reviews)</a></span></h5>
+                                <h5 ng-if="resource.marker.boundsStatus">{{resource.company}}</h5>
+                                  <span star-rating rating-value="resource.averageRating" max="5" ></span><span>
+                    <a ng-click="home.openInfoWindow($event, resource.marker, resource)"> ({{resource.numberOfReviews}} Reviews)</a></span>
                                 <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
                                 <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
                             </div>
@@ -130,8 +131,9 @@
                                     <p class="glyphicon glyphicon-menu-right"></p>
                                 </div>
                                 <div ng-if="resource.marker.boundsStatus" class="resourceInfo">
-                                    <h5 ng-if="resource.marker.boundsStatus">{{resource.company}}<span star-rating rating-value="resource.averageRating" max="5"></span><span>
-                        <a ng-click="home.openInfoWindow($event, resource.marker, resource)">({{resource.numberOfReviews}} Reviews)</a></span></h5>
+                                    <h5 ng-if="resource.marker.boundsStatus">{{resource.company}}</h5>
+                                      <span star-rating rating-value="resource.averageRating" max="5"></span><span>
+                        <a ng-click="home.openInfoWindow($event, resource.marker, resource)">({{resource.numberOfReviews}} Reviews)</a></span>
                                     <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
                                     <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
                                 </div>
