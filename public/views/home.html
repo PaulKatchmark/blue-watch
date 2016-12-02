@@ -152,7 +152,7 @@
                     <p ng-if="home.selectedResource.city">{{home.selectedResource.city}}, {{home.selectedResource.state}} {{home.selectedResource.zip}}</p>
                     <p ng-if="home.selectedResource.contact">{{home.selectedResource.contact}}</p>
                 </div>
-                <div id="website">
+                <div ng-if="home.selectedResource.website" id="website">
                     <a href="{{home.selectedResource.website}}">{{home.selectedResource.website}}<span class="glyphicon glyphicon-menu-right"></span></a>
                 </div>
                 <div>
