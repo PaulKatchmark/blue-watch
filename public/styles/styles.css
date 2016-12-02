@@ -341,6 +341,7 @@ nav.navbar.navbar-default {
         float: right;
         margin-right: 10px; }
     #homeBody #singleResource #website a:hover {
+      color: #3f7ccd;
       text-decoration: none; }
   #homeBody #singleResource #reviewScroll {
     height: 15vh;
