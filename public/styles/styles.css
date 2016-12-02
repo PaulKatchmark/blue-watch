@@ -276,11 +276,9 @@ nav.navbar.navbar-default {
           #homeBody #selectedCategory #resourceList .resourceInfo, #homeBody #checkedCategory #resourceList .resourceInfo {
             font-size: 15px;
             height: 75px; } }
-        #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
-          padding-left: 10px; }
-          @media (max-width: 769px) {
-            #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
-              font-size: 10px; } }
+        @media (max-width: 769px) {
+          #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
+            font-size: 10px; } }
         #homeBody #selectedCategory #resourceList .resourceInfo span, #homeBody #checkedCategory #resourceList .resourceInfo span {
           font-size: 12px; }
           @media (max-width: 769px) {
@@ -314,7 +312,8 @@ nav.navbar.navbar-default {
     letter-spacing: 3px;
     border-radius: 0;
     border-bottom: 1px solid #747474;
-    padding-left: 0; }
+    padding-left: 0;
+    padding-bottom: 20px; }
     #homeBody #navBack .glyphicon {
       float: left; }
     @media (max-width: 769px) {

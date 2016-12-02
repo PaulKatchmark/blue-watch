@@ -1,7 +1,7 @@
 $font:'PT Sans', sans-serif;
 $blueWatch: #3f7ccd;
 $gray: #747474;
-$mainborder: 1px solid $gray;
+$mainborder: 1px solid #747474;
 $selectborder: 2px solid $blueWatch;
 
 
@@ -359,7 +359,6 @@ nav.navbar.navbar-default {
           height: 75px;
         }
         p{
-          padding-left: 10px;
           @media (max-width: 769px) {
             font-size: 10px;
           }
@@ -410,6 +409,7 @@ nav.navbar.navbar-default {
     border-radius: 0;
     border-bottom: $mainborder;
     padding-left: 0;
+    padding-bottom: 20px;
     .glyphicon {
       float: left;
     }
