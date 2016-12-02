@@ -11,7 +11,7 @@
     <tr ng-repeat="review in approval.reviewsArray">
         <td ng-if="!review.approved">{{review.companyName}}</td>
         <td ng-if="!review.approved">{{review.comments}}</td>
-        <td ng-if="!review.approved"><span star-rating rating-value="review.rating" max="5" ></span> ({{review.rating}}) stars</td>
+        <td ng-if="!review.approved"><span star-rating rating-value="review.rating" max="5" ></span></td>
         <td ng-if="!review.approved"><button href="#reviewDetail"  class="btn btn-default pull-right" data-toggle="modal" ng-click="approval.captureInfo(review)">Read Details</button></td>
     </tr>
 </table>
@@ -29,7 +29,7 @@
     <tr ng-repeat="review in approval.reviewsArray">
         <td ng-if="review.approved">{{review.companyName}}</td>
         <td ng-if="review.approved">{{review.comments}}</td>
-        <td ng-if="review.approved"><span star-rating rating-value="review.rating" max="5" ></span> ({{review.rating}}) stars</td>
+        <td ng-if="review.approved"><span star-rating rating-value="review.rating" max="5" ></span></td>
         <td ng-if="review.approved"><button id="deleteButton" ng-click="approval.deleteReview(review._id)" type="button" class="btn btn-default" data-dismiss="modal" >Delete</button></td>
     </tr>
 </table>
@@ -48,7 +48,7 @@
 
                         <label class="control-label col-xs-4" >Rating:</label>
                         <div class="col-xs-6 text-align:left;">
-                          <p><span star-rating rating-value="approval.capturedRating" max="5" ></span>({{approval.capturedRating}}) stars</p>
+                          <p><span star-rating rating-value="approval.capturedRating" max="5" ></span>({{approval.capturedRating}})</p>
                         <div class="col-xs-7 text-align:left;">
                           <ul id="el" style="list-style-type: none;"></ul>
 

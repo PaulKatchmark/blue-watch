@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="icon" href="assets/img/favicon.png">
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTnFwlJTS9i343GuBYJ0jmDGvEEx3XCWg"></script>
 
@@ -43,7 +44,7 @@
       <div class="container">
         <div class="row col-xs-12" id="bigDiv" style="width: 100%; margin-left: 0; background-color: white; padding: 0; height: 100%">
         <header>
-        <img href="http://bluewatchus.org/" alt="Bluewatch Logo" class="bluewatchLogo" src="/assets/img/BW_REV_224X120.png">
+        <img href="http://bluewatchus.org/" alt="Bluewatch Logo" class="bluewatchLogo" src="/assets/img/logo.jpg">
         <h2>Blue Watch - Wellness Resources and Family Support for Law Enforcement</h2>
       </header>
 
@@ -57,13 +58,13 @@
           </div>
          <div class="collapse navbar-collapse" id="myNavbar" ng-controller="AdminSetupController as admin">
             <ol class="nav navbar-nav navbar-left">
-              <li><a href="/home">Home</a></li>
+              <li><a href="/home">Map</a></li>
               <li><a href="/resources">Resources</a></li>
               <li ng-if ="admin.adminservice.accessLevel" ><a href="/approval">Approvals</a></li>
-              <li ng-if ="admin.adminservice.accessLevel" ><a href="/adminSetup">Admin Permissions</a></li>
+              <li ng-if ="admin.adminservice.accessLevel" ><a href="/adminSetup">Admins</a></li>
               </ol>
             <ol class="nav navbar-nav navbar-right" >
-              <li><a>{{admin.adminservice.user}}</a></li>
+              <li><a id="email">{{admin.adminservice.user}}</a></li>
               <li ng-hide="admin.adminservice.isLoggedIn"><a href="/login">log in</a></li>
               <li ng-show="admin.adminservice.isLoggedIn" ng-click="logout.logout()"><a href="">Logout</a></li>
             </ol>
