@@ -61,7 +61,7 @@ header {
   display: inline-block;
   padding-bottom: 20px;
   padding-top: 5px;
-  border-bottom: 1px solid #747474; }
+  border-bottom: 1px solid #e5e5e5; }
   @media (max-width: 769px) {
     header {
       height: 8%;
@@ -100,7 +100,7 @@ span.glyphicon {
 
 .btn:hover {
   color: #3f7ccd;
-  background-color: #747474; }
+  background-color: #e5e5e5; }
 
 input.form-control:focus, input.form-control:active {
   border: 2px solid #3f7ccd; }
@@ -109,15 +109,15 @@ nav.navbar.navbar-default {
   font-family: 'Raleway', sans-serif;
   background-color: white;
   border: none;
-  text-transform: uppercase;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 3px;
   -webkit-font-smoothing: subpixel-antialiased;
-  border-bottom: 1px solid #747474;
+  border-bottom: 1px solid #e5e5e5;
   border-radius: 0; }
   nav.navbar.navbar-default a {
-    color: black; }
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #333333; }
   nav.navbar.navbar-default a:hover, nav.navbar.navbar-default a:focus {
     color: #3f7ccd; }
   nav.navbar.navbar-default #hamburger {
@@ -148,9 +148,10 @@ nav.navbar.navbar-default {
     margin: 0;
     padding: 0; }
   #homeBody #title {
-    border-bottom: 1px solid #747474;
+    border-bottom: 1px solid #e5e5e5;
     margin-bottom: 10px; }
   #homeBody h1 {
+    color: #333333;
     animation: fadeInUp .7s 0.25s ease-in both;
     font-family: 'Raleway', sans-serif;
     padding: 0;
@@ -232,7 +233,7 @@ nav.navbar.navbar-default {
     width: 100%;
     padding: 10px;
     padding-right: 0;
-    border-bottom: 1px solid #747474; }
+    border-bottom: 1px solid #e5e5e5; }
     #homeBody #categoryList form #checkbox {
       width: 15px;
       height: 15px;
@@ -260,7 +261,7 @@ nav.navbar.navbar-default {
         #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
           font-size: 18px; } }
     #homeBody #selectedCategory #resourceList, #homeBody #checkedCategory #resourceList {
-      border-bottom: 1px solid #747474;
+      border-bottom: 1px solid #e5e5e5;
       cursor: pointer; }
       #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
         font-family: 'Raleway', sans-serif;
@@ -302,7 +303,7 @@ nav.navbar.navbar-default {
       margin: 10px 0 0 0;
       padding-bottom: 10px;
       text-align: center;
-      border-bottom: 1px solid #747474; }
+      border-bottom: 1px solid #e5e5e5; }
   #homeBody #navBack {
     font-family: 'Raleway', sans-serif;
     margin-top: 10px;
@@ -313,9 +314,10 @@ nav.navbar.navbar-default {
     font-weight: 700;
     letter-spacing: 3px;
     border-radius: 0;
-    border-bottom: 1px solid #747474;
+    border-bottom: 1px solid #e5e5e5;
     padding-left: 0;
-    padding-bottom: 20px; }
+    padding-bottom: 20px;
+    color: #747474; }
     #homeBody #navBack .glyphicon {
       float: left; }
     @media (max-width: 769px) {
@@ -323,18 +325,19 @@ nav.navbar.navbar-default {
         font-size: 18px; } }
   #homeBody #navBack:hover {
     background-color: white;
-    font-weight: 600; }
+    font-weight: 600;
+    color: #3f7ccd; }
   #homeBody #singleResource h3 {
     font-family: 'Raleway', sans-serif; }
   #homeBody #singleResource #mainResourceInfo {
     width: 95%;
     margin-bottom: 10px;
-    border-bottom: 1px solid #747474; }
+    border-bottom: 1px solid #e5e5e5; }
   #homeBody #singleResource #website {
     margin-bottom: 10px;
     padding-bottom: 10px;
     width: 95%;
-    border-bottom: 1px solid #747474; }
+    border-bottom: 1px solid #e5e5e5; }
     #homeBody #singleResource #website a {
       color: black; }
       #homeBody #singleResource #website a .glyphicon {
@@ -390,7 +393,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
     text-align: center;
     text-transform: uppercase;
     font-size: 25px;
-    border-bottom: 1px solid #747474;
+    border-bottom: 1px solid #e5e5e5;
     padding-bottom: 10px; }
     @media (max-width: 769px) {
       #resourcePage table h4 {
@@ -420,7 +423,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   text-align: center;
   color: #747474;
   font-size: 25px;
-  border-bottom: 1px solid #747474;
+  border-bottom: 1px solid #e5e5e5;
   padding-bottom: 10px; }
   @media (max-width: 769px) {
     #approvalsPage h2, #adminPage h2 {
@@ -580,12 +583,12 @@ ul.rating {
   border-radius: 0; }
 .modal .modal-header {
   margin: 0 20px;
-  border-bottom: 1px solid #747474;
+  border-bottom: 1px solid #e5e5e5;
   padding-left: 0;
   padding-right: 0; }
 .modal .modal-footer {
   margin: 0 20px;
-  border-top: 1px solid #747474;
+  border-top: 1px solid #e5e5e5;
   padding-right: 0; }
 
 @media (min-width: 768px) {
