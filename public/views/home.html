@@ -80,12 +80,14 @@
                             <form>
                                 <input ng-show="checkShow" id="checkbox" type="checkbox" ng-model="home.checked[$index]" ng-true-value="'{{resource.category.categoryName}}'" />
 
-                                <label value="resource.category.categoryName" ng-click="home.expandCategory(resource.category.categoryName)"><img ng-src="assets/img/{{resource.category.color}}_Marker.png" /> {{resource.category.categoryName}}<span class="glyphicon glyphicon-menu-right"></span></label>
+                                <label value="resource.category.categoryName" ng-click="home.expandCategory(resource.category.categoryName)"><img ng-src="{{resource.marker.icon}}" /> {{resource.category.categoryName}}<span class="glyphicon glyphicon-menu-right"></span></label>
                             </form>
 
                         </div>
+
                         <button id="checkMultiple" type="button" class="btn btn-default" ng-click="checkShow = !checkShow">Select multiple</button>
                         <button class="btn btn-default pull-right" id="checkedSubmitTop" ng-show="checkShow" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">View</button>
+
 
 </div>
                         <!-- <button class="btn btn-default" id="checkedSubmit" ng-click="home.expandCheckedCategory(home.checked)" ng-hide="!home.checked">See Checked Categories</button> -->
@@ -93,7 +95,7 @@
 
                     <div id="selectedCategory" ng-show="home.changeSelectedCategory" ng-class="home.slide">
                         <button class="btn btn-default" id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
-                        <h3><img ng-src="assets/img/{{home.selectedCategoryArray[0].category.color}}_Marker.png" /> {{home.selectedCategoryArray[0].category.categoryName}}</h3>
+                        <h3><img ng-src="{{home.selectedCategoryArray[0].marker.icon}}" /> {{home.selectedCategoryArray[0].category.categoryName}}</h3>
 <div id='scrollSelected'>
                         <div id="resourceList" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in home.selectedCategoryArray | orderBy : 'company'">
                             <div ng-if="resource.marker.boundsStatus" id="goNext">
@@ -123,7 +125,7 @@
                         <button class="btn btn-default" id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
 <div id='scroll'>
                         <div ng-repeat="category in home.checkedCategory">
-                            <h3><img ng-src="assets/img/{{category.resources[0].category.color}}_Marker.png" /> {{category.name}}</h3>
+                            <h3><img ng-src="{{category.resources[0].marker.icon}}" /> {{category.name}}</h3>
 
                             <div id="resourceList" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in category.resources">
                                 <div ng-if="resource.marker.boundsStatus" id="goNext">
@@ -185,14 +187,14 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <div class="row">
-                            <label class="control-label col-xs-3">Rating:</label>
-                            <div class="col-xs-7 text-align:left;">
+                            <label class="control-label col-xs-2">Rating</label>
+                            <div class="col-xs-8 text-align:left;">
                                 <ul id="el" style="list-style-type: none; padding-left: 0;"></ul>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="control-label col-xs-3">Comments:</label>
-                            <div class="col-xs-7">
+                            <label class="control-label col-xs-2">Comments</label>
+                            <div class="col-xs-8">
                                 <textarea ng-model="home.reviewNotes" type="text" class="form-control"></textarea>
                             </div>
                         </div>

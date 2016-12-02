@@ -5,69 +5,53 @@ angular.module('blueWatchApp')
       var service = this;
       service.openIcons = [];
 
-      service.icons = [
-         {
-             color: 'green',
+      service.icons = {
+          'green': {
              icon: '/assets/img/Green_Marker.png'
          },
-         {
-             color: 'purple',
+          'purple': {
              icon: '/assets/img/Purple_Marker.png'
          },
-        {
-             color: 'yellow',
+          'yellow': {
              icon: '/assets/img/Yellow_Marker.png'
          },
-          {
-             color:'orange',
+         'orange': {
              icon: '/assets/img/Orange_Marker.png'
          },
-          {
-             color:'blue',
+         'blue':  {
              icon: '/assets/img/Blue_Marker.png'
          },
-         {
-             color:'red',
+         'red': {
              icon: '/assets/img/Red_Marker.png'
          },
-          {
-             color:'pink',
+         'pink': {
              icon: 'assets/img/Pink_Marker.png'
          },
-         {
-             color:'light purple',
+         'light purple': {
              icon: '/assets/img/LightPurple_Marker.png'
          },
-         {
-             color: 'light green',
+         'light green': {
              icon: '/assets/img/LightGreen_Marker.png'
          },
-          {
-             color:'lighter green',
+         'lighter green': {
              icon: '/assets/img/LighterGreen_Marker.png'
          },
-         {
-             color:'light blue',
+         'light blue':  {
              icon: '/assets/img/LightBlue_Marker.png'
          },
-         {
-             color:'lighter blue',
+         'lighter blue': {
              icon: '/assets/img/LighterBlue_Marker.png'
          },
-         {
-             color: 'gray',
+          'gray': {
              icon: '/assets/img/Gray_Marker.png'
          },
-         {
-             color: 'gold',
+          'gold': {
              icon: 'assets/img/Gold_Marker.png'
          },
-         {
-             color: 'burgundy',
+        'burgundy': {
              icon: 'assets/img/Burgundy_Marker.png'
          }
-     ];
-
+       };
 
        return {
          service: service
