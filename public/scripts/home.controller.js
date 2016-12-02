@@ -12,6 +12,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     controller.resources;
     controller.selectedCategoryArray;
     controller.resourcesToSearch=[];
+    controller.markersToSearch =[];
 
 
     controller.categoryListToggle = function(){
@@ -101,6 +102,8 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
               var id = info._id;
               $http.get('/publicreviews/'+id).then(function(response) {
+
+
                   var totalRating=0;
                   info.review = response.data;
                   info.numberOfReviews = info.review.length;
@@ -169,6 +172,8 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
         });
         controller.markers.push(info.marker);
+        controller.markersToSearch.push({id: info._id, marker: info.marker});
+        console.log(controller.markersToSearch);
 
 
 
@@ -350,12 +355,25 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     }
 controller.searchData=[];
+controller.searchMarkersToshow = [];
 controller.searchResources = function(search){
     search = search.toString();
     $http.get('/resource/' + search).then(function(response){
     controller.searchData = response.data;
-    });
-};
+
+        controller.searchData.forEach(function(resource){
+            console.log(resource._id);
+            controller.markersToSearch.forEach(function(marker){
+                if(resource._id == marker.id){
+                    controller.searchMarkersToshow.push(marker);
+                    console.log(controller.searchMarkersToshow);
+
+            }
+        }); //End of markersToSearch forEach
+        }); //End of searchData forEach
+
+    });  //End of get resources
+}; //End of searchResources
 
 
     controller.searchAddress = function() {
