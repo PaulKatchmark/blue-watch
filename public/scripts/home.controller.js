@@ -125,6 +125,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     }; //End of getResources
 
+    var icons = ResourcesService.service.icons;
 
     //create marker
     controller.createMarker = function(latinfo, lnginfo, info) {
@@ -135,7 +136,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
             title: info.company,
             category: info.category.categoryName,
             visible: true,
-            icon: '/assets/img/'+ info.category.color+'_Marker.png'
+            icon: icons[info.category.color].icon
         });
 
         info.marker.content =
