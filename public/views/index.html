@@ -58,10 +58,10 @@
           </div>
          <div class="collapse navbar-collapse" id="myNavbar" ng-controller="AdminSetupController as admin">
             <ol class="nav navbar-nav navbar-left">
-              <li><a href="/home">Home</a></li>
+              <li><a href="/home">Map</a></li>
               <li><a href="/resources">Resources</a></li>
               <li ng-if ="admin.adminservice.accessLevel" ><a href="/approval">Approvals</a></li>
-              <li ng-if ="admin.adminservice.accessLevel" ><a href="/adminSetup">Admin Permissions</a></li>
+              <li ng-if ="admin.adminservice.accessLevel" ><a href="/adminSetup">Admins</a></li>
               </ol>
             <ol class="nav navbar-nav navbar-right" >
               <li><a>{{admin.adminservice.user}}</a></li>
