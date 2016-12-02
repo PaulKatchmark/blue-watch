@@ -26,39 +26,38 @@ router.post('/', function(req, res) {
 
   });
 
-  category.save().then(function(category) {
+  category.save().then(function(category, err) {
       res.send(category);
+      if (err){
+        res.sendStatus(500);
+        return;
+      }
+      var color = req.body.color;
 
-      Color.find({ 'color': req.body.color}).then(function(color){
+      Color.find({'color': color}).then(function(color){
+            console.log(color);
+                  color.inUse = true;
 
-        res.sendStatus(200);
-        var usedColor = color[0];
-        usedColor.inUse=true;
+              color.save(function (err, updatedInUse){
+                  console.log('color updated!', updatedInUse);
+                if (err){
+                  res.sendStatus(500);
+                  return;
+                }
+            });// End of color saved
 
 
-        usedColor.save(function (err, updatedInUse){
-          if (err){
-            res.sendStatus(500);
-            return;
-          }
+        });//End of color find
+
 
 
 
       }).catch(function(err){
         console.log('Error getting review', err);
-      });
-      });
+    });
+ });
 
 
-
-
-
-
-  }).catch(function(err){
-    console.log('Error in /categories', err);
-    res.sendStatus(500);
-  });
-});
 
 //update category route
 router.put('/:id', function(req, res) {
