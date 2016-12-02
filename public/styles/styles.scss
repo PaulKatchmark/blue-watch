@@ -287,6 +287,7 @@ nav.navbar.navbar-default {
 
   }
   #categoryList{
+
     h2{
       margin-top: 0;
     }
@@ -301,6 +302,7 @@ nav.navbar.navbar-default {
       }
     }
     form{
+
       #checkbox{
         width:15px;
         height:15px;
@@ -312,6 +314,7 @@ nav.navbar.navbar-default {
       }
 
       label {
+        cursor: pointer;
         font-family: 'Raleway', sans-serif;
         font-size: 20px;
         width: 93%;
@@ -340,6 +343,7 @@ nav.navbar.navbar-default {
   }
     #resourceList{
       border-bottom: $mainborder;
+      cursor: pointer;
       h5{
         font-family: 'Raleway', sans-serif;
         font-size: 20px;

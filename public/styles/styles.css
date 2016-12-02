@@ -242,6 +242,7 @@ nav.navbar.navbar-default {
           width: 12px;
           height: 12px; } }
     #homeBody #categoryList form label {
+      cursor: pointer;
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
       width: 93%;
@@ -259,7 +260,8 @@ nav.navbar.navbar-default {
         #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
           font-size: 18px; } }
     #homeBody #selectedCategory #resourceList, #homeBody #checkedCategory #resourceList {
-      border-bottom: 1px solid #747474; }
+      border-bottom: 1px solid #747474;
+      cursor: pointer; }
       #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
         font-family: 'Raleway', sans-serif;
         font-size: 20px; }
