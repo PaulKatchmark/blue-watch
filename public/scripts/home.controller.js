@@ -11,6 +11,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     controller.markers = [];
     controller.resources;
     controller.selectedCategoryArray;
+    controller.resourcesToSearch=[];
 
 
     controller.categoryListToggle = function(){
@@ -118,6 +119,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
                 controller.createMarker(parseFloat(info.lat), parseFloat(info.long), info);
 
             }); //End of for each
+
             console.log('controller.resources', controller.resources);
             controller.showVisible(controller.markers); //show all markers
 
@@ -330,6 +332,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
         //refreshes the map and show all
         controller.showVisible(controller.markers);
         controller.search = "";
+        controller.checked = false;
 
             controller.categoryListToggle();
 
@@ -338,10 +341,9 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     controller.backToSelectedcategories = function(category){
 
       controller.slide = 'fadeLeft';
-console.log(category);
+      console.log(category);
     if (angular.isObject(category)==true){
         controller.expandCheckedCategory(category);
-        controller.checked = false;
     }else{
         controller.expandCategory(category);
 

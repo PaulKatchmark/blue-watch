@@ -1,5 +1,5 @@
 <div id="adminPage">
-<h2>Admin Permission</h2>
+<h2>Administrators</h2>
 
   <button href="#addNewAdmin" data-toggle="modal" class="btn btn-default pull-right" id="addNew">Add New Admin User</button>
 
@@ -11,7 +11,7 @@
         <h4>Admin Users</h4>
     </caption> -->
     <thead>
-        <th>Admin Users</th>
+        <th>Email</th>
         <th>Full Permission</th>
         <th></th>
     </thead>
@@ -47,13 +47,13 @@
                 <form class="form-horizontal col-xs-12 col-md-12  well" >
                     <div class="form-group row">
                         <label class="control-label col-xs-offset-1 col-xs-2">Email:</label>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <input class="form-control" type="text" ng-model="admin.email" autocomplete="on">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="control-label col-xs-offset-1 col-xs-2">Password:</label>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <input class="form-control" type="password" ng-model="admin.password">
                         </div>
                     </div>
@@ -86,13 +86,13 @@
                 <form class="form-horizontal col-xs-12 col-md-12  well">
                     <div class="form-group row">
                         <label class="control-label col-xs-offset-1 col-xs-2">Email:</label>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <input class="form-control" type="text" ng-model="admin.capturedEmail" autocomplete="on" placeholder="{{admin.capturedEmail}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="control-label col-xs-offset-1 col-xs-2">Password:</label>
-                        <div class="col-xs-8">
+                        <div class="col-xs-7">
                             <input class="form-control" type="password" ng-model="admin.password" placeholder="****">
                         </div>
                     </div>

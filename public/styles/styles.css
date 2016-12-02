@@ -61,7 +61,7 @@ header {
   display: inline-block;
   padding-bottom: 20px;
   padding-top: 5px;
-  border-bottom: 2px solid lightgray; }
+  border-bottom: 1px solid #e5e5e5; }
   @media (max-width: 769px) {
     header {
       height: 8%;
@@ -78,6 +78,7 @@ header {
         font-size: 10px;
         margin-right: 20px; } }
   header img {
+    padding-left: 10%;
     height: 100%; }
 
 span.glyphicon {
@@ -99,7 +100,7 @@ span.glyphicon {
 
 .btn:hover {
   color: #3f7ccd;
-  background-color: lightgray; }
+  background-color: #e5e5e5; }
 
 input.form-control:focus, input.form-control:active {
   border: 2px solid #3f7ccd; }
@@ -108,12 +109,15 @@ nav.navbar.navbar-default {
   font-family: 'Raleway', sans-serif;
   background-color: white;
   border: none;
-  text-transform: uppercase;
-  font-size: 15px;
-  border-bottom: 2px solid lightgray;
+  -webkit-font-smoothing: subpixel-antialiased;
+  border-bottom: 1px solid #e5e5e5;
   border-radius: 0; }
   nav.navbar.navbar-default a {
-    color: black; }
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #333333; }
   nav.navbar.navbar-default a:hover, nav.navbar.navbar-default a:focus {
     color: #3f7ccd; }
   nav.navbar.navbar-default #hamburger {
@@ -144,9 +148,10 @@ nav.navbar.navbar-default {
     margin: 0;
     padding: 0; }
   #homeBody #title {
-    border-bottom: 2px solid lightgray;
+    border-bottom: 1px solid #e5e5e5;
     margin-bottom: 10px; }
   #homeBody h1 {
+    color: #333333;
     animation: fadeInUp .7s 0.25s ease-in both;
     font-family: 'Raleway', sans-serif;
     padding: 0;
@@ -169,8 +174,7 @@ nav.navbar.navbar-default {
     #homeBody #homeList h2 {
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
-      text-align: center;
-      text-transform: uppercase; }
+      text-align: center; }
   #homeBody #scrollSelected {
     height: 54vh;
     overflow: scroll; }
@@ -229,7 +233,7 @@ nav.navbar.navbar-default {
     width: 100%;
     padding: 10px;
     padding-right: 0;
-    border-bottom: 2px solid lightgray; }
+    border-bottom: 1px solid #e5e5e5; }
     #homeBody #categoryList form #checkbox {
       width: 15px;
       height: 15px;
@@ -239,6 +243,7 @@ nav.navbar.navbar-default {
           width: 12px;
           height: 12px; } }
     #homeBody #categoryList form label {
+      cursor: pointer;
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
       width: 93%;
@@ -256,7 +261,8 @@ nav.navbar.navbar-default {
         #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
           font-size: 18px; } }
     #homeBody #selectedCategory #resourceList, #homeBody #checkedCategory #resourceList {
-      border-bottom: 2px solid lightgray; }
+      border-bottom: 1px solid #e5e5e5;
+      cursor: pointer; }
       #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
         font-family: 'Raleway', sans-serif;
         font-size: 20px; }
@@ -267,17 +273,17 @@ nav.navbar.navbar-default {
         width: 90%;
         display: inline-block;
         height: 125px; }
+        #homeBody #selectedCategory #resourceList .resourceInfo h5, #homeBody #checkedCategory #resourceList .resourceInfo h5 {
+          margin-bottom: 0; }
         @media (max-width: 769px) {
           #homeBody #selectedCategory #resourceList .resourceInfo, #homeBody #checkedCategory #resourceList .resourceInfo {
             font-size: 15px;
             height: 75px; } }
-        #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
-          padding-left: 10px; }
-          @media (max-width: 769px) {
-            #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
-              font-size: 10px; } }
+        @media (max-width: 769px) {
+          #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
+            font-size: 10px; } }
         #homeBody #selectedCategory #resourceList .resourceInfo span, #homeBody #checkedCategory #resourceList .resourceInfo span {
-          font-size: 10px; }
+          font-size: 12px; }
           @media (max-width: 769px) {
             #homeBody #selectedCategory #resourceList .resourceInfo span, #homeBody #checkedCategory #resourceList .resourceInfo span {
               font-size: 8px; } }
@@ -297,17 +303,21 @@ nav.navbar.navbar-default {
       margin: 10px 0 0 0;
       padding-bottom: 10px;
       text-align: center;
-      border-bottom: 2px solid lightgray;
-      color: #3f7ccd; }
+      border-bottom: 1px solid #e5e5e5; }
   #homeBody #navBack {
     font-family: 'Raleway', sans-serif;
     margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
     border: none;
-    font-size: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
     border-radius: 0;
-    border-bottom: 2px solid lightgray;
-    padding-left: 0; }
+    border-bottom: 1px solid #e5e5e5;
+    padding-left: 0;
+    padding-bottom: 20px;
+    color: #747474; }
     #homeBody #navBack .glyphicon {
       float: left; }
     @media (max-width: 769px) {
@@ -315,26 +325,26 @@ nav.navbar.navbar-default {
         font-size: 18px; } }
   #homeBody #navBack:hover {
     background-color: white;
-    font-weight: 600; }
-  #homeBody #singleResource h3 {
-    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
     color: #3f7ccd; }
+  #homeBody #singleResource h3 {
+    font-family: 'Raleway', sans-serif; }
   #homeBody #singleResource #mainResourceInfo {
     width: 95%;
     margin-bottom: 10px;
-    border-bottom: 2px solid lightgray;
-    padding-left: 10px; }
+    border-bottom: 1px solid #e5e5e5; }
   #homeBody #singleResource #website {
     margin-bottom: 10px;
     padding-bottom: 10px;
     width: 95%;
-    border-bottom: 2px solid lightgray; }
+    border-bottom: 1px solid #e5e5e5; }
     #homeBody #singleResource #website a {
       color: black; }
       #homeBody #singleResource #website a .glyphicon {
         float: right;
         margin-right: 10px; }
     #homeBody #singleResource #website a:hover {
+      color: #3f7ccd;
       text-decoration: none; }
   #homeBody #singleResource #reviewScroll {
     height: 15vh;
@@ -344,7 +354,9 @@ nav.navbar.navbar-default {
     width: 95%;
     padding: 5px;
     margin-bottom: 10px;
-    background-color: white; }
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase; }
   #homeBody #singleResource #review:focus {
     outline: 0; }
 
@@ -379,24 +391,23 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   #resourcePage table h4 {
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    color: #3f7ccd;
     text-transform: uppercase;
     font-size: 25px;
-    border-bottom: 2px solid lightgray;
+    border-bottom: 1px solid #e5e5e5;
     padding-bottom: 10px; }
     @media (max-width: 769px) {
       #resourcePage table h4 {
         font-size: 20px; } }
   #resourcePage table th {
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-    text-transform: uppercase; }
+    font-size: 20px; }
     @media (max-width: 769px) {
       #resourcePage table th {
         font-size: 15px; } }
   #resourcePage table td {
     padding: 0;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    font-size: 12px; }
     @media (max-width: 769px) {
       #resourcePage table td {
         font-size: 10px; } }
@@ -410,10 +421,9 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
 #approvalsPage h2, #adminPage h2 {
   font-family: 'Raleway', sans-serif;
   text-align: center;
-  color: #3f7ccd;
-  text-transform: uppercase;
+  color: #747474;
   font-size: 25px;
-  border-bottom: 2px solid lightgray;
+  border-bottom: 1px solid #e5e5e5;
   padding-bottom: 10px; }
   @media (max-width: 769px) {
     #approvalsPage h2, #adminPage h2 {
@@ -422,21 +432,21 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   width: 100%; }
   #approvalsPage table th, #adminPage table th {
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-    text-transform: uppercase; }
+    font-size: 20px; }
     @media (max-width: 769px) {
       #approvalsPage table th, #adminPage table th {
         font-size: 12px; } }
   #approvalsPage table td, #adminPage table td {
     padding: 0;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    font-size: 12px; }
     @media (max-width: 769px) {
       #approvalsPage table td, #adminPage table td {
         font-size: 10px; } }
   #approvalsPage table button, #adminPage table button {
     margin: 5px 0; }
 #approvalsPage #addNew, #adminPage #addNew {
-  width: 20%;
+  width: 25%;
   margin: auto;
   margin: 5px 0 10px 0; }
   @media (max-width: 769px) {
@@ -477,11 +487,11 @@ ul.rating {
   cursor: pointer; }
 
 .rating .filled {
-  color: red; }
+  color: #FAB400; }
 
 .half {
   position: relative;
-  color: red !important; }
+  color: #FAB400 !important; }
 
 .half:after {
   content: '';
@@ -565,5 +575,24 @@ ul.rating {
 
 #approve {
   color: green; }
+
+.modal .modal-title {
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; }
+.modal .modal-content {
+  border-radius: 0; }
+.modal .modal-header {
+  margin: 0 20px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-left: 0;
+  padding-right: 0; }
+.modal .modal-footer {
+  margin: 0 20px;
+  border-top: 1px solid #e5e5e5;
+  padding-right: 0; }
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 68%; } }
 
 /*# sourceMappingURL=styles.css.map */
