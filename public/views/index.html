@@ -64,7 +64,7 @@
               <li ng-if ="admin.adminservice.accessLevel" ><a href="/adminSetup">Admins</a></li>
               </ol>
             <ol class="nav navbar-nav navbar-right" >
-              <li><a>{{admin.adminservice.user}}</a></li>
+              <li><a id="email">{{admin.adminservice.user}}</a></li>
               <li ng-hide="admin.adminservice.isLoggedIn"><a href="/login">log in</a></li>
               <li ng-show="admin.adminservice.isLoggedIn" ng-click="logout.logout()"><a href="">Logout</a></li>
             </ol>
