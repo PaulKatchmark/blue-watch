@@ -59,9 +59,9 @@
 
                 <div ng-if="home.search">
                     <div id="selectedCategory" ng-show="home.changeSelectedCategory" ng-class="home.slide">
-                    <button class="btn btn-default" id="navBack" ng-click="home.backCategories()">back</button>
+                    <button class="btn btn-default" id="navBack" ng-click="home.backCategories()"><span class="glyphicon glyphicon-menu-left"></span>All categories</button>
                     <h3>Search Results</h3>
-                    <div id='scroll'>
+                    <div id='scrollSearch'>
                         <div id="resourceList" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in home.searchData | orderBy : 'company'">
                             <div ng-if="resource.marker.boundsStatus" id="goNext">
                                 <p class="glyphicon glyphicon-menu-right"></p>
@@ -155,8 +155,8 @@
                 </div>
 
             <div id="singleResource" ng-show="home.changeSingleResource" ng-class="home.slide">
-                <button ng-show="home.changeBackButton" class="btn btn-default" id="navBack" ng-click="home.backToSelectedcategories(home.selectedResource.category.categoryName)"><span class="glyphicon glyphicon-menu-left"></span>Selected category</button>
-                <button ng-show="home.changeBackButton2" class="btn btn-default" id="navBack" ng-click="home.backToSelectedcategories(home.checked)"><span class="glyphicon glyphicon-menu-left"></span>Selected categories</button>
+                <button ng-show="home.changeBackButton" class="btn btn-default" id="navBack" ng-click="home.backToSelectedcategories(home.selectedResource.category.categoryName)"><span class="glyphicon glyphicon-menu-left"></span>{{home.selectedResource.category.categoryName}}</button>
+                <button ng-show="home.changeBackButton2" class="btn btn-default" id="navBack" ng-click="home.backToSelectedcategories(home.checked)"><span class="glyphicon glyphicon-menu-left"></span>{{home.selectedResource.category.categoryName}}</button>
                 <h3>{{home.selectedResource.company}}</h3>
                 <div id="mainResourceInfo">
                     <p style="font-style: italic;">Services: {{home.selectedResource.category.categoryName}} - {{home.selectedResource.description}}</p>
