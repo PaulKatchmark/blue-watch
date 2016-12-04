@@ -19,6 +19,8 @@ function LoginController($http, $location, adminservice) {
   controller.login = function() {
     console.log('logging in');
     $http.post('/login', {
+      firstName: controller.firstName,
+      lastName: controller.lastName,
       email: controller.email,
       password: controller.password
     }).then(function(){

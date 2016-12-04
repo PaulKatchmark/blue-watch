@@ -30,7 +30,7 @@
         <th>Category</th>
         <th></th>
     </thead>
-    <tr ng-repeat = "resource in resources.resources  | orderBy: resources.resources.sortType:resources.resources.sortReverse | filter: resources.search" adapter="adapter">
+    <tr ng-repeat = "resource in resources.resources  | orderBy: 'company'  | filter: resources.search" adapter="adapter">
         <td>
           {{resource.company}}
         </td>
