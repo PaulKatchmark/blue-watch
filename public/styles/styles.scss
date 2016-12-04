@@ -152,9 +152,6 @@ nav.navbar.navbar-default {
     font-weight: 700;
     letter-spacing: 3px;
     color: $header;
-    #email{
-      text-transform:inherit;
-    }
   }
   a:hover, a:focus {
     color: $blueWatch;
@@ -209,8 +206,6 @@ nav.navbar.navbar-default {
     font-size: 30px;
     text-align: center;
     text-transform:uppercase;
-    padding-bottom: 5px;
-
     @media (max-width: 769px) {
       font-size: 20px;
     }
