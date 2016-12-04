@@ -8,6 +8,8 @@ router.post('/', passport.authenticate('local'), function(req, res){
 router.get('/info', function(req, res) {
   if (req.isAuthenticated()){
     var user = {
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
       email: req.user.email,
       accessLevel:req.user.accessLevel
     }

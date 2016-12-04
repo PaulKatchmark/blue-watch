@@ -12,6 +12,8 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     controller.resources;
     controller.selectedCategoryArray;
     controller.resourcesToSearch=[];
+    controller.markersToSearch =[];
+    controller.reviewsToSearch = [];
 
 
     controller.categoryListToggle = function(){
@@ -101,6 +103,8 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
               var id = info._id;
               $http.get('/publicreviews/'+id).then(function(response) {
+
+
                   var totalRating=0;
                   info.review = response.data;
                   info.numberOfReviews = info.review.length;
@@ -114,8 +118,9 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
                   } else{
                       info.averageRating = 0;
                   }
-
+                  controller.reviewsToSearch.push({id: info._id, reviews: info.review, averageRating:info.averageRating, numberOfReviews:info.numberOfReviews});
                  });
+
                 controller.createMarker(parseFloat(info.lat), parseFloat(info.long), info);
 
             }); //End of for each
@@ -170,9 +175,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
         });
         controller.markers.push(info.marker);
-
-
-
+        controller.markersToSearch.push({id: info._id, marker: info.marker});
     }; //End of createMarker
 
     controller.showSingleResource = function(resource){
@@ -209,8 +212,6 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     controller.showVisible = function(controllerMarkers) {
         var bounds = new google.maps.LatLngBounds();
-
-        console.log(controllerMarkers);
 
         if(controllerMarkers.length>1){
         controllerMarkers.forEach(function(marker) {
@@ -351,12 +352,48 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
 
     }
 controller.searchData=[];
+controller.searchMarkersToshow = [];
 controller.searchResources = function(search){
+    controller.searchData.length=0;
+    controller.searchMarkersToshow.length=0;
     search = search.toString();
     $http.get('/resource/' + search).then(function(response){
     controller.searchData = response.data;
-    });
-};
+
+        controller.searchData.forEach(function(searchedresource){
+
+
+            controller.resources.forEach(function(resource){
+                if(searchedresource._id == resource._id){
+                    controller.searchData.push(resource);
+                    console.log(resource);
+                    controller.searchMarkersToshow.push(resource.marker);
+                }
+            })
+
+            // controller.markersToSearch.forEach(function(marker){
+            //     if(searchedresource._id == marker.id){
+            //         resource.marker = marker;
+            //         controller.searchMarkersToshow.push(marker.marker);
+            //     }
+            // }); //End of markersToSearch forEach
+            // controller.reviewsToSearch.forEach(function(review){
+            //
+            //     if(searchedresource._id == review.id){
+            //         resource.reviewInfo = review;
+            //     }
+            // }); //End of reviewsToSearch forEach
+        }); //End of searchData forEach
+
+        
+        //hide all markers
+        controller.hideMarkers(controller.markers);
+        //show markers of selected category
+        controller.showVisible(controller.searchMarkersToshow);
+        controller.selectedCategoryToggle ();
+
+    });  //End of get resources
+}; //End of searchResources
 
 
     controller.searchAddress = function() {
@@ -391,8 +428,6 @@ controller.searchResources = function(search){
 
 controller.getId = function(id){
   controller.id = id;
-  console.log('id', id);
-  console.log(controller.id);
 };
 
 
@@ -408,7 +443,6 @@ controller.getId = function(id){
     // callback to run after setting the rating
     var callback = function(rating) {
       controller.starReview = rating
-      console.log(rating);
      };
 
     // rating instance
@@ -448,11 +482,8 @@ controller.getId = function(id){
 
 //show all ratings for the resource selected
     controller.getSelectedRating = function (resource) {
-        console.log(resource);
-
     //get review array of that id in the .review property
     controller.selectedReviewArrays = resource.review;
-        console.log(controller.selectedReviewArrays);
 
     };
 
@@ -475,9 +506,7 @@ angular.module('blueWatchApp')
         link: function (scope, elem, attrs) {
 
             var updateStars = function () {
-                console.log(scope.ratingValue);
                 scope.stars = [];
-
                 for (var i = 0; i < scope.max; i++) {
                     scope.stars.push({
                         filled: i < scope.ratingValue,

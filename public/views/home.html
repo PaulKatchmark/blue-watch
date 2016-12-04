@@ -58,16 +58,26 @@
 
 
                 <div ng-if="home.search">
+                    <div id="selectedCategory" ng-show="home.changeSelectedCategory" ng-class="home.slide">
                     <button class="btn btn-default" id="navBack" ng-click="home.backCategories()">back</button>
+                    <h3>Search Results</h3>
                     <div id='scroll'>
-                    <div ng-repeat="resource in home.resourcesToSearch | filter:home.search">
-                        <h3>{{resource.category.categoryName}}</h3>
-                        <p>{{resource.company}}</p>
-                        <p>{{resource.description}}</p>
-                        <p>{{resource.contact}}</p>
+                        <div id="resourceList" type="button" href="#" ng-click="home.openInfoWindow($event, resource.marker, resource)" ng-repeat="resource in home.searchData | orderBy : 'company'">
+                            <div ng-if="resource.marker.boundsStatus" id="goNext">
+                                <p class="glyphicon glyphicon-menu-right"></p>
+                            </div>
+                            <div ng-if="resource.marker.boundsStatus" class="resourceInfo">
+                        <!-- <h3 ng-if="resource.marker.boundsStatus">{{resource.category.categoryName}}</h3> -->
+                        <h5 ng-if="resource.marker.boundsStatus">{{resource.company}}</h5>
+                        <span type="button" ng-if="resource.marker.boundsStatus" star-rating rating-value="resource.averageRating" max="5" ></span><span ng-if="resource.marker.boundsStatus">
+                            <a> ({{resource.numberOfReviews}} Reviews)</a></span>
+                        <p ng-if="resource.marker.boundsStatus">{{resource.description}}</p>
+                        <p ng-if="resource.marker.boundsStatus">{{resource.contact}}</p>
                     </div>
                 </div>
                   </div>
+              </div>
+          </div>
 
                 <div ng-if="!home.search">
 

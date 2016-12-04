@@ -11,11 +11,20 @@
         <h4>Admin Users</h4>
     </caption> -->
     <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
         <th>Email</th>
         <th>Full Permission</th>
         <th></th>
     </thead>
     <tr ng-repeat="users in admin.usersArray">
+      <td >
+          {{users.firstName}}
+      </td>
+      <td>
+        {{users.lastName}}
+      </td>
+
         <td >
             {{users.email}}
         </td>
@@ -23,7 +32,7 @@
             {{users.accessLevel}}
         </td>
         <td>
-            <button ng-click="admin.captureInfo(users._id, users.email, users.password, users.accessLevel)" href="#editAdmin" data-toggle="modal" class="btn btn-default pull-right">Edit</button>
+            <button ng-click="admin.captureInfo(users._id, users.firstName, users.lastName, users.email, users.password, users.accessLevel)" href="#editAdmin" data-toggle="modal" class="btn btn-default pull-right">Edit</button>
         </td>
         <td>
             <button  id="deleteButton" ng-click="admin.deleteUser(users._id)" data-toggle="modal" class="btn btn-default pull-right">Delete</button>
@@ -45,6 +54,18 @@
             <div class="modal-body modal-background-color text-center">
 
                 <form class="form-horizontal col-xs-12 col-md-12  well" >
+                  <div class="form-group row">
+                      <label class="control-label col-xs-offset-1 col-xs-2">First Name:</label>
+                      <div class="col-xs-7">
+                          <input class="form-control" type="text" ng-model="admin.firstName" autocomplete="on">
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                      <label class="control-label col-xs-offset-1 col-xs-2">Last Name:</label>
+                      <div class="col-xs-7">
+                          <input class="form-control" type="text" ng-model="admin.lastName" autocomplete="on">
+                      </div>
+                  </div>
                     <div class="form-group row">
                         <label class="control-label col-xs-offset-1 col-xs-2">Email:</label>
                         <div class="col-xs-7">
@@ -66,7 +87,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-              <button type="button" ng-click="admin.addNewUser(admin.email, admin.password, admin.accessLevel)" class="btn btn-default pull-right" data-dismiss="modal">Add</button>
+              <button type="button" ng-click="admin.addNewUser(admin.firstName, admin.lastName, admin.email, admin.password, admin.accessLevel)" class="btn btn-default pull-right" data-dismiss="modal">Add</button>
 
             </div>
         </div>
@@ -84,6 +105,18 @@
             <div class="modal-body modal-background-color text-center">
 
                 <form class="form-horizontal col-xs-12 col-md-12  well">
+                    <div class="form-group row">
+                        <label class="control-label col-xs-offset-1 col-xs-2">First Name:</label>
+                        <div class="col-xs-7">
+                            <input class="form-control" type="text" ng-model="admin.capturedFirstName" autocomplete="on" placeholder="{{admin.capturedFirstName}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-xs-offset-1 col-xs-2">Last Name:</label>
+                        <div class="col-xs-7">
+                            <input class="form-control" type="text" ng-model="admin.capturedLastName" autocomplete="on" placeholder="{{admin.capturedLastName}}">
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="control-label col-xs-offset-1 col-xs-2">Email:</label>
                         <div class="col-xs-7">
@@ -105,7 +138,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-              <button ng-click="admin.updateUser(admin.capturedEmail, admin.password, admin.capturedAccessLevel)" type="submit" class="btn btn-default pull-right" data-dismiss="modal">Update</button>
+              <button ng-click="admin.updateUser(admin.capturedFirstName, admin.capturedLastName, admin.capturedEmail, admin.password, admin.capturedAccessLevel)" type="submit" class="btn btn-default pull-right" data-dismiss="modal">Update</button>
 
             </div>
 

@@ -6,7 +6,7 @@ router.get('/', function(req, res) {
 
 //finds all icons inside color database
   Color.find({}).then(function(icons){
-    console.log('icons ', icons);
+    // console.log('icons ', icons);
         res.send(icons);
 
   }).catch(function(err){

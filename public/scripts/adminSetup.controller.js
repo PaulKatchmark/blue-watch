@@ -12,6 +12,9 @@ admin.accessLevel= 'no';
 admin.adminservice = adminservice;
 
 admin.adminservice.loggedin();
+//whenever controller is loaded, will check to see if user which/if any user is logged in
+adminservice.normalLoggedin();
+
 admin.getUsers = function(){
     $http.get('/admin').then(function(response){
         console.log('successfully get users',response);
@@ -20,18 +23,22 @@ admin.getUsers = function(){
     });
 }//End of getUser
 
-admin.addNewUser = function(email, password, access){
+admin.addNewUser = function(firstName, lastName, email, password, access){
 
     var data = {
+        firstName:firstName,
+        lastName:lastName,
         email:email,
         password:password,
         accessLevel: admin.accessLevel
     };
-console.log(data);
+// console.log(data);
 $http.post('/admin', data).then(function(response){
     console.log('successfully added a new user', response);
     admin.getUsers();
     // empty form
+    admin.firstName='';
+    admin.lastName='';
     admin.email='';
     admin.password='';
     admin.accessLevel='no';
@@ -44,8 +51,10 @@ $http.post('/admin', data).then(function(response){
 
 admin.getUsers();
 
-admin.captureInfo = function(id, email, password, access){
+admin.captureInfo = function(id, firstName, lastName, email, password, access){
 admin.capturedId=id;
+admin.capturedFirstName=firstName;
+admin.capturedLastName=lastName;
 admin.capturedEmail=email;
 admin.capturedPassword=password;
 admin.capturedAccessLevel=access;
@@ -54,8 +63,10 @@ console.log(access);
 console.log('capturedId ', admin.capturedId);
 };//End of captureId
 
-admin.updateUser = function(email, password,access){
+admin.updateUser = function(firstName, lastName, email, password,access){
     var data = {
+        firstName:firstName,
+        lastName:lastName,
         email:email,
         password:password,
         accessLevel: access
@@ -65,6 +76,8 @@ admin.updateUser = function(email, password,access){
         admin.getUsers();
 
         // empty form
+        admin.firstName='';
+        admin.lastName='';
         admin.email='';
         admin.password='';
         admin.accessLevel='no';
