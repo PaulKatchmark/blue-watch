@@ -159,7 +159,7 @@
                 <button ng-show="home.changeBackButton2" class="btn btn-default" id="navBack" ng-click="home.backToSelectedcategories(home.checked)"><span class="glyphicon glyphicon-menu-left"></span>{{home.selectedResource.category.categoryName}}</button>
                 <h3>{{home.selectedResource.company}}</h3>
                 <div id="mainResourceInfo">
-                    <p style="font-style: italic;">Services: {{home.selectedResource.category.categoryName}} - {{home.selectedResource.description}}</p>
+                    <p style="font-style: italic;">Services: {{home.selectedResource.description}}</p>
                     <p ng-if="home.selectedResource.street">{{home.selectedResource.street}}</p>
                     <p ng-if="home.selectedResource.city">{{home.selectedResource.city}}, {{home.selectedResource.state}} {{home.selectedResource.zip}}</p>
                     <p ng-if="home.selectedResource.contact">{{home.selectedResource.contact}}</p>

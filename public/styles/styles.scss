@@ -440,6 +440,8 @@ nav.navbar.navbar-default {
 
     }
     #mainResourceInfo{
+      height: 121px;
+      overflow: scroll;
       width: 95%;
       margin-bottom: 10px;
       border-bottom: $mainborder;
