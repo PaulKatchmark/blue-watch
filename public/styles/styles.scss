@@ -240,6 +240,10 @@ nav.navbar.navbar-default {
     height: 59vh;
     overflow: scroll;
   }
+  #scrollSearch{
+    height: 54vh;
+    overflow: scroll;
+  }
   #mapDiv{
       height: 68vh;
       @media (max-width: 769px) {

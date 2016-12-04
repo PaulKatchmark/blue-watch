@@ -183,6 +183,9 @@ nav.navbar.navbar-default {
   #homeBody #scroll {
     height: 59vh;
     overflow: scroll; }
+  #homeBody #scrollSearch {
+    height: 54vh;
+    overflow: scroll; }
   #homeBody #mapDiv {
     height: 68vh; }
     @media (max-width: 769px) {
