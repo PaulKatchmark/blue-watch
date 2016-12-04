@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 
 //finds all categories inside category database
   Categories.find({}).then(function(categories){
-    console.log('categories ', categories);
+    // console.log('categories ', categories);
         res.send(categories);
 
   }).catch(function(err){

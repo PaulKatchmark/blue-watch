@@ -4,8 +4,11 @@ const User = require('../models/adminSchema');
 
 exports.setup = function () {
   passport.use('local', new LocalStrategy({
+
     usernameField: 'email',
-    passwordField: 'password'
+    passwordField: 'password',
+    firstName: 'firstName',
+    lastName: 'lastName'
   }, findAndComparePassword));
 
   // converts user to user id
@@ -24,7 +27,7 @@ exports.setup = function () {
 };
 
 function findAndComparePassword(email, password, done) {
-  console.log('email,password', email, password);
+  // console.log('email,password', email, password);
 
   User.findOne({ email: email }).then(function(user){
 
@@ -34,7 +37,7 @@ function findAndComparePassword(email, password, done) {
       return done(null, false);
     }
 
-    console.log('found user:', user);
+    // console.log('found user:', user);
 
     user.comparePassword(password)
         .then(function(isMatch){
