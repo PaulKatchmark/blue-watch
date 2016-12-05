@@ -9,7 +9,8 @@ angular.module('blueWatchApp')
 
     adminservice.loggedin = function(){
       return $http.get('/admin/adminSchema').then(function(response) {
-        adminservice.user = response.data.email;
+        adminservice.user = response.data.firstName;
+        console.log(response.data);
 
         adminservice.isLoggedIn = true;
         if (response.data.accessLevel == 'no'){
@@ -33,6 +34,7 @@ angular.module('blueWatchApp')
 
     adminservice.normalLoggedin = function(){
       return $http.get('/login/info').then(function(response) {
+          console.log(response.data);
         adminservice.user = response.data.firstName;
         adminservice.isLoggedIn = true;
         if (response.data.accessLevel == 'no'){

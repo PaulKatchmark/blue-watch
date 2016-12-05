@@ -36,15 +36,17 @@ router.get('/', function(req, res) {
 
 //get logged in user to display
 router.get('/adminSchema', function(req, res) {
+    console.log(req.body);
 
   if (req.isAuthenticated()){
     var user = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
       email: req.user.email,
       accessLevel:req.user.accessLevel
     }
     return res.send(user);
+    console.log(user);
   }
   res.sendStatus(401);
 });

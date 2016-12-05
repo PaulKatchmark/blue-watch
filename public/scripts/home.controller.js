@@ -146,9 +146,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
             icon: icons[info.category.color].icon
         });
 
-        info.marker.content =
-        '<span star-rating rating-value="'+info.averageRating+'" max="5"></span>'
-        +'<div class="infoWindowContent">' + info.description + '</div> Contact: '+info.contact+'</div></div>';
+        info.marker.content ='<div class="infoWindowContent">' + info.description + '</div> Contact: '+info.contact+'</div></div>';
 
         info.marker.infoWindow = new google.maps.InfoWindow();
 
@@ -156,13 +154,13 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
         google.maps.event.addListener(info.marker, 'click', function() {
             controller.closeInfoWindow();
 
-
             controller.showSingleResource(info);
             controller.singleResourceToggle();
 
             info.marker.infoWindow.setContent('<p><strong>' + info.marker.title +'</strong>'
             + info.marker.content + '</p>');
             info.marker.infoWindow.open(controller.map, info.marker);
+
 
         });
         //close infoWindow when clicked anywhere on map
@@ -179,7 +177,7 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     }; //End of createMarker
 
     controller.showSingleResource = function(resource){
-
+        console.log(resource);
         controller.selectedResource = resource;
 
         //get review ratings and comments
@@ -235,10 +233,8 @@ function HomeController($http, $location, $scope, ResourcesService, LogoutServic
     //show marker when company name is clicked
     controller.openInfoWindow = function($event, selectedMarker, resource) {
         event.preventDefault();
-        google.maps.event.trigger(selectedMarker, 'click');
-        controller.showSingleResource(resource);
-            controller.singleResourceToggle();
 
+        google.maps.event.trigger(selectedMarker, 'click');
 
     }
 
@@ -385,7 +381,7 @@ controller.searchResources = function(search){
             // }); //End of reviewsToSearch forEach
         }); //End of searchData forEach
 
-        
+
         //hide all markers
         controller.hideMarkers(controller.markers);
         //show markers of selected category
