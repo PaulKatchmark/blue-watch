@@ -600,5 +600,7 @@ ul.rating {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 68%; } }
+.popover {
+  width: 175px; }
 
 /*# sourceMappingURL=styles.css.map */
