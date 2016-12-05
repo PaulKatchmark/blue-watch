@@ -332,6 +332,8 @@ nav.navbar.navbar-default {
   #homeBody #singleResource h3 {
     font-family: 'Raleway', sans-serif; }
   #homeBody #singleResource #mainResourceInfo {
+    height: 121px;
+    overflow: scroll;
     width: 95%;
     margin-bottom: 10px;
     border-bottom: 1px solid #e5e5e5; }
@@ -341,7 +343,9 @@ nav.navbar.navbar-default {
     width: 95%;
     border-bottom: 1px solid #e5e5e5; }
     #homeBody #singleResource #website a {
-      color: black; }
+      color: black;
+      height: 35px;
+      overflow: scroll; }
       #homeBody #singleResource #website a .glyphicon {
         float: right;
         margin-right: 10px; }

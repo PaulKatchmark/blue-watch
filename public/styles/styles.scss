@@ -440,6 +440,8 @@ nav.navbar.navbar-default {
 
     }
     #mainResourceInfo{
+      height: 121px;
+      overflow: scroll;
       width: 95%;
       margin-bottom: 10px;
       border-bottom: $mainborder;
@@ -451,6 +453,8 @@ nav.navbar.navbar-default {
       border-bottom: $mainborder;
     a {
       color: black;
+      height: 35px;
+      overflow: scroll;
       .glyphicon {
         float: right;
         margin-right:10px;

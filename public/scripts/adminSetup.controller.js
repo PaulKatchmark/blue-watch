@@ -3,7 +3,9 @@ angular.module('blueWatchApp')
 
 function AdminSetupController($http, adminservice) {
 console.log('AdminSetupController loaded!');
-
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
 var admin = this;
 admin.usersArray = [];
 admin.capturedId = '';
