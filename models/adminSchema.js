@@ -4,6 +4,8 @@ const SALT_ROUNDS = 10;
 require('mongoose-type-email');
 
 const adminSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
   email: {type: mongoose.SchemaTypes.Email, required:true},
   password: String,
 
@@ -33,8 +35,8 @@ adminSchema.methods.comparePassword = function(password) {
   const user = this;
 
   return new Promise(function(resolve){
-    console.log('admin password', user.password);
-    console.log('password', password);
+    // console.log('admin password', user.password);
+    // console.log('password', password);
     bcrypt.compare(password, user.password, function(err, match){
       if (err) {
         console.log('Error comparing password', err);

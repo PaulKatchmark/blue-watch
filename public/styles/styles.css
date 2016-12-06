@@ -1,10 +1,43 @@
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50%); }
+  100% {
+    opacity: 1;
+    transform: none; } }
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20%); }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1;
+    transform: none; } }
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%); }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1;
+    transform: none; } }
+.fadeLeft {
+  animation: fadeInLeft 0.25s ease-in both; }
+
+.fadeRight {
+  animation: fadeInRight 0.25s ease-in both; }
+
 html, body {
   height: 100%; }
 
 .container {
-  width: 90%;
+  overflow: scroll;
+  width: 70%;
   margin: auto;
-  min-height: 100vh; }
+  min-height: 100vh;
+  height: 100%; }
   @media (max-width: 1000px) {
     .container {
       width: 100%;
@@ -13,7 +46,9 @@ html, body {
 
 body {
   font-family: "PT Sans", sans-serif;
-  background-image: url("http://bluewatchus.org/wp-content/uploads/2015/11/car_1950x1279_LIGHT.jpg"); }
+  background-image: url("http://bluewatchus.org/wp-content/uploads/2015/11/car_1950x1279_LIGHT.jpg");
+  background-size: cover;
+  height: 100%; }
   @media (max-width: 1000px) {
     body {
       background-image: none; } }
@@ -22,27 +57,29 @@ header {
   font-family: 'Raleway', sans-serif;
   color: #747474;
   width: 100%;
-  height: 10%;
+  height: 18%;
   display: inline-block;
   padding-bottom: 20px;
   padding-top: 5px;
-  border-bottom: 2px solid lightgray; }
-  @media (max-width: 750px) {
+  border-bottom: 1px solid #e5e5e5; }
+  @media (max-width: 769px) {
     header {
+      height: 8%;
       margin-bottom: 5px;
       padding-bottom: 5px; } }
   header h2 {
-    margin-top: 40px;
+    margin-top: 4%;
     font-size: 15px;
     width: 70%;
     float: right; }
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       header h2 {
         margin-top: 10px;
         font-size: 10px;
         margin-right: 20px; } }
   header img {
-    width: 20%; }
+    padding-left: 10%;
+    height: 100%; }
 
 span.glyphicon {
   padding-top: 5px; }
@@ -54,27 +91,43 @@ span.glyphicon {
 .btn {
   text-transform: uppercase; }
 
-.btn:focus, input.form-control:focus, select.form-control:focus
-.btn:active, input.form-control:active, select.form-control:active {
-  outline: 0; }
+.btn.btn-default:focus, input.form-control:focus, select.form-control:focus
+.btn.btn-default:active, input.form-control:active, select.form-control:active {
+  outline: 0;
+  background-color: white;
+  border-color: black;
+  box-shadow: none; }
+
+.btn:hover {
+  color: #3f7ccd;
+  background-color: #e5e5e5; }
+
+input.form-control:focus, input.form-control:active {
+  border: 2px solid #3f7ccd; }
 
 nav.navbar.navbar-default {
   font-family: 'Raleway', sans-serif;
   background-color: white;
   border: none;
-  text-transform: uppercase;
-  font-size: 15px;
-  border-bottom: 2px solid lightgray;
+  -webkit-font-smoothing: subpixel-antialiased;
+  border-bottom: 1px solid #e5e5e5;
   border-radius: 0; }
   nav.navbar.navbar-default a {
-    color: black; }
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #333333; }
   nav.navbar.navbar-default a:hover, nav.navbar.navbar-default a:focus {
     color: #3f7ccd; }
   nav.navbar.navbar-default #hamburger {
     width: 100%; }
+  @media (max-height: 99vh) {
+    nav.navbar.navbar-default #bigDiv {
+      height: 100vh; } }
   nav.navbar.navbar-default button {
     margin-bottom: 20px; }
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     nav.navbar.navbar-default {
       font-size: 10px; }
       nav.navbar.navbar-default button {
@@ -88,71 +141,76 @@ nav.navbar.navbar-default {
 
 #homeBody {
   height: 78vh; }
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     #homeBody {
       font-size: 12px; } }
   #homeBody div {
     margin: 0;
     padding: 0; }
+  #homeBody #title {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 10px; }
   #homeBody h1 {
+    color: #333333;
+    animation: fadeInUp .7s 0.25s ease-in both;
     font-family: 'Raleway', sans-serif;
+    padding: 0;
     margin-top: 10px;
     font-size: 30px;
     text-align: center;
-    text-transform: uppercase;
-    padding-bottom: 5px;
-    border-bottom: 2px solid lightgray; }
-    @media (max-width: 750px) {
+    text-transform: uppercase; }
+    @media (max-width: 769px) {
       #homeBody h1 {
         font-size: 20px; } }
-  #homeBody #addressSearch {
-    margin-bottom: 0; }
-    #homeBody #addressSearch .col-xs-8 {
-      width: 59%;
-      margin-right: 5px; }
-    #homeBody #addressSearch .col-xs-3 {
-      width: 28%; }
-    #homeBody #addressSearch .col-xs-1 {
-      width: 8%;
-      margin-left: 5px; }
-    #homeBody #addressSearch h5 {
-      margin-top: 0; }
   #homeBody #checkedSubmit {
     margin-top: 10px;
     width: 100%; }
   #homeBody #homeList {
     height: 68vh; }
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       #homeBody #homeList {
         height: 45vh; } }
     #homeBody #homeList h2 {
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
-      text-align: center;
-      text-transform: uppercase; }
+      text-align: center; }
+  #homeBody #scrollSelected {
+    height: 54vh;
+    overflow: scroll; }
+  #homeBody #scrollCatList {
+    height: 63vh;
+    overflow: scroll; }
   #homeBody #scroll {
-    height: 64.5vh;
+    height: 59vh;
+    overflow: scroll; }
+  #homeBody #scrollSearch {
+    height: 54vh;
     overflow: scroll; }
   #homeBody #mapDiv {
     height: 68vh; }
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       #homeBody #mapDiv {
-        height: 35vh; } }
+        height: 40vh; } }
+    @media (max-width: 350px) {
+      #homeBody #mapDiv {
+        height: 42vh; } }
     #homeBody #mapDiv #searchBars {
       margin: 0 0 10px 10px; }
+      #homeBody #mapDiv #searchBars #searchInput {
+        margin: 1px; }
       #homeBody #mapDiv #searchBars .btn {
         padding: 3.5px 6px; }
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         #homeBody #mapDiv #searchBars {
           margin: 0 0 10px 0; } }
   #homeBody #map {
     margin: 0 0 0 10px;
-    height: 57.5vh; }
-    @media (max-width: 750px) {
+    height: 58vh; }
+    @media (max-width: 769px) {
       #homeBody #map {
         margin: 0 0 10px 0;
         height: 24vh; } }
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     #homeBody #searchBars input {
       font-size: 12px;
       padding: 5px; } }
@@ -167,7 +225,7 @@ nav.navbar.navbar-default {
   #homeBody #categoryList .btn {
     margin-top: 10px;
     font-size: 15px; }
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       #homeBody #categoryList .btn {
         font-size: 12px; } }
     @media (max-width: 350px) {
@@ -177,21 +235,22 @@ nav.navbar.navbar-default {
     width: 100%;
     padding: 10px;
     padding-right: 0;
-    border-bottom: 2px solid lightgray; }
+    border-bottom: 1px solid #e5e5e5; }
     #homeBody #categoryList form #checkbox {
       width: 15px;
       height: 15px;
       margin-top: 0; }
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         #homeBody #categoryList form #checkbox {
           width: 12px;
           height: 12px; } }
     #homeBody #categoryList form label {
+      cursor: pointer;
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
       width: 93%;
       margin: 0; }
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         #homeBody #categoryList form label {
           font-size: 18px; } }
       #homeBody #categoryList form label .glyphicon {
@@ -200,33 +259,34 @@ nav.navbar.navbar-default {
     width: 100%; }
     #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
       font-family: 'Raleway', sans-serif; }
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         #homeBody #selectedCategory h3, #homeBody #checkedCategory h3 {
           font-size: 18px; } }
     #homeBody #selectedCategory #resourceList, #homeBody #checkedCategory #resourceList {
-      border-bottom: 2px solid lightgray; }
+      border-bottom: 1px solid #e5e5e5;
+      cursor: pointer; }
       #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
         font-family: 'Raleway', sans-serif;
         font-size: 20px; }
-        @media (max-width: 750px) {
+        @media (max-width: 769px) {
           #homeBody #selectedCategory #resourceList h5, #homeBody #checkedCategory #resourceList h5 {
             font-size: 12px; } }
       #homeBody #selectedCategory #resourceList .resourceInfo, #homeBody #checkedCategory #resourceList .resourceInfo {
         width: 90%;
         display: inline-block;
         height: 125px; }
-        @media (max-width: 750px) {
+        #homeBody #selectedCategory #resourceList .resourceInfo h5, #homeBody #checkedCategory #resourceList .resourceInfo h5 {
+          margin-bottom: 0; }
+        @media (max-width: 769px) {
           #homeBody #selectedCategory #resourceList .resourceInfo, #homeBody #checkedCategory #resourceList .resourceInfo {
             font-size: 15px;
             height: 75px; } }
-        #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
-          padding-left: 10px; }
-          @media (max-width: 750px) {
-            #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
-              font-size: 10px; } }
+        @media (max-width: 769px) {
+          #homeBody #selectedCategory #resourceList .resourceInfo p, #homeBody #checkedCategory #resourceList .resourceInfo p {
+            font-size: 10px; } }
         #homeBody #selectedCategory #resourceList .resourceInfo span, #homeBody #checkedCategory #resourceList .resourceInfo span {
-          font-size: 10px; }
-          @media (max-width: 750px) {
+          font-size: 12px; }
+          @media (max-width: 769px) {
             #homeBody #selectedCategory #resourceList .resourceInfo span, #homeBody #checkedCategory #resourceList .resourceInfo span {
               font-size: 8px; } }
       #homeBody #selectedCategory #resourceList div#goNext, #homeBody #checkedCategory #resourceList div#goNext {
@@ -236,7 +296,7 @@ nav.navbar.navbar-default {
         padding-top: 10%;
         vertical-align: middle;
         float: right; }
-        @media (max-width: 750px) {
+        @media (max-width: 769px) {
           #homeBody #selectedCategory #resourceList div#goNext, #homeBody #checkedCategory #resourceList div#goNext {
             font-size: 10px;
             height: 75px;
@@ -245,54 +305,64 @@ nav.navbar.navbar-default {
       margin: 10px 0 0 0;
       padding-bottom: 10px;
       text-align: center;
-      border-bottom: 2px solid lightgray;
-      color: #3f7ccd; }
+      border-bottom: 1px solid #e5e5e5; }
   #homeBody #navBack {
     font-family: 'Raleway', sans-serif;
     margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
     border: none;
-    font-size: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
     border-radius: 0;
-    border-bottom: 2px solid lightgray;
-    padding-left: 0; }
+    border-bottom: 1px solid #e5e5e5;
+    padding-left: 0;
+    padding-bottom: 20px;
+    color: #747474; }
     #homeBody #navBack .glyphicon {
       float: left; }
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       #homeBody #navBack {
         font-size: 18px; } }
   #homeBody #navBack:hover {
     background-color: white;
-    font-weight: 600; }
-  #homeBody #singleResource h3 {
-    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
     color: #3f7ccd; }
+  #homeBody #singleResource h3 {
+    font-family: 'Raleway', sans-serif; }
   #homeBody #singleResource #mainResourceInfo {
+    height: 121px;
+    overflow: scroll;
     width: 95%;
     margin-bottom: 10px;
-    border-bottom: 2px solid lightgray;
-    padding-left: 10px; }
+    border-bottom: 1px solid #e5e5e5; }
   #homeBody #singleResource #website {
     margin-bottom: 10px;
     padding-bottom: 10px;
     width: 95%;
-    border-bottom: 2px solid lightgray; }
+    border-bottom: 1px solid #e5e5e5; }
     #homeBody #singleResource #website a {
-      color: black; }
+      color: black;
+      height: 35px;
+      overflow: scroll; }
       #homeBody #singleResource #website a .glyphicon {
         float: right;
         margin-right: 10px; }
     #homeBody #singleResource #website a:hover {
+      color: #3f7ccd;
       text-decoration: none; }
   #homeBody #singleResource #reviewScroll {
-    height: 26vh;
+    height: 15vh;
     overflow: scroll; }
   #homeBody #singleResource #review {
     border: 1px solid black;
     width: 95%;
     padding: 5px;
     margin-bottom: 10px;
-    background-color: white; }
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase; }
   #homeBody #singleResource #review:focus {
     outline: 0; }
 
@@ -300,7 +370,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   font-size: 15px !important;
   padding: 5px; }
 
-@media (max-width: 750px) {
+@media (max-width: 769px) {
   #resourcePage .btn {
     font-size: 10px;
     padding: 5px; } }
@@ -309,7 +379,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   padding: 0; }
 #resourcePage #searchBar {
   margin-bottom: 10px; }
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     #resourcePage #searchBar input {
       font-size: 10px;
       padding: 5px;
@@ -327,67 +397,65 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   #resourcePage table h4 {
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    color: #3f7ccd;
     text-transform: uppercase;
     font-size: 25px;
-    border-bottom: 2px solid lightgray;
+    border-bottom: 1px solid #e5e5e5;
     padding-bottom: 10px; }
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       #resourcePage table h4 {
         font-size: 20px; } }
   #resourcePage table th {
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-    text-transform: uppercase; }
-    @media (max-width: 750px) {
+    font-size: 20px; }
+    @media (max-width: 769px) {
       #resourcePage table th {
         font-size: 15px; } }
   #resourcePage table td {
     padding: 0;
-    margin-bottom: 10px; }
-    @media (max-width: 750px) {
+    margin-bottom: 10px;
+    font-size: 12px; }
+    @media (max-width: 769px) {
       #resourcePage table td {
         font-size: 10px; } }
   #resourcePage table button {
     margin: 5px 0; }
 
-@media (max-width: 750px) {
+@media (max-width: 769px) {
   #approvalsPage .btn, #adminPage .btn {
     font-size: 10px;
     padding: 5px; } }
 #approvalsPage h2, #adminPage h2 {
   font-family: 'Raleway', sans-serif;
   text-align: center;
-  color: #3f7ccd;
-  text-transform: uppercase;
+  color: #747474;
   font-size: 25px;
-  border-bottom: 2px solid lightgray;
+  border-bottom: 1px solid #e5e5e5;
   padding-bottom: 10px; }
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     #approvalsPage h2, #adminPage h2 {
       font-size: 20px; } }
 #approvalsPage table, #adminPage table {
   width: 100%; }
   #approvalsPage table th, #adminPage table th {
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
-    text-transform: uppercase; }
-    @media (max-width: 750px) {
+    font-size: 20px; }
+    @media (max-width: 769px) {
       #approvalsPage table th, #adminPage table th {
         font-size: 12px; } }
   #approvalsPage table td, #adminPage table td {
     padding: 0;
-    margin-bottom: 10px; }
-    @media (max-width: 750px) {
+    margin-bottom: 10px;
+    font-size: 12px; }
+    @media (max-width: 769px) {
       #approvalsPage table td, #adminPage table td {
         font-size: 10px; } }
   #approvalsPage table button, #adminPage table button {
     margin: 5px 0; }
 #approvalsPage #addNew, #adminPage #addNew {
-  width: 20%;
+  width: 25%;
   margin: auto;
   margin: 5px 0 10px 0; }
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     #approvalsPage #addNew, #adminPage #addNew {
       width: 100%; } }
 
@@ -395,14 +463,14 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search {
   background-color: white;
   border: none;
   box-shadow: none; }
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     #login form {
       font-size: 10px; } }
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     #login form .btn {
       font-size: 10px;
       padding: 5px; } }
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     #login form input {
       font-size: 10px;
       padding: 5px;
@@ -425,11 +493,11 @@ ul.rating {
   cursor: pointer; }
 
 .rating .filled {
-  color: red; }
+  color: #FAB400; }
 
 .half {
   position: relative;
-  color: red !important; }
+  color: #FAB400 !important; }
 
 .half:after {
   content: '';
@@ -440,7 +508,7 @@ ul.rating {
   height: 100%;
   left: 47%; }
 
-@media (max-width: 750px) {
+@media (max-width: 769px) {
   .modal-content label {
     font-size: 10px;
     padding-right: 0; } }
@@ -478,16 +546,59 @@ ul.rating {
   height: 15.5px; }
 
 .input-group {
-  display: inline-block;
+  display: table;
   width: 100%; }
 
 .dropdown-menu {
-  width: 100%; }
+  min-width: 50vh;
+  padding: 10px !important; }
+  @media (max-width: 1100px) {
+    .dropdown-menu {
+      min-width: 54vh; } }
+  @media (max-width: 769px) {
+    .dropdown-menu {
+      min-width: 65vh; } }
+  @media (max-width: 640px) {
+    .dropdown-menu {
+      min-width: 50vh; } }
+  @media (max-width: 500px) {
+    .dropdown-menu {
+      min-width: 45vh; } }
 
 #adv-search {
   margin: 0 auto; }
 
 .dropdown.dropdown-lg {
   position: static !important; }
+
+#addCat {
+  padding: 6px; }
+  #addCat .glyphicon {
+    font-size: 12px !important; }
+
+#addNewCategory {
+  z-index: 2000; }
+
+#approve {
+  color: green; }
+
+.modal .modal-title {
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; }
+.modal .modal-content {
+  border-radius: 0; }
+.modal .modal-header {
+  margin: 0 20px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-left: 0;
+  padding-right: 0; }
+.modal .modal-footer {
+  margin: 0 20px;
+  border-top: 1px solid #e5e5e5;
+  padding-right: 0; }
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 68%; } }
 
 /*# sourceMappingURL=styles.css.map */

@@ -8,23 +8,27 @@ function ResourcesController($http, $location, $q, ResourcesService,$scope, admi
   controller.categories = [];
   controller.resources=[];
 
-  controller.capturedCompany = '';
-  controller.capturedDescription = '';
-  controller.capturedContact = '';
-  controller.capturedWebsite = '';
-  controller.capturedStreet = '';
-  controller.capturedStreet2 = '';
-  controller.capturedCity = '';
-  controller.capturedState = '';
-  controller.capturedZip = '';
-  controller.capturedCategory = '';
-  controller.capturedId='';
-  controller.iconColor ='';
+
 controller.customIconInfo=[];
+
+    //empty modal
+        controller.capturedCompany = '';
+        controller.capturedDescription = '';
+        controller.capturedContact = '';
+        controller.capturedWebsite = '';
+        controller.capturedStreet = '';
+        controller.capturedStreet2 = '';
+        controller.capturedCity = '';
+        controller.capturedState = '';
+        controller.capturedZip = '';
+        controller.capturedCategory = '';
+        controller.capturedId='';
+        controller.iconColor ='';
+
 
 
   //whenever controller is loaded, will check to see if user which/if any user is logged in
-  adminservice.loggedin();
+  adminservice.normalLoggedin();
 
   //loads all the false icons on resources page
 
@@ -54,6 +58,18 @@ controller.customIconInfo=[];
             console.log('body in createresource', body);
             $http.post('/resource', body).then(function() {
                 controller.getResources();
+
+            controller.company = '';
+            controller.description = '';
+            controller.contact = '';
+            controller.website = '';
+            controller.street = '';
+            controller.street2 = '';
+            controller.city = '';
+            controller.state = '';
+            controller.zip = '';
+            controller.category = '';
+
             }, function(error) {
                 console.log('error creating resource', error);
             });
@@ -87,6 +103,7 @@ controller.customIconInfo=[];
         $http.get('/categories').then(function(response) {
             // console.log(response);
             controller.categories = response.data;
+            console.log(controller.categories);
         });
     };
 
@@ -133,7 +150,7 @@ controller.customIconInfo=[];
             $http.put('/resource/' + id, body).then(function(response) {
                 controller.getResources();
                 controller.getIcons();
-                controller.getcategories
+                controller.getcategories();
             }, function(error) {
                 console.log('error editing resource', error);
             });
@@ -168,18 +185,19 @@ controller.customIconInfo=[];
 
 
     controller.captureOldColor = function(color){
+
     controller.oldColor = color;
 
     }
 
 //updateCategory function
     controller.updateCategory = function(category) {
-
+console.log(category);
 
         var body = {
             categoryName: category.categoryName,
             color: category.newColor,
-            oldColor:controller.oldColor
+            oldColor:category.color
         };
         var id = category._id;
 

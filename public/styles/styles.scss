@@ -1,52 +1,115 @@
 $font:'PT Sans', sans-serif;
-$mainborder: 2px solid lightgray;
+$blueWatch: #3f7ccd;
+$gray: #747474;
+$borderGray: #e5e5e5;
+$header: #333333;
+$mainborder: 1px solid $borderGray;
+$selectborder: 2px solid $blueWatch;
+
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.fadeLeft {
+  animation: fadeInLeft 0.25s ease-in both;
+}
+.fadeRight{
+  animation: fadeInRight 0.25s ease-in both;
+}
 
 html, body {
     height:100%;
 }
 .container {
-    width: 90%;
+  overflow: scroll;
+    width: 70%;
     margin: auto;
     min-height:100vh;
+    height: 100%;
     @media (max-width: 1000px) {
       width: 100%;
       margin: 0;
       padding: 0;
     }
 }
+
 body {
   font-family: $font;
   background-image: url("http://bluewatchus.org/wp-content/uploads/2015/11/car_1950x1279_LIGHT.jpg");
+ background-size: cover;
+ height: 100%;
   @media (max-width: 1000px) {
     background-image: none;
   }
 }
 header{
   font-family: 'Raleway', sans-serif;
-  color: #747474;
+  color: $gray;
   width: 100%;
-  height: 10%;
+  height: 18%;
   display: inline-block;
   padding-bottom: 20px;
   padding-top:5px;
   border-bottom: $mainborder;
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
+      height: 8%;
       margin-bottom: 5px;
       padding-bottom: 5px;
 }
   h2{
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         margin-top: 10px;
         font-size: 10px;
         margin-right: 20px;
       }
-    margin-top: 40px;
+    margin-top: 4%;
     font-size: 15px;
     width: 70%;
+
     float: right;
   }
   img{
-    width:20%;
+    padding-left: 10%;
+    height:100%;
   }
 }
 span.glyphicon {
@@ -61,34 +124,52 @@ span.glyphicon {
     // padding: 3.5px 6px;
 }
 
-.btn:focus, input.form-control:focus, select.form-control:focus
-.btn:active , input.form-control:active , select.form-control:active {
+.btn.btn-default:focus, input.form-control:focus, select.form-control:focus
+.btn.btn-default:active , input.form-control:active , select.form-control:active {
   outline:0;
+  background-color: white;
+  border-color: black;
+  box-shadow: none;
+}
+.btn:hover{
+  color: $blueWatch;
+  background-color: $borderGray;
+}
+input.form-control:focus, input.form-control:active {
+  border: $selectborder;
 }
 
 nav.navbar.navbar-default {
   font-family: 'Raleway', sans-serif;
   background-color: white;
   border: none;
-  text-transform: uppercase;
-  font-size: 15px;
+  -webkit-font-smoothing: subpixel-antialiased;
   border-bottom: $mainborder;
   border-radius: 0;
   a{
-    color: black;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: $header;
   }
   a:hover, a:focus {
-    color: #3f7ccd;
+    color: $blueWatch;
   }
 #hamburger {
   width: 100%;
 
 }
+#bigDiv{
+  @media (max-height: 99vh) {
+    height: 100vh;
+  }
+}
 
  button{
    margin-bottom: 20px;
  }
- @media (max-width: 750px) {
+ @media (max-width: 769px) {
    font-size: 10px;
    button{
      margin-bottom: 15px;
@@ -103,7 +184,7 @@ nav.navbar.navbar-default {
   color: red;
 }
 #homeBody {
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
     font-size: 12px;
   }
   div {
@@ -111,38 +192,25 @@ nav.navbar.navbar-default {
     padding: 0;
   }
 
+  #title{
+    border-bottom: $mainborder;
+    margin-bottom: 10px;
+  }
+
   h1{
+    color: $header;
+    animation: fadeInUp .7s 0.25s ease-in both;
     font-family: 'Raleway', sans-serif;
+    padding: 0;
     margin-top: 10px;
     font-size: 30px;
     text-align: center;
     text-transform:uppercase;
-    padding-bottom: 5px;
-    border-bottom: $mainborder;
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       font-size: 20px;
     }
   }
-  // #search{
-  //   margin-left: 10px;
-  // }
-  #addressSearch {
-  .col-xs-8{
-    width: 59%;
-    margin-right: 5px;
-  }
-  .col-xs-3{
-    width: 28%;
-  }
-  .col-xs-1{
-    width: 8%;
-    margin-left: 5px;
-  }
-    h5{
-      margin-top: 0;
-    }
-    margin-bottom: 0;
-  }
+
   #checkedSubmit {
     margin-top: 10px;
     width: 100%;
@@ -150,46 +218,65 @@ nav.navbar.navbar-default {
   height: 78vh;
   #homeList{
     height: 68vh;
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       height: 45vh;
     }
     h2{
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
       text-align: center;
-      text-transform:uppercase;
+
     }
   }
-  #scroll {
-    height: 64.5vh;
+  #scrollSelected {
+    height: 54vh;
+    overflow: scroll;
+  }
+  #scrollCatList {
+    height: 63vh;
+    overflow: scroll;
+  }
+  #scroll{
+    height: 59vh;
+    overflow: scroll;
+  }
+  #scrollSearch{
+    height: 54vh;
     overflow: scroll;
   }
   #mapDiv{
       height: 68vh;
-      @media (max-width: 750px) {
-        height: 35vh;
+      @media (max-width: 769px) {
+        height: 40vh;
+      }
+      @media (max-width: 350px) {
+        height: 42vh;
       }
     #searchBars{
+      #searchInput{
+        margin:1px;
+      }
       .btn{
           padding: 3.5px 6px;
       }
       margin: 0 0 10px 10px;
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         margin: 0 0 10px 0;
       }
     }
   }
   #map{
     margin: 0 0 0 10px;
-    height:57.5vh;
-    @media (max-width: 750px) {
+    height:58vh;
+    // height:57.5vh;
+    @media (max-width: 769px) {
       margin: 0 0 10px 0;
       height:24vh;
     }
   }
   #searchBars{
     input {
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         font-size: 12px;
         padding: 5px;
       }
@@ -205,13 +292,14 @@ nav.navbar.navbar-default {
 
   }
   #categoryList{
+
     h2{
       margin-top: 0;
     }
     .btn{
       margin-top: 10px;
       font-size: 15px;
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         font-size: 12px;
       }
       @media (max-width: 350px) {
@@ -219,22 +307,24 @@ nav.navbar.navbar-default {
       }
     }
     form{
+
       #checkbox{
         width:15px;
         height:15px;
         margin-top: 0;
-        @media (max-width: 750px) {
+        @media (max-width: 769px) {
           width:12px;
           height:12px;
         }
       }
 
       label {
+        cursor: pointer;
         font-family: 'Raleway', sans-serif;
         font-size: 20px;
         width: 93%;
         margin:0;
-        @media (max-width: 750px) {
+        @media (max-width: 769px) {
           font-size: 18px;
         }
         .glyphicon {
@@ -248,39 +338,43 @@ nav.navbar.navbar-default {
   }
   }
   #selectedCategory, #checkedCategory{
+      //  animation: fadeInRight 0.25s ease-in both;
     width: 100%;
     h3 {
       font-family: 'Raleway', sans-serif;
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       font-size: 18px;
     }
   }
     #resourceList{
       border-bottom: $mainborder;
+      cursor: pointer;
       h5{
         font-family: 'Raleway', sans-serif;
         font-size: 20px;
-          @media (max-width: 750px) {
+          @media (max-width: 769px) {
             font-size: 12px;
           }
       }
       .resourceInfo{
+        h5{
+          margin-bottom: 0;
+        }
         width: 90%;
         display: inline-block;
         height: 125px;
-        @media (max-width: 750px) {
+        @media (max-width: 769px) {
           font-size: 15px;
           height: 75px;
         }
         p{
-          padding-left: 10px;
-          @media (max-width: 750px) {
+          @media (max-width: 769px) {
             font-size: 10px;
           }
         }
         span{
-          font-size: 10px;
-          @media (max-width: 750px) {
+          font-size: 12px;
+          @media (max-width: 769px) {
             font-size: 8px;
 
           }
@@ -293,7 +387,7 @@ nav.navbar.navbar-default {
       padding-top: 10%;
       vertical-align: middle;
       float: right;
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         font-size: 10px;
         height: 75px;
         padding-top: 8%;
@@ -308,41 +402,49 @@ nav.navbar.navbar-default {
       padding-bottom: 10px;
       text-align: center;
       border-bottom: $mainborder;
-      color: #3f7ccd;
+
     }
   }
 
   #navBack{
     font-family: 'Raleway', sans-serif;
     margin-top: 10px;
+    margin-bottom: 10px;
     width: 100%;
     border: none;
-    font-size: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
     border-radius: 0;
     border-bottom: $mainborder;
     padding-left: 0;
+    padding-bottom: 20px;
+    color: $gray;
     .glyphicon {
       float: left;
     }
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       font-size: 18px;
     }
   }
   #navBack:hover{
     background-color: white;
     font-weight: 600;
+    color: $blueWatch;
   }
 
   #singleResource{
+      //  animation: fadeInRight 0.25s ease-in both;
     h3{
       font-family: 'Raleway', sans-serif;
-      color: #3f7ccd;
+
     }
     #mainResourceInfo{
+      height: 121px;
+      overflow: scroll;
       width: 95%;
       margin-bottom: 10px;
       border-bottom: $mainborder;
-      padding-left: 10px;
     }
     #website{
       margin-bottom: 10px;
@@ -351,17 +453,20 @@ nav.navbar.navbar-default {
       border-bottom: $mainborder;
     a {
       color: black;
+      height: 35px;
+      overflow: scroll;
       .glyphicon {
         float: right;
         margin-right:10px;
       }
     }
     a:hover {
+      color: $blueWatch;
       text-decoration: none;
     }
   }
   #reviewScroll{
-    height: 26vh;
+    height: 15vh;
     overflow: scroll;
   }
   #review {
@@ -370,6 +475,8 @@ nav.navbar.navbar-default {
     padding: 5px;
     margin-bottom: 10px;
     background-color: white;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
   }
   #review:focus{
     outline:0;
@@ -384,8 +491,9 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
 }
 
 #resourcePage{
+
   .btn{
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       font-size: 10px;
       padding: 5px;
     }
@@ -397,7 +505,7 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
   #searchBar{
     margin-bottom: 10px;
     input {
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         font-size: 10px;
         padding: 5px;
         height: 26px;
@@ -423,27 +531,27 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
     h4{
       font-family: 'Raleway', sans-serif;
       text-align: center;
-      color: #3f7ccd;
       text-transform: uppercase;
       font-size: 25px;
       border-bottom: $mainborder;
       padding-bottom: 10px;
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         font-size: 20px;
       }
     }
     th {
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
-      text-transform: uppercase;
-      @media (max-width: 750px) {
+
+      @media (max-width: 769px) {
         font-size: 15px;
       }
     }
     td{
       padding: 0;
       margin-bottom: 10px;
-      @media (max-width: 750px) {
+      font-size: 12px;
+      @media (max-width: 769px) {
         font-size: 10px;
       }
     }
@@ -451,11 +559,12 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
       margin: 5px 0;
     }
   }
+
 }
 
 #approvalsPage, #adminPage {
   .btn{
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       font-size: 10px;
       padding: 5px;
     }
@@ -463,12 +572,11 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
   h2{
     font-family: 'Raleway', sans-serif;
     text-align: center;
-    color: #3f7ccd;
-    text-transform: uppercase;
+    color: $gray;
     font-size: 25px;
     border-bottom: $mainborder;
     padding-bottom: 10px;
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       font-size: 20px;
     }
   }
@@ -477,15 +585,15 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
     th {
       font-family: 'Raleway', sans-serif;
       font-size: 20px;
-      text-transform: uppercase;
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         font-size: 12px;
       }
     }
     td{
       padding: 0;
       margin-bottom: 10px;
-      @media (max-width: 750px) {
+      font-size: 12px;
+      @media (max-width: 769px) {
         font-size: 10px;
       }
     }
@@ -494,9 +602,9 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
     }
   }
   #addNew{
-    width: 20%;
+    width: 25%;
     margin: auto;
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
     width: 100%;
   }
     margin: 5px 0 10px 0;
@@ -508,17 +616,17 @@ span.glyphicon.glyphicon-plus, span.glyphicon.glyphicon-search{
     background-color: white;
     border: none;
     box-shadow: none;
-    @media (max-width: 750px) {
+    @media (max-width: 769px) {
       font-size: 10px;
     }
     .btn{
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         font-size: 10px;
         padding: 5px;
       }
     }
     input {
-      @media (max-width: 750px) {
+      @media (max-width: 769px) {
         font-size: 10px;
         padding: 5px;
         height: 26px;
@@ -544,11 +652,11 @@ ul.rating {
     cursor: pointer;
 }
 .rating .filled {
-    color: red;
+    color: #FAB400;
 }
 .half {
     position:relative;
-    color: red !important;
+    color: #FAB400 !important;
 }
 .half:after {
     content:'';
@@ -561,7 +669,7 @@ ul.rating {
 }
 
 .modal-content label {
-  @media (max-width: 750px) {
+  @media (max-width: 769px) {
   font-size: 10px;
   padding-right:0;
 }
@@ -600,15 +708,26 @@ ul.rating {
   height: 15.5px;
 }
 .input-group {
-  display: inline-block;
+  display: table;
   width: 100%
 }
 .dropdown-menu {
-  width: 100%;
+  min-width: 50vh;
+  padding: 10px !important;
+
+  @media (max-width: 1100px) {
+    min-width:54vh;
+  }
+  @media (max-width: 769px) {
+    min-width: 65vh;
+  }
+  @media (max-width: 640px) {
+    min-width: 50vh;
+  }
+  @media (max-width: 500px) {
+    min-width: 45vh;
+  }
 }
-// #searchInput {
-//   width: 80%;
-// }
 
     #adv-search {
         margin: 0 auto;
@@ -616,3 +735,41 @@ ul.rating {
     .dropdown.dropdown-lg {
         position: static !important;
     }
+
+    #addCat{
+      padding: 6px;
+      .glyphicon{
+        font-size: 12px !important;
+      }
+    }
+    #addNewCategory{
+  z-index: 2000;
+    }
+#approve{
+  color: green;
+}
+.modal{
+  .modal-title{
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+  }
+  .modal-content{
+    border-radius: 0;
+  }
+  .modal-header{
+    margin: 0 20px;
+    border-bottom: $mainborder;
+    padding-left:0;
+    padding-right:0;
+  }
+  .modal-footer{
+    margin: 0 20px;
+    border-top: $mainborder;
+    padding-right: 0;
+  }
+}
+@media (min-width: 768px){
+.modal-dialog {
+  width: 68%;
+}
+}

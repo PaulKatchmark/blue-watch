@@ -6,7 +6,8 @@ function LoginController($http, $location, adminservice) {
   var controller = this;
 
   //whenever controller is loaded, will check to see if user which/if any user is logged in
-    adminservice.loggedin();
+    // adminservice.loggedin();
+
 
 //logged in email to display
   controller.loggedInEmail = function(){
@@ -23,6 +24,7 @@ function LoginController($http, $location, adminservice) {
       password: controller.password
     }).then(function(){
     controller.loggedInEmail();
+    adminservice.normalLoggedin();
     $location.path('/resources');
     }, function(error) {
       console.log('error loggin in', error);

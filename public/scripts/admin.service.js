@@ -5,18 +5,51 @@ angular.module('blueWatchApp')
   //this is to use logged in user in view
   adminservice.user = "";
   adminservice.isLoggedIn = false;
+  adminservice.accessLevel=false;
 
     adminservice.loggedin = function(){
       return $http.get('/admin/adminSchema').then(function(response) {
-        adminservice.user = response.data.email;
+        adminservice.user = response.data.firstName;
+        console.log(response.data);
+
         adminservice.isLoggedIn = true;
-        console.log('adminservice user', adminservice.user);
-        console.log('isLoggedIn ', adminservice.isLoggedIn);
+        if (response.data.accessLevel == 'no'){
+            adminservice.accessLevel = false;
+        } else {
+            adminservice.accessLevel = true;
+        }
+        // console.log(response.data.accessLevel);
+        // console.log('adminservice user', adminservice.user);
+        // console.log('isLoggedIn ', adminservice.isLoggedIn);
         return adminservice.user;
 
       },function(error){
-        adminservice.isLoggedIn = false;
-        console.log('isLoggedIn ', adminservice.isLoggedIn);
+        adminservice.isLoggedIn = true; //look here
+        // console.log('isLoggedIn ', adminservice.isLoggedIn);
+        return false;
+      }
+    );
+    };
+
+
+    adminservice.normalLoggedin = function(){
+      return $http.get('/login/info').then(function(response) {
+          console.log(response.data);
+        adminservice.user = response.data.firstName;
+        adminservice.isLoggedIn = true;
+        if (response.data.accessLevel == 'no'){
+            adminservice.accessLevel = false;
+        } else {
+            adminservice.accessLevel = true;
+        }
+        // console.log(response.data.accessLevel);
+        // console.log('adminservice user regular', adminservice.user);
+        // console.log('isLoggedIn ', adminservice.isLoggedIn);
+        return adminservice.user;
+
+      },function(error){
+        adminservice.isLoggedIn = true; //look here
+        // console.log('isLoggedIn ', adminservice.isLoggedIn);
         return false;
       }
     );

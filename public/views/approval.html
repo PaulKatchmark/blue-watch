@@ -11,11 +11,28 @@
     <tr ng-repeat="review in approval.reviewsArray">
         <td ng-if="!review.approved">{{review.companyName}}</td>
         <td ng-if="!review.approved">{{review.comments}}</td>
-        <td ng-if="!review.approved"><span star-rating rating-value="review.rating" max="5" ></span> ({{review.rating}}) stars</td>
+        <td ng-if="!review.approved"><span star-rating rating-value="review.rating" max="5" ></span></td>
         <td ng-if="!review.approved"><button href="#reviewDetail"  class="btn btn-default pull-right" data-toggle="modal" ng-click="approval.captureInfo(review)">Read Details</button></td>
     </tr>
 </table>
 
+
+<h2>Approved Reviews</h2>
+
+<table>
+    <thead>
+        <th>Company</th>
+        <th>Comments</th>
+        <th>Rating</th>
+        <th></th>
+    </thead>
+    <tr ng-repeat="review in approval.reviewsArray | orderBy: 'companyName'">
+        <td ng-if="review.approved">{{review.companyName}}</td>
+        <td ng-if="review.approved">{{review.comments}}</td>
+        <td ng-if="review.approved"><span star-rating rating-value="review.rating" max="5" ></span></td>
+        <td ng-if="review.approved"><button id="deleteButton" ng-click="approval.deleteReview(review._id)" type="button" class="btn btn-default" data-dismiss="modal" >Delete</button></td>
+    </tr>
+</table>
 
 <div id="reviewDetail" class="modal fade">
     <div class="modal-dialog">
@@ -29,18 +46,18 @@
                     <div class="form-group">
                       <div class="row">
 
-                        <label class="control-label col-xs-2" >Rating:</label>
-                        <div class="col-xs-8 text-align:left;">
-                          <p><span star-rating rating-value="approval.capturedRating" max="5" ></span>({{approval.capturedRating}}) stars</p>
-                        <div class="col-xs-9 text-align:left;">
+                        <label class="control-label col-xs-4" >Rating:</label>
+                        <div class="col-xs-6 text-align:left;">
+                          <p><span star-rating rating-value="approval.capturedRating" max="5" ></span>({{approval.capturedRating}})</p>
+                        <div class="col-xs-7 text-align:left;">
                           <ul id="el" style="list-style-type: none;"></ul>
 
                         </div>
                       </div>
                       </div>
                       <div class="row">
-                        <label class="control-label col-xs-2">Comments</label>
-                        <div class="col-xs-9">
+                        <label class="control-label col-xs-4">Comments</label>
+                        <div class="col-xs-6">
                             <textarea ng-model="approval.capturedComments" type="text" class="form-control" ></textarea>
                         </div>
                     </div>
@@ -49,7 +66,7 @@
             </div>
             <div class="modal-footer">
                 <button id="deleteButton" ng-click="approval.deleteReview(approval.capturedId)" type="button" class="btn btn-default" data-dismiss="modal" >Delete</button>
-                <button ng-click="approval.approvedReview(approval.capturedId, approval.capturedComments) " type="button" class="btn btn-default" data-dismiss="modal" >Approve</button>
+                <button id="approve" ng-click="approval.approvedReview(approval.capturedId, approval.capturedComments) " type="button" class="btn btn-default" data-dismiss="modal" >Approve</button>
             </div>
 
 
