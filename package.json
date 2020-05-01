@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,8 @@
     "nodemailer": "^2.6.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "pg": "^6.1.0"
-  }
+    "pg": "^6.1.0",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
